@@ -23,7 +23,7 @@ export function Hero() {
         className="absolute inset-[12px] md:inset-[16px] rounded-[8px] md:rounded-[12px] overflow-hidden bg-movus-black"
       >
         <Image
-          src="/images/hero.webp"
+          src="/images/hero-new.jpg"
           alt="EMS προπόνηση στο MOVUS"
           fill
           className="object-cover object-[center_25%]"
