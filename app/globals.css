@@ -20,6 +20,13 @@
   --font-work-sans: var(--font-work-sans-var);
 }
 
+html, body { overflow-x: hidden; width: 100%; }
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 :root {
   --text-display: clamp(3rem, 9vw + 0.5rem, 7.5rem);
   --text-h1: clamp(2.25rem, 5.5vw + 0.25rem, 5rem);
