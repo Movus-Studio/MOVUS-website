@@ -91,7 +91,7 @@ export default function RootLayout({
 
         {/* Fixed CTA - Positioned absolutely to identically match the Bottom-Right Island bounding box */}
         <div 
-          className="fixed bottom-0 right-0 w-[205px] md:w-[220px] h-[72px] md:h-[76px] z-[110] flex items-center justify-center pointer-events-none transition-all"
+          className="fixed bottom-0 right-0 w-[155px] md:w-[170px] h-[56px] md:h-[60px] z-[110] flex items-center justify-center pointer-events-none transition-all"
           style={{ padding: '0px 12px 12px 0px' }} /* Push content toward center of the visual pill avoiding the bottom border */
         >
           <a
