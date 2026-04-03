@@ -31,7 +31,8 @@ export function FrameMask() {
     <>
       {/* --- GLOBAL APP PERIMETER FRAME --- */}
       {/* Sharpened the global radius from 40px to 24px for a tighter premium feel */}
-      <div className="pointer-events-none fixed inset-0 z-[90] border-[12px] md:border-[16px] border-movus-black rounded-[20px] md:rounded-[24px] shadow-[0_0_0_50vmax_var(--color-movus-black)]" />
+      {/* Replaced inset-0 with explicit top-0/left-0/w-100vw/h-100svh to prevent iOS Safari address bar from shoving the top border completely off-screen during scroll. */}
+      <div className="pointer-events-none fixed top-0 left-0 w-full h-[100svh] z-[90] border-[12px] md:border-[16px] border-movus-black rounded-[20px] md:rounded-[24px] shadow-[0_0_0_50vmax_var(--color-movus-black)]" />
 
       {/* --- TOP LEFT ISLAND (Logo Area) --- */}
       {/* Sharpened island radius to 16px/20px to match frame */}
