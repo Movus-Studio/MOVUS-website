@@ -49,7 +49,7 @@ export function FrameMask() {
       </div>
 
       {/* --- BOTTOM RIGHT ISLAND (Floating CTA Area) --- */}
-      <div className="fixed bottom-0 right-0 w-[165px] md:w-[170px] h-[58px] md:h-[60px] bg-movus-black z-[100] rounded-tl-[16px] md:rounded-tl-[20px] pointer-events-none transition-all">
+      <div className="fixed bottom-0 right-0 w-[155px] md:w-[170px] h-[56px] md:h-[60px] bg-movus-black z-[100] rounded-tl-[16px] md:rounded-tl-[20px] pointer-events-none transition-all">
         <FilletBottomRight className="w-4 h-4 md:w-5 md:h-5 bottom-[11px] md:bottom-[15px] left-[-15px] md:left-[-19px]" />
         <FilletBottomRight className="w-4 h-4 md:w-5 md:h-5 top-[-15px] md:top-[-19px] right-[11px] md:right-[15px]" />
       </div>
