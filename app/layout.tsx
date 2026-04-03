@@ -98,7 +98,7 @@ export default function RootLayout({
             href="https://booking.movus.gr"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto btn-primary !rounded-md !text-[8px] md:!text-[9px] tracking-tighter !py-1.5 md:!py-2 !px-2 md:!px-3 shadow-2xl hover:scale-105 transition-transform whitespace-nowrap"
+            className="pointer-events-auto btn-primary !rounded-md !text-[10px] md:!text-[9px] tracking-tight md:tracking-tighter !py-2 md:!py-2 !px-4 md:!px-3 shadow-2xl hover:scale-105 transition-transform whitespace-nowrap"
           >
             ΞΕΚΙΝΑ ΠΡΟΠΟΝΗΣΗ
           </a>
