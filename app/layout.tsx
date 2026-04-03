@@ -90,15 +90,15 @@ export default function RootLayout({
         </div>
 
         {/* Fixed CTA - Positioned absolutely to identically match the Bottom-Right Island bounding box */}
-        <div 
-          className="fixed bottom-0 right-0 w-[165px] md:w-[170px] h-[58px] md:h-[60px] z-[110] flex items-center justify-center pointer-events-none transition-all"
-          style={{ padding: '0px 12px 12px 0px' }} /* Push content toward center of the visual pill avoiding the bottom border */
+        <div
+          className="fixed bottom-0 right-0 w-[155px] md:w-[170px] h-[56px] md:h-[60px] z-[110] flex items-center justify-end pointer-events-none transition-all"
+          style={{ padding: '0px 16px 12px 0px' }} /* Push strictly away from right/bottom frame constraints */
         >
           <a
             href="https://booking.movus.gr"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto btn-primary !rounded-md !text-[10px] md:!text-[9px] tracking-tight md:tracking-tighter !py-2 md:!py-2 !px-3 md:!px-3 shadow-2xl hover:scale-105 transition-transform whitespace-nowrap"
+            className="pointer-events-auto btn-primary !rounded-md !text-[9px] md:!text-[9px] tracking-tight md:tracking-tighter !py-2 md:!py-2 !px-3 md:!px-3 shadow-2xl hover:scale-105 transition-transform whitespace-nowrap"
           >
             ΞΕΚΙΝΑ ΠΡΟΠΟΝΗΣΗ
           </a>
