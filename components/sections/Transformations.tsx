@@ -1,101 +1,155 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const photos = [
   "/images/hero-woman.webp",
-  "/images/program-ems.webp",
   "/images/program-group.webp",
   "/images/studio-training.webp",
+  "/images/program-ems.webp",
   "/images/program-ishape.webp",
+  "/images/ems-suits.webp",
+  "/images/shapespace-red.webp",
 ];
 
 export function Transformations() {
-  const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
 
-  // A very simple static CSS-based 3D coverflow effect simulating the screenshot
-  // In a real production scenario, you'd use a robust Swiper.js coverflow or advanced Framer Motion layout, 
-  // but this creates the visual structure from the image exactly.
-  
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo(
+          ".transform-card",
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "expo.out",
+            stagger: { each: 0.08, from: "center" },
+            scrollTrigger: {
+              trigger: ".transform-carousel",
+              start: "top 85%",
+            },
+          }
+        );
+
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 70%",
+            },
+          })
+          .from(".transform-eyebrow", {
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+            ease: "power2.out",
+          })
+          .fromTo(
+            ".transform-word",
+            { yPercent: 110 },
+            {
+              yPercent: 0,
+              duration: 1.1,
+              ease: "expo.out",
+              stagger: 0.12,
+            },
+            "-=0.3"
+          );
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="bg-movus-white py-20 md:py-32 lg:py-40 overflow-hidden" id="transformations">
-      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-        {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <motion.p
-            initial={prefersReducedMotion ? {} : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="overline mb-6"
-          >
-            (Πραγματικές Μεταμορφώσεις)
-          </motion.p>
-          <motion.h2
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="heading-display mb-6 leading-[0.85] text-movus-black"
-          >
-            <span className="inline-block mr-4">FROM START TO</span>
-            <span className="text-movus-orange">STRONG</span>
-          </motion.h2>
+    <section
+      ref={sectionRef}
+      className="bg-movus-white overflow-hidden"
+      id="transformations"
+    >
+      {/* Transform spine, vertical Heading Wrap + Carousel, padding 200/0 */}
+      <div className="spine spine-flush-bottom !gap-16 md:!gap-24 items-center text-center">
+        {/* Heading Wrap (on top per source design) */}
+        <div className="flex flex-col items-center gap-6">
+          <p className="transform-eyebrow overline">
+            (Τα Αποτελέσματά Τους)
+          </p>
+          <h2 className="heading-section leading-[0.92] text-movus-black">
+            <span className="block overflow-hidden">
+              <span className="transform-word inline-block">ΑΠΟ ΤΗΝ ΑΡΧΗ</span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="transform-word inline-block">ΣΤΗΝ</span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="transform-word inline-block text-movus-orange">
+                ΔΥΝΑΜΗ
+              </span>
+            </span>
+          </h2>
         </div>
 
-        {/* 3D Carousel Concept View */}
-        <div 
-          className="relative flex justify-center items-center h-[500px]" 
-          style={{ perspective: 1200, transformStyle: 'preserve-3d' }}
+        {/* Arc Carousel */}
+        <div
+          className="transform-carousel relative flex justify-center items-end h-[340px] md:h-[460px] lg:h-[520px] w-full"
+          style={{ perspective: 1600 }}
         >
           {photos.map((src, i) => {
-            const offset = i - 2;
+            const offset = i - 3; // center index = 3
             const absoluteOffset = Math.abs(offset);
-            const zIndex = 5 - absoluteOffset;
-            
-            // Tighter overlapping
-            const translateX = offset * 180; 
-            // Aggressive 3D tilt like the reference
-            const rotateY = offset * -35;
-            // Push side items back
-            const translateZ = -absoluteOffset * 280;
-            // Native scaling logic (do not use Framer's scale here to prevent collision with transform matrix)
-            const scale = absoluteOffset === 0 ? 1 : 0.85;
-
+            const rotate = offset * 6;
+            const translateX = offset * 140;
+            const translateY = absoluteOffset * absoluteOffset * 8;
+            const zIndex = 10 - absoluteOffset;
             const isCenter = offset === 0;
 
             return (
-              <motion.div
+              <div
                 key={i}
-                // Only animate the entrance properties (x sliding and opacity)
-                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: offset * 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.9, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute"
-                style={{ zIndex }}
+                className="transform-card absolute"
+                style={{
+                  zIndex,
+                  transform: `translateX(${translateX}px) translateY(${translateY}px) rotate(${rotate}deg)`,
+                  transformOrigin: "bottom center",
+                }}
               >
-                {/* The inner element locks in the static CSS 3D structure so framer doesn't overwrite it */}
-                <div 
-                  className={`relative shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] rounded-3xl overflow-hidden`}
+                <div
+                  className="relative rounded-[28px] overflow-hidden shadow-[0_25px_60px_-20px_rgba(0,0,0,0.45)]"
                   style={{
-                    width: 320,
-                    height: 480,
-                    transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                    filter: isCenter ? 'none' : 'grayscale(100%) brightness(0.4)',
-                    transition: 'all 0.5s ease-out'
+                    width: "clamp(170px, 18vw, 240px)",
+                    aspectRatio: "3 / 4",
+                    filter: isCenter
+                      ? "none"
+                      : "grayscale(100%) brightness(0.55)",
                   }}
                 >
-                  <Image src={src} alt="Transformation" fill className="object-cover" sizes="320px" />
+                  <Image
+                    src={src}
+                    alt="Μεταμόρφωση"
+                    fill
+                    className="object-cover"
+                    sizes="240px"
+                  />
                   {isCenter && (
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[120%] pointer-events-none">
-                      {/* Integrated subtle blue scanner glow */}
-                      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[110%] w-[180%] -left-[40%] rounded-[100%] border-l border-r border-[#3b82f6]/40 mix-blend-screen shadow-[0_0_80px_rgba(59,130,246,0.3)] opacity-70 blur-[8px]"></div>
-                      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-full w-[120%] -left-[10%] backdrop-blur-[1px] bg-blue-500/5 mix-blend-overlay"></div>
-                    </div>
+                    <>
+                      <div className="absolute inset-y-[-8%] left-1/2 -translate-x-1/2 w-[65%] pointer-events-none">
+                        <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,107,53,0.55)_0%,rgba(255,107,53,0)_70%)] mix-blend-screen blur-[10px]" />
+                      </div>
+                      <div className="absolute inset-0 border-x-2 border-movus-orange/40 mix-blend-screen pointer-events-none" />
+                    </>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

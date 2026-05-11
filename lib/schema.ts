@@ -10,7 +10,7 @@ export function generateLocalBusinessSchema() {
     description:
       "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
     url: "https://movus.gr",
-    telephone: "+302610000000",
+    telephone: "+302611814010",
     email: "info@movus.gr",
     image: "https://movus.gr/og-image.jpg",
     address: {
@@ -18,7 +18,7 @@ export function generateLocalBusinessSchema() {
       streetAddress: "Ιερού Λόχου 1",
       addressLocality: "Πάτρα",
       addressRegion: "Αχαΐα",
-      postalCode: "26221",
+      postalCode: "26331",
       addressCountry: "GR",
     },
     geo: {
@@ -31,6 +31,12 @@ export function generateLocalBusinessSchema() {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         opens: "09:00",
+        closes: "14:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "16:00",
         closes: "21:00",
       },
       {
@@ -47,11 +53,7 @@ export function generateLocalBusinessSchema() {
       "@type": "City",
       name: "Πάτρα",
     },
-    sameAs: [
-      "https://www.instagram.com/movus.gr",
-      "https://www.facebook.com/movus.gr",
-      "https://www.tiktok.com/@movus.gr",
-    ],
+    sameAs: ["https://www.instagram.com/movusfitness/"],
   };
 }
 

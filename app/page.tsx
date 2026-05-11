@@ -1,14 +1,14 @@
 import { Hero } from "@/components/sections/Hero";
 import { WhatIsEMS } from "@/components/sections/WhatIsEMS";
+import { SpaceExperience } from "@/components/sections/SpaceExperience";
 import { ProgramsGrid } from "@/components/sections/ProgramsGrid";
 import { WhyMovus } from "@/components/sections/WhyMovus";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Transformations } from "@/components/sections/Transformations";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
-import { CTABlock } from "@/components/sections/CTABlock";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { PhotoGrid } from "@/components/sections/PhotoGrid";
-import { Transformations } from "@/components/sections/Transformations";
 import { generateLocalBusinessSchema } from "@/lib/schema";
 
 export default function HomePage() {
@@ -29,8 +29,9 @@ export default function HomePage() {
       <Transformations />
       <Testimonials />
       <FAQ />
-      <CTABlock />
       <ContactSection />
+      {/* Bonus sections, appended after Contact per source-design extra-section choice */}
+      <SpaceExperience />
       <PhotoGrid />
     </>
   );

@@ -1,58 +1,109 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+/**
+ * Faithful port of Fightness Framer template's Nav + Frame Accent.
+ *
+ * Verified via design-bridge MCP against the source canvas (1200×800):
+ *   - 14px black border, fixed inset:0
+ *   - Logo island: 228×74.5 top-left, radius 0 0 14 0
+ *   - Hamburger island: 87.5×75 top-right, radius 0 0 0 14
+ *   - Fixed Button (CTA): 245.5×84 bottom-right (right:6), radius 14 0 0 0
+ *   - 6 Corner Shape fillets (20×20 quarter-pie SVGs) at the concave L-seams
+ *
+ * No skew. The "diagonal" appearance is an illusion from rounded inner corner
+ * + fillet at the opposite end of the rectangle.
+ */
 
-// Hardcoded SVG Fillets that draw the exact requested convex shapes without relying on brittle CSS rotation.
-// The SVG creates a perfect inward-dipping concave curve while completely filling the requested corner with Black.
-
-// Connects Right-of-Island and Top-of-Window. (Black mass in Top-Left)
-const FilletTopLeft = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={`absolute pointer-events-none fill-movus-black ${className}`} preserveAspectRatio="none">
+const CornerShape = ({
+  rotation = 0,
+  className = "",
+}: {
+  rotation?: 0 | 90 | 180 | 270;
+  className?: string;
+}) => (
+  <svg
+    viewBox="0 0 100 100"
+    className={`pointer-events-none fill-movus-black ${className}`}
+    style={{ transform: `rotate(${rotation}deg)`, transformOrigin: "center" }}
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
     <path d="M 0 0 H 100 C 44.77 0 0 44.77 0 100 V 0 Z" />
-  </svg>
-);
-
-// Connects Left-of-Island and Top-of-Window. (Black mass in Top-Right)
-const FilletTopRight = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={`absolute pointer-events-none fill-movus-black ${className}`} preserveAspectRatio="none">
-    <path d="M 100 0 H 0 C 55.23 0 100 44.77 100 100 V 0 Z" />
-  </svg>
-);
-
-// Connects Left-of-Island and Bottom-of-Window. (Black mass in Bottom-Right)
-const FilletBottomRight = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 100 100" className={`absolute pointer-events-none fill-movus-black ${className}`} preserveAspectRatio="none">
-    <path d="M 100 100 V 0 C 100 55.23 55.23 100 0 100 H 100 Z" />
   </svg>
 );
 
 export function FrameMask() {
   return (
     <>
-      {/* --- GLOBAL APP PERIMETER FRAME --- */}
-      {/* Restored to inset-0 configuration, proven unbreakable constraints */}
-      <div className="pointer-events-none fixed inset-0 z-[90] border-[12px] md:border-[16px] border-movus-black rounded-[20px] md:rounded-[24px] shadow-[0_0_0_50vmax_var(--color-movus-black)]" />
+      {/* Outer black frame */}
+      <div className="pointer-events-none fixed inset-0 z-[90] border-[10px] md:border-[14px] border-movus-black" />
 
-      {/* --- TOP LEFT ISLAND (Logo Area) --- */}
-      {/* 1px pixel overlaps applied mechanically without SVG strokes ruining vector integrity */}
-      <div className="fixed top-0 left-0 w-[130px] md:w-[160px] h-[60px] md:h-[68px] bg-movus-black z-[100] rounded-br-[16px] md:rounded-br-[20px] pointer-events-none transition-all">
-        {/* Overlaps: Top-11px (frame 12px), Right-[-15px] (width 16px) */}
-        <FilletTopLeft className="w-4 h-4 md:w-5 md:h-5 top-[11px] md:top-[15px] right-[-15px] md:right-[-19px]" />
-        {/* Overlaps: Bottom-[-15px] (width 16px), Left-[11px] (frame 12px) */}
-        <FilletTopLeft className="w-4 h-4 md:w-5 md:h-5 bottom-[-15px] md:bottom-[-19px] left-[11px] md:left-[15px]" />
-      </div>
+      {/* === Page-interior fillets at the empty viewport corners ============== */}
+      {/* top-right: between top frame and right frame (no island here in Fightness on this side) */}
+      {/* but our layout has the hamburger here so this slot is covered — keep for symmetry */}
+      {/* bottom-left: rounds the frame's own interior 90° corner */}
+      <CornerShape
+        rotation={270}
+        className="fixed z-[101] bottom-[10px] md:bottom-[14px] left-[10px] md:left-[14px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
 
-      {/* --- TOP RIGHT ISLAND (Hamburger Area) --- */}
-      <div className="fixed top-0 right-0 w-[76px] md:w-[88px] h-[60px] md:h-[68px] bg-movus-black z-[100] rounded-bl-[16px] md:rounded-bl-[20px] pointer-events-none transition-all">
-        <FilletTopRight className="w-4 h-4 md:w-5 md:h-5 top-[11px] md:top-[15px] left-[-15px] md:left-[-19px]" />
-        <FilletTopRight className="w-4 h-4 md:w-5 md:h-5 bottom-[-15px] md:bottom-[-19px] right-[11px] md:right-[15px]" />
-      </div>
+      {/* === LOGO island, top-left ============================================ */}
+      <div
+        className="pointer-events-none fixed top-0 left-0 bg-movus-black z-[100]
+                   w-[160px] md:w-[228px] h-[54px] md:h-[74px]
+                   rounded-br-[12px] md:rounded-br-[14px]"
+      />
+      {/* fillet at logo's right edge meeting top frame */}
+      <CornerShape
+        rotation={0}
+        className="fixed z-[101] top-[10px] md:top-[14px] left-[160px] md:left-[228px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
+      {/* fillet at logo's bottom edge meeting left frame */}
+      <CornerShape
+        rotation={0}
+        className="fixed z-[101] top-[54px] md:top-[74px] left-[10px] md:left-[14px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
 
-      {/* --- BOTTOM RIGHT ISLAND (Floating CTA Area) --- */}
-      <div className="fixed bottom-0 right-0 w-[155px] md:w-[170px] h-[56px] md:h-[60px] bg-movus-black z-[100] rounded-tl-[16px] md:rounded-tl-[20px] pointer-events-none transition-all">
-        <FilletBottomRight className="w-4 h-4 md:w-5 md:h-5 bottom-[11px] md:bottom-[15px] left-[-15px] md:left-[-19px]" />
-        <FilletBottomRight className="w-4 h-4 md:w-5 md:h-5 top-[-15px] md:top-[-19px] right-[11px] md:right-[15px]" />
-      </div>
+      {/* === HAMBURGER island, top-right ====================================== */}
+      <div
+        className="pointer-events-none fixed top-0 right-0 bg-movus-black z-[100]
+                   w-[64px] md:w-[88px] h-[54px] md:h-[75px]
+                   rounded-bl-[12px] md:rounded-bl-[14px]"
+      />
+      {/* fillet at hamburger's left edge meeting top frame */}
+      <CornerShape
+        rotation={90}
+        className="fixed z-[101] top-[10px] md:top-[14px] right-[64px] md:right-[88px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
+      {/* fillet at hamburger's bottom edge meeting right frame */}
+      <CornerShape
+        rotation={90}
+        className="fixed z-[101] top-[54px] md:top-[75px] right-[10px] md:right-[14px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
+
+      {/* === FIXED BUTTON (CTA) island, bottom-right ========================== */}
+      <div
+        className="pointer-events-none fixed bottom-0 right-[4px] md:right-[6px] bg-movus-black z-[100]
+                   w-[200px] md:w-[245px] h-[60px] md:h-[84px]
+                   rounded-tl-[12px] md:rounded-tl-[14px]"
+      />
+      {/* fillet at CTA's top edge meeting right frame */}
+      <CornerShape
+        rotation={180}
+        className="fixed z-[101] right-[10px] md:right-[14px] bottom-[60px] md:bottom-[84px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
+      {/* fillet at CTA's left edge meeting bottom frame */}
+      <CornerShape
+        rotation={180}
+        className="fixed z-[101] right-[204px] md:right-[251px] bottom-[10px] md:bottom-[14px]
+                   w-[14px] h-[14px] md:w-[20px] md:h-[20px]"
+      />
     </>
   );
 }

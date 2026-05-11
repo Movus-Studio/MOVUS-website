@@ -1,53 +1,47 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
-const leftPoints = [
+const points = [
   {
-    title: "Πιστοποιημένη\nΤεχνολογία",
-    description: "Εξοπλισμός i-Motion από την Ισπανία με πιστοποίηση FDA. Η πιο προηγμένη EMS τεχνολογία.",
+    number: "01",
+    title: "Πιστοποιημένη Τεχνολογία",
+    description:
+      "Εξοπλισμός i-Motion από την Ισπανία με πιστοποίηση FDA. Η πιο προηγμένη EMS τεχνολογία.",
   },
   {
-    title: "Διατροφική\nΚαθοδήγηση",
-    description: "InBody ανάλυση σώματος και εξατομικευμένες συμβουλές για μέγιστα αποτελέσματα.",
+    number: "02",
+    title: "Εξειδικευμένοι Γυμναστές",
+    description:
+      "Πιστοποιημένοι ΤΕΦΑΑ με ειδίκευση στην EMS. Επιστημονική προσέγγιση σε κάθε session.",
+  },
+  {
+    number: "03",
+    title: "Διατροφική Καθοδήγηση",
+    description:
+      "InBody ανάλυση σώματος και εξατομικευμένες συμβουλές για μέγιστα αποτελέσματα.",
+  },
+  {
+    number: "04",
+    title: "Premium Εμπειρία",
+    description:
+      "Max 2 άτομα ανά session. Προσωπική προσοχή και premium χώρος σχεδιασμένος για σένα.",
   },
 ];
-
-const rightPoints = [
-  {
-    title: "Εξειδικευμένοι\nΓυμναστές",
-    description: "Πιστοποιημένοι ΤΕΦΑΑ με ειδίκευση στην EMS. Επιστημονική προσέγγιση σε κάθε session.",
-  },
-  {
-    title: "Premium\nΕμπειρία",
-    description: "Max 2 άτομα ανά session. Προσωπική προσοχή και premium χώρος σχεδιασμένος για σένα.",
-  },
-];
-
-function ConnectorLine({ direction }: { direction: "left" | "right" }) {
-  return (
-    <div className={`hidden lg:flex items-center gap-0 ${direction === "left" ? "justify-end" : "justify-start"}`}>
-      <div className="w-2 h-2 rounded-full bg-movus-orange border-2 border-movus-white" />
-      <div className="w-16 xl:w-24 h-px bg-movus-orange/40" />
-    </div>
-  );
-}
 
 export function WhyMovus() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-movus-white py-20 md:py-28 lg:py-36 overflow-hidden" id="why-movus">
-      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-        {/* Header — centered */}
+    <section className="bg-movus-white overflow-hidden" id="why-movus">
+      <div className="spine">
         <motion.p
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="overline text-center"
+          className="overline"
         >
-          (Γιατί MOVUS)
+          (Γιατί Εμάς)
         </motion.p>
 
         <motion.h2
@@ -55,7 +49,7 @@ export function WhyMovus() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="heading-display text-movus-black text-center mb-20 md:mb-28 lg:mb-32 leading-[0.85]"
+          className="heading-section text-movus-black leading-[0.92]"
         >
           <span className="block">
             4 ΛΟΓΟΙ ΝΑ <span className="text-movus-orange">ΕΠΙΛΕΞΕΙΣ</span>
@@ -63,82 +57,46 @@ export function WhyMovus() {
           <span className="block">ΤΟ MOVUS</span>
         </motion.h2>
 
-        {/* Three-column layout: left points — center image — right points */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-0 items-center">
-          {/* Left points */}
-          <div className="space-y-16 lg:space-y-24">
-            {leftPoints.map((point, i) => (
-              <motion.div
-                key={i}
-                initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-right"
+        {/* Choose Me Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 lg:gap-x-10 mt-6 md:mt-10">
+          {points.map((point, i) => (
+            <motion.div
+              key={i}
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                delay: i * 0.08,
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="flex flex-col gap-4 border-t border-movus-black/10 pt-6"
+            >
+              <span
+                className="font-semibold text-movus-orange tracking-tight"
+                style={{ fontSize: "var(--text-body-m)" }}
               >
-                <div className="flex items-center justify-end gap-4">
-                  <div>
-                    <h3
-                      className="font-black uppercase text-movus-orange leading-[0.9] tracking-tight whitespace-pre-line text-3xl md:text-5xl"
-                    >
-                      {point.title}
-                    </h3>
-                    <p className="text-medium-gray leading-relaxed mt-4 max-w-[260px] ml-auto text-lg">
-                      {point.description}
-                    </p>
-                  </div>
-                  <ConnectorLine direction="left" />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Center image */}
-          <motion.div
-            initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto lg:mx-8 xl:mx-12"
-          >
-            <div className="relative w-[300px] md:w-[360px] lg:w-[340px] xl:w-[400px] aspect-[2/3] rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.15)]">
-              <Image
-                src="/images/hero-woman.webp"
-                alt="EMS προπόνηση στο MOVUS"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 360px, 400px"
-              />
-            </div>
-          </motion.div>
-
-          {/* Right points */}
-          <div className="space-y-16 lg:space-y-24">
-            {rightPoints.map((point, i) => (
-              <motion.div
-                key={i}
-                initial={prefersReducedMotion ? {} : { opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="text-left"
+                ({point.number})
+              </span>
+              <h3
+                className="font-black uppercase text-movus-black leading-[1.05] tracking-tight break-words hyphens-auto"
+                style={{
+                  fontFamily: "var(--font-display), Impact, sans-serif",
+                  fontWeight: 400,
+                  fontSize: "clamp(1.25rem, 1vw + 0.75rem, 1.625rem)",
+                  letterSpacing: "-0.01em",
+                }}
               >
-                <div className="flex items-center gap-4">
-                  <ConnectorLine direction="right" />
-                  <div>
-                    <h3
-                      className="font-black uppercase text-movus-orange leading-[0.9] tracking-tight whitespace-pre-line text-3xl md:text-5xl"
-                    >
-                      {point.title}
-                    </h3>
-                    <p className="text-medium-gray leading-relaxed mt-4 max-w-[260px] text-lg">
-                      {point.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                {point.title}
+              </h3>
+              <p
+                className="text-medium-gray leading-[1.6] max-w-[34ch]"
+                style={{ fontSize: "var(--text-body-m)" }}
+              >
+                {point.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -11,22 +11,21 @@ export function FAQ() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-movus-orange py-20 md:py-28 lg:py-36" id="faq">
+    <section className="bg-movus-orange" id="faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqItems)) }}
       />
 
-      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-        {/* Header */}
+      <div className="spine">
         <motion.p
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-movus-white/60 mb-4"
+          className="text-movus-white/80"
           style={{ fontSize: "var(--text-caption)" }}
         >
-          (Συχνές Ερωτήσεις)
+          (Ρωτάς, Απαντάμε)
         </motion.p>
 
         <motion.h2
@@ -34,28 +33,29 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="heading-display text-movus-white mb-16 md:mb-24 leading-[0.85]"
+          className="heading-section text-movus-white leading-[0.92]"
         >
-          <span className="block">FREQUENTLY ASKED</span>
-          <span className="block text-movus-black">QUESTIONS</span>
+          <span className="block">ΣΥΧΝΕΣ</span>
+          <span className="block text-movus-black">ΕΡΩΤΗΣΕΙΣ</span>
         </motion.h2>
 
-        {/* Two column: image left, accordion right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-          {/* Image + helper text */}
+        {/* 2-col: image left, accordion right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mt-6 md:mt-10">
+          {/* Image + helper */}
           <div>
-            <div className="aspect-[4/3] rounded-xl overflow-hidden mb-6">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-black">
               <Image
-                src="/images/hero-woman.webp"
-                alt="EMS training close-up"
-                fill={false}
-                width={600}
-                height={450}
-                className="w-full h-full object-cover"
+                src="/images/program-ems.webp"
+                alt="EMS προπόνηση close-up"
+                fill
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            <p className="text-movus-white/70 leading-relaxed" style={{ fontSize: "var(--text-small)" }}>
+            <p
+              className="text-movus-white/90 leading-relaxed max-w-md"
+              style={{ fontSize: "var(--text-small)" }}
+            >
               Ξεκινώντας κάτι νέο έρχεται πάντα με ερωτήσεις. Εδώ καλύπτουμε
               τα πιο συχνά θέματα πριν την πρώτη σου συνεδρία.
             </p>
@@ -63,17 +63,23 @@ export function FAQ() {
 
           {/* Accordion */}
           <div className="space-y-3">
-            {faqItems.slice(0, 7).map((item, index) => (
+            {faqItems.map((item, index) => (
               <motion.div
                 key={index}
                 initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-20px" }}
-                transition={{ delay: index * 0.04, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  delay: index * 0.04,
+                  duration: 0.4,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="bg-movus-white rounded-xl overflow-hidden"
               >
                 <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
                   className="w-full flex items-center justify-between p-5 text-left"
                   aria-expanded={openIndex === index}
                 >
@@ -88,8 +94,18 @@ export function FAQ() {
                     transition={{ duration: 0.25 }}
                     className="flex-shrink-0 text-medium-gray"
                   >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </motion.span>
                 </button>
@@ -97,9 +113,17 @@ export function FAQ() {
                 <AnimatePresence initial={false}>
                   {openIndex === index && (
                     <motion.div
-                      initial={prefersReducedMotion ? { opacity: 1 } : { height: 0, opacity: 0 }}
+                      initial={
+                        prefersReducedMotion
+                          ? { opacity: 1 }
+                          : { height: 0, opacity: 0 }
+                      }
                       animate={{ height: "auto", opacity: 1 }}
-                      exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+                      exit={
+                        prefersReducedMotion
+                          ? { opacity: 0 }
+                          : { height: 0, opacity: 0 }
+                      }
                       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >

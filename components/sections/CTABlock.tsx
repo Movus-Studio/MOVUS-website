@@ -14,7 +14,7 @@ export function CTABlock() {
           viewport={{ once: true }}
           className="overline-light"
         >
-          (Ξεκίνα Σήμερα)
+          (Έτοιμος;)
         </motion.p>
 
         <motion.h2

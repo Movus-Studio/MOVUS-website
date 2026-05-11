@@ -1,4 +1,4 @@
-"use client";
+import Image from "next/image";
 
 interface LogoProps {
   variant?: "dark" | "light" | "orange";
@@ -6,25 +6,18 @@ interface LogoProps {
 }
 
 export function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const letterColor = {
-    dark: "text-movus-white",
-    light: "text-movus-black",
-    orange: "text-movus-white",
-  }[variant];
-
-  const uColor = {
-    dark: "text-movus-orange",
-    light: "text-movus-orange",
-    orange: "text-movus-white",
-  }[variant];
+  const src = variant === "dark" ? "/images/logo-movus-white.webp" : "/images/logo-movus.webp";
 
   return (
-    <span
-      className={`font-black text-2xl tracking-[-0.02em] select-none ${className}`}
-    >
-      <span className={letterColor}>MOV</span>
-      <span className={uColor}>U</span>
-      <span className={letterColor}>S</span>
+    <span className={`relative inline-block aspect-[5072/1880] ${className}`}>
+      <Image
+        src={src}
+        alt="MOVUS"
+        fill
+        priority={variant === "dark"}
+        sizes="240px"
+        className="object-contain select-none"
+      />
     </span>
   );
 }
