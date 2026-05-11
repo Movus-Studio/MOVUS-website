@@ -80,7 +80,7 @@ export default function BlogPage() {
             >
               <div className="aspect-[4/3] lg:aspect-auto lg:h-full relative overflow-hidden">
                 <Image
-                  src="/images/program-ems.webp"
+                  src="/images/movus-ems-training.webp"
                   alt={featured.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -136,7 +136,7 @@ export default function BlogPage() {
                 >
                   <div className="aspect-[16/10] bg-light-gray relative overflow-hidden">
                     <Image
-                      src="/images/program-ems.webp"
+                      src="/images/movus-ems-training.webp"
                       alt={post.title}
                       fill
                       className="object-cover"

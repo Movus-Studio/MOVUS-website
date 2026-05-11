@@ -10,7 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 export function SmoothScroll() {
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
+    // Skip Lenis on touch devices: native iOS/Android momentum scroll is better,
+    // Lenis was breaking IntersectionObserver-based `whileInView` triggers and
+    // intercepting touch events on the burger button.
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReduced || isTouch) return;
 
     const lenis = new Lenis({
       duration: 1.15,

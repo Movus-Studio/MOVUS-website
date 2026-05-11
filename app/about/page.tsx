@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { programs } from "@/content/programs";
 import { siteCopy } from "@/content/site";
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { aboutFAQ } from "@/content/faq";
+import { FAQ } from "@/components/sections/FAQ";
+import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Σχετικά",
@@ -29,6 +31,10 @@ export default function AboutPage() {
             ])
           ),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(aboutFAQ)) }}
       />
 
       {/* Hero */}
@@ -64,7 +70,7 @@ export default function AboutPage() {
             <div className="lg:sticky lg:top-28">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
                 <Image
-                  src="/images/studio-interior.webp"
+                  src="/images/movus-studio-interior.webp"
                   alt="Εσωτερικό του MOVUS studio στην Πάτρα"
                   fill
                   className="object-cover"
@@ -165,6 +171,14 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQ
+        items={aboutFAQ}
+        image="/images/movus-studio-interior.webp"
+        imageAlt="MOVUS studio interior - high-tech EMS fitness Πάτρα"
+        helperText="Όλα όσα θέλεις να ξέρεις για το MOVUS, τη φιλοσοφία μας και την ομάδα που θα σε καθοδηγήσει."
+      />
 
       {/* CTA */}
       <section className="bg-movus-black pb-20 md:pb-28">

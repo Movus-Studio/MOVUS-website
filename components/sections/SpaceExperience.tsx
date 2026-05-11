@@ -15,7 +15,8 @@ export function SpaceExperience() {
     () => {
       const mm = gsap.matchMedia();
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // Desktop only — gating on (pointer: fine). See Hero.tsx for rationale.
+      mm.add("(prefers-reduced-motion: no-preference) and (pointer: fine)", () => {
         gsap.fromTo(
           ".space-image",
           { scale: 1.15, opacity: 0.5 },
@@ -62,7 +63,7 @@ export function SpaceExperience() {
       {/* Full-bleed cinematic image */}
       <div className="space-image relative w-full h-[60vh] md:h-[75vh] lg:h-[85vh] will-change-transform">
         <Image
-          src="/images/studio-night.webp"
+          src="/images/movus-studio-night.webp"
           alt="Ο χώρος του MOVUS"
           fill
           className="object-cover"

@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 const photos = [
-  { src: "/images/studio-interior.webp", alt: "MOVUS studio interior" },
-  { src: "/images/studio-training.webp", alt: "EMS training session" },
-  { src: "/images/program-ems.webp", alt: "i-Motion EMS workout" },
-  { src: "/images/program-ishape.webp", alt: "i-Shape training" },
-  { src: "/images/studio-night.webp", alt: "Studio at night" },
-  { src: "/images/shapespace-red.webp", alt: "Shape Space machine" },
+  { src: "/images/movus-studio-interior.webp", alt: "MOVUS studio interior" },
+  { src: "/images/movus-studio-training.webp", alt: "EMS training session" },
+  { src: "/images/movus-ems-training.webp", alt: "i-Motion EMS workout" },
+  { src: "/images/movus-ishape-sculpt.webp", alt: "i-Shape training" },
+  { src: "/images/movus-studio-night.webp", alt: "Studio at night" },
+  { src: "/images/movus-shapespace-cabin.webp", alt: "Shape Space machine" },
 ];
 
 export function PhotoGrid() {

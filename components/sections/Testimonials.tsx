@@ -29,7 +29,8 @@ export function Testimonials() {
         <motion.p
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          data-motion-reveal
           className="overline"
         >
           (Οι Πελάτες Μας)
@@ -38,14 +39,17 @@ export function Testimonials() {
         <motion.h2
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          data-motion-reveal
           className="heading-section text-movus-black leading-[0.92]"
         >
-          <span className="block">
-            ΑΛΗΘΙΝΑ <span className="text-movus-orange">ΑΠΟΤΕΛΕΣΜΑΤΑ.</span>
-          </span>
-          <span className="block">ΑΛΗΘΙΝΑ ΛΟΓΙΑ.</span>
+          {/* Greek words are much wider than the original English design — stack
+              each word on its own line on mobile so "ΑΠΟΤΕΛΕΣΜΑΤΑ." never
+              overflows the viewport. md+ keeps the two-line composition. */}
+          <span className="block md:inline">ΑΛΗΘΙΝΑ</span>{" "}
+          <span className="block md:inline text-movus-orange">ΑΠΟΤΕΛΕΣΜΑΤΑ.</span>
+          <span className="block md:inline md:ml-3">ΑΛΗΘΙΝΑ ΛΟΓΙΑ.</span>
         </motion.h2>
 
         {/* Bento grid: 3 cols × 3 rows desktop, ~280px square cells, 10px gap, 2 deliberate empty cells */}
@@ -61,12 +65,13 @@ export function Testimonials() {
                 key={i}
                 initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
+                viewport={{ once: true, margin: "0px 0px -5% 0px" }}
                 transition={{
                   delay: (i % 3) * 0.08,
                   duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
                 }}
+                data-motion-reveal
                 className={`rounded-3xl p-7 md:p-9 flex flex-col ${style.bg} ${style.text} ${bentoPositions[i] ?? ""}`}
               >
                 <svg

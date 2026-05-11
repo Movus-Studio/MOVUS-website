@@ -22,7 +22,8 @@ export function WhatIsEMS() {
     () => {
       const mm = gsap.matchMedia();
 
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
+      // Desktop only — gating on (pointer: fine). See Hero.tsx for rationale.
+      mm.add("(prefers-reduced-motion: no-preference) and (pointer: fine)", () => {
         gsap.fromTo(
           ".ems-reveal",
           { yPercent: 100, opacity: 0 },
@@ -63,14 +64,14 @@ export function WhatIsEMS() {
   return (
     <section
       ref={sectionRef}
-      className="bg-movus-black overflow-hidden"
+      className="bg-movus-black overflow-x-clip"
       id="what-is-ems"
     >
       {/* About spine, horizontal Content + Image Wrap */}
       <div className="spine spine-row">
         <div className="flex-1 flex flex-col gap-8">
           <div className="overflow-hidden">
-            <p className="ems-reveal overline-light">(Τι Είναι Το MOVUS)</p>
+            <p className="ems-reveal overline-light">(Ποιοι Είμαστε)</p>
           </div>
 
           <h2 className="heading-section leading-[0.92]">
@@ -107,7 +108,7 @@ export function WhatIsEMS() {
         <div className="flex-1 flex flex-col gap-10">
           <div className="ems-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
-              src="/images/ems-suits.webp"
+              src="/images/movus-imotion-ems-suit.webp"
               alt="EMS i-Motion στολές στο MOVUS"
               fill
               className="object-cover"

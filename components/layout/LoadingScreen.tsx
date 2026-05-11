@@ -2,49 +2,83 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { lockBodyScroll, unlockBodyScroll } from "@/lib/scroll-lock";
 
 const SEGMENTS = 40;
-const DURATION_MS = 1500; // bar fill duration — also drives .movus-loader-counter in globals.css
-const TOTAL_MS = 2200;    // includes 200ms settle + 500ms split. Must match keyframe timings in globals.css.
+const DURATION_MS = 1500; // bar fill — also drives .movus-loader-counter in globals.css
+const TOTAL_MS = 2200;    // 1500 fill + 200 settle + 500 split. Matches keyframes in globals.css.
+const SAFETY_MS = TOTAL_MS + 400; // hard fallback if iOS stalls the keyframe
 const STORAGE_KEY = "movus-loaded";
 
-type Phase = "loading" | "gone" | "skip";
+type Phase = "idle" | "loading" | "gone";
+
+// Refresh GSAP ScrollTrigger after the loader unmounts so triggers re-measure
+// against the unlocked body (otherwise they're computed against overflow:hidden state).
+function refreshScrollTriggers() {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event("resize"));
+  import("gsap/ScrollTrigger")
+    .then((m) => m.ScrollTrigger.refresh())
+    .catch(() => {});
+}
 
 export function LoadingScreen() {
-  const [phase, setPhase] = useState<Phase>("loading");
+  // Render nothing on SSR + first client paint to avoid hydration mismatch and
+  // the "loader flashes on every cold restore" bug. We accept a 1-frame FOUC on
+  // first ever visit in exchange for never seeing a re-fired loader on returns.
+  const [mounted, setMounted] = useState(false);
+  const [phase, setPhase] = useState<Phase>("idle");
 
   useEffect(() => {
-    const forceReplay =
-      new URLSearchParams(window.location.search).get("reload") === "1";
-    if (forceReplay) sessionStorage.removeItem(STORAGE_KEY);
+    setMounted(true);
 
-    if (!forceReplay && sessionStorage.getItem(STORAGE_KEY)) {
-      setPhase("skip");
-      return;
-    }
+    try {
+      const forceReplay =
+        new URLSearchParams(window.location.search).get("reload") === "1";
+      if (forceReplay) localStorage.removeItem(STORAGE_KEY);
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      sessionStorage.setItem(STORAGE_KEY, "1");
-      setPhase("skip");
-      return;
-    }
+      if (localStorage.getItem(STORAGE_KEY)) {
+        setPhase("gone");
+        return;
+      }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        setPhase("gone");
+        return;
+      }
+    } catch {}
 
-    // Persist the flag immediately so iOS suspending mid-loader still won't replay.
-    sessionStorage.setItem(STORAGE_KEY, "1");
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
+    setPhase("loading");
   }, []);
 
-  if (phase === "skip" || phase === "gone") return null;
+  // Drive lifecycle: lock scroll, persist flag, schedule safety dismiss, unlock on cleanup.
+  useEffect(() => {
+    if (phase !== "loading") return;
 
-  // Listen for the root container's end animation (visibility flip) — compositor-synced,
-  // fires on iOS even when setTimeout would stall.
+    try {
+      localStorage.setItem(STORAGE_KEY, "1");
+    } catch {}
+    lockBodyScroll();
+
+    const safety = window.setTimeout(() => {
+      setPhase("gone");
+    }, SAFETY_MS);
+
+    return () => {
+      window.clearTimeout(safety);
+      unlockBodyScroll();
+    };
+  }, [phase]);
+
+  // When we leave "loading", refresh scroll-tied animations.
+  useEffect(() => {
+    if (phase === "gone") refreshScrollTriggers();
+  }, [phase]);
+
+  if (!mounted || phase !== "loading") return null;
+
   const handleAnimationEnd = (e: React.AnimationEvent<HTMLDivElement>) => {
     if (e.animationName !== "movus-loader-root-end") return;
-    document.body.style.overflow = "";
     setPhase("gone");
   };
 
@@ -59,7 +93,6 @@ export function LoadingScreen() {
     >
       {/* TOP HALF — black panel that lifts up; carries the MOVUS logo. */}
       <div className="movus-loader-top absolute top-0 left-0 right-0 h-1/2 bg-movus-black flex items-end justify-center pb-12 md:pb-16">
-        {/* Faint scanline overlay */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{
@@ -69,7 +102,7 @@ export function LoadingScreen() {
         />
         <div className="relative w-32 h-12 md:w-44 md:h-16">
           <Image
-            src="/images/logo-movus-white.webp"
+            src="/images/movus-logo-white.webp"
             alt="MOVUS"
             fill
             className="object-contain"
@@ -93,8 +126,7 @@ export function LoadingScreen() {
         </div>
       </div>
 
-      {/* SEAM — bar + counter, sits exactly at the split line. Flares wide & vanishes
-          as the two halves separate, making the bar itself the "moment of reveal". */}
+      {/* SEAM — bar + counter at the split line. */}
       <div className="movus-loader-bar absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] md:w-[400px] flex flex-col gap-3 z-[1]">
         <div className="flex justify-between text-[10px] md:text-[11px] tracking-[0.3em] text-movus-white/55 uppercase font-mono">
           <span>System</span>

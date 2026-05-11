@@ -6,7 +6,7 @@ interface LogoProps {
 }
 
 export function Logo({ variant = "dark", className = "" }: LogoProps) {
-  const src = variant === "dark" ? "/images/logo-movus-white.webp" : "/images/logo-movus.webp";
+  const src = variant === "dark" ? "/images/movus-logo-white.webp" : "/images/movus-logo.webp";
 
   return (
     <span className={`relative inline-block aspect-[5072/1880] ${className}`}>
