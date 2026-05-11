@@ -17,7 +17,8 @@
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
-  --font-work-sans: var(--font-work-sans-var);
+  --font-manrope: var(--font-manrope-var);
+  --font-display: var(--font-display-var);
 }
 
 html, body { overflow-x: hidden; width: 100%; }
@@ -28,21 +29,48 @@ html, body {
 }
 
 :root {
-  --text-display: clamp(3rem, 9vw + 0.5rem, 7.5rem);
-  --text-h1: clamp(2.25rem, 5.5vw + 0.25rem, 5rem);
+  /* Display scale, source design pegs H1 at 200px / H2 at 120px (Anton SC).
+     Dela Gothic One is wider than Anton SC so we scale ~80% for visual parity. */
+  --text-display: clamp(2.75rem, 11.5vw, 10rem);
+  --text-h1: clamp(2rem, 6vw, 6rem);
+  --text-h1-sm: clamp(1.5rem, 3.5vw, 3.5rem);
   --text-h2: clamp(1.75rem, 3vw + 0.5rem, 3rem);
   --text-h3: clamp(1.125rem, 1vw + 0.5rem, 1.5rem);
+  --text-body-l: clamp(1.125rem, 0.5vw + 1rem, 1.5rem);
+  --text-body-m: clamp(0.9375rem, 0.4vw + 0.85rem, 1.125rem);
   --text-body: clamp(0.9375rem, 0.25vw + 0.875rem, 1.0625rem);
   --text-small: clamp(0.8125rem, 0.2vw + 0.75rem, 0.9375rem);
   --text-caption: clamp(0.6875rem, 0.1vw + 0.65rem, 0.75rem);
+
+  /* Section spine, 80%/max-1200/py-200, responsive */
+  --spine-w: 88%;
+  --spine-pad: 80px;
+  --spine-gap: 32px;
 }
 
-html { scroll-behavior: smooth; }
+@media (min-width: 768px) {
+  :root {
+    --spine-w: 84%;
+    --spine-pad: 140px;
+    --spine-gap: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --spine-w: 80%;
+    --spine-pad: 200px;
+    --spine-gap: 60px;
+  }
+}
+
+/* Smooth scrolling handled by Lenis in JS, keep native behavior auto */
+html { scroll-behavior: auto; }
 
 body {
   background: var(--color-movus-black);
   color: #FFFFFF;
-  font-family: var(--font-work-sans), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-size: var(--text-body);
   line-height: 1.6;
   overflow-x: hidden;
@@ -65,36 +93,68 @@ body {
 
 ::-webkit-scrollbar { display: none; }
 
-/* Display heading style — massive, uppercase, black weight */
+/* Display heading, Dela Gothic One, line-height ~1em per source design */
 .heading-display {
-  font-weight: 900;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 0.92;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   font-size: var(--text-display);
 }
 
 .heading-section {
-  font-weight: 900;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 0.95;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   font-size: var(--text-h1);
 }
 
-/* Overline — parenthetical style */
+/* Smaller heading variant for use inside narrow columns (50% spine width).
+   Greek words are wider in Dela Gothic than the source's Anton SC. */
+.heading-section-sm {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  font-size: var(--text-h1-sm);
+}
+
+/* Section spine, the source design's "80%-up-to-1200, 200px py, 60px gap" rule */
+.spine {
+  width: var(--spine-w);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: var(--spine-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spine-gap);
+}
+.spine-flush-bottom { padding-bottom: 0; }
+.spine-flush-top { padding-top: 0; }
+.spine-row { flex-direction: column; }
+@media (min-width: 1024px) {
+  .spine-row { flex-direction: row; align-items: flex-start; }
+}
+
+/* Overline, parenthetical style */
 .overline {
   font-size: var(--text-caption);
-  font-weight: 400;
-  color: #888892;
+  font-weight: 700;
+  color: #0A0A0A;
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 
 .overline-light {
   font-size: var(--text-caption);
-  font-weight: 400;
-  color: rgba(255,255,255,0.5);
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
   margin-bottom: 1rem;
+  text-decoration: none;
 }
 
 /* Buttons */
@@ -127,6 +187,80 @@ body {
   100% { transform: translateX(-50%); }
 }
 .animate-ticker { animation: ticker 20s linear infinite; }
+
+/* Loader: bar, counter, AND dismiss timing all driven by CSS so it works on iOS
+   Safari where setTimeout can stall during the page-load lifecycle. The JS just
+   listens for animationend to clean up body overflow + unmount.
+   --movus-loader-duration controls fill time; FADE_MS in JS must match the 400ms below. */
+@property --movus-pct {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+@keyframes movus-loader-fill {
+  to {
+    background-color: #FF6B35;
+    box-shadow: 0 0 6px rgba(255, 107, 53, 0.55);
+  }
+}
+@keyframes movus-loader-count {
+  to { --movus-pct: 100; }
+}
+/* Split-portal dismiss. The loader is composed of three layers:
+   - .movus-loader-top    (upper half, contains logo) — slides UP
+   - .movus-loader-bottom (lower half, contains tagline) — slides DOWN
+   - .movus-loader-bar    (centered bar+counter) — flashes wide then collapses
+   Timing reference (total 2200ms):
+     0-1500ms  : bar fills (CSS animation on .movus-loader-counter / segments)
+     1500-1700ms : 200ms settle — bar at 100%, hold
+     1700-2200ms : 500ms split — halves separate, bar flares & vanishes
+   The root container then drops visibility at 100% via .movus-loader-root keyframe. */
+@keyframes movus-loader-half-up {
+  0%, 77.27% { transform: translate3d(0, 0, 0); }   /* 1700/2200 */
+  100%        { transform: translate3d(0, -100%, 0); }
+}
+@keyframes movus-loader-half-down {
+  0%, 77.27% { transform: translate3d(0, 0, 0); }
+  100%        { transform: translate3d(0,  100%, 0); }
+}
+@keyframes movus-loader-bar-flare {
+  0%, 77.27% { transform: scaleX(1); opacity: 1; }
+  86%         { transform: scaleX(1.18); opacity: 1; }  /* mid-flare, slightly wider */
+  100%        { transform: scaleX(1.18); opacity: 0; }
+}
+@keyframes movus-loader-root-end {
+  0%, 99.99% { visibility: visible; pointer-events: auto; }
+  100%        { visibility: hidden;  pointer-events: none; }
+}
+.movus-loader-segment {
+  background-color: rgba(255, 255, 255, 0.07);
+  animation: movus-loader-fill 1ms linear forwards;
+}
+.movus-loader-counter {
+  /* steps(20) = chunky 0,5,10,...,100 readout — looks intentional on iOS rather
+     than laggy when the browser can't paint every integer tick. */
+  animation: movus-loader-count var(--movus-loader-duration, 1500ms) steps(20, end) forwards;
+  counter-reset: movus-pct var(--movus-pct);
+}
+.movus-loader-counter::after {
+  content: counter(movus-pct) "%";
+}
+.movus-loader-root {
+  animation: movus-loader-root-end 2200ms linear forwards;
+}
+.movus-loader-top {
+  animation: movus-loader-half-up 2200ms cubic-bezier(0.76, 0, 0.18, 1) forwards;
+  will-change: transform;
+}
+.movus-loader-bottom {
+  animation: movus-loader-half-down 2200ms cubic-bezier(0.76, 0, 0.18, 1) forwards;
+  will-change: transform;
+}
+.movus-loader-bar {
+  transform-origin: center;
+  animation: movus-loader-bar-flare 2200ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
 
 /* Hide scrollbar on horizontal scroll */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }

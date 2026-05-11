@@ -1,36 +1,40 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { programs } from "@/content/programs";
 
-const tags = [
-  ["Ενδυνάμωση", "Σύσφιξη", "Αντοχή", "Customized"],
-  ["Τοπικό πάχος", "Σμίλευμα", "Ενέργεια"],
-  ["Μεταβολισμός", "Απώλεια λίπους"],
-  ["Ομαδικό πνεύμα", "Διασκέδαση", "Αντοχή"],
-];
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const SpinningBadge = () => (
+const SpinningBadge = ({ dark }: { dark?: boolean }) => (
   <motion.div
     animate={{ rotate: 360 }}
     transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-    className="w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md"
+    className={`w-24 h-24 md:w-32 md:h-32 rounded-full flex items-center justify-center ${
+      dark ? "bg-movus-white/10" : "bg-movus-black/30"
+    } backdrop-blur-md`}
   >
     <svg viewBox="0 0 100 100" className="w-full h-full">
       <defs>
-        <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+        <path
+          id="circlePath"
+          d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+        />
       </defs>
       <text fill="white" fontSize="10.5" fontWeight="700" letterSpacing="4">
         <textPath href="#circlePath">
-          PROGRESS · PERFORM · BUILD · TRAIN · 
+          PROGRESS · PERFORM · BUILD · TRAIN ·
         </textPath>
       </text>
-      <circle cx="50" cy="50" r="12" fill="var(--color-movus-orange)" />
-      {/* Arrow inside the dot */}
+      <circle cx="50" cy="50" r="12" fill="white" />
       <path
         d="M48 52L52 48M52 48H48.5M52 48V51.5"
-        stroke="white"
+        stroke={dark ? "#0A0A0A" : "#FF6B35"}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -40,85 +44,231 @@ const SpinningBadge = () => (
 );
 
 export function ProgramsGrid() {
-  const prefersReducedMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const pinRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (typeof window === "undefined") return;
+
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+        const track = trackRef.current;
+        const pin = pinRef.current;
+        if (!track || !pin) return;
+
+        const getDistance = () => track.scrollWidth - window.innerWidth + 96;
+
+        const tween = gsap.to(track, {
+          x: () => -getDistance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: pin,
+            pin: true,
+            scrub: 1,
+            start: "top top",
+            end: () => `+=${getDistance()}`,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        return () => {
+          tween.scrollTrigger?.kill();
+          tween.kill();
+        };
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section className="bg-movus-white py-20 md:py-32 lg:py-40" id="programs">
-      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 flex flex-col gap-16 md:gap-24">
+    <section
+      ref={sectionRef}
+      className="bg-movus-white text-movus-black"
+      id="programs"
+    >
+      {/* Header — Service header spine, padding 200/0 */}
+      <div className="spine spine-flush-bottom !gap-10">
+        <p className="overline">(Επίλεξε)</p>
+        <h2 className="heading-section text-movus-black leading-[0.92]">
+          <span className="block">CHOOSE YOUR</span>
+          <span className="block text-movus-orange">PROGRAM</span>
+        </h2>
+        <div
+          className="max-w-2xl space-y-4 text-medium-gray leading-[1.7]"
+          style={{ fontSize: "var(--text-body-m)" }}
+        >
+          <p className="text-movus-black font-semibold">
+            Δεν κάνεις απλά προπόνηση. Κάνεις επιλογή εξέλιξης.
+          </p>
+          <p>
+            Στο MOVUS δεν υπάρχει ένα πλάνο για όλους. Υπάρχει το σωστό πλάνο για εσένα.
+          </p>
+          <p>
+            Με τη βοήθεια του coach, βρίσκεις το πρόγραμμα που ταιριάζει στον στόχο σου και ξεκινάς να χτίζεις αποτέλεσμα από την πρώτη κιόλας μέρα.
+          </p>
+        </div>
+      </div>
+
+      {/* Body — mobile vertical stack, with bottom spine padding */}
+      <div className="lg:hidden mx-auto w-[var(--spine-w)] max-w-[1200px] pt-[var(--spine-gap)] pb-[var(--spine-pad)] flex flex-col gap-6">
         {programs.map((program, i) => {
-          // Alternate styles based on index
-          const isOrange = i % 2 === 0;
-          const bgClass = isOrange ? "bg-movus-orange" : "bg-movus-black";
-          const titleColor = "text-movus-white";
-          const bodyColor = isOrange ? "text-movus-white" : "text-movus-white/70";
-          const labelColor = isOrange ? "text-movus-white" : "text-movus-white/60";
-          const valueColor = "text-movus-white";
-          const tagClass = isOrange
-            ? "border-white/20 bg-black/10 text-white"
-            : "border-white/20 bg-white/5 text-movus-white/80";
-
-          return (
-            <motion.div
-              key={program.slug}
-              initial={prefersReducedMotion ? {} : { opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className={`flex flex-col md:flex-row overflow-hidden rounded-3xl ${bgClass} shadow-2xl relative`}
-            >
-              {/* Text Side */}
-              <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-20 flex flex-col justify-center">
-                <h3 className={`heading-section mb-6 ${titleColor} leading-[0.9]`}>
-                  {program.title}
-                </h3>
-                <p className={`text-lg md:text-xl font-medium mb-12 max-w-md leading-relaxed ${bodyColor}`}>
-                  {program.shortDescription}
-                </p>
-
-                <div className="space-y-4 mb-10">
-                  <div className="flex items-center gap-4 text-lg">
-                    <span className={`font-bold ${labelColor}`}>Level :</span>
-                    <span className={valueColor}>Όλα τα επίπεδα</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-lg">
-                    <span className={`font-bold ${labelColor}`}>Duration :</span>
-                    <span className={valueColor}>20 Λεπτά</span>
-                  </div>
-                </div>
-
-                {/* Tags row */}
-                <div className="flex flex-wrap gap-3 mt-auto">
-                  {tags[i].map((tag) => (
-                    <div
-                      key={tag}
-                      className={`px-4 py-2 border rounded-full text-sm font-semibold tracking-wide ${tagClass}`}
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Image Side */}
-              <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-full">
-                <Image
-                  src={program.image}
-                  alt={program.imageAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-
-              {/* Decorative Spinner - Positional overlap */}
-              <div className="absolute right-4 bottom-4 md:right-12 md:bottom-12 z-10 pointer-events-none">
-                <SpinningBadge />
-              </div>
-            </motion.div>
-          );
+          const dark = i % 2 === 1;
+          return <ProgramCard key={program.slug} program={program} tags={program.tags ?? []} dark={dark} />;
         })}
+      </div>
+
+      {/* Body — desktop scroll-pinned horizontal track (full bleed past spine) */}
+      <div ref={pinRef} className="hidden lg:block h-screen overflow-hidden mt-[var(--spine-gap)]">
+        <div
+          ref={trackRef}
+          className="h-screen flex items-center gap-8 pl-12 pr-[20vw] will-change-transform"
+        >
+          {programs.map((program, i) => {
+            const dark = i % 2 === 1;
+            return (
+              <div key={program.slug} className="flex-shrink-0 w-[78vw] max-w-[1000px]">
+                <ProgramCard program={program} tags={program.tags ?? []} dark={dark} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
 
+function ProgramCard({
+  program,
+  tags,
+  dark,
+}: {
+  program: (typeof programs)[number];
+  tags: string[];
+  dark: boolean;
+}) {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const badgeX = useMotionValue(0);
+  const badgeY = useMotionValue(0);
+  const springX = useSpring(badgeX, { damping: 28, stiffness: 220, mass: 0.6 });
+  const springY = useSpring(badgeY, { damping: 28, stiffness: 220, mass: 0.6 });
+
+  useEffect(() => {
+    const el = imageRef.current;
+    if (!el) return;
+
+    const resetToCorner = () => {
+      const rect = el.getBoundingClientRect();
+      badgeX.set(rect.width - 72);
+      badgeY.set(rect.height - 72);
+    };
+
+    resetToCorner();
+
+    const ro = new ResizeObserver(resetToCorner);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [badgeX, badgeY]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = imageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    badgeX.set(e.clientX - rect.left);
+    badgeY.set(e.clientY - rect.top);
+  };
+
+  const handleMouseLeave = () => {
+    const el = imageRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    badgeX.set(rect.width - 72);
+    badgeY.set(rect.height - 72);
+  };
+
+  const bgClass = dark ? "bg-movus-black" : "bg-movus-orange";
+  const bodyColor = dark ? "text-movus-white/70" : "text-movus-white/90";
+  const labelColor = dark ? "text-movus-white/60" : "text-movus-white/80";
+  const tagClass = dark
+    ? "border-white/15 bg-white/5 text-movus-white/80"
+    : "border-white/25 bg-black/10 text-movus-white";
+
+  return (
+    <article
+      className={`flex flex-col lg:flex-row overflow-hidden rounded-3xl ${bgClass} shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)] relative lg:h-[560px]`}
+    >
+      {/* Text */}
+      <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-14 flex flex-col justify-center min-h-[460px] lg:min-h-0 lg:h-full">
+        <h3
+          className="mb-6 text-movus-white uppercase leading-[0.95] tracking-tight break-words"
+          style={{
+            fontFamily: "var(--font-display), Impact, sans-serif",
+            fontWeight: 900,
+            fontSize: "clamp(2rem, 3.5vw + 0.25rem, 3.75rem)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {program.title}
+        </h3>
+        <p
+          className={`mb-10 max-w-md leading-relaxed ${bodyColor}`}
+          style={{ fontSize: "var(--text-body)" }}
+        >
+          {program.shortDescription}
+        </p>
+
+        <div className="space-y-3 mb-10">
+          <div className="flex items-center gap-3 text-base md:text-lg">
+            <span className={`font-bold ${labelColor}`}>Level :</span>
+            <span className="text-movus-white">Όλα τα επίπεδα</span>
+          </div>
+          <div className="flex items-center gap-3 text-base md:text-lg">
+            <span className={`font-bold ${labelColor}`}>Duration :</span>
+            <span className="text-movus-white">20 Λεπτά</span>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2.5 mt-auto">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className={`px-3.5 py-1.5 border rounded-full text-xs md:text-sm font-semibold tracking-wide ${tagClass}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Image */}
+      <div
+        ref={imageRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative w-full lg:w-1/2 min-h-[320px] lg:min-h-0 lg:h-full overflow-hidden"
+      >
+        <Image
+          src={program.image}
+          alt={program.imageAlt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+        <motion.div
+          style={{ x: springX, y: springY }}
+          className="absolute top-0 left-0 pointer-events-none"
+        >
+          <Link
+            href={`/programs/${program.slug}`}
+            aria-label={program.title}
+            className="pointer-events-auto block -translate-x-1/2 -translate-y-1/2"
+          >
+            <SpinningBadge dark={dark} />
+          </Link>
+        </motion.div>
+      </div>
+    </article>
+  );
+}

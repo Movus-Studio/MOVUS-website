@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
 interface FormData {
@@ -15,7 +15,12 @@ interface FormData {
 export function ContactSection() {
   const prefersReducedMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  // SharkID and similar password-manager extensions inject DOM into form fields
+  // before React hydrates, causing mismatches. Render the form only post-mount
+  // so the SSR snapshot has nothing for the extension to disagree with.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const { register, handleSubmit } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
     console.log("Form:", data);
@@ -24,12 +29,12 @@ export function ContactSection() {
 
   if (submitted) {
     return (
-      <section className="bg-movus-black py-20 md:py-28" id="contact">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 text-center">
+      <section className="bg-movus-black" id="contact">
+        <div className="spine text-center">
           <p className="heading-section text-movus-white mb-4">
             <span className="text-movus-orange">Ευχαριστούμε!</span>
           </p>
-          <p className="text-movus-white/50" style={{ fontSize: "var(--text-body)" }}>
+          <p className="text-movus-white/50" style={{ fontSize: "var(--text-body-m)" }}>
             Θα επικοινωνήσουμε μαζί σου σύντομα.
           </p>
         </div>
@@ -38,77 +43,94 @@ export function ContactSection() {
   }
 
   return (
-    <section className="bg-movus-black py-20 md:py-32 lg:py-40" id="contact">
-      <div className="mx-auto max-w-[800px] px-5 md:px-8 lg:px-12">
+    <section
+      className="bg-movus-black"
+      id="contact"
+    >
+      <div className="spine">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
+        <div className="flex flex-col gap-8">
           <motion.p
             initial={prefersReducedMotion ? {} : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="overline mb-6"
+            className="overline-light"
           >
-            (Το Επόμενο Σου Βήμα Ξεκινάει Εδώ)
+            (Το Πρώτο Βήμα)
           </motion.p>
           <motion.h2
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="heading-display mb-6 leading-[0.85]"
+            className="heading-section leading-[0.92]"
           >
-            <span className="block text-movus-white">ΚΛΕΙΣΕ ΔΩΡΕΑΝ</span>
-            <span className="block text-movus-orange">ΔΟΚΙΜΑΣΤΙΚΟ</span>
+            <span className="block text-movus-white">ΞΕΡΕΙΣ ΗΔΗ</span>
+            <span className="block text-movus-orange">ΟΤΙ ΘΕΛΕΙΣ ΑΛΛΑΓΗ.</span>
           </motion.h2>
-          <motion.p
-            initial={prefersReducedMotion ? {} : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-movus-white/60 text-lg md:text-xl"
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="max-w-2xl space-y-4 text-movus-white/70 leading-[1.6]"
+            style={{ fontSize: "var(--text-body-m)" }}
           >
-            Έτοιμος/η να αλλάξεις το σώμα σου; Ας χτίσουμε τη πιο δυνατή και γρήγορη εκδοχή σου — μαζί.
-          </motion.p>
+            <p>Το μόνο που μένει είναι να κάνεις το πρώτο βήμα.</p>
+            <p>
+              Μίλα με τον coach σου, βρες το πρόγραμμα που σου ταιριάζει και ξεκίνα.
+            </p>
+          </motion.div>
         </div>
 
+        {mounted && (
         <motion.form
           onSubmit={handleSubmit(onSubmit)}
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="space-y-5"
+          className="space-y-8"
+          suppressHydrationWarning
         >
-          {/* Two columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-movus-white/40 mb-2" style={{ fontSize: "var(--text-caption)" }}>Όνομα</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" suppressHydrationWarning>
+            <div suppressHydrationWarning>
+              <label className="block text-movus-white font-medium mb-3 text-lg">
+                Όνομα
+              </label>
               <input
                 {...register("name", { required: true })}
                 placeholder="Γιώργος Παπαδόπουλος"
-                className="w-full bg-dark-gray border-0 rounded-lg px-4 py-3.5 text-movus-white placeholder:text-medium-gray/50 focus:ring-2 focus:ring-movus-orange/50 outline-none transition"
-                style={{ fontSize: "var(--text-small)" }}
+                className="w-full bg-dark-gray border-0 rounded-xl px-5 py-4 text-movus-white placeholder:text-medium-gray/60 focus:ring-2 focus:ring-movus-orange/50 outline-none transition"
+                style={{ fontSize: "var(--text-body)" }}
+                suppressHydrationWarning
               />
             </div>
-            <div>
-              <label className="block text-movus-white/40 mb-2" style={{ fontSize: "var(--text-caption)" }}>Email</label>
+            <div suppressHydrationWarning>
+              <label className="block text-movus-white font-medium mb-3 text-lg">
+                Email
+              </label>
               <input
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="email@example.com"
-                className="w-full bg-dark-gray border-0 rounded-lg px-4 py-3.5 text-movus-white placeholder:text-medium-gray/50 focus:ring-2 focus:ring-movus-orange/50 outline-none transition"
-                style={{ fontSize: "var(--text-small)" }}
+                className="w-full bg-dark-gray border-0 rounded-xl px-5 py-4 text-movus-white placeholder:text-medium-gray/60 focus:ring-2 focus:ring-movus-orange/50 outline-none transition"
+                style={{ fontSize: "var(--text-body)" }}
+                suppressHydrationWarning
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-movus-white/40 mb-2" style={{ fontSize: "var(--text-caption)" }}>Πρόγραμμα</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" suppressHydrationWarning>
+            <div suppressHydrationWarning>
+              <label className="block text-movus-white font-medium mb-3 text-lg">
+                Πρόγραμμα
+              </label>
               <select
                 {...register("interest")}
-                className="w-full bg-dark-gray border-0 rounded-lg px-4 py-3.5 text-movus-white focus:ring-2 focus:ring-movus-orange/50 outline-none transition appearance-none"
-                style={{ fontSize: "var(--text-small)" }}
+                className="w-full bg-dark-gray border-0 rounded-xl px-5 py-4 text-movus-white focus:ring-2 focus:ring-movus-orange/50 outline-none transition appearance-none"
+                style={{ fontSize: "var(--text-body)" }}
+                suppressHydrationWarning
               >
                 <option value="ems">i-Motion EMS</option>
                 <option value="ishape">i-Shape EMS Suit</option>
@@ -116,12 +138,15 @@ export function ContactSection() {
                 <option value="group">Ομαδικά</option>
               </select>
             </div>
-            <div>
-              <label className="block text-movus-white/40 mb-2" style={{ fontSize: "var(--text-caption)" }}>Στόχος</label>
+            <div suppressHydrationWarning>
+              <label className="block text-movus-white font-medium mb-3 text-lg">
+                Στόχος
+              </label>
               <select
                 {...register("goal")}
-                className="w-full bg-dark-gray border-0 rounded-lg px-4 py-3.5 text-movus-white focus:ring-2 focus:ring-movus-orange/50 outline-none transition appearance-none"
-                style={{ fontSize: "var(--text-small)" }}
+                className="w-full bg-dark-gray border-0 rounded-xl px-5 py-4 text-movus-white focus:ring-2 focus:ring-movus-orange/50 outline-none transition appearance-none"
+                style={{ fontSize: "var(--text-body)" }}
+                suppressHydrationWarning
               >
                 <option value="weightloss">Απώλεια βάρους</option>
                 <option value="toning">Σύσφιξη</option>
@@ -131,23 +156,27 @@ export function ContactSection() {
             </div>
           </div>
 
-          <div>
-            <label className="block text-movus-white/40 mb-2" style={{ fontSize: "var(--text-caption)" }}>Μήνυμα</label>
+          <div suppressHydrationWarning>
+            <label className="block text-movus-white font-medium mb-3 text-lg">
+              Μήνυμα
+            </label>
             <textarea
               {...register("message")}
-              rows={4}
+              rows={5}
               placeholder="Πες μας τι ψάχνεις..."
-              className="w-full bg-dark-gray border-0 rounded-lg px-4 py-3.5 text-movus-white placeholder:text-medium-gray/50 focus:ring-2 focus:ring-movus-orange/50 outline-none transition resize-none"
-              style={{ fontSize: "var(--text-small)" }}
+              className="w-full bg-dark-gray border-0 rounded-xl px-5 py-4 text-movus-white placeholder:text-medium-gray/60 focus:ring-2 focus:ring-movus-orange/50 outline-none transition resize-none"
+              style={{ fontSize: "var(--text-body)" }}
+              suppressHydrationWarning
             />
           </div>
 
-          <div className="text-center pt-2">
+          <div className="text-center pt-4">
             <button type="submit" className="btn-primary">
               Ξεκίνα Προπόνηση
             </button>
           </div>
         </motion.form>
+        )}
       </div>
     </section>
   );

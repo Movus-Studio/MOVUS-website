@@ -1,21 +1,30 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Jura, Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FrameMask } from "@/components/layout/FrameMask";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { LoadingScreen } from "@/components/layout/LoadingScreen";
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans-var",
-  subsets: ["latin", "latin-ext"],
+const jura = Jura({
+  variable: "--font-manrope-var",
+  subsets: ["latin", "latin-ext", "greek"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const delaGothic = Dela_Gothic_One({
+  variable: "--font-display-var",
+  subsets: ["latin", "latin-ext", "greek"],
+  display: "swap",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://movus.gr"),
   title: {
-    default: "MOVUS — EMS Fitness Studio | Πάτρα",
+    default: "MOVUS, EMS Fitness Studio | Πάτρα",
     template: "%s | MOVUS",
   },
   description:
@@ -36,13 +45,13 @@ export const metadata: Metadata = {
     locale: "el_GR",
     url: "https://movus.gr",
     siteName: "MOVUS",
-    title: "MOVUS — EMS Fitness Studio | Πάτρα",
+    title: "MOVUS, EMS Fitness Studio | Πάτρα",
     description:
       "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MOVUS — EMS Fitness Studio | Πάτρα",
+    title: "MOVUS, EMS Fitness Studio | Πάτρα",
     description:
       "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
   },
@@ -71,11 +80,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${workSans.variable} antialiased`}>
-      <body className="min-h-screen font-[family-name:var(--font-work-sans-var)]">
+    <html lang="el" className={`${jura.variable} ${delaGothic.variable} antialiased`}>
+      <body className="min-h-screen font-[family-name:var(--font-manrope-var)]">
+        <LoadingScreen />
+
         <a href="#main-content" className="skip-to-content">
           Μετάβαση στο περιεχόμενο
         </a>
+
+        <SmoothScroll />
 
         {/* Dynamic Curved Cutout Frame Mask */}
         <FrameMask />
@@ -89,18 +102,28 @@ export default function RootLayout({
           <Footer />
         </div>
 
-        {/* Fixed CTA - Positioned absolutely to identically match the Bottom-Right Island bounding box */}
+        {/* Fixed CTA — orange Primary Button inset inside the black Fixed Button island.
+            Ports the Framer Primary Button: 3px corner radius + the TL bumped to 14px so
+            the orange pill mirrors the island's rounded inner corner and the two layers
+            read as one cohesive shape. Text gets a subtle skewX(-8deg) italic — a tamed
+            version of Framer's skewX:15 on the original Primary Button. */}
         <div
-          className="fixed bottom-0 right-0 w-[155px] md:w-[170px] h-[56px] md:h-[60px] z-[110] flex items-center justify-center pointer-events-none transition-all"
-          style={{ padding: '0px 12px 12px 0px' }} /* Push content toward center of the visual pill avoiding the bottom border */
+          className="fixed bottom-0 right-[4px] md:right-[6px] w-[200px] md:w-[245px] h-[60px] md:h-[84px] z-[110] flex items-center justify-center pointer-events-none"
+          style={{ padding: '10px 16px 16px 10px' }}
         >
           <a
             href="https://booking.movus.gr"
             target="_blank"
             rel="noopener noreferrer"
-            className="pointer-events-auto btn-primary !rounded-md !text-[8.5px] md:!text-[9px] tracking-tight md:tracking-tighter !py-1.5 md:!py-2 !px-3 md:!px-3 shadow-2xl hover:scale-105 transition-transform whitespace-nowrap"
+            className="group pointer-events-auto bg-movus-orange hover:bg-movus-orange-dark transition-colors w-full h-full flex items-center justify-center shadow-2xl
+                       rounded-[4px] rounded-tl-[10px] md:rounded-tl-[12px]"
           >
-            ΞΕΚΙΝΑ ΠΡΟΠΟΝΗΣΗ
+            <span
+              className="text-movus-white font-bold uppercase whitespace-nowrap text-[9px] md:text-[11px] tracking-[0.04em] transition-transform duration-300 group-hover:translate-x-[2px]"
+              style={{ transform: "skewX(-8deg)" }}
+            >
+              ΚΛΕΙΣΕ ΤΗΝ ΠΡΩΤΗ ΣΟΥ ΣΥΝΕΔΡΙΑ
+            </span>
           </a>
         </div>
       </body>
