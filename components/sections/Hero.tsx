@@ -118,7 +118,7 @@ export function Hero() {
                 ))}
               </div>
               <span className="text-movus-white/80 font-medium" style={{ fontSize: "var(--text-caption)" }}>
-                4.9/5
+                5/5
               </span>
               <span className="text-movus-white/50" style={{ fontSize: "var(--text-caption)" }}>
                 · 100+ Πελάτες

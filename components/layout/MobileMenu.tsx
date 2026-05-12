@@ -6,6 +6,7 @@ import Image from "next/image";
 interface NavItem {
   label: string;
   href: string;
+  children?: { label: string; href: string }[];
 }
 
 interface MobileMenuProps {
@@ -49,16 +50,51 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
                 Menu
               </p>
               <nav className="space-y-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMenu}
-                    className="block text-3xl md:text-4xl lg:text-5xl font-bold text-movus-white hover:text-movus-orange transition-colors duration-200 py-2"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) =>
+                  item.children?.length ? (
+                    <details key={item.href} className="movus-nav-group group">
+                      <summary
+                        className="flex items-center gap-3 cursor-pointer list-none uppercase tracking-[-0.01em] text-3xl md:text-4xl lg:text-5xl text-movus-white hover:text-movus-orange transition-colors duration-200 py-2 [&::-webkit-details-marker]:hidden"
+                        style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
+                      >
+                        <span>{item.label}</span>
+                        <svg
+                          className="w-6 h-6 md:w-7 md:h-7 transition-transform duration-200 group-open:rotate-180"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                          aria-hidden="true"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </summary>
+                      <ul className="mt-1 mb-3 ml-1 border-l border-movus-white/15 pl-5 space-y-1">
+                        {item.children.map((child) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              onClick={closeMenu}
+                              className="block text-lg md:text-xl text-movus-white/80 hover:text-movus-orange transition-colors duration-200 py-1.5"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="block uppercase tracking-[-0.01em] text-3xl md:text-4xl lg:text-5xl text-movus-white hover:text-movus-orange transition-colors duration-200 py-2"
+                      style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
               </nav>
             </div>
 

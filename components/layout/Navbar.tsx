@@ -4,7 +4,16 @@ import { MobileMenu } from "./MobileMenu";
 
 const navItems = [
   { label: "Αρχική", href: "/" },
-  { label: "Προγράμματα", href: "/programs" },
+  {
+    label: "Προγράμματα",
+    href: "/programs",
+    children: [
+      { label: "Όλα τα προγράμματα", href: "/programs" },
+      { label: "EMS", href: "/programs#ems" },
+      { label: "Personal", href: "/programs#personal" },
+      { label: "Ομαδικά", href: "/programs#group" },
+    ],
+  },
   { label: "Σχετικά", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Επικοινωνία", href: "/contact" },

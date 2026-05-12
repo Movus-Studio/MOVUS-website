@@ -141,6 +141,25 @@ body {
 
 ::-webkit-scrollbar { display: none; }
 
+/* Site-wide heading reset for h1/h2 — matches the homepage `.heading-section`
+   style so subpages render consistently:
+   - Dela Gothic One (display font) — ships only at weight 400, so we pin
+     the weight and disable synthesis to avoid the bloated faux-bold that
+     Tailwind `font-black`/`font-bold` would otherwise trigger.
+   - Uppercase + tight tracking + line-height 0.95 — matches the source
+     design's headline rhythm.
+   These rules live outside @layer utilities so they beat Tailwind utility
+   classes regardless of specificity. The homepage's `.heading-section`
+   classes still apply their own (matching) values on top. */
+h1, h2 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
 /* Display heading, Dela Gothic One, line-height ~1em per source design */
 .heading-display {
   font-family: var(--font-display), sans-serif;

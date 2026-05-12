@@ -194,7 +194,10 @@ export default async function ProgramPage({ params }: Props) {
                     <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-2.5 py-1 rounded-full mb-4">
                       {sub.category}
                     </span>
-                    <h3 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-navy mb-2 uppercase">
+                    <h3
+                      className="text-3xl md:text-4xl tracking-[-0.01em] text-movus-navy mb-2 uppercase"
+                      style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
+                    >
                       {sub.name}
                     </h3>
                     <p className="text-xl text-movus-orange font-semibold mb-6">{sub.tagline}</p>

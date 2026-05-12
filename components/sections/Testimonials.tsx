@@ -48,8 +48,8 @@ export function Testimonials() {
               each word on its own line on mobile so "ΑΠΟΤΕΛΕΣΜΑΤΑ." never
               overflows the viewport. md+ keeps the two-line composition. */}
           <span className="block md:inline">ΑΛΗΘΙΝΑ</span>{" "}
-          <span className="block md:inline text-movus-orange">ΑΠΟΤΕΛΕΣΜΑΤΑ.</span>
-          <span className="block md:inline md:ml-3">ΑΛΗΘΙΝΑ ΛΟΓΙΑ.</span>
+          <span className="block md:inline text-movus-orange">ΑΠΟΤΕΛΕΣΜΑΤΑ.</span>{" "}
+          <span className="block md:inline">ΑΛΗΘΙΝΑ ΛΟΓΙΑ.</span>
         </motion.h2>
 
         {/* Bento grid: 3 cols × 3 rows desktop, ~280px square cells, 10px gap, 2 deliberate empty cells */}
@@ -106,8 +106,10 @@ export function Testimonials() {
             );
           })}
 
-          {/* Layout Spacers (empty cells) — visible only on lg, decorative */}
-          <div className="hidden lg:flex lg:col-start-3 lg:row-start-1 rounded-3xl border border-movus-black/10 items-center justify-center">
+          {/* Layout Spacers (empty cells) — visible only on lg, decorative.
+              T2 is wide and already occupies (2,1)+(3,1), so this rating sits
+              in (3,2) — the only truly empty cell — to avoid overlap. */}
+          <div className="hidden lg:flex lg:col-start-3 lg:row-start-2 rounded-3xl border border-movus-black/10 items-center justify-center">
             <div className="text-center">
               <p
                 className="font-black text-movus-orange tracking-tight"
@@ -118,7 +120,7 @@ export function Testimonials() {
                   lineHeight: 0.92,
                 }}
               >
-                4.9/5
+                5/5
               </p>
               <p
                 className="text-medium-gray mt-2 font-medium"

@@ -53,10 +53,12 @@ export function FAQ({
           <span className="block text-movus-black">ΕΡΩΤΗΣΕΙΣ</span>
         </motion.h2>
 
-        {/* 2-col: image left, accordion right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mt-6 md:mt-10">
-          {/* Image + helper */}
-          <div>
+        {/* 2-col: image left, accordion right.
+            On lg+, items-start lets the left column stick independently while
+            the right column scrolls past it. */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mt-6 md:mt-10 lg:items-start">
+          {/* Image + helper — sticky on lg so it follows the FAQ list */}
+          <div className="lg:sticky lg:top-28 lg:self-start">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-black">
               <Image
                 src={image}

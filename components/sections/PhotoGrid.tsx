@@ -20,7 +20,8 @@ export function PhotoGrid() {
           {Array.from({ length: 6 }).map((_, i) => (
             <span
               key={i}
-              className="text-movus-white font-black uppercase tracking-wider mx-10 text-4xl md:text-6xl lg:text-7xl"
+              className="text-movus-white uppercase tracking-wider mx-10 text-4xl md:text-6xl lg:text-7xl"
+              style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
             >
               FOLLOW US ON INSTAGRAM
               <span className="mx-10 text-movus-white/50">*</span>

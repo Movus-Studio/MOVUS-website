@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { programs } from "@/content/programs";
 import { programsFAQ } from "@/content/faq";
 import { siteCopy } from "@/content/site";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
+import { ProgramCard, type Program } from "@/components/programs/ProgramCard";
+import { EmsPinnedSection } from "@/components/programs/EmsPinnedSection";
 
 export const metadata: Metadata = {
   title: "Προγράμματα",
@@ -16,6 +17,43 @@ export const metadata: Metadata = {
       "Revolutionary EMS training και explosive group fitness programs, η τέλεια συνταγή για αποτελεσματική μεταμόρφωση.",
   },
 };
+
+function CategorySection({ id, title, programs }: { id: string; title: string; programs: Program[] }) {
+  return (
+    <div id={id} className="pt-10 md:pt-14 first:pt-0 scroll-mt-24 md:scroll-mt-28">
+      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 mb-6 md:mb-8">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-movus-orange">
+          {title}
+        </h2>
+      </div>
+
+      {/* Mobile — full-bleed horizontal snap-scroll */}
+      <div className="lg:hidden">
+        <div className="no-scrollbar flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory px-5 md:px-8 scroll-pl-5 md:scroll-pl-8 [scrollbar-width:none] [overscroll-behavior-x:contain] [-webkit-overflow-scrolling:touch]">
+          {programs.map((program) => (
+            <div
+              key={program.slug}
+              className="flex-shrink-0 w-[85%] max-w-[440px] snap-start"
+            >
+              <ProgramCard program={program} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop — 2-col grid */}
+      <div className="hidden lg:block">
+        <div className="mx-auto max-w-[1280px] px-12">
+          <div className="grid grid-cols-2 gap-8">
+            {programs.map((program) => (
+              <ProgramCard key={program.slug} program={program} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ProgramsPage() {
   return (
@@ -39,17 +77,17 @@ export default function ProgramsPage() {
       />
 
       {/* Hero */}
-      <section className="bg-movus-black pt-32 pb-16 md:pt-40 md:pb-20">
+      <section className="bg-movus-white pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
             Τα Προγράμματά μας
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
             Τα πιο ευέλικτα προγράμματα
             <br />
             <span className="text-movus-orange">γυμναστικής στην Πάτρα</span>
           </h1>
-          <p className="text-xl text-medium-gray max-w-2xl leading-relaxed">
+          <p className="text-xl text-dark-gray/80 max-w-2xl leading-relaxed">
             Ανακάλυψε τη νέα εποχή του fitness στο MOVUS Πάτρα! Revolutionary EMS
             training και explosive group fitness programs, η τέλεια συνταγή για
             αποτελεσματική μεταμόρφωση.
@@ -57,54 +95,11 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Programs Grid */}
-      <section className="bg-movus-black pb-20 md:pb-28">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {programs.map((program) => (
-              <Link
-                key={program.slug}
-                href={`/programs/${program.slug}`}
-                className="group block bg-movus-navy/50 border border-white/5 rounded-xl overflow-hidden hover:border-movus-orange/30 transition-all duration-300"
-              >
-                <div className="aspect-[16/10] bg-movus-navy overflow-hidden relative">
-                  <Image
-                    src={program.image}
-                    alt={program.imageAlt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="p-8">
-                  <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-3 py-1 rounded-full mb-3">
-                    {program.tag}
-                  </span>
-                  <h2 className="text-2xl font-bold text-movus-white mb-3 group-hover:text-movus-orange transition-colors">
-                    {program.title}
-                  </h2>
-                  <p className="text-medium-gray leading-relaxed mb-6">
-                    {program.shortDescription}
-                  </p>
-                  <div className="flex flex-wrap gap-2 text-xs text-movus-white/60 mb-5">
-                    <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-                      Επίπεδο: Για Όλους
-                    </span>
-                    <span className="bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-                      Ένταση: Ρυθμιζόμενη
-                    </span>
-                  </div>
-                  <span className="inline-flex items-center gap-1 text-sm font-medium text-movus-orange group-hover:gap-2 transition-all duration-200">
-                    Μάθε Περισσότερα
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
+      {/* Programs grouped by category */}
+      <section className="bg-movus-white pb-20 md:pb-28">
+        <EmsPinnedSection programs={programs.slice(4)} />
+        <CategorySection id="personal" title="Personal" programs={programs.slice(2, 4)} />
+        <CategorySection id="group" title="Ομαδικά" programs={programs.slice(0, 2)} />
       </section>
 
       {/* FAQ */}
