@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-[1000px] px-5 md:px-8">
             <div className="aspect-[16/9] rounded-2xl overflow-hidden relative">
               <Image
-                src="/images/program-ems.webp"
+                src="/images/movus-ems-training.webp"
                 alt={post.title}
                 fill
                 className="object-cover"

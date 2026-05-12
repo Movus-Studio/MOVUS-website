@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Jura, Dela_Gothic_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FrameMask } from "@/components/layout/FrameMask";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
+import { MotionBoot } from "@/components/layout/MotionBoot";
 
 const jura = Jura({
   variable: "--font-manrope-var",
@@ -74,15 +75,33 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${jura.variable} ${delaGothic.variable} antialiased`}>
+    <html
+      lang="el"
+      className={`${jura.variable} ${delaGothic.variable} antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-screen font-[family-name:var(--font-manrope-var)]">
+
+        {/* CSS-only mobile menu toggle. Burger is a <label htmlFor>, menu visibility
+            keyed off this checkbox via html:has(#movus-menu-toggle:checked) in globals.css.
+            No JavaScript dependency — works even if React hydration fails. */}
+        <input type="checkbox" id="movus-menu-toggle" className="movus-menu-toggle-input" aria-hidden="true" tabIndex={-1} />
+
         <LoadingScreen />
+        <MotionBoot />
 
         <a href="#main-content" className="skip-to-content">
           Μετάβαση στο περιεχόμενο
@@ -108,8 +127,8 @@ export default function RootLayout({
             read as one cohesive shape. Text gets a subtle skewX(-8deg) italic — a tamed
             version of Framer's skewX:15 on the original Primary Button. */}
         <div
-          className="fixed bottom-0 right-[4px] md:right-[6px] w-[200px] md:w-[245px] h-[60px] md:h-[84px] z-[110] flex items-center justify-center pointer-events-none"
-          style={{ padding: '10px 16px 16px 10px' }}
+          className="fixed right-[4px] md:right-[6px] w-[200px] md:w-[245px] h-[60px] md:h-[84px] z-[110] flex items-center justify-center pointer-events-none"
+          style={{ padding: '10px 16px 16px 10px', bottom: 'env(safe-area-inset-bottom)' }}
         >
           <a
             href="https://booking.movus.gr"

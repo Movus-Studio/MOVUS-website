@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteContact, siteCopy } from "@/content/site";
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { contactFAQ } from "@/content/faq";
+import { FAQ } from "@/components/sections/FAQ";
+import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -27,6 +29,10 @@ export default function ContactPage() {
             ])
           ),
         }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(contactFAQ)) }}
       />
 
       {/* Hero */}
@@ -178,6 +184,14 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <FAQ
+        items={contactFAQ}
+        image="/images/movus-studio-interior.webp"
+        imageAlt="MOVUS studio Ιερού Λόχου 1 Πάτρα"
+        helperText="Πριν την πρώτη σου επίσκεψη — ώρες, πρόσβαση, τρόποι επικοινωνίας και τι να περιμένεις στο ραντεβού γνωριμίας."
+      />
 
       {/* CTA band */}
       <section className="bg-movus-black py-20 md:py-28">

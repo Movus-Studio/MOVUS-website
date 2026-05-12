@@ -59,17 +59,22 @@ export function ProgramsGrid() {
         const pin = pinRef.current;
         if (!track || !pin) return;
 
-        const getDistance = () => track.scrollWidth - window.innerWidth + 96;
+        // Track distance to bring last card to the right edge (current behavior),
+        // plus an exit travel so cards keep sliding off the left as the user
+        // continues scrolling toward the next section.
+        const getTrackDistance = () => track.scrollWidth - window.innerWidth + 96;
+        const getExitTravel = () => window.innerWidth;
+        const getTotalDistance = () => getTrackDistance() + getExitTravel();
 
         const tween = gsap.to(track, {
-          x: () => -getDistance(),
+          x: () => -getTotalDistance(),
           ease: "none",
           scrollTrigger: {
             trigger: pin,
             pin: true,
             scrub: 1,
             start: "top top",
-            end: () => `+=${getDistance()}`,
+            end: () => `+=${getTotalDistance()}`,
             invalidateOnRefresh: true,
           },
         });
@@ -91,7 +96,7 @@ export function ProgramsGrid() {
     >
       {/* Header — Service header spine, padding 200/0 */}
       <div className="spine spine-flush-bottom !gap-10">
-        <p className="overline">(Επίλεξε)</p>
+        <p className="overline">(Προγράμματα)</p>
         <h2 className="heading-section text-movus-black leading-[0.92]">
           <span className="block">CHOOSE YOUR</span>
           <span className="block text-movus-orange">PROGRAM</span>
@@ -112,12 +117,21 @@ export function ProgramsGrid() {
         </div>
       </div>
 
-      {/* Body — mobile vertical stack, with bottom spine padding */}
-      <div className="lg:hidden mx-auto w-[var(--spine-w)] max-w-[1200px] pt-[var(--spine-gap)] pb-[var(--spine-pad)] flex flex-col gap-6">
-        {programs.map((program, i) => {
-          const dark = i % 2 === 1;
-          return <ProgramCard key={program.slug} program={program} tags={program.tags ?? []} dark={dark} />;
-        })}
+      {/* Body — mobile horizontal snap-scroll carousel, full bleed */}
+      <div className="lg:hidden pt-[var(--spine-gap)] pb-[var(--spine-pad)]">
+        <div className="no-scrollbar flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory pl-[6%] pr-[6%] scroll-pl-[6%] [scrollbar-width:none] [overscroll-behavior-x:contain] [-webkit-overflow-scrolling:touch]">
+          {programs.map((program, i) => {
+            const dark = i % 2 === 1;
+            return (
+              <div
+                key={program.slug}
+                className="flex-shrink-0 w-[85%] max-w-[520px] snap-start"
+              >
+                <ProgramCard program={program} tags={program.tags ?? []} dark={dark} />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Body — desktop scroll-pinned horizontal track (full bleed past spine) */}
@@ -206,7 +220,7 @@ function ProgramCard({
           style={{
             fontFamily: "var(--font-display), Impact, sans-serif",
             fontWeight: 900,
-            fontSize: "clamp(2rem, 3.5vw + 0.25rem, 3.75rem)",
+            fontSize: "clamp(1.625rem, 2.4vw + 0.25rem, 2.5rem)",
             letterSpacing: "-0.01em",
           }}
         >

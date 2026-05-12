@@ -33,12 +33,13 @@ export function WhyMovus() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-movus-white overflow-hidden" id="why-movus">
+    <section className="bg-movus-white overflow-x-clip" id="why-movus">
       <div className="spine">
         <motion.p
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          data-motion-reveal
           className="overline"
         >
           (Γιατί Εμάς)
@@ -47,8 +48,9 @@ export function WhyMovus() {
         <motion.h2
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          data-motion-reveal
           className="heading-section text-movus-black leading-[0.92]"
         >
           <span className="block">
@@ -64,12 +66,13 @@ export function WhyMovus() {
               key={i}
               initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px 0px -10% 0px" }}
               transition={{
                 delay: i * 0.08,
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1],
               }}
+              data-motion-reveal
               className="flex flex-col gap-4 border-t border-movus-black/10 pt-6"
             >
               <span

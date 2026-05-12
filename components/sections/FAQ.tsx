@@ -3,10 +3,22 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { faqItems } from "@/content/faq";
+import { faqItems, type FAQItem } from "@/content/faq";
 import { generateFAQSchema } from "@/lib/schema";
 
-export function FAQ() {
+interface FAQProps {
+  items?: FAQItem[];
+  image?: string;
+  imageAlt?: string;
+  helperText?: string;
+}
+
+export function FAQ({
+  items = faqItems,
+  image = "/images/movus-ems-training.webp",
+  imageAlt = "EMS προπόνηση close-up",
+  helperText = "Ξεκινώντας κάτι νέο έρχεται πάντα με ερωτήσεις. Εδώ καλύπτουμε τα πιο συχνά θέματα πριν την πρώτη σου συνεδρία.",
+}: FAQProps = {}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const prefersReducedMotion = useReducedMotion();
 
@@ -14,14 +26,15 @@ export function FAQ() {
     <section className="bg-movus-orange" id="faq">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(faqItems)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(items)) }}
       />
 
       <div className="spine">
         <motion.p
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          data-motion-reveal
           className="text-movus-white/80"
           style={{ fontSize: "var(--text-caption)" }}
         >
@@ -31,8 +44,9 @@ export function FAQ() {
         <motion.h2
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          data-motion-reveal
           className="heading-section text-movus-white leading-[0.92]"
         >
           <span className="block">ΣΥΧΝΕΣ</span>
@@ -45,8 +59,8 @@ export function FAQ() {
           <div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-black">
               <Image
-                src="/images/program-ems.webp"
-                alt="EMS προπόνηση close-up"
+                src={image}
+                alt={imageAlt}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -56,24 +70,24 @@ export function FAQ() {
               className="text-movus-white/90 leading-relaxed max-w-md"
               style={{ fontSize: "var(--text-small)" }}
             >
-              Ξεκινώντας κάτι νέο έρχεται πάντα με ερωτήσεις. Εδώ καλύπτουμε
-              τα πιο συχνά θέματα πριν την πρώτη σου συνεδρία.
+              {helperText}
             </p>
           </div>
 
           {/* Accordion */}
           <div className="space-y-3">
-            {faqItems.map((item, index) => (
+            {items.map((item, index) => (
               <motion.div
                 key={index}
                 initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20px" }}
+                viewport={{ once: true, margin: "0px 0px -5% 0px" }}
                 transition={{
                   delay: index * 0.04,
                   duration: 0.4,
                   ease: [0.22, 1, 0.36, 1],
                 }}
+                data-motion-reveal
                 className="bg-movus-white rounded-xl overflow-hidden"
               >
                 <button

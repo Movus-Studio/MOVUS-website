@@ -9,13 +9,15 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const photos = [
-  "/images/hero-woman.webp",
-  "/images/program-group.webp",
-  "/images/studio-training.webp",
-  "/images/program-ems.webp",
-  "/images/program-ishape.webp",
-  "/images/ems-suits.webp",
-  "/images/shapespace-red.webp",
+  "/images/movus-studio-night.webp",
+  "/images/movus-group-training.webp",
+  "/images/movus-studio-training.webp",
+  "/images/movus-ems-training.webp",
+  "/images/movus-ishape-sculpt.webp",
+  "/images/movus-imotion-ems-suit.webp",
+  "/images/movus-ems-fitness-hero.webp",
+  "/images/movus-shapespace-pod.webp",
+  "/images/movus-shapespace-cabin.webp",
 ];
 
 export function Transformations() {
@@ -24,30 +26,11 @@ export function Transformations() {
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
-
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(
-          ".transform-card",
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "expo.out",
-            stagger: { each: 0.08, from: "center" },
-            scrollTrigger: {
-              trigger: ".transform-carousel",
-              start: "top 85%",
-            },
-          }
-        );
-
+      // Desktop only — gating on (pointer: fine). See Hero.tsx for rationale.
+      mm.add("(prefers-reduced-motion: no-preference) and (pointer: fine)", () => {
         gsap
           .timeline({
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 70%",
-            },
+            scrollTrigger: { trigger: sectionRef.current, start: "top 70%" },
           })
           .from(".transform-eyebrow", {
             opacity: 0,
@@ -58,12 +41,7 @@ export function Transformations() {
           .fromTo(
             ".transform-word",
             { yPercent: 110 },
-            {
-              yPercent: 0,
-              duration: 1.1,
-              ease: "expo.out",
-              stagger: 0.12,
-            },
+            { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.12 },
             "-=0.3"
           );
       });
@@ -74,85 +52,54 @@ export function Transformations() {
   return (
     <section
       ref={sectionRef}
-      className="bg-movus-white overflow-hidden"
+      className="bg-movus-white overflow-x-clip"
       id="transformations"
     >
-      {/* Transform spine, vertical Heading Wrap + Carousel, padding 200/0 */}
       <div className="spine spine-flush-bottom !gap-16 md:!gap-24 items-center text-center">
-        {/* Heading Wrap (on top per source design) */}
         <div className="flex flex-col items-center gap-6">
           <p className="transform-eyebrow overline">
-            (Τα Αποτελέσματά Τους)
+            (Στιγμές από τις Προπονήσεις)
           </p>
           <h2 className="heading-section leading-[0.92] text-movus-black">
             <span className="block overflow-hidden">
-              <span className="transform-word inline-block">ΑΠΟ ΤΗΝ ΑΡΧΗ</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="transform-word inline-block">ΣΤΗΝ</span>
+              <span className="transform-word inline-block">YOUR MOVUS</span>
             </span>
             <span className="block overflow-hidden">
               <span className="transform-word inline-block text-movus-orange">
-                ΔΥΝΑΜΗ
+                MOMENTS
               </span>
             </span>
           </h2>
         </div>
+      </div>
 
-        {/* Arc Carousel */}
-        <div
-          className="transform-carousel relative flex justify-center items-end h-[340px] md:h-[460px] lg:h-[520px] w-full"
-          style={{ perspective: 1600 }}
-        >
-          {photos.map((src, i) => {
-            const offset = i - 3; // center index = 3
-            const absoluteOffset = Math.abs(offset);
-            const rotate = offset * 6;
-            const translateX = offset * 140;
-            const translateY = absoluteOffset * absoluteOffset * 8;
-            const zIndex = 10 - absoluteOffset;
-            const isCenter = offset === 0;
-
-            return (
-              <div
-                key={i}
-                className="transform-card absolute"
-                style={{
-                  zIndex,
-                  transform: `translateX(${translateX}px) translateY(${translateY}px) rotate(${rotate}deg)`,
-                  transformOrigin: "bottom center",
-                }}
-              >
-                <div
-                  className="relative rounded-[28px] overflow-hidden shadow-[0_25px_60px_-20px_rgba(0,0,0,0.45)]"
-                  style={{
-                    width: "clamp(170px, 18vw, 240px)",
-                    aspectRatio: "3 / 4",
-                    filter: isCenter
-                      ? "none"
-                      : "grayscale(100%) brightness(0.55)",
-                  }}
-                >
-                  <Image
-                    src={src}
-                    alt="Μεταμόρφωση"
-                    fill
-                    className="object-cover"
-                    sizes="240px"
-                  />
-                  {isCenter && (
-                    <>
-                      <div className="absolute inset-y-[-8%] left-1/2 -translate-x-1/2 w-[65%] pointer-events-none">
-                        <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(255,107,53,0.55)_0%,rgba(255,107,53,0)_70%)] mix-blend-screen blur-[10px]" />
-                      </div>
-                      <div className="absolute inset-0 border-x-2 border-movus-orange/40 mix-blend-screen pointer-events-none" />
-                    </>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+      {/* Photo marquee, infinite scroll, pauses on hover */}
+      <div className="group relative w-full overflow-hidden py-12 md:py-16">
+        <div className="flex w-max gap-4 md:gap-6 animate-ticker group-hover:[animation-play-state:paused]">
+          {[...photos, ...photos].map((src, i) => (
+            <div
+              key={i}
+              className="relative shrink-0 rounded-3xl overflow-hidden shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35)]"
+              style={{
+                width: "clamp(220px, 22vw, 320px)",
+                aspectRatio: "3 / 4",
+              }}
+            >
+              <Image
+                src={src}
+                alt="MOVUS moment"
+                fill
+                className="object-cover"
+                sizes="320px"
+                draggable={false}
+              />
+            </div>
+          ))}
         </div>
+
+        {/* Edge fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-movus-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-movus-white to-transparent" />
       </div>
     </section>
   );

@@ -15,9 +15,11 @@ interface FormData {
 export function ContactSection() {
   const prefersReducedMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
-  // SharkID and similar password-manager extensions inject DOM into form fields
-  // before React hydrates, causing mismatches. Render the form only post-mount
-  // so the SSR snapshot has nothing for the extension to disagree with.
+  // CRITICAL: gate form behind mounted flag. SharkID + other password-manager
+  // extensions inject DOM into form fields between SSR and hydration, causing
+  // a hydration mismatch that crashes React on the WHOLE page. Rendering the
+  // form post-mount only means SSR has no form for extensions to molest.
+  // See sharkid_extension_form_hydration.md memory.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const { register, handleSubmit } = useForm<FormData>();
@@ -46,6 +48,11 @@ export function ContactSection() {
     <section
       className="bg-movus-black"
       id="contact"
+      style={{
+        // Push content above the fixed bottom-right CTA pill (200×60 + safe-area)
+        // so the message textarea + submit button aren't covered on mobile.
+        paddingBottom: "calc(env(safe-area-inset-bottom) + 80px)",
+      }}
     >
       <div className="spine">
         {/* Header */}
@@ -53,7 +60,8 @@ export function ContactSection() {
           <motion.p
             initial={prefersReducedMotion ? {} : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+            data-motion-reveal
             className="overline-light"
           >
             (Το Πρώτο Βήμα)
@@ -61,8 +69,9 @@ export function ContactSection() {
           <motion.h2
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            data-motion-reveal
             className="heading-section leading-[0.92]"
           >
             <span className="block text-movus-white">ΞΕΡΕΙΣ ΗΔΗ</span>
@@ -71,8 +80,9 @@ export function ContactSection() {
           <motion.div
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px -10% 0px" }}
             transition={{ delay: 0.15, duration: 0.6 }}
+            data-motion-reveal
             className="max-w-2xl space-y-4 text-movus-white/70 leading-[1.6]"
             style={{ fontSize: "var(--text-body-m)" }}
           >
@@ -88,8 +98,9 @@ export function ContactSection() {
           onSubmit={handleSubmit(onSubmit)}
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px -5% 0px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          data-motion-reveal
           className="space-y-8"
           suppressHydrationWarning
         >

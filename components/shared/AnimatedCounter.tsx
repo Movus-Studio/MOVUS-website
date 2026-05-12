@@ -26,14 +26,25 @@ export function AnimatedCounter({
   className = "",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -5% 0px" });
   const prefersReducedMotion = useReducedMotion();
   const motionValue = useMotionValue(0);
   const rounded = useTransform(motionValue, (latest) => Math.round(latest));
+
+  // SSR-safe: start at 0 to match server render. After hydration, the useEffect
+  // below detects touch and sets to target immediately (no count-up).
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setDisplayValue(target);
+    }
+  }, [target]);
+
+  useEffect(() => {
     if (!isInView) return;
+    if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) return;
 
     if (prefersReducedMotion) {
       setDisplayValue(target);
