@@ -81,13 +81,26 @@ export function HowItWorks() {
           </motion.p>
         </div>
 
-        {/* Step Wrap, vertical stack of 4 Step Cards — sticky-stack on lg */}
-        <div className="lg:flex-1 flex flex-col gap-6 lg:gap-8">
+        {/* Step Wrap — mobile: horizontal snap-scroll carousel (full bleed);
+            lg+: vertical sticky-stack of 4 Step Cards */}
+        <div
+          className="
+            lg:flex-1 flex flex-col gap-6 lg:gap-8
+            max-lg:flex-row max-lg:items-stretch max-lg:gap-4
+            max-lg:overflow-x-auto max-lg:snap-x max-lg:snap-mandatory
+            max-lg:w-screen max-lg:relative max-lg:left-1/2 max-lg:right-1/2
+            max-lg:-ml-[50vw] max-lg:-mr-[50vw]
+            max-lg:pl-[6%] max-lg:pr-[6%] max-lg:scroll-pl-[6%]
+            max-lg:no-scrollbar max-lg:[scrollbar-width:none]
+            max-lg:[overscroll-behavior-x:contain]
+            max-lg:[-webkit-overflow-scrolling:touch]
+          "
+        >
           {steps.map((step, i) => (
             <div
               key={i}
               style={{ top: `calc(7rem + ${i * 3}rem)` }}
-              className="lg:sticky"
+              className="lg:sticky max-lg:flex-shrink-0 max-lg:w-[85%] max-lg:max-w-[460px] max-lg:snap-start"
             >
               <motion.article
                 initial={prefersReducedMotion ? {} : { opacity: 0 }}

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,10 +12,15 @@ interface MobileMenuProps {
   navItems: NavItem[];
 }
 
-// CSS-only mobile menu. Always in the DOM; visibility flipped by the
-// #movus-menu-toggle checkbox in app/layout.tsx via :has() in globals.css.
-// Clicking any link sets the checkbox unchecked via a sibling <label>'s
-// for=#movus-menu-toggle inside the menu (overlay backdrop label).
+// Mobile menu. Visibility flipped by the #movus-menu-toggle checkbox in
+// app/layout.tsx via :has() in globals.css. Link clicks close the menu by
+// programmatically unchecking the toggle — nesting <Link> inside a <label
+// for=...> caused iOS Safari to swallow the navigation.
+const closeMenu = () => {
+  const toggle = document.getElementById("movus-menu-toggle");
+  if (toggle instanceof HTMLInputElement) toggle.checked = false;
+};
+
 export function MobileMenu({ navItems }: MobileMenuProps) {
   return (
     <div className="movus-mobile-menu fixed inset-0 z-[10001] bg-movus-black">
@@ -43,16 +50,14 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
               </p>
               <nav className="space-y-1">
                 {navItems.map((item) => (
-                  // Wrap each Link in a label so clicking it also unchecks the
-                  // toggle (closes the menu) before/while navigating.
-                  <label key={item.href} htmlFor="movus-menu-toggle" className="block cursor-pointer">
-                    <Link
-                      href={item.href}
-                      className="block text-3xl md:text-4xl lg:text-5xl font-bold text-movus-white hover:text-movus-orange transition-colors duration-200 py-2"
-                    >
-                      {item.label}
-                    </Link>
-                  </label>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="block text-3xl md:text-4xl lg:text-5xl font-bold text-movus-white hover:text-movus-orange transition-colors duration-200 py-2"
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </nav>
             </div>

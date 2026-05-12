@@ -117,12 +117,21 @@ export function ProgramsGrid() {
         </div>
       </div>
 
-      {/* Body — mobile vertical stack, with bottom spine padding */}
-      <div className="lg:hidden mx-auto w-[var(--spine-w)] max-w-[1200px] pt-[var(--spine-gap)] pb-[var(--spine-pad)] flex flex-col gap-6">
-        {programs.map((program, i) => {
-          const dark = i % 2 === 1;
-          return <ProgramCard key={program.slug} program={program} tags={program.tags ?? []} dark={dark} />;
-        })}
+      {/* Body — mobile horizontal snap-scroll carousel, full bleed */}
+      <div className="lg:hidden pt-[var(--spine-gap)] pb-[var(--spine-pad)]">
+        <div className="no-scrollbar flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory pl-[6%] pr-[6%] scroll-pl-[6%] [scrollbar-width:none] [overscroll-behavior-x:contain] [-webkit-overflow-scrolling:touch]">
+          {programs.map((program, i) => {
+            const dark = i % 2 === 1;
+            return (
+              <div
+                key={program.slug}
+                className="flex-shrink-0 w-[85%] max-w-[520px] snap-start"
+              >
+                <ProgramCard program={program} tags={program.tags ?? []} dark={dark} />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Body — desktop scroll-pinned horizontal track (full bleed past spine) */}
