@@ -32,7 +32,7 @@ export function Navbar() {
           aria-label="MOVUS"
           className="pointer-events-auto w-full block transform group-hover:scale-[1.03] transition-transform duration-300"
         >
-          <Logo variant="dark" className="w-full md:w-[160px]" />
+          <Logo variant="orange" className="w-full md:w-[160px]" />
         </Link>
       </div>
 

@@ -151,7 +151,10 @@ export function WhatIsEMS() {
             </div>
             <h3 className="heading-section leading-[0.92]">
               <span className="block overflow-hidden">
-                <span className="ems-reveal inline-block text-movus-white">THE MOVUS</span>
+                <span className="ems-reveal inline-block">
+                  <span className="text-movus-white">THE </span>
+                  <span className="text-movus-orange">MOVUS</span>
+                </span>
               </span>
               <span className="block overflow-hidden">
                 <span className="ems-reveal inline-block text-movus-orange">SYSTEM</span>

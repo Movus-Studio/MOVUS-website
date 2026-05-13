@@ -268,6 +268,7 @@ function ProgramCard({
           alt={program.imageAlt}
           fill
           className="object-cover"
+          style={program.imagePosition ? { objectPosition: program.imagePosition } : undefined}
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <motion.div

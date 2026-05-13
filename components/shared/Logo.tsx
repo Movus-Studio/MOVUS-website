@@ -14,7 +14,7 @@ export function Logo({ variant = "dark", className = "" }: LogoProps) {
         src={src}
         alt="MOVUS"
         fill
-        priority={variant === "dark"}
+        priority={variant !== "light"}
         sizes="240px"
         className="object-contain select-none"
       />

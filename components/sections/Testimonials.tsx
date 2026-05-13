@@ -106,30 +106,7 @@ export function Testimonials() {
             );
           })}
 
-          {/* Layout Spacers (empty cells) — visible only on lg, decorative.
-              T2 is wide and already occupies (2,1)+(3,1), so this rating sits
-              in (3,2) — the only truly empty cell — to avoid overlap. */}
-          <div className="hidden lg:flex lg:col-start-3 lg:row-start-2 rounded-3xl border border-movus-black/10 items-center justify-center">
-            <div className="text-center">
-              <p
-                className="font-black text-movus-orange tracking-tight"
-                style={{
-                  fontFamily: "var(--font-display), Impact, sans-serif",
-                  fontSize: "clamp(2.5rem, 4vw, 4.5rem)",
-                  fontWeight: 400,
-                  lineHeight: 0.92,
-                }}
-              >
-                5/5
-              </p>
-              <p
-                className="text-medium-gray mt-2 font-medium"
-                style={{ fontSize: "var(--text-caption)" }}
-              >
-                από 100+ πελάτες
-              </p>
-            </div>
-          </div>
+          {/* Decorative REAL RESULTS card — sits in (1,2). The (3,2) cell is intentionally empty. */}
           <div className="hidden lg:flex lg:col-start-1 lg:row-start-2 rounded-3xl bg-movus-black items-center justify-center p-6">
             <p
               className="text-movus-white font-black uppercase leading-[0.95] tracking-tight text-center"

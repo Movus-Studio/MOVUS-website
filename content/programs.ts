@@ -27,6 +27,7 @@ export interface Program {
   faqs: ProgramFAQ[];
   image: string;
   imageAlt: string;
+  imagePosition?: string;
 }
 
 export const programs: Program[] = [
@@ -162,7 +163,7 @@ export const programs: Program[] = [
           "Online μέσα από το site, με τη φόρμα επικοινωνίας ή τηλεφωνικά. Τα slots είναι μετρημένα — προτείνουμε booking τουλάχιστον 24 ώρες πριν.",
       },
     ],
-    image: "/images/movus-studio-training.webp",
+    image: "/images/movus-squad.webp",
     imageAlt: "MOVUS SQUAD micro-group προπόνηση",
   },
   {
@@ -220,7 +221,7 @@ export const programs: Program[] = [
           "Σε όσους θέλουν προπόνηση με coach να τους βλέπει σε κάθε επανάληψη, χωρίς όμως να μπουν σε αποκλειστικό 1-on-1. Ιδανικό για όσους ξεκινούν, όσους επιστρέφουν μετά από διάλειμμα ή τραυματισμό, και όσους θέλουν στοχευμένη μεταμόρφωση.",
       },
     ],
-    image: "/images/movus-ishape-sculpt.webp",
+    image: "/images/movus-ems.webp",
     imageAlt: "MOVUS PERSONAL προπόνηση 2 ατόμων",
   },
   {
@@ -279,7 +280,7 @@ export const programs: Program[] = [
           "Ναι, και αυτό είναι ένα από τα δυνατά του σημεία. Επειδή είναι 1-on-1, η ώρα προσαρμόζεται στο πρόγραμμά σου — πρωί πριν τη δουλειά, μεσημέρι ή απόγευμα, εντός των ωρών λειτουργίας μας.",
       },
     ],
-    image: "/images/movus-studio-interior.webp",
+    image: "/images/movus-ems-mat-training.webp",
     imageAlt: "MOVUS PRIVATE 1-on-1 προπόνηση",
   },
   {
@@ -364,7 +365,7 @@ export const programs: Program[] = [
           "Για διατήρηση φόρμας, σύσφιξη και μυϊκό τόνο, 1–2 συνεδρίες EMS την εβδομάδα είναι αρκετές. Αν στοχεύεις σε σημαντική απώλεια λίπους, αύξηση αντοχής ή αθλητική απόδοση, ο coach προτείνει συνδυασμό με PERSONAL, TEAM ή SHAPE SPACE για ολοκληρωμένο αποτέλεσμα.",
       },
     ],
-    image: "/images/movus-ems-training.webp",
+    image: "/images/movus-ems-v2.webp",
     imageAlt: "MOVUS EMS i-Motion προπόνηση",
   },
   {
@@ -424,7 +425,7 @@ export const programs: Program[] = [
           "Φοράς τη στολή EMS που σου παρέχουμε και αθλητικά παπούτσια κατάλληλα για τρέξιμο. Πρόσθεσε και μια αλλαξιά γιατί η εφίδρωση είναι σημαντική.",
       },
     ],
-    image: "/images/movus-shapespace-cabin.webp",
+    image: "/images/movus-ems-run.webp",
     imageAlt: "EMS RUN διάδρομος με EMS τεχνολογία",
   },
   {
@@ -489,7 +490,7 @@ export const programs: Program[] = [
           "Αθλητικά κολάν ή σορτς και ένα t-shirt. Στο studio σου παρέχουμε όλα τα επιπλέον που χρειάζεσαι. Μην ξεχάσεις νερό και πετσέτα.",
       },
     ],
-    image: "/images/movus-shapespace-pod.webp",
+    image: "/images/movus-shape-space.webp",
     imageAlt: "MOVUS SHAPE SPACE vacuum infrared διάδρομος",
   },
   {
@@ -558,7 +559,7 @@ export const programs: Program[] = [
           "Ξεκινάς όποτε σε βολεύει. Δεν λειτουργεί σε κύκλους — μόλις είσαι έτοιμος/η, ορίζουμε την πρώτη συνεδρία αξιολόγησης και ξεκινάμε. Σου προτείνουμε να μην το αναβάλεις, γιατί το πρώτο βήμα είναι αυτό που κάνει τη διαφορά.",
       },
     ],
-    image: "/images/movus-imotion-ems-suit.webp",
+    image: "/images/movus-transformation.webp",
     imageAlt: "MOVUS TRANSFORMATION πακέτο προπόνησης",
   },
   {
@@ -618,7 +619,7 @@ export const programs: Program[] = [
           "Όχι αυστηρά δεσμευτικό. Το HYBRID λειτουργεί σε μηνιαία βάση — αξιολογείς και ανανεώνεις. Για μέγιστα αποτελέσματα συνιστούμε τουλάχιστον 8–12 εβδομάδες συνεχούς προπόνησης.",
       },
     ],
-    image: "/images/movus-personal-coach.webp",
+    image: "/images/movus-hybrid.webp",
     imageAlt: "MOVUS HYBRID συνδυασμός δύναμης και EMS RUN",
   },
 ];

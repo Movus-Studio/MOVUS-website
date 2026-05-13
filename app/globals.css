@@ -219,21 +219,10 @@ h1, h2 {
   .spine-row { flex-direction: row; align-items: flex-start; }
 }
 
-/* Overline, parenthetical style */
-.overline {
-  font-size: var(--text-caption);
-  font-weight: 700;
-  color: #0A0A0A;
-  margin-bottom: 1rem;
-  text-decoration: none;
-}
-
+/* Overline, parenthetical style — temporarily hidden site-wide */
+.overline,
 .overline-light {
-  font-size: var(--text-caption);
-  font-weight: 700;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 1rem;
-  text-decoration: none;
+  display: none;
 }
 
 /* Buttons */

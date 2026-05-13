@@ -72,7 +72,7 @@ export function Hero() {
       {/* Full-bleed hero image */}
       <div ref={imageRef} className="absolute inset-0 z-0 will-change-transform">
         <Image
-          src="/images/movus-ems-fitness-hero.webp"
+          src="/images/movus-hero.webp"
           alt="EMS προπόνηση στο MOVUS"
           fill
           className="object-cover object-[68%_35%] md:object-[40%_center]"

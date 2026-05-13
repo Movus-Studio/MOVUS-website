@@ -9,15 +9,12 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const photos = [
-  "/images/movus-studio-night.webp",
-  "/images/movus-group-training.webp",
-  "/images/movus-studio-training.webp",
-  "/images/movus-ems-training.webp",
-  "/images/movus-ishape-sculpt.webp",
-  "/images/movus-imotion-ems-suit.webp",
-  "/images/movus-ems-fitness-hero.webp",
-  "/images/movus-shapespace-pod.webp",
-  "/images/movus-shapespace-cabin.webp",
+  "/images/movus-ems-mat-training.webp",
+  "/images/movus-ems-floor-workout.webp",
+  "/images/movus-barbell-lunge-training.webp",
+  "/images/movus-side-plank-core.webp",
+  "/images/movus-red-light-recovery.webp",
+  "/images/movus-shape-space-cardio.webp",
 ];
 
 export function Transformations() {

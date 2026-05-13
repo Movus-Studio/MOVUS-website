@@ -157,7 +157,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
         {/* Right, image */}
         <div className="hidden lg:block w-1/2 relative">
           <Image
-            src="/images/movus-woman-training.webp"
+            src="/images/menu-photo.webp"
             alt="MOVUS EMS Training"
             fill
             className="object-cover"
