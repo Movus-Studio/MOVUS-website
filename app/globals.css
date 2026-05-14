@@ -9,7 +9,11 @@
      Keep text-movus-orange for backgrounds + large display headings. */
   --color-movus-orange-text: #C84A1F;
   --color-movus-black: #0A0A0A;
-  --color-movus-white: #FFFFFF;
+  /* Ghost White (#F8F8FF) replaces classic #FFFFFF site-wide — softer, with a
+     barely-perceptible cool cast. Override Tailwind's default --color-white too
+     so `text-white` / `bg-white` utilities pick it up everywhere. */
+  --color-movus-white: #F8F8FF;
+  --color-white: #F8F8FF;
   --color-movus-navy: #111115;
   --color-dark-gray: #1A1A1E;
   /* Darkened from #888892 (3.5:1) to #5C5C66 (7.1:1) for WCAG AA body text. */
@@ -117,7 +121,7 @@ html { scroll-behavior: auto; }
 
 body {
   background: var(--color-movus-black);
-  color: #FFFFFF;
+  color: var(--color-movus-white);
   font-family: var(--font-manrope), sans-serif;
   font-size: var(--text-body);
   line-height: 1.6;
@@ -133,7 +137,7 @@ body {
 .skip-to-content {
   position: fixed; top: 0; left: 16px; z-index: 100;
   transform: translateY(-150%);
-  padding: 12px 24px; background: #FF6B35; color: #fff;
+  padding: 12px 24px; background: #FF6B35; color: var(--color-movus-white);
   font-weight: 600; font-size: 0.8125rem; text-transform: uppercase;
   letter-spacing: 0.08em; border-radius: 0 0 6px 6px;
   transition: transform 0.2s;
@@ -233,7 +237,7 @@ h1, h2 {
 /* Buttons */
 .btn-primary {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 1rem 2rem; background: #FF6B35; color: #fff;
+  padding: 1rem 2rem; background: #FF6B35; color: var(--color-movus-white);
   font-weight: 700; font-size: var(--text-small);
   text-transform: uppercase; letter-spacing: 0.04em;
   border-radius: 8px; cursor: pointer;
