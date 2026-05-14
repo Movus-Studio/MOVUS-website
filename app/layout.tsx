@@ -49,12 +49,21 @@ export const metadata: Metadata = {
     title: "MOVUS, EMS Fitness Studio | Πάτρα",
     description:
       "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MOVUS EMS Fitness Studio · Πάτρα",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "MOVUS, EMS Fitness Studio | Πάτρα",
     description:
       "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
+    images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://movus.gr",

@@ -100,7 +100,7 @@ export default async function ProgramPage({ params }: Props) {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-center">
             <div>
-              <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-3 py-1 rounded-full mb-4">
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-3 py-1 rounded-full mb-4">
                 {program.tag}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
@@ -161,7 +161,7 @@ export default async function ProgramPage({ params }: Props) {
       {program.howItWorks && (
         <section className="bg-cream py-20 md:py-28">
           <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
-            <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+            <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
               Πως λειτουργεί;
             </span>
             <p className="text-xl md:text-2xl text-movus-navy leading-relaxed">
@@ -175,7 +175,7 @@ export default async function ProgramPage({ params }: Props) {
       {program.subPrograms && program.subPrograms.length > 0 && (
         <section className="bg-movus-white py-20 md:py-28">
           <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-            <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+            <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
               Τα Προγράμματα
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-16">
@@ -191,7 +191,7 @@ export default async function ProgramPage({ params }: Props) {
                   }`}
                 >
                   <div>
-                    <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-2.5 py-1 rounded-full mb-4">
+                    <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-2.5 py-1 rounded-full mb-4">
                       {sub.category}
                     </span>
                     <h3
@@ -264,7 +264,7 @@ export default async function ProgramPage({ params }: Props) {
       {/* Related programs */}
       <section className="bg-movus-black py-20 md:py-28">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Ανακαλύψτε άλλα Προγράμματα
           </span>
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-12">

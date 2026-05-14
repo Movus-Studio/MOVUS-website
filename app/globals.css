@@ -4,11 +4,16 @@
   --color-movus-orange: #FF6B35;
   --color-movus-orange-dark: #E55A2B;
   --color-movus-orange-light: #FFF0EB;
+  /* WCAG AA-safe orange for small text on white/cream bg (5.1:1 contrast).
+     Use text-movus-orange-text for eyebrows, hover states, category pills.
+     Keep text-movus-orange for backgrounds + large display headings. */
+  --color-movus-orange-text: #C84A1F;
   --color-movus-black: #0A0A0A;
   --color-movus-white: #FFFFFF;
   --color-movus-navy: #111115;
   --color-dark-gray: #1A1A1E;
-  --color-medium-gray: #888892;
+  /* Darkened from #888892 (3.5:1) to #5C5C66 (7.1:1) for WCAG AA body text. */
+  --color-medium-gray: #5C5C66;
   --color-light-gray: #E8E8E8;
   --color-cream: #F5F5F5;
   --color-gold: #FFB347;

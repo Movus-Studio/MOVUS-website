@@ -2,16 +2,19 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { siteContact } from "@/content/site";
 
 interface ContactFormData {
   name: string;
   email: string;
   phone: string;
   message: string;
+  website: string;
 }
 
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -19,9 +22,30 @@ export function ContactForm() {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
-    // TODO: Integrate with server action or Resend
-    console.log("Form submitted:", data);
-    setIsSubmitted(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        message?: string;
+      };
+      if (!res.ok || !json.ok) {
+        setSubmitError(
+          json.message ??
+            "Κάτι πήγε στραβά. Δοκίμασε ξανά ή κάλεσέ μας απευθείας."
+        );
+        return;
+      }
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Πρόβλημα σύνδεσης. Δοκίμασε ξανά ή κάλεσέ μας απευθείας."
+      );
+    }
   };
 
   if (isSubmitted) {
@@ -51,7 +75,29 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+      {/* Honeypot — visually hidden, bots fill, humans don't. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label>
+          Website
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            {...register("website")}
+          />
+        </label>
+      </div>
+
       <div>
         <label
           htmlFor="name"
@@ -132,6 +178,18 @@ export function ContactForm() {
           <p className="text-error text-sm mt-1">{errors.message.message}</p>
         )}
       </div>
+
+      {submitError && (
+        <div className="rounded-lg border border-error/30 bg-error/5 px-4 py-3 text-sm text-error">
+          {submitError}{" "}
+          <a
+            href={`tel:${siteContact.phoneHref}`}
+            className="font-semibold underline"
+          >
+            {siteContact.phoneDisplay}
+          </a>
+        </div>
+      )}
 
       <button
         type="submit"

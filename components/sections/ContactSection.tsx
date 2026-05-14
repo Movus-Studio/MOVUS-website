@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { siteContact } from "@/content/site";
 
 interface FormData {
   name: string;
@@ -10,11 +11,13 @@ interface FormData {
   interest: string;
   goal: string;
   message: string;
+  website: string;
 }
 
 export function ContactSection() {
   const prefersReducedMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   // CRITICAL: gate form behind mounted flag. SharkID + other password-manager
   // extensions inject DOM into form fields between SSR and hydration, causing
   // a hydration mismatch that crashes React on the WHOLE page. Rendering the
@@ -22,11 +25,33 @@ export function ContactSection() {
   // See sharkid_extension_form_hydration.md memory.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit, formState: { isSubmitting } } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    console.log("Form:", data);
-    setSubmitted(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        message?: string;
+      };
+      if (!res.ok || !json.ok) {
+        setSubmitError(
+          json.message ??
+            "Κάτι πήγε στραβά. Δοκίμασε ξανά ή κάλεσέ μας απευθείας."
+        );
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Πρόβλημα σύνδεσης. Δοκίμασε ξανά ή κάλεσέ μας απευθείας."
+      );
+    }
   };
 
   if (submitted) {
@@ -103,7 +128,29 @@ export function ContactSection() {
           data-motion-reveal
           className="space-y-8"
           suppressHydrationWarning
+          noValidate
         >
+          {/* Honeypot — visually hidden, bots fill, humans don't. */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              left: "-10000px",
+              width: "1px",
+              height: "1px",
+              overflow: "hidden",
+            }}
+          >
+            <label>
+              Website
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                {...register("website")}
+              />
+            </label>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8" suppressHydrationWarning>
             <div suppressHydrationWarning>
               <label className="block text-movus-white font-medium mb-3 text-lg">
@@ -181,9 +228,25 @@ export function ContactSection() {
             />
           </div>
 
+          {submitError && (
+            <div className="rounded-xl border border-error/40 bg-error/10 px-5 py-4 text-sm text-movus-white">
+              {submitError}{" "}
+              <a
+                href={`tel:${siteContact.phoneHref}`}
+                className="font-semibold text-movus-orange underline"
+              >
+                {siteContact.phoneDisplay}
+              </a>
+            </div>
+          )}
+
           <div className="text-center pt-4">
-            <button type="submit" className="btn-primary">
-              Ξεκίνα Προπόνηση
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Αποστολή..." : "Ξεκίνα Προπόνηση"}
             </button>
           </div>
         </motion.form>

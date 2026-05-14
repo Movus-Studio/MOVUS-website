@@ -52,7 +52,7 @@ export default function AboutPage() {
             </ol>
           </nav>
 
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Γιατί MOVUS
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
@@ -107,7 +107,7 @@ export default function AboutPage() {
       {/* Future of Fitness */}
       <section className="bg-movus-black py-20 md:py-28 lg:py-36 relative overflow-hidden">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 relative">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Future of Fitness
           </span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-3xl">
@@ -136,7 +136,7 @@ export default function AboutPage() {
       {/* Programs teaser */}
       <section className="bg-movus-black py-20 md:py-28 border-t border-white/5">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange mb-4">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Τα Προγράμματά μας
           </span>
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-12">

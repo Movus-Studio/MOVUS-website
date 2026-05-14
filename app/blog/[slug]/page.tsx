@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: Props) {
             </nav>
 
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-2.5 py-1 rounded-full">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-2.5 py-1 rounded-full">
                 {post.category}
               </span>
               <span className="text-xs text-medium-gray">{post.readTime}</span>
@@ -207,7 +207,7 @@ export default async function BlogPostPage({ params }: Props) {
                     className="group block bg-movus-navy/50 border border-white/5 rounded-xl overflow-hidden hover:border-movus-orange/30 transition-all duration-300"
                   >
                     <div className="p-6">
-                      <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange bg-movus-orange/10 px-2.5 py-1 rounded-full mb-3">
+                      <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-2.5 py-1 rounded-full mb-3">
                         {p.category}
                       </span>
                       <h3 className="text-lg font-bold text-movus-white mb-2 group-hover:text-movus-orange transition-colors">

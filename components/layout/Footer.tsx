@@ -27,10 +27,10 @@ export function Footer() {
               Το MOVUS εστιάζει στην ουσιαστική προπόνηση, βοηθώντας σε να χτίσεις δύναμη, να κινείσαι καλύτερα και να προοδεύεις μακροπρόθεσμα.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 text-movus-black font-medium">
-              <a href={`tel:${siteContact.phoneHref}`} className="hover:text-movus-orange transition-colors">
+              <a href={`tel:${siteContact.phoneHref}`} className="hover:text-movus-orange-text transition-colors">
                 {siteContact.phoneDisplay}
               </a>
-              <a href={`mailto:${siteContact.email}`} className="hover:text-movus-orange transition-colors">
+              <a href={`mailto:${siteContact.email}`} className="hover:text-movus-orange-text transition-colors">
                 {siteContact.email}
               </a>
             </div>
@@ -42,20 +42,20 @@ export function Footer() {
           {/* Links Grid */}
           <div className="flex gap-12 md:gap-24 flex-wrap">
             <div>
-              <h3 className="text-lg font-semibold text-movus-orange mb-6">
+              <h3 className="text-lg font-semibold text-movus-orange-text mb-6">
                 Σελίδες
               </h3>
               <ul className="space-y-4">
-                <li><Link href="/" className="text-movus-black/70 hover:text-movus-orange transition-colors">Αρχική</Link></li>
-                <li><Link href="/programs" className="text-movus-black/70 hover:text-movus-orange transition-colors">Προγράμματα</Link></li>
-                <li><Link href="/about" className="text-movus-black/70 hover:text-movus-orange transition-colors">MOVUS | Για εμάς</Link></li>
-                <li><Link href="/contact" className="text-movus-black/70 hover:text-movus-orange transition-colors">Επικοινωνία</Link></li>
-                <li><Link href="/blog" className="text-movus-black/70 hover:text-movus-orange transition-colors">Blog</Link></li>
+                <li><Link href="/" className="text-movus-black/70 hover:text-movus-orange-text transition-colors">Αρχική</Link></li>
+                <li><Link href="/programs" className="text-movus-black/70 hover:text-movus-orange-text transition-colors">Προγράμματα</Link></li>
+                <li><Link href="/about" className="text-movus-black/70 hover:text-movus-orange-text transition-colors">MOVUS | Για εμάς</Link></li>
+                <li><Link href="/contact" className="text-movus-black/70 hover:text-movus-orange-text transition-colors">Επικοινωνία</Link></li>
+                <li><Link href="/blog" className="text-movus-black/70 hover:text-movus-orange-text transition-colors">Blog</Link></li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-movus-orange mb-6">
+              <h3 className="text-lg font-semibold text-movus-orange-text mb-6">
                 Ωράριο
               </h3>
               <ul className="space-y-3 text-sm text-movus-black/70">
@@ -88,7 +88,7 @@ export function Footer() {
           </p>
           <p className="text-sm text-movus-black/60 flex items-center gap-2">
             Created by 
-            <a href="https://k2o.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-movus-black hover:text-movus-orange transition-colors font-medium">
+            <a href="https://k2o.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-movus-black hover:text-movus-orange-text transition-colors font-medium">
               <span className="w-6 h-6 rounded-full bg-movus-black text-white flex items-center justify-center text-[10px]">K₂O</span>
               K2O
             </a>

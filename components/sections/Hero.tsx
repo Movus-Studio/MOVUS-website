@@ -78,7 +78,7 @@ export function Hero() {
           className="object-cover object-[68%_35%] md:object-[40%_center]"
           priority
           sizes="100vw"
-          quality={100}
+          quality={75}
         />
       </div>
 
@@ -91,39 +91,21 @@ export function Hero() {
         {/* Heading Wrap, 1fr, vertical, end-aligned, pb-60, gap-20.
             Eyebrow + subline above; H1 at the bottom for source-design's "flush with viewport bottom". */}
         <div className="flex-1 flex flex-col justify-end pb-24 md:pb-14 lg:pb-[60px] gap-5 md:gap-6">
-          {/* Top: avatars + stars social proof */}
-          <div className="hero-fade flex items-center gap-3">
-            <div className="flex -space-x-2">
-              {[
-                "https://i.pravatar.cc/80?img=47",
-                "https://i.pravatar.cc/80?img=12",
-                "https://i.pravatar.cc/80?img=49",
-              ].map((src) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  key={src}
-                  src={src}
-                  alt=""
-                  loading="lazy"
-                  className="w-8 h-8 rounded-full object-cover border-2 border-movus-black bg-dark-gray"
-                />
+          {/* Top: stars social proof */}
+          <div className="hero-fade flex items-center gap-1.5">
+            <div className="flex gap-0.5">
+              {[1, 2, 3, 4, 5].map((i) => (
+                <svg key={i} className="w-3 h-3 text-movus-orange fill-current" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
               ))}
             </div>
-            <div className="flex items-center gap-1.5">
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg key={i} className="w-3 h-3 text-movus-orange fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-movus-white/80 font-medium" style={{ fontSize: "var(--text-caption)" }}>
-                5/5
-              </span>
-              <span className="text-movus-white/50" style={{ fontSize: "var(--text-caption)" }}>
-                · 100+ Πελάτες
-              </span>
-            </div>
+            <span className="text-movus-white/80 font-medium" style={{ fontSize: "var(--text-caption)" }}>
+              5/5
+            </span>
+            <span className="text-movus-white/50" style={{ fontSize: "var(--text-caption)" }}>
+              · 100+ Πελάτες
+            </span>
           </div>
 
           {/* Bottom: title with subline underneath */}
