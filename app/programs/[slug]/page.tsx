@@ -114,7 +114,7 @@ export default async function ProgramPage({ params }: Props) {
                 ))}
               </div>
               <a
-                href="https://booking.movus.gr"
+                href="https://app.movus.gr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-movus-orange hover:bg-movus-orange-dark text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-8 py-4 rounded-lg transition-colors"
@@ -211,7 +211,7 @@ export default async function ProgramPage({ params }: Props) {
                       </span>
                     </div>
                     <a
-                      href="https://booking.movus.gr"
+                      href="https://app.movus.gr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-block bg-movus-black hover:bg-movus-orange text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-6 py-3 rounded-lg transition-colors"

@@ -23,14 +23,14 @@ const steps = [
     title: "Προπόνηση 20'",
     description:
       "20 λεπτά δομημένης άσκησης με real-time καθοδήγηση από τον γυμναστή. 350+ μύες ενεργοποιούνται ταυτόχρονα, αδύνατο με παραδοσιακή προπόνηση.",
-    image: "/images/movus-ems-training.webp",
+    image: "/images/movus-ems-core-workout.webp",
   },
   {
     number: "04",
     title: "Tracking & Πρόοδος",
     description:
       "Παρακολούθηση αποτελεσμάτων με νέα InBody μέτρηση, αναπροσαρμογή προγράμματος. Μετρήσιμη, ορατή πρόοδος από τις πρώτες εβδομάδες.",
-    image: "/images/movus-group-training.webp",
+    image: "/images/movus-ems-controller.webp",
   },
 ];
 

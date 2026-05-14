@@ -47,7 +47,7 @@ export function CTABlock() {
           transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <a
-            href="https://booking.movus.gr"
+            href="https://app.movus.gr"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary"

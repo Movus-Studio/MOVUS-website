@@ -140,7 +140,7 @@ export default function RootLayout({
           style={{ padding: '10px 16px 16px 10px', bottom: 'env(safe-area-inset-bottom)' }}
         >
           <a
-            href="https://booking.movus.gr"
+            href="https://app.movus.gr"
             target="_blank"
             rel="noopener noreferrer"
             className="group pointer-events-auto bg-movus-orange hover:bg-movus-orange-dark transition-colors w-full h-full flex items-center justify-center shadow-2xl

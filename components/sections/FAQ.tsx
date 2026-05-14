@@ -11,6 +11,9 @@ interface FAQProps {
   image?: string;
   imageAlt?: string;
   helperText?: string;
+  /** "photo" (default) = landscape card, dark bg, edge-to-edge crop.
+      "illustration" = portrait card, cream bg, full image preserved. */
+  imageVariant?: "photo" | "illustration";
 }
 
 export function FAQ({
@@ -18,7 +21,9 @@ export function FAQ({
   image = "/images/movus-ems-training.webp",
   imageAlt = "EMS προπόνηση close-up",
   helperText = "Ξεκινώντας κάτι νέο έρχεται πάντα με ερωτήσεις. Εδώ καλύπτουμε τα πιο συχνά θέματα πριν την πρώτη σου συνεδρία.",
+  imageVariant = "photo",
 }: FAQProps = {}) {
+  const isIllustration = imageVariant === "illustration";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const prefersReducedMotion = useReducedMotion();
 
@@ -59,12 +64,18 @@ export function FAQ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mt-6 md:mt-10 lg:items-start">
           {/* Image + helper — sticky on lg so it follows the FAQ list */}
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-black">
+            <div
+              className={`relative rounded-2xl overflow-hidden mb-6 ${
+                isIllustration
+                  ? "aspect-square bg-cream"
+                  : "aspect-[4/3] bg-black"
+              }`}
+            >
               <Image
                 src={image}
                 alt={imageAlt}
                 fill
-                className="object-cover"
+                className={isIllustration ? "object-contain" : "object-cover"}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

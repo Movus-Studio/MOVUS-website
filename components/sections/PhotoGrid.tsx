@@ -3,12 +3,12 @@
 import Image from "next/image";
 
 const photos = [
-  { src: "/images/movus-studio-interior.webp", alt: "MOVUS studio interior" },
-  { src: "/images/movus-studio-training.webp", alt: "EMS training session" },
-  { src: "/images/movus-ems-training.webp", alt: "i-Motion EMS workout" },
-  { src: "/images/movus-ishape-sculpt.webp", alt: "i-Shape training" },
-  { src: "/images/movus-studio-night.webp", alt: "Studio at night" },
-  { src: "/images/movus-shapespace-cabin.webp", alt: "Shape Space machine" },
+  { src: "/images/movus-team-branded-apparel-v3.webp", alt: "MOVUS branded apparel — EMS γυμναστήριο Πάτρα" },
+  { src: "/images/movus-studio-moment-v2.webp", alt: "MOVUS studio moment — Πάτρα" },
+  { src: "/images/movus-flexibility-stretching-v2.webp", alt: "Stretching & flexibility — MOVUS Πάτρα" },
+  { src: "/images/movus-personal-coaching-v2.webp", alt: "Personal coaching — MOVUS Πάτρα" },
+  { src: "/images/movus-dumbbell-strength-training-v3.webp", alt: "Dumbbell strength training — MOVUS Πάτρα" },
+  { src: "/images/movus-cable-row-training-v2.webp", alt: "Cable row training — MOVUS Πάτρα" },
 ];
 
 export function PhotoGrid() {

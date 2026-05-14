@@ -28,10 +28,16 @@ export default function HomePage() {
       <HowItWorks />
       <Transformations />
       <Testimonials />
-      <FAQ />
+      <FAQ
+        image="/images/movus-community-handdraw-v2.webp"
+        imageAlt="MOVUS κοινότητα — welcome illustration"
+        imageVariant="illustration"
+      />
       <ContactSection />
       {/* Bonus sections, appended after Contact per source-design extra-section choice */}
-      <SpaceExperience />
+      {/* Hidden pre-launch — needs design rework. Component still imported above
+          so a one-line uncomment restores it. See space_experience_pending.md memory. */}
+      {/* <SpaceExperience /> */}
       <PhotoGrid />
     </>
   );
