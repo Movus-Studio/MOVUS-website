@@ -86,8 +86,16 @@ export function Footer() {
           <p className="text-sm text-movus-black/60">
             © Copyright {new Date().getFullYear()} MOVUS. All Rights Reserved.
           </p>
+          <nav aria-label="Legal" className="flex items-center gap-5 text-sm text-movus-black/60">
+            <Link href="/privacy-policy" className="hover:text-movus-orange-text transition-colors">
+              Πολιτική Απορρήτου
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-movus-orange-text transition-colors">
+              Όροι Χρήσης
+            </Link>
+          </nav>
           <p className="text-sm text-movus-black/60 flex items-center gap-2">
-            Created by 
+            Created by
             <a href="https://k2o.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-movus-black hover:text-movus-orange-text transition-colors font-medium">
               <span className="w-6 h-6 rounded-full bg-movus-black text-white flex items-center justify-center text-[10px]">K₂O</span>
               K2O
