@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { GradientText } from "@/components/ui/gradient-text";
 
 export function Community() {
   const prefersReducedMotion = useReducedMotion();
@@ -31,12 +30,9 @@ export function Community() {
           className="heading-section-sm text-movus-white leading-[0.95] max-w-3xl"
         >
           Υπάρχουν πολλά μέρη να πας να γυμναστείς.{" "}
-          <GradientText
-            as="span"
-            className="text-movus-white align-baseline rounded-sm px-2"
-          >
+          <span className="text-movus-orange">
             Λίγα που θα θυμάσαι γιατί πήγες.
-          </GradientText>
+          </span>
         </motion.h2>
 
         <motion.p
