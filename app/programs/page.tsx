@@ -80,17 +80,17 @@ export default function ProgramsPage() {
       <section className="bg-movus-white pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Τα Προγράμματά μας
+            Τα προγράμματα
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
-            Τα πιο ευέλικτα προγράμματα
+            Εννέα προγράμματα.
             <br />
-            <span className="text-movus-orange">γυμναστικής στην Πάτρα</span>
+            <span className="text-movus-orange">Ένα σύστημα.</span>
           </h1>
           <p className="text-xl text-dark-gray/80 max-w-2xl leading-relaxed">
-            Ανακάλυψε τη νέα εποχή του fitness στο MOVUS Πάτρα! Revolutionary EMS
-            training και explosive group fitness programs, η τέλεια συνταγή για
-            αποτελεσματική μεταμόρφωση.
+            Ομαδικά, στοχευμένα, με τεχνολογία EMS και Shape Space. Διαλέγεις
+            αυτό που σου ταιριάζει. Οι coaches το βρίσκουν μαζί σου. Από την
+            πρώτη μέρα ξέρεις τι κάνεις και γιατί.
           </p>
         </div>
       </section>

@@ -5,6 +5,7 @@ import { ProgramsGrid } from "@/components/sections/ProgramsGrid";
 import { WhyMovus } from "@/components/sections/WhyMovus";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Transformations } from "@/components/sections/Transformations";
+import { Community } from "@/components/sections/Community";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -27,10 +28,11 @@ export default function HomePage() {
       <WhyMovus />
       <HowItWorks />
       <Transformations />
+      <Community />
       <Testimonials />
       <FAQ
         image="/images/movus-community-handdraw-v2.webp"
-        imageAlt="MOVUS κοινότητα — welcome illustration"
+        imageAlt="MOVUS κοινότητα, welcome illustration"
         imageVariant="illustration"
       />
       <ContactSection />

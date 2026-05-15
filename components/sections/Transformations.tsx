@@ -55,7 +55,7 @@ export function Transformations() {
       <div className="spine spine-flush-bottom !gap-16 md:!gap-24 items-center text-center">
         <div className="flex flex-col items-center gap-6">
           <p className="transform-eyebrow overline">
-            (Στιγμές από τις Προπονήσεις)
+            (Στιγμές από το studio)
           </p>
           <h2 className="heading-section leading-[0.92] text-movus-black">
             <span className="block overflow-hidden">

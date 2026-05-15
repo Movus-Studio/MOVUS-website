@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,9 +11,9 @@ import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const stats = [
-  { target: 350, suffix: "+", label: "Μύες Ταυτόχρονα" },
-  { target: 20, suffix: "'", label: "Ανά Session" },
-  { target: 4, suffix: "x", label: "Αποτελεσματικότερο" },
+  { target: 300, suffix: "+", label: "Μύες σε κάθε κίνηση" },
+  { target: 20, suffix: "'", label: "Ισοδυναμούν με 4 ώρες" },
+  { target: 9, suffix: "", label: "Προγράμματα, ένα σύστημα" },
 ];
 
 export function WhatIsEMS() {
@@ -67,45 +68,9 @@ export function WhatIsEMS() {
       className="bg-movus-black overflow-x-clip"
       id="what-is-ems"
     >
-      {/* About spine, horizontal Content + Image Wrap */}
+      {/* About spine, horizontal Image + Content Wrap (image left on desktop, text right) */}
       <div className="spine spine-row">
-        <div className="flex-1 flex flex-col gap-8">
-          <div className="overflow-hidden">
-            <p className="ems-reveal overline-light">(Ποιοι Είμαστε)</p>
-          </div>
-
-          <h2 className="heading-section leading-[0.92]">
-            <span className="block overflow-hidden">
-              <span className="ems-reveal inline-block text-movus-white">WHAT IS</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="ems-reveal inline-block text-movus-orange">MOVUS</span>
-            </span>
-          </h2>
-
-          <div className="overflow-hidden mt-4 space-y-5 max-w-md">
-            <p
-              className="ems-reveal text-white/70 leading-[1.6]"
-              style={{ fontSize: "var(--text-body-m)" }}
-            >
-              Τα περισσότερα γυμναστήρια σου δίνουν έναν χώρο και μια κάρτα. Το MOVUS σου δίνει ένα σύστημα.
-            </p>
-            <p
-              className="ems-reveal text-white/60 leading-[1.6]"
-              style={{ fontSize: "var(--text-body-m)" }}
-            >
-              Ένα σύγχρονο training environment που συνδυάζει προπόνηση δύναμης, φυσική κατάσταση και τεχνολογία αιχμής, με έναν και μόνο σκοπό: να βλέπεις αποτέλεσμα. Πραγματικό, μετρήσιμο, γρήγορο.
-            </p>
-            <p
-              className="ems-reveal text-white/60 leading-[1.6]"
-              style={{ fontSize: "var(--text-body-m)" }}
-            >
-              Δεν υπάρχει «ένα πρόγραμμα για όλους». Υπάρχει το σωστό πρόγραμμα για εσένα, χτισμένο γύρω από τον στόχο σου, τον χρόνο σου και το σώμα σου.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-10">
+        <div className="flex-1 flex flex-col gap-10 order-1 lg:order-none">
           <div className="ems-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
               src="/images/movus-imotion-ems-suit.webp"
@@ -140,52 +105,59 @@ export function WhatIsEMS() {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* THE MOVUS SYSTEM, second spine, flush-top via -mt to share padding */}
-      <div className="spine spine-flush-top">
-        <div className="border-t border-white/10 pt-16 md:pt-20 grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20">
-          <div>
-            <div className="overflow-hidden mb-6">
-              <p className="ems-reveal overline-light">(Το Σύστημα)</p>
-            </div>
-            <h3 className="heading-section leading-[0.92]">
-              <span className="block overflow-hidden">
-                <span className="ems-reveal inline-block">
-                  <span className="text-movus-white">THE </span>
-                  <span className="text-movus-orange">MOVUS</span>
-                </span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="ems-reveal inline-block text-movus-orange">SYSTEM</span>
-              </span>
-            </h3>
+        <div className="flex-1 flex flex-col gap-8 order-0 lg:order-none lg:sticky lg:top-28 lg:self-start">
+          <div className="overflow-hidden">
+            <p className="ems-reveal overline-light">(Ποιοι Είμαστε)</p>
           </div>
-          <div className="space-y-5">
+
+          <h2 className="heading-section leading-[0.92]">
+            <span className="block overflow-hidden">
+              <span className="ems-reveal inline-block text-movus-white">WHAT IS</span>
+            </span>
+            <span className="block overflow-hidden">
+              <span className="ems-reveal inline-block text-movus-orange">MOVUS</span>
+            </span>
+          </h2>
+
+          <div className="overflow-hidden mt-4 space-y-5 max-w-md">
             <p
-              className="ems-reveal text-white/80 leading-[1.7]"
+              className="ems-reveal text-white/70 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Κάθε πρόγραμμα στο MOVUS έχει ρόλο. Κανένα στοιχείο δεν είναι τυχαίο.
+              Το MOVUS δεν είναι γυμναστήριο με κάρτα και μηχανήματα. Είναι ένα περιβάλλον που χτίστηκε με έναν σκοπό: να αλλάζει σώματα και τρόπο ζωής.
             </p>
             <p
-              className="ems-reveal text-white/65 leading-[1.7]"
+              className="ems-reveal text-white/60 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Χτίζεις δύναμη μέσα από δομημένη, καθοδηγούμενη προπόνηση. Βελτιώνεις τη φυσική κατάσταση με έξυπνη ένταση και progression. Ενεργοποιείς το σώμα σου σε βάθος με τεχνολογία EMS που δεν μπορεί να αντικαταστήσει καμία κλασική προπόνηση. Αποκαθιστάς, σφίγγεις και αναδιαμορφώνεις με wellness τεχνολογίες που δουλεύουν ενώ εσύ χαλαρώνεις.
+              Κάθε πελάτης έχει δικό του πρόγραμμα, δικό του coach, δικό του πλάνο. Τίποτα γενικό, τίποτα τυχαίο. Από την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
             </p>
             <p
-              className="ems-reveal text-white/65 leading-[1.7]"
+              className="ems-reveal text-white/60 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Όλα συνδέονται. Όλα δουλεύουν μαζί. Γιατί το σώμα δεν εξελίσσεται με τύχη, εξελίσσεται με σύστημα.
+              Αρχάριος ή επαγγελματίας αθλητής, δεν έχει σημασία από πού ξεκινάς. Έχει σημασία πού θες να φτάσεις.
             </p>
-            <p
-              className="ems-reveal text-movus-white font-semibold leading-[1.4]"
-              style={{ fontSize: "var(--text-body-l)" }}
+          </div>
+
+          <div className="ems-reveal mt-2">
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 border border-white/25 hover:border-movus-orange hover:bg-movus-orange/10 text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-7 py-4 rounded-lg transition-colors"
             >
-              Αυτό είναι το MOVUS.
-            </p>
+              Γιατί MOVUS
+              <svg
+                className="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

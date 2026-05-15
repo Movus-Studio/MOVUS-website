@@ -5,6 +5,8 @@ import { programs } from "@/content/programs";
 import { siteCopy } from "@/content/site";
 import { aboutFAQ } from "@/content/faq";
 import { FAQ } from "@/components/sections/FAQ";
+import { Experience } from "@/components/sections/Experience";
+import { MovusTech } from "@/components/sections/MovusTech";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -56,9 +58,9 @@ export default function AboutPage() {
             Γιατί MOVUS
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            High‑tech EMS fitness
+            Όχι γυμναστήριο.
             <br />
-            <span className="text-movus-orange">studio στην Πάτρα</span>
+            <span className="text-movus-orange">EMS fitness studio</span> στην Πάτρα.
           </h1>
         </div>
       </section>
@@ -81,28 +83,34 @@ export default function AboutPage() {
             <div className="space-y-6 text-dark-gray leading-[1.8] text-lg">
               <p>
                 Το όνομα <strong className="text-movus-navy">MOVUS</strong> προέρχεται
-                από τη λατινική λέξη <em>&ldquo;movere&rdquo;</em> που σημαίνει{" "}
-                <em>&ldquo;να κινώ&rdquo;</em>. Για εμάς, όμως, είναι κάτι περισσότερο
-                από κίνηση, είναι πρόοδος, ενέργεια και μεταμόρφωση.
+                από τη λατινική λέξη <em>&ldquo;movere&rdquo;</em>: <em>να κινώ</em>.
+                Για εμάς όμως είναι κάτι περισσότερο από κίνηση. Είναι πρόοδος,
+                ενέργεια και μεταμόρφωση.
               </p>
               <p>
-                Στο MOVUS πιστεύουμε ότι η κίνηση πρέπει να είναι τρόπος ζωής αλλά
-                όταν δεν είναι εφικτό απ&apos; όλους, πρέπει να είναι ευφυής,
-                αποτελεσματική και εμπνευσμένη. Για τον λόγο αυτό, επαναπροσδιορίσαμε
-                τον τρόπο που προπονούνται οι άνθρωποι.
+                Πιστεύουμε ότι η προπόνηση δεν χρειάζεται να είναι ώρες χαμένου
+                χρόνου. Πρέπει να είναι έξυπνη, στοχευμένη, αποτελεσματική. Για
+                αυτό φτιάξαμε το MOVUS.
               </p>
               <p>
-                Συνδυάζουμε την πρωτοποριακή τεχνολογία Ηλεκτρομυϊκής Διέγερσης (EMS)
-                με καινοτόμες ομαδικές συνεδρίες όπως Yoga, Pilates, functional και
-                circuit training, όλα σχεδιασμένα ώστε να ταιριάζουν στους στόχους
-                και στον τρόπο ζωής σας. Οι υψηλής τεχνολογίας στολές EMS μας και το
-                καθηλωτικό Shape Space κάνουν κάθε συνεδρία πιο αποτελεσματική και
-                εστιασμένη με στόχο να σας εξοικονομήσει χρόνο.
+                Συνδυάζουμε EMS i-Motion, Pilates και functional training με το
+                MOVUS Shape Space, πέντε τεχνολογίες σε μία συνεδρία. Κάθε
+                πρόγραμμα γραμμένο γύρω από τον στόχο σου, τον χρόνο σου, το σώμα
+                σου.
+              </p>
+              <p className="text-movus-navy font-semibold">
+                Λιγότερος χρόνος, περισσότερη δουλειά.
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Experience (moved from homepage) */}
+      <Experience />
+
+      {/* MOVUS Tech (moved from homepage) */}
+      <MovusTech />
 
       {/* Future of Fitness */}
       <section className="bg-movus-black py-20 md:py-28 lg:py-36 relative overflow-hidden">
@@ -111,15 +119,13 @@ export default function AboutPage() {
             Future of Fitness
           </span>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-3xl">
-            Εκεί που η προσωπική σας διαδρομή συναντά την{" "}
-            <span className="text-movus-orange">έξυπνη προπόνηση</span>
+            Από πού ξεκινάς δεν έχει σημασία.{" "}
+            <span className="text-movus-orange">Πού θες να φτάσεις, έχει.</span>
           </h2>
           <p className="text-xl text-medium-gray leading-relaxed max-w-3xl mb-12">
-            Είτε ξεκινάτε από την αρχή είτε προσπαθείτε να ανακαλύψετε τα όρια σας,
-            το MOVUS είναι το σημείο όπου η προσωπική σας διαδρομή συναντά την
-            έξυπνη προπόνηση. Οι επαγγελματίες προπονητές μας προσαρμόζουν κάθε
-            συνεδρία σε εσάς, ώστε να αισθάνεστε πιο δυνατοί, να κινείστε καλύτερα
-            και να παραμένετε παρακινημένοι.
+            Αρχάριος ή επαγγελματίας αθλητής, ο coach σου χτίζει το πλάνο πάνω
+            σου. Σε κάθε επανάληψη, σε κάθε κίνηση, σε κάθε λεπτομέρεια. Από
+            την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
           </p>
           <blockquote className="border-l-4 border-movus-orange pl-6 md:pl-10 max-w-3xl">
             <p className="text-2xl md:text-3xl font-semibold text-movus-white leading-snug italic">
@@ -127,7 +133,7 @@ export default function AboutPage() {
               Welcome to MOVUS.&rdquo;
             </p>
             <cite className="block mt-4 text-sm text-movus-orange not-italic font-medium uppercase tracking-wider">
-             , MOVUS Team
+              MOVUS Team
             </cite>
           </blockquote>
         </div>
@@ -137,10 +143,10 @@ export default function AboutPage() {
       <section className="bg-movus-black py-20 md:py-28 border-t border-white/5">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Τα Προγράμματά μας
+            Τα προγράμματα
           </span>
           <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-12">
-            Εξερεύνησε τι προσφέρουμε
+            Εννέα προγράμματα. Ένα σύστημα.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {programs.map((program) => (

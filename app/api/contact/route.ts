@@ -98,7 +98,7 @@ export async function POST(request: Request) {
       <div style="margin-top:24px;padding:16px;background:#F5F5F5;border-radius:8px;color:#0A0A0A;font:14px/1.6 -apple-system,Segoe UI,sans-serif;white-space:pre-wrap">${escape(data.message)}</div>
     </td></tr>
     <tr><td style="padding:16px 32px;background:#FAFAFA;color:#5C5C66;font:12px/1.5 -apple-system,Segoe UI,sans-serif">
-      Απάντησε απευθείας σε αυτό το email — η διεύθυνση reply-to είναι του αποστολέα.
+      Απάντησε απευθείας σε αυτό το email. Η διεύθυνση reply-to είναι του αποστολέα.
     </td></tr>
   </table>
 </body></html>`;

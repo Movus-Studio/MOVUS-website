@@ -24,7 +24,7 @@ export function Footer() {
           <div className="lg:max-w-sm">
             <Logo variant="light" className="w-40 mb-6" />
             <p className="text-movus-black/70 leading-relaxed mb-10 text-lg">
-              Το MOVUS εστιάζει στην ουσιαστική προπόνηση, βοηθώντας σε να χτίσεις δύναμη, να κινείσαι καλύτερα και να προοδεύεις μακροπρόθεσμα.
+              Όχι γυμναστήριο. Ένα σύστημα προπόνησης φτιαγμένο γύρω από τον στόχο σου, τον χρόνο σου, το σώμα σου.
             </p>
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 text-movus-black font-medium">
               <a href={`tel:${siteContact.phoneHref}`} className="hover:text-movus-orange-text transition-colors">

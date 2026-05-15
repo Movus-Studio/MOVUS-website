@@ -52,16 +52,13 @@ export default function ContactPage() {
           </nav>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            Είμαστε εδώ για να
+            Μίλα μαζί μας.
             <br />
-            <span className="text-movus-orange">
-              απαντήσουμε στις ερωτήσεις σας
-            </span>
+            <span className="text-movus-orange">Ξεκινάμε.</span>
           </h1>
           <p className="text-xl text-medium-gray max-w-2xl leading-relaxed">
-            Ενδιαφέρεστε για τα προγράμματά μας; Στείλτε μας τα στοιχεία σας και θα
-            επικοινωνήσουμε σύντομα μαζί σας! Ελάτε στο MOVUS, το κορυφαίο EMS
-            γυμναστήριο στην Πάτρα, και γνωρίστε το μέλλον της φυσικής κατάστασης!
+            Στείλε τα στοιχεία σου και επικοινωνούμε μαζί σου σύντομα. Βρίσκουμε
+            το πρόγραμμα που σου ταιριάζει και ξεκινάμε.
           </p>
         </div>
       </section>
@@ -182,7 +179,7 @@ export default function ContactPage() {
         items={contactFAQ}
         image="/images/movus-studio-interior.webp"
         imageAlt="MOVUS studio Ιερού Λόχου 1 Πάτρα"
-        helperText="Πριν την πρώτη σου επίσκεψη — ώρες, πρόσβαση, τρόποι επικοινωνίας και τι να περιμένεις στο ραντεβού γνωριμίας."
+        helperText="Πριν την πρώτη σου επίσκεψη: ώρες, πρόσβαση, τρόποι επικοινωνίας και τι να περιμένεις στο ραντεβού γνωριμίας."
       />
 
       {/* CTA band */}

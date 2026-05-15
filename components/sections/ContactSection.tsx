@@ -111,9 +111,9 @@ export function ContactSection() {
             className="max-w-2xl space-y-4 text-movus-white/70 leading-[1.6]"
             style={{ fontSize: "var(--text-body-m)" }}
           >
-            <p>Το μόνο που μένει είναι να κάνεις το πρώτο βήμα.</p>
+            <p>Μίλα μαζί μας.</p>
             <p>
-              Μίλα με τον coach σου, βρες το πρόγραμμα που σου ταιριάζει και ξεκίνα.
+              Βρίσκουμε το πρόγραμμα που σου ταιριάζει και ξεκινάμε.
             </p>
           </motion.div>
         </div>
@@ -190,10 +190,16 @@ export function ContactSection() {
                 style={{ fontSize: "var(--text-body)" }}
                 suppressHydrationWarning
               >
-                <option value="ems">i-Motion EMS</option>
-                <option value="ishape">i-Shape EMS Suit</option>
-                <option value="shapespace">Shape Space</option>
-                <option value="group">Ομαδικά</option>
+                <option value="">Δεν είμαι σίγουρος/η ακόμα</option>
+                <option value="team">MOVUS TEAM (MOVE + FLOW)</option>
+                <option value="squad">MOVUS SQUAD</option>
+                <option value="personal">MOVUS PERSONAL</option>
+                <option value="private">MOVUS PRIVATE</option>
+                <option value="ems">MOVUS EMS</option>
+                <option value="ems-cardio">MOVUS EMS CARDIO</option>
+                <option value="shape-space">MOVUS SHAPE SPACE</option>
+                <option value="hybrid">MOVUS HYBRID</option>
+                <option value="transformation">MOVUS TRANSFORMATION</option>
               </select>
             </div>
             <div suppressHydrationWarning>

@@ -20,7 +20,7 @@ export function FAQ({
   items = faqItems,
   image = "/images/movus-ems-training.webp",
   imageAlt = "EMS προπόνηση close-up",
-  helperText = "Ξεκινώντας κάτι νέο έρχεται πάντα με ερωτήσεις. Εδώ καλύπτουμε τα πιο συχνά θέματα πριν την πρώτη σου συνεδρία.",
+  helperText = "Τα πιο συχνά πριν ξεκινήσεις. Αν δεν βρεις την απάντηση εδώ, ρώτησέ μας απευθείας.",
   imageVariant = "photo",
 }: FAQProps = {}) {
   const isIllustration = imageVariant === "illustration";
@@ -43,7 +43,7 @@ export function FAQ({
           className="text-movus-white/80"
           style={{ fontSize: "var(--text-caption)" }}
         >
-          (Ρωτάς, Απαντάμε)
+          (Πριν την πρώτη μέρα)
         </motion.p>
 
         <motion.h2

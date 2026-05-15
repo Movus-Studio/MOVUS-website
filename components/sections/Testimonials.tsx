@@ -33,7 +33,7 @@ export function Testimonials() {
           data-motion-reveal
           className="overline"
         >
-          (Οι Πελάτες Μας)
+          (Λόγια από τα μέλη)
         </motion.p>
 
         <motion.h2

@@ -86,6 +86,9 @@ export function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-[55%] md:h-1/2 z-[1] pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent md:from-black/75 md:via-black/30 md:to-transparent" />
       <div className="hidden md:block absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(85%_80%_at_0%_100%,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.55)_35%,rgba(0,0,0,0)_70%)]" />
 
+      {/* Bottom seam — solid-black-to-transparent band that bleeds into the next section's bg-movus-black (#0A0A0A) */}
+      <div className="absolute inset-x-0 bottom-0 h-32 md:h-40 lg:h-48 z-[1] pointer-events-none bg-gradient-to-t from-movus-black via-movus-black to-transparent" />
+
       {/* Container: full-bleed, end-aligned (bottom), 60px side padding */}
       <div className="relative z-[2] h-full flex items-end gap-6 md:gap-10 px-6 md:px-12 lg:px-[60px]">
         {/* Heading Wrap, 1fr, vertical, end-aligned, pb-60, gap-20.
@@ -148,7 +151,7 @@ export function Hero() {
               className="hero-fade text-movus-white/85 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Δεν είναι απλά προπόνηση. Είναι ο πιο έξυπνος τρόπος να εξελίξεις το σώμα σου.
+              Κάποιοι ψάχνουν γυμναστήριο. Εσύ βρήκες το μέλλον της γυμναστικής.
             </p>
           </div>
         </div>

@@ -5,27 +5,27 @@ import { motion, useReducedMotion } from "motion/react";
 const points = [
   {
     number: "01",
-    title: "Πιστοποιημένη Τεχνολογία",
+    title: "Τεχνολογία σε βάθος",
     description:
-      "Εξοπλισμός i-Motion από την Ισπανία με πιστοποίηση FDA. Η πιο προηγμένη EMS τεχνολογία.",
+      "EMS i-Motion με πιστοποίηση FDA. Shape Space με πέντε τεχνολογίες σε μία συνεδρία. Δουλεύεις σώμα και μύες που η κλασική προπόνηση δεν αγγίζει.",
   },
   {
     number: "02",
-    title: "Εξειδικευμένοι Γυμναστές",
+    title: "Coach που σε βλέπει",
     description:
-      "Πιστοποιημένοι ΤΕΦΑΑ με ειδίκευση στην EMS. Επιστημονική προσέγγιση σε κάθε session.",
+      "Πιστοποιημένοι ΤΕΦΑΑ που σε γνωρίζουν με το όνομά σου. Σε κάθε επανάληψη, σε κάθε κίνηση, σε κάθε λεπτομέρεια.",
   },
   {
     number: "03",
-    title: "Διατροφική Καθοδήγηση",
+    title: "Πλάνο πάνω σου",
     description:
-      "InBody ανάλυση σώματος και εξατομικευμένες συμβουλές για μέγιστα αποτελέσματα.",
+      "InBody μέτρηση και πρόγραμμα χτισμένο γύρω από τον στόχο σου, τον χρόνο σου, το σώμα σου. Τίποτα γενικό, τίποτα τυχαίο.",
   },
   {
     number: "04",
-    title: "Premium Εμπειρία",
+    title: "Χώρος χωρίς περισπασμούς",
     description:
-      "Max 2 άτομα ανά session. Προσωπική προσοχή και premium χώρος σχεδιασμένος για σένα.",
+      "Μικρές ομάδες. Δύο άτομα σε Personal, ένα σε Private. Έχεις χρόνο, χώρο και προσοχή να αποδώσεις.",
   },
 ];
 
@@ -53,10 +53,10 @@ export function WhyMovus() {
           data-motion-reveal
           className="heading-section text-movus-black leading-[0.92]"
         >
+          <span className="block">ΤΕΣΣΕΡΙΣ ΛΟΓΟΙ</span>
           <span className="block">
-            4 ΛΟΓΟΙ ΝΑ <span className="text-movus-orange">ΕΠΙΛΕΞΕΙΣ</span>
+            ΓΙΑΤΙ <span className="text-movus-orange">MOVUS</span>
           </span>
-          <span className="block">ΤΟ MOVUS</span>
         </motion.h2>
 
         {/* Choose Me Columns */}
