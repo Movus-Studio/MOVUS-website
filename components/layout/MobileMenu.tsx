@@ -41,7 +41,7 @@ export function MobileMenu({ navItems }: MobileMenuProps) {
             paddingBottom: "calc(env(safe-area-inset-bottom) + 5rem)",
           }}
         >
-          <div className="grid grid-cols-[1fr_auto] gap-12 md:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-24">
             <div>
               <p
                 className="text-movus-white/50 mb-6"
