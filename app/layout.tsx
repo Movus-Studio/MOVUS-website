@@ -7,6 +7,8 @@ import { FrameMask } from "@/components/layout/FrameMask";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { MotionBoot } from "@/components/layout/MotionBoot";
+import { CookieBanner } from "@/components/layout/CookieBanner";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const jura = Jura({
   variable: "--font-manrope-var",
@@ -82,6 +84,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION }
+      : undefined,
+  },
 };
 
 export const viewport: Viewport = {
@@ -154,6 +162,9 @@ export default function RootLayout({
             </span>
           </a>
         </div>
+
+        <CookieBanner />
+        <GoogleAnalytics />
       </body>
     </html>
   );
