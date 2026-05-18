@@ -183,8 +183,9 @@ export default function ContactPage() {
       {/* FAQ */}
       <FAQ
         items={contactFAQ}
-        image="/images/movus-studio-interior.webp"
-        imageAlt="MOVUS studio Ιερού Λόχου 1 Πάτρα"
+        image="/images/movus-community-handdraw-v2.webp"
+        imageAlt="MOVUS κοινότητα, welcome illustration"
+        imageVariant="illustration"
         helperText="Πριν την πρώτη σου επίσκεψη: ώρες, πρόσβαση, τρόποι επικοινωνίας και τι να περιμένεις στο ραντεβού γνωριμίας."
       />
 

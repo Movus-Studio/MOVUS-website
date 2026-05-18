@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -69,17 +68,23 @@ export function Hero() {
       ref={sectionRef}
       className="relative h-[100svh] min-h-[640px] overflow-hidden bg-movus-black"
     >
-      {/* Full-bleed hero image */}
+      {/* Full-bleed hero image — mobile and desktop swap via <picture> so the
+          mobile portrait viewport doesn't upscale a sliver of the wide source */}
       <div ref={imageRef} className="absolute inset-0 z-0 will-change-transform">
-        <Image
-          src="/images/movus-hero.webp"
-          alt="EMS προπόνηση στο MOVUS"
-          fill
-          className="object-cover object-[68%_35%] md:object-[40%_center]"
-          priority
-          sizes="100vw"
-          quality={75}
-        />
+        <picture>
+          <source
+            media="(orientation: portrait)"
+            srcSet="/images/movus-hero-v2-mobile.webp"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/movus-hero-v2.webp"
+            alt="Αθλήτρια του MOVUS μετά την προπόνηση"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center landscape:md:object-[22%_center]"
+          />
+        </picture>
       </div>
 
       {/* Text contrast overlays — strong band at bottom (mobile) + radial at bottom-left (desktop) */}

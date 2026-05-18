@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { programs } from "@/content/programs";
-import { siteCopy } from "@/content/site";
 import { aboutFAQ } from "@/content/faq";
 import { FAQ } from "@/components/sections/FAQ";
 import { Experience } from "@/components/sections/Experience";
@@ -63,9 +62,7 @@ export default function AboutPage() {
             Γιατί MOVUS
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            Δεν είναι ένα απλό γυμναστήριο, αλλά
-            <br />
-            <span className="text-movus-orange">πρωτοποριακό EMS fitness studio</span> στην Πάτρα.
+            <span className="text-movus-orange">Πρωτοποριακό EMS fitness studio</span> στην Πάτρα.
           </h1>
         </div>
       </section>
@@ -77,7 +74,7 @@ export default function AboutPage() {
             <div className="lg:sticky lg:top-28">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
                 <Image
-                  src="/images/movus-studio-interior.webp"
+                  src="/images/movus-about-interior.webp"
                   alt="Εσωτερικό του MOVUS studio στην Πάτρα"
                   fill
                   className="object-cover"
@@ -85,7 +82,11 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-            <div className="space-y-6 text-dark-gray leading-[1.8] text-lg">
+            <div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-8 leading-[1.05]">
+                Δεν είναι ένα απλό γυμναστήριο.
+              </h2>
+              <div className="space-y-6 text-dark-gray leading-[1.8] text-lg">
               <p>
                 Το όνομα <strong className="text-movus-navy">MOVUS</strong> προέρχεται
                 από τη λατινική λέξη <em>&ldquo;movere&rdquo;</em>: <em>να κινώ</em>.
@@ -106,6 +107,7 @@ export default function AboutPage() {
               <p className="text-movus-navy font-semibold">
                 Λιγότερος χρόνος, περισσότερη δουλειά.
               </p>
+              </div>
             </div>
           </div>
         </div>
@@ -117,30 +119,36 @@ export default function AboutPage() {
       {/* MOVUS Tech (moved from homepage) */}
       <MovusTech />
 
-      {/* Future of Fitness */}
-      <section className="bg-movus-black py-20 md:py-28 lg:py-36 relative overflow-hidden">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 relative">
-          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
+      {/* Future of Fitness — CTA */}
+      <section className="bg-movus-orange py-20 md:py-28 lg:py-36 relative overflow-hidden">
+        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 relative text-center">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-white/80 mb-4">
             Future of Fitness
           </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-3xl">
-            Από πού ξεκινάς δεν έχει σημασία.{" "}
-            <span className="text-movus-orange">Πού θες να φτάσεις, έχει.</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-4xl mx-auto">
+            Δεν έχει σημασία από πού ξεκινάς, αλλά{" "}
+            <span className="text-movus-black">πού θες να φτάσεις.</span>
           </h2>
-          <p className="text-xl text-medium-gray leading-relaxed max-w-3xl mb-12">
+          <p className="text-xl text-movus-white/90 leading-relaxed max-w-3xl mx-auto mb-12">
             Αρχάριος ή επαγγελματίας αθλητής, ο coach σου χτίζει το πλάνο πάνω
             σου. Σε κάθε επανάληψη, σε κάθε κίνηση, σε κάθε λεπτομέρεια. Από
             την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
           </p>
-          <blockquote className="border-l-4 border-movus-orange pl-6 md:pl-10 max-w-3xl">
+          <blockquote className="max-w-3xl mx-auto mb-12">
             <p className="text-2xl md:text-3xl font-semibold text-movus-white leading-snug italic">
               &ldquo;This isn&apos;t just a workout. This is the future of fitness.
               Welcome to MOVUS.&rdquo;
             </p>
-            <cite className="block mt-4 text-sm text-movus-orange not-italic font-medium uppercase tracking-wider">
+            <cite className="block mt-4 text-sm text-movus-white/70 not-italic font-medium uppercase tracking-wider">
               MOVUS Team
             </cite>
           </blockquote>
+          <Link
+            href="/contact"
+            className="inline-block bg-movus-black hover:bg-movus-navy text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
+          >
+            Κλείσε την πρώτη σου συνεδρία
+          </Link>
         </div>
       </section>
 
@@ -186,33 +194,12 @@ export default function AboutPage() {
       {/* FAQ */}
       <FAQ
         items={aboutFAQ}
-        image="/images/movus-studio-interior.webp"
-        imageAlt="MOVUS studio interior - high-tech EMS fitness Πάτρα"
+        image="/images/movus-community-handdraw-v2.webp"
+        imageAlt="MOVUS κοινότητα, welcome illustration"
+        imageVariant="illustration"
         helperText="Όλα όσα θέλεις να ξέρεις για το MOVUS, τη φιλοσοφία μας και την ομάδα που θα σε καθοδηγήσει."
       />
 
-      {/* CTA */}
-      <section className="bg-movus-black pb-20 md:pb-28">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <div className="bg-movus-orange rounded-3xl px-8 md:px-16 py-14 md:py-20 text-center">
-            <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
-              {siteCopy.tagline}
-            </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
-              {siteCopy.ctaBand.hook}
-            </h2>
-            <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">
-              {siteCopy.ctaBand.body}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-movus-black hover:bg-movus-navy text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
-            >
-              {siteCopy.ctaBand.cta}
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -73,8 +73,8 @@ export function WhatIsEMS() {
         <div className="flex-1 flex flex-col gap-10 order-1 lg:order-none">
           <div className="ems-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
-              src="/images/movus-imotion-ems-suit.webp"
-              alt="EMS i-Motion στολές στο MOVUS"
+              src="/images/movus-red-light-studio.webp"
+              alt="Ο χώρος του MOVUS σε κόκκινο φωτισμό"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

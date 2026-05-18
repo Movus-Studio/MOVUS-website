@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "Το EMS είναι η πιο γρήγορη και αποτελεσματική μέθοδος γυμναστικής για όσους έχουν περιορισμένο χρόνο. Μόλις 20 λεπτά προπόνησης αρκούν για να δεις πραγματικά αποτελέσματα στο σώμα σου.",
     category: "EMS",
-    author: "Kostas",
+    author: "MOVUS Team",
     datePublished: "2025-10-29",
     dateModified: "2025-10-29",
     readTime: "4 λεπτά",

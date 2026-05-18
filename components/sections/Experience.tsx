@@ -102,10 +102,10 @@ export function Experience() {
         <div className="flex-1">
           <div className="exp-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
-              src="/images/movus-studio-interior.webp"
-              alt="Ο χώρος προπόνησης στο MOVUS"
+              src="/images/movus-kettlebell-training.webp"
+              alt="Αθλήτρια κάνει kettlebell swings στο MOVUS"
               fill
-              className="object-cover"
+              className="object-cover object-[70%_center]"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
