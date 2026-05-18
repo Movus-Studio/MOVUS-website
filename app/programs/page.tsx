@@ -7,14 +7,19 @@ import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 import { ProgramCard, type Program } from "@/components/programs/ProgramCard";
 import { EmsPinnedSection } from "@/components/programs/EmsPinnedSection";
 
+const PROGRAMS_TITLE = "Προγράμματα EMS, Personal & Ομαδικά Πάτρα";
+const PROGRAMS_DESCRIPTION =
+  "Εννέα προγράμματα γυμναστικής στο MOVUS Πάτρα. EMS, personal training, ομαδικά, Shape Space. Διάλεξε το δικό σου.";
+
 export const metadata: Metadata = {
-  title: "Προγράμματα",
-  description:
-    "Τα πιο ευέλικτα προγράμματα γυμναστικής στην Πάτρα. Εξερεύνησε EMS, Shape Space και ομαδικά στο MOVUS.",
+  title: PROGRAMS_TITLE,
+  description: PROGRAMS_DESCRIPTION,
+  alternates: {
+    canonical: "https://movus.gr/programs",
+  },
   openGraph: {
-    title: "Προγράμματα Γυμναστικής MOVUS Πάτρα – EMS, Shape Space, HIIT & Pilates",
-    description:
-      "Revolutionary EMS training και explosive group fitness programs, η τέλεια συνταγή για αποτελεσματική μεταμόρφωση.",
+    title: `${PROGRAMS_TITLE} | MOVUS`,
+    description: PROGRAMS_DESCRIPTION,
   },
 };
 

@@ -14,7 +14,7 @@ export function CTABlock() {
           viewport={{ once: true }}
           className="overline-light"
         >
-          (Έτοιμος;)
+          (Ξεκινάς;)
         </motion.p>
 
         <motion.h2
@@ -25,7 +25,7 @@ export function CTABlock() {
           className="heading-section text-movus-white mb-6"
         >
           Η πρώτη συνεδρία
-          <br />είναι <span className="text-movus-orange">δωρεάν.</span>
+          <br />είναι <span className="text-movus-orange">διαφορετική.</span>
         </motion.h2>
 
         <motion.p
@@ -37,7 +37,7 @@ export function CTABlock() {
           style={{ fontSize: "var(--text-body)" }}
         >
           Κλείσε τη δική σου δοκιμαστική συνεδρία EMS
-          και δες γιατί 350+ μύες σε 20 λεπτά αλλάζουν τα πάντα.
+          και δες γιατί 300+ μύες σε 20 λεπτά αλλάζουν τα πάντα.
         </motion.p>
 
         <motion.div

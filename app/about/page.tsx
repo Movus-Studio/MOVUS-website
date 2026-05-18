@@ -9,14 +9,19 @@ import { Experience } from "@/components/sections/Experience";
 import { MovusTech } from "@/components/sections/MovusTech";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 
+const ABOUT_TITLE = "Ποιοι είμαστε. EMS Fitness Studio Πάτρα";
+const ABOUT_DESCRIPTION =
+  "Πιστοποιημένοι προπονητές EMS και personal training στην Πάτρα. Δες τη φιλοσοφία, την ομάδα και τον χώρο του MOVUS.";
+
 export const metadata: Metadata = {
-  title: "Σχετικά",
-  description:
-    "High-tech EMS fitness studio στην Πάτρα. Η ιστορία μας και η φιλοσοφία μας για το μέλλον του fitness.",
+  title: ABOUT_TITLE,
+  description: ABOUT_DESCRIPTION,
+  alternates: {
+    canonical: "https://movus.gr/about",
+  },
   openGraph: {
-    title: "Γιατί MOVUS Πάτρα – Η Ιστορία & Ομάδα μας",
-    description:
-      "High-tech EMS fitness studio στην Πάτρα. Από τη λατινική λέξη 'movere', να κινώ.",
+    title: `${ABOUT_TITLE} | MOVUS`,
+    description: ABOUT_DESCRIPTION,
   },
 };
 
@@ -58,9 +63,9 @@ export default function AboutPage() {
             Γιατί MOVUS
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            Όχι γυμναστήριο.
+            Δεν είναι ένα απλό γυμναστήριο, αλλά
             <br />
-            <span className="text-movus-orange">EMS fitness studio</span> στην Πάτρα.
+            <span className="text-movus-orange">πρωτοποριακό EMS fitness studio</span> στην Πάτρα.
           </h1>
         </div>
       </section>

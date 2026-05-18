@@ -31,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/personal-training`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -50,12 +56,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const programPages: MetadataRoute.Sitemap = programs.map((program) => ({
-    url: `${baseUrl}/programs/${program.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  // /programs/personal canonicals to /personal-training, so exclude it from the
+  // sitemap. The canonical does the dedup hint, the sitemap doesn't need to
+  // re-advertise the non-canonical URL.
+  const programPages: MetadataRoute.Sitemap = programs
+    .filter((program) => program.slug !== "personal")
+    .map((program) => ({
+      url: `${baseUrl}/programs/${program.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
 
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

@@ -25,12 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) return { title: "Άρθρο" };
 
+  const description = post.metaDescription ?? post.excerpt;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: { absolute: post.title },
+    description,
+    alternates: {
+      canonical: `https://movus.gr/blog/${post.slug}`,
+    },
     openGraph: {
-      title: `${post.title} | MOVUS Blog`,
-      description: post.excerpt,
+      title: post.title,
+      description,
       type: "article",
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified,

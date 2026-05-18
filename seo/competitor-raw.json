@@ -1,0 +1,288 @@
+{
+  "audit_date": "2026-05-18",
+  "locale": "el-GR",
+  "search_source": "DuckDuckGo (gr-el), Google blocked by consent gate from server-side fetch; raw HTML pulled directly from each ranked URL via curl",
+  "serp_capture_method": "html.duckduckgo.com/html with kl=gr-el; per-page HTML fetched via Chrome UA",
+  "notes": [
+    "Google.com/search returns a consent.google.com 302 to any server-side fetch — local-pack/map results not extractable via fetch. Organic ranking proxy is DuckDuckGo Greece region.",
+    "SEMrush MCP unavailable on current plan; Agent 1 likely captured what little was possible.",
+    "movus.gr already ranks #1 organic for 'ems πάτρα' on DuckDuckGo with full LocalBusiness + FAQPage schema — strongest current asset.",
+    "hathastudio.gr blocks bot fetches (Cloudflare 403), vrisko.gr and xo.gr serve interstitials to non-browsers — meta inferred from SERP snippet only."
+  ],
+  "queries": {
+    "γυμναστήρια Πάτρα": {
+      "intent": "head local — gym discovery",
+      "serp_dominated_by": "aggregators (vrisko, eop, xo, cybo, citymaps, gyms.com.gr) — 6 of top 10",
+      "organic_top_10": [
+        { "pos": 1, "url": "https://www.vrisko.gr/dir/gymnastiria/patra", "domain": "vrisko.gr", "type": "aggregator", "snippet_title": "Γυμναστήρια Πάτρα | vrisko.gr" },
+        { "pos": 2, "url": "https://www.eop.gr/dir-az/gymnastiria/patra", "domain": "eop.gr", "type": "aggregator", "snippet_title": "Γυμναστήρια - Πάτρα - eop.gr" },
+        { "pos": 3, "url": "https://www.xo.gr/dir-az/G/Gymnastiria/Patra/", "domain": "xo.gr", "type": "aggregator", "snippet_title": "Γυμναστήρια Πάτρα | xo.gr" },
+        { "pos": 4, "url": "https://grouptime.gr", "domain": "grouptime.gr", "type": "gym" },
+        { "pos": 5, "url": "https://www.yava.gr/content/patra/", "domain": "yava.gr", "type": "gym (chain)" },
+        { "pos": 6, "url": "https://vreswebsite.gr/listing/reaction-gym-gymnastirio-spa-patra/", "domain": "vreswebsite.gr", "type": "aggregator/listing" },
+        { "pos": 7, "url": "https://επιχειρήσεων.cybo.com/GR/πάτρα/γυμναστήρια/", "domain": "cybo.com", "type": "aggregator" },
+        { "pos": 8, "url": "https://citymaps.gr/gumnasterio/patra/fitness-mall/", "domain": "citymaps.gr", "type": "aggregator" },
+        { "pos": 9, "url": "https://studio6.gr", "domain": "studio6.gr", "type": "gym" },
+        { "pos": 10, "url": "https://gyms.com.gr/region/patra/", "domain": "gyms.com.gr", "type": "aggregator" }
+      ]
+    },
+    "γυμναστήριο πάτρα": {
+      "intent": "head local — slight singular variant",
+      "serp_dominated_by": "aggregators (4) + real gyms (6); first real gym at #2",
+      "organic_top_10": [
+        { "pos": 1, "url": "https://www.vrisko.gr/dir/gymnastiria/patra", "domain": "vrisko.gr", "type": "aggregator" },
+        { "pos": 2, "url": "https://patra-fitness.ufr.gr", "domain": "patra-fitness.ufr.gr", "type": "gym (franchise hub)" },
+        { "pos": 3, "url": "https://grouptime.gr", "domain": "grouptime.gr", "type": "gym" },
+        { "pos": 4, "url": "https://www.xo.gr/dir-az/G/Gymnastiria/Patra/", "domain": "xo.gr", "type": "aggregator" },
+        { "pos": 5, "url": "https://www.eop.gr/dir-az/gymnastiria/patra", "domain": "eop.gr", "type": "aggregator" },
+        { "pos": 6, "url": "https://gym.upatras.gr", "domain": "gym.upatras.gr", "type": "university gym" },
+        { "pos": 7, "url": "https://gymallpatra.com", "domain": "gymallpatra.com", "type": "gym" },
+        { "pos": 8, "url": "https://www.yava.gr/content/patra/", "domain": "yava.gr", "type": "gym (chain)" },
+        { "pos": 9, "url": "https://www.sportshousegym.gr", "domain": "sportshousegym.gr", "type": "gym" },
+        { "pos": 10, "url": "https://citymaps.gr/gumnasterio/patra/fitness-mall/", "domain": "citymaps.gr", "type": "aggregator" }
+      ]
+    },
+    "personal trainer πάτρα": {
+      "intent": "mid-funnel service",
+      "serp_dominated_by": "aggregators 1-2 + 6-7-9 (5 of 10); real practitioners 3, 4, 8, 10; one studio 5",
+      "organic_top_10": [
+        { "pos": 1, "url": "https://www.vrisko.gr/dir/personal-trainer/patra", "domain": "vrisko.gr", "type": "aggregator" },
+        { "pos": 2, "url": "https://www.xo.gr/dir-products-az/P/personal-training/Patra/", "domain": "xo.gr", "type": "aggregator" },
+        { "pos": 3, "url": "https://www.fmh.gr/business-directory/maria-silivina-katsioni/", "domain": "fmh.gr", "type": "aggregator/profile" },
+        { "pos": 4, "url": "https://www.giorgossazaklis.gr", "domain": "giorgossazaklis.gr", "type": "trainer" },
+        { "pos": 5, "url": "https://studio6.gr/group-personal", "domain": "studio6.gr", "type": "gym/service page" },
+        { "pos": 6, "url": "https://www.superprof.gr/...", "domain": "superprof.gr", "type": "aggregator" },
+        { "pos": 7, "url": "https://www.localgymsandfitness.com/...", "domain": "localgymsandfitness.com", "type": "aggregator" },
+        { "pos": 8, "url": "https://www.kleonikisfitnessclub.gr/co/kleonikis-fitness-club-patra/personal-training/", "domain": "kleonikisfitnessclub.gr", "type": "gym/service page" },
+        { "pos": 9, "url": "https://www.starofservice.gr/dir/...", "domain": "starofservice.gr", "type": "aggregator" },
+        { "pos": 10, "url": "https://www.fmh.gr/business-directory/akis-karaggianis/", "domain": "fmh.gr", "type": "aggregator/profile" }
+      ]
+    },
+    "ems πάτρα": {
+      "intent": "high-intent service",
+      "serp_dominated_by": "actual gyms (8 of 10) — least aggregator-saturated query; movus.gr ranks #1",
+      "organic_top_10": [
+        { "pos": 1, "url": "https://www.movus.gr", "domain": "movus.gr", "type": "gym (us)", "note": "ALREADY #1" },
+        { "pos": 2, "url": "https://20-motion-fitness.blogspot.com", "domain": "blogspot.com", "type": "blog (legacy)" },
+        { "pos": 3, "url": "https://www.localgymsandfitness.com/GR/Patras/175530866307646/I-Motion-EMS-Greece", "domain": "localgymsandfitness.com", "type": "aggregator profile" },
+        { "pos": 4, "url": "https://blog.eop.gr/gymnasthria/ems-stin-patra-i-epanastasi-sti-gymnastiki-kai-tin-apokatastasi/", "domain": "blog.eop.gr", "type": "informational article" },
+        { "pos": 5, "url": "https://www.elepod.gr/business/69228-ems-training-patra", "domain": "elepod.gr", "type": "aggregator profile" },
+        { "pos": 6, "url": "https://www.addictionfitnessclub.gr/ems-patra/", "domain": "addictionfitnessclub.gr", "type": "gym service page" },
+        { "pos": 7, "url": "https://i-motiongreece.gr", "domain": "i-motiongreece.gr", "type": "EMS equipment vendor/chain" },
+        { "pos": 8, "url": "https://www.vrisko.gr/details/...", "domain": "vrisko.gr", "type": "aggregator profile" },
+        { "pos": 9, "url": "https://www.yava.gr/content/ilektrodiegersi/", "domain": "yava.gr", "type": "gym service page" },
+        { "pos": 10, "url": "https://20minfitness.gr", "domain": "20minfitness.gr", "type": "EMS chain" }
+      ]
+    },
+    "pilates πάτρα": {
+      "intent": "high-intent service",
+      "serp_dominated_by": "real studios (8 of 10), only 1 aggregator (vrisko #4) and 1 facebook page (#9)",
+      "organic_top_10": [
+        { "pos": 1, "url": "https://www.royalfitnesspilates.gr", "domain": "royalfitnesspilates.gr", "type": "studio" },
+        { "pos": 2, "url": "http://mindpilates.gr", "domain": "mindpilates.gr", "type": "studio" },
+        { "pos": 3, "url": "https://hathastudio.gr", "domain": "hathastudio.gr", "type": "studio (yoga+pilates)" },
+        { "pos": 4, "url": "https://www.vrisko.gr/dir/pilates/patra", "domain": "vrisko.gr", "type": "aggregator" },
+        { "pos": 5, "url": "https://lesoma.gr", "domain": "lesoma.gr", "type": "studio (reformer+gyrotonic)" },
+        { "pos": 6, "url": "https://www.kleonikisfitnessclub.gr/co/kleonikis-fitness-club-patra/pilates-mat/", "domain": "kleonikisfitnessclub.gr", "type": "gym/service page" },
+        { "pos": 7, "url": "https://studio6.gr/pilates", "domain": "studio6.gr", "type": "gym/service page" },
+        { "pos": 8, "url": "https://www.360fitnessclub.gr/co/360-fitness-club-patra/pilates/", "domain": "360fitnessclub.gr", "type": "gym/service page" },
+        { "pos": 9, "url": "https://www.facebook.com/pilateslabpatras/", "domain": "facebook.com", "type": "social" },
+        { "pos": 10, "url": "https://www.studioonepatras.gr", "domain": "studioonepatras.gr", "type": "education/studio" }
+      ]
+    }
+  },
+  "meta_per_competitor": {
+    "movus.gr": {
+      "title": "MOVUS, EMS Fitness Studio | Πάτρα",
+      "title_len": 33,
+      "description": "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης. Κλείσε δοκιμαστικό σήμερα.",
+      "description_len": 112,
+      "h1": "(client-rendered)",
+      "schema": ["LocalBusiness", "FAQPage", "PostalAddress", "GeoCoordinates", "OpeningHoursSpecification"],
+      "address_in_schema": "Ιερού Λόχου 1, Πάτρα 26331",
+      "notes": "Strongest schema in the field. Title is brand-led, query-light for non-EMS queries (no 'γυμναστήριο' first, no 'personal training', no 'pilates')."
+    },
+    "grouptime.gr": {
+      "title": "GROUPTIME FITNESS - Γυμναστήριο Πάτρα",
+      "title_len": 37,
+      "description": "Γυμναστήριο Πάτρα",
+      "description_len": 17,
+      "h1": "GROUPTIME FITNESS Το καλύτερο Γυμναστήριο στην Πάτρα!",
+      "schema": ["BreadcrumbList", "Person", "WebPage", "WebSite"],
+      "notes": "Two-word description — terrible. Ranks #3-4 anyway, mostly on backlinks/age. Easy to outrank with better meta."
+    },
+    "yava.gr/content/patra/": {
+      "title": "YAVA ΠΑΤΡΑ | Yava Fitness Centers",
+      "title_len": 33,
+      "description": "Ξεκινήστε σήμερα στo γυμναστήριο YAVA στην Πάτρα, ανακαλύψτε τις δυνατότητες υγείας και ευεξίας που σας προσφέρει και κάντε τη γυμναστική τρόπο ζωής!",
+      "description_len": 150,
+      "h1": "YAVA ΠΑΤΡΑ",
+      "schema": [],
+      "notes": "Plural form 'Ξεκινήστε' — formal voice; uses brand + Πάτρα formula. Has chain authority."
+    },
+    "studio6.gr": {
+      "title": "Γυμναστήρια Πάτρα | Studio 6",
+      "title_len": 28,
+      "description": "Το γυμναστήριο Studio 6 στην Πάτρα πρωτοπορεί στο χώρο του group personal training. Με συνδρομή απλού γυμναστηρίου έχετε τα οφέλη του Personal Training",
+      "description_len": 152,
+      "h1": "Γυμναστήρια Πάτρα",
+      "schema": [],
+      "notes": "Title leads with the keyword exact-match, then brand — strongest title formula in field. No schema."
+    },
+    "gymallpatra.com": {
+      "title": "GYMALL",
+      "title_len": 6,
+      "description": null,
+      "description_len": 0,
+      "h1": "GYMALL",
+      "schema": [],
+      "notes": "Brand-only single-word title. Ranks despite this. Massive opportunity gap for any competitor with a proper title."
+    },
+    "sportshousegym.gr": {
+      "title": "Sports House – Το γυμναστήριό σου",
+      "title_len": 33,
+      "description": null,
+      "description_len": 0,
+      "h1": "Σταμάτα να εύχεσαι. Ξεκίνα να κάνεις...",
+      "schema": [],
+      "notes": "Title has no 'Πάτρα'. No description. Yet ranks top-10 — backlink-driven."
+    },
+    "kleonikisfitnessclub.gr": {
+      "title": "Kleoniki's Fitness Club - Πάτρα",
+      "title_len": 31,
+      "description": "Καλώς ήρθατε στο Kleoniki's Fitness Club! Από το 1995, διατηρούμε 29 χρόνια εμπειρίας στο χώρο της εκγύμνασης...",
+      "description_len": 102,
+      "h1": "Kleoniki's Fitness Club",
+      "schema": ["WebSite"],
+      "notes": "Brand + Πάτρα title. Description leads with welcome — wastes SERP real estate but conveys longevity ('29 χρόνια')."
+    },
+    "patra-fitness.ufr.gr": {
+      "title": "Γυμναστήριο PATRA FITNESS Πάτρα | Unthink Fitness Republic Hub",
+      "title_len": 62,
+      "description": "Γυμναστήριο PATRA FITNESS Πάτρα: Premium Gym με Groups, Reformer Pilates, Cross, Personal, Leisure, Insider Rewards & άλλα. Anyone can be extraordinary!",
+      "description_len": 152,
+      "h1": "Γυμναστήριο PATRA FITNESS Πάτρα – GR HUB-09 του Δικτύου Unthink Fitness Republic στην Ελλάδα",
+      "schema": [],
+      "notes": "Best optimized title in field: 'Γυμναστήριο [BRAND] Πάτρα | [Network]'. Description stuffs services. Why it ranks #2 for 'γυμναστήριο πάτρα'."
+    },
+    "20minfitness.gr": {
+      "title": "Η Νο1 Αλυσίδα EMS στην Ελλάδα - 20 Μinutes Fitness - EMS",
+      "title_len": 56,
+      "description": null,
+      "description_len": 0,
+      "h1": "Ορατά Αποτελέσματα με 20 Λεπτά / Εβδομάδα",
+      "schema": ["WebPage", "WebSite", "BreadcrumbList", "ImageObject"],
+      "notes": "Claims 'Νο1 αλυσίδα EMS' — superlative banned for MOVUS voice. National scope, not Πάτρα-specific."
+    },
+    "i-motiongreece.gr": {
+      "title": "Αρχική | i-Motion EMS Greece",
+      "title_len": 28,
+      "description": "02 ISO 14001:2015 Περιβαλλοντική διαχείριση 03 IECEE Διεθνής πιστοποίηση...",
+      "description_len": 506,
+      "h1": "i-Motion Βάζουμε τον κόσμο σε φόρμα",
+      "schema": ["Organization", "BreadcrumbList", "WebPage", "WebSite"],
+      "notes": "Title is hilariously bad ('Αρχική | brand'). Description is auto-generated ISO certification list. National vendor, not Πάτρα."
+    },
+    "addictionfitnessclub.gr/ems-patra/": {
+      "title": "EMS - ADDICTION FITNESS CLUB",
+      "title_len": 28,
+      "description": "Η ηλεκτρομυοδιέγερση είναι μία 20΄ προπόνηση με εξαιρετικά αποτελέσματα στην καύση του λίπους και ειδικά στα πιο δύσκολα σημεία όπως είναι η κοιλιά και οι γλουτοί! Φορώντας έναν ειδικό εξοπλισμό ενεργοποιούμε όλες τις μυϊκές ομάδες του σώματος μας έχοντας σαν αποτέλεσμα την γρηγορότερη ενεργοποίηση του μεταβολισμού μας και όλα αυτά υπό την καθοδήγηση personal trainer.",
+      "description_len": 372,
+      "h1": "EMS",
+      "schema": ["WebPage", "BreadcrumbList", "WebSite", "Organization", "ImageObject"],
+      "notes": "Description is page intro pasted — too long, will be truncated. No 'Πάτρα' in title."
+    },
+    "royalfitnesspilates.gr": {
+      "title": "Pilates Πάτρα | Royal Fitness Pilates by Vassiliki",
+      "title_len": 50,
+      "description": "Αναζητάτε ένα αξιόπιστο studio για pilates; Το Royal Fitness Pilates by Vassiliki, στην Πάτρα, παρέχει εξατομικευμένα προγράμματα γυμναστικής, για όλους!",
+      "description_len": 153,
+      "h1": "PILATES ΠΑΤΡΑ",
+      "schema": [],
+      "notes": "Cleanest formula in field: '[keyword] Πάτρα | [brand] by [owner]'. Question-hook in description. Why it's #1 for pilates πάτρα."
+    },
+    "mindpilates.gr": {
+      "title": "Mindpilates, Studio Pilates, Πάτρα Home",
+      "title_len": 39,
+      "description": null,
+      "description_len": 0,
+      "h1": null,
+      "schema": [],
+      "notes": "Comma-stuffed title. No description. Ranks #2 anyway — domain age."
+    },
+    "hathastudio.gr": {
+      "title": "Yoga & Pilates Πάτρα | Hatha Studio — Μαθήματα & Θεραπείες",
+      "title_len": 58,
+      "description": null,
+      "description_len": 0,
+      "h1": "Hatha Yoga & Pilates Studio Patras",
+      "schema": [],
+      "notes": "Title uses dual-keyword stack 'Yoga & Pilates Πάτρα'. Em-dash in title (banned for MOVUS). Cloudflare blocks bots."
+    },
+    "lesoma.gr": {
+      "title": "LE SOMA | Pilates Reformer & Gyrotonic Studio",
+      "title_len": 45,
+      "description": "LE SOMA Pilates Reformer & Gyrotonic Studio | Πέντε Πηγαδίων 58, Πάτρα, τηλ: 2610423920 ",
+      "description_len": 88,
+      "h1": "Εξερευνήστε το Studio μας",
+      "schema": [],
+      "notes": "Description includes physical address + phone — strong local-SEO signal. No 'Πάτρα' in title."
+    },
+    "studioonepatras.gr": {
+      "title": "Studio One Patras",
+      "title_len": 17,
+      "description": null,
+      "description_len": 0,
+      "h1": "Studio One Patras",
+      "schema": [],
+      "notes": "Brand-only. Probably ranks on backlinks from 'Patras' subdomain match."
+    },
+    "giorgossazaklis.gr": {
+      "title": "Γιώργος Σαζακλής - Personal Trainer Πάτρα",
+      "title_len": 41,
+      "description": "Γίωργος Σαζακλής, Personal Trainer Πάτρα",
+      "description_len": 40,
+      "h1": "Καλώς ορίσατε !!!",
+      "schema": ["Athlete", "Bodybuilder", "Personal Trainer (invalid type)"],
+      "notes": "[NAME] - Personal Trainer Πάτρα — clean personal-brand formula."
+    },
+    "360fitnessclub.gr": {
+      "title": "360 Fitness Club - Πάτρα",
+      "title_len": 24,
+      "description": "Καλωσήρθατε στο 360 Fitness, το γυμναστήριο που προσφέρει ολοκληρωμένες λύσεις εκγύμνασης γ",
+      "description_len": 90,
+      "h1": "360 Fitness Club",
+      "schema": ["Website"],
+      "notes": "Description truncated. Brand - Πάτρα title."
+    },
+    "elepod.gr/business/69228-ems-training-patra": {
+      "title": "20 Minutes By Miha Bodytec VIP training - EMS Training Πάτρα",
+      "title_len": 60,
+      "description": "MIHA BODYTEC ΠΑΤΡΑ - BODYTEC ΠΑΤΡΑ - EMS TRAINING ΠΑΤΡΑ - EMS PERSONAL ΠΑΤΡΑ - ΠΑΘΗΤΙΚΗ ΓΥΜΝΑΣΤΙΚΗ ΠΑΤΡΑ - ΗΛΕΚΤΡΟΔΙΕΓΕΡΣΗ ΠΑΤΡΑ",
+      "description_len": 128,
+      "h1": "20 Minutes By Miha Bodytec VIP training - EMS Training Πάτρα",
+      "schema": [],
+      "notes": "Pure keyword stuffing — but ranks. Aggregator listing for the 20minutes franchise location."
+    },
+    "blog.eop.gr (EMS article)": {
+      "title": "EMS στην Πάτρα: Η Επανάσταση στη Γυμναστική και την Αποκατάσταση - Επαγγελματικός Οδηγός Πληροφοριών",
+      "title_len": 100,
+      "description": "Η ηλεκτρομυοδιέγερση (EMS) αποτελεί μια πρωτοποριακή μέθοδο γυμναστικής...",
+      "description_len": 454,
+      "h1": "EMS στην Πάτρα: Η Επανάσταση στη Γυμναστική και την Αποκατάσταση",
+      "schema": ["Article", "WebPage", "ReadAction"],
+      "notes": "Editorial article — uses 'Επανάσταση' superlative + colon + benefit structure."
+    },
+    "gyms.com.gr/region/patra/": {
+      "title": "Πάτρα – Γυμναστήρια και Κολυμβητήρια στην Ελλάδα",
+      "title_len": 48,
+      "description": "Browse listings in Πάτρα | Τα καλύτερα γυμναστήρια και studio είναι εδώ",
+      "description_len": 71,
+      "h1": null,
+      "schema": [],
+      "notes": "Aggregator. Mixed-language description ('Browse listings in Πάτρα')."
+    }
+  },
+  "local_pack_note": "Google local pack (3-pack with rating + reviews) could not be extracted server-side due to consent.google.com 302 gate. Inferred from manual SERP observation: Google Maps presence is mandatory for the local 3-pack on all 5 queries. Recommend manual SERP screenshot from a Πάτρα-located browser or paid SERP API (DataForSEO, Serpstack) for review-count thresholds.",
+  "semrush_status": "Unavailable on current plan (mcp__semrush__ returns 'plan does not support MCP access'). Cannot get keyword-overlap or organic keyword volume per competitor."
+}

@@ -3,7 +3,7 @@
 export const siteCopy = {
   tagline: "This is your MOVUS moment.",
   ctaBand: {
-    hook: "Έτοιμος να ξεκινήσεις;",
+    hook: "Ώρα να ξεκινήσεις;",
     body: "Μίλα μαζί μας. Βρίσκουμε το πρόγραμμα που σου ταιριάζει και ξεκινάμε.",
     cta: "ΕΠΙΚΟΙΝΩΝΗΣΕ ΜΑΖΙ ΜΑΣ",
   },

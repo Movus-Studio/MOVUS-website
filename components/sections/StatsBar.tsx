@@ -6,7 +6,7 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 import { motion } from "motion/react";
 
 const stats = [
-  { value: 350, suffix: "+", label: "μύες ταυτόχρονα" },
+  { value: 300, suffix: "+", label: "μύες ταυτόχρονα" },
   { value: 20, suffix: " λεπτά", label: "ανά συνεδρία" },
   { value: 4, suffix: "x", label: "πιο αποτελεσματικό" },
   { value: 4, suffix: " εβδομάδες", label: "μέχρι τα πρώτα αποτελέσματα" },

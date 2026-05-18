@@ -5,14 +5,19 @@ import { blogPosts } from "@/content/blog";
 import { siteCopy } from "@/content/site";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 
+const BLOG_TITLE = "Blog. EMS, Fitness & Διατροφή Πάτρα";
+const BLOG_DESCRIPTION =
+  "Tips για EMS, fitness, ομαδικά και διατροφή από την ομάδα του MOVUS Πάτρα. Οδηγίες για αποτέλεσμα που νιώθεις.";
+
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Tips για Fitness, EMS, Ομαδικά και Διατροφή από το MOVUS Πάτρα.",
+  title: BLOG_TITLE,
+  description: BLOG_DESCRIPTION,
+  alternates: {
+    canonical: "https://movus.gr/blog",
+  },
   openGraph: {
-    title: "Blog MOVUS Πάτρα | Tips για Fitness, EMS, Ομαδικά και Διατροφή",
-    description:
-      "Άρθρα για EMS, διατροφή, fitness tips και αποτελέσματα από τους ειδικούς του MOVUS.",
+    title: `${BLOG_TITLE} | MOVUS`,
+    description: BLOG_DESCRIPTION,
   },
 };
 

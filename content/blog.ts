@@ -1,6 +1,7 @@
 export interface BlogPost {
   slug: string;
   title: string;
+  metaDescription?: string;
   excerpt: string;
   category: "EMS" | "Διατροφή" | "Fitness Tips" | "Αποτελέσματα";
   author: string;
@@ -13,7 +14,9 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "ems-patra-ideal-workout-for-busy-people",
-    title: "EMS Πάτρα – Γιατί το EMS είναι η ιδανική γυμναστική για πολυάσχολους",
+    title: "EMS Πάτρα: Η Ιδανική Προπόνηση για Πολυάσχολους",
+    metaDescription:
+      "Γιατί 20 λεπτά EMS αξίζουν 4 ώρες κλασικής προπόνησης. Πλήρης οδηγός για το EMS στην Πάτρα και πώς λειτουργεί στο MOVUS.",
     excerpt:
       "Το EMS είναι η πιο γρήγορη και αποτελεσματική μέθοδος γυμναστικής για όσους έχουν περιορισμένο χρόνο. Μόλις 20 λεπτά προπόνησης αρκούν για να δεις πραγματικά αποτελέσματα στο σώμα σου.",
     category: "EMS",

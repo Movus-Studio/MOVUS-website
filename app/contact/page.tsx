@@ -7,13 +7,19 @@ import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 import { ContactForm } from "./ContactForm";
 import { ContactMap } from "./ContactMap";
 
+const CONTACT_TITLE = "Επικοινωνία. Ιερού Λόχου 1, Πάτρα";
+const CONTACT_DESCRIPTION =
+  "Επικοινωνία MOVUS EMS γυμναστηρίου στην Πάτρα. Ωράριο, τιμές, κρατήσεις, εγγραφή. Ιερού Λόχου 1. Τηλ. 2611 814 010.";
+
 export const metadata: Metadata = {
-  title: "Επικοινωνία",
-  description: `Επικοινώνησε μαζί μας ή επισκέψου μας στην ${siteContact.address.full}. Τηλ: ${siteContact.phoneDisplay}.`,
+  title: CONTACT_TITLE,
+  description: CONTACT_DESCRIPTION,
+  alternates: {
+    canonical: "https://movus.gr/contact",
+  },
   openGraph: {
-    title: "Επικοινωνήστε με το MOVUS Πάτρα | Κλείστε Ραντεβού",
-    description:
-      "Ενδιαφέρεστε για τα προγράμματά μας; Στείλτε μας τα στοιχεία σας και θα επικοινωνήσουμε σύντομα μαζί σας!",
+    title: `${CONTACT_TITLE} | MOVUS`,
+    description: CONTACT_DESCRIPTION,
   },
 };
 

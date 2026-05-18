@@ -26,12 +26,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!program) return { title: "Πρόγραμμα" };
 
+  const description = program.metaDescription ?? program.shortDescription;
+  const ogTitle = program.metaTitle ?? `${program.title} | MOVUS`;
+  // /programs/personal canonicals to /personal-training (brand-led service page is canonical).
+  const canonical =
+    program.slug === "personal"
+      ? "https://movus.gr/personal-training"
+      : `https://movus.gr/programs/${program.slug}`;
+
   return {
-    title: program.title,
-    description: program.shortDescription,
+    title: program.metaTitle
+      ? { absolute: program.metaTitle }
+      : program.title,
+    description,
+    alternates: {
+      canonical,
+    },
     openGraph: {
-      title: `${program.title} | MOVUS`,
-      description: program.shortDescription,
+      title: ogTitle,
+      description,
     },
   };
 }
@@ -78,23 +91,23 @@ export default async function ProgramPage({ params }: Props) {
       />
 
       {/* Hero */}
-      <section className="relative bg-movus-black pt-32 pb-16 md:pt-40 md:pb-24">
+      <section className="relative bg-movus-white pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm text-medium-gray">
+            <ol className="flex items-center gap-2 text-sm text-dark-gray/70">
               <li>
-                <Link href="/" className="hover:text-movus-white transition-colors">
+                <Link href="/" className="hover:text-movus-orange-text transition-colors">
                   Αρχική
                 </Link>
               </li>
               <li>/</li>
               <li>
-                <Link href="/programs" className="hover:text-movus-white transition-colors">
+                <Link href="/programs" className="hover:text-movus-orange-text transition-colors">
                   Προγράμματα
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-movus-white">{program.title}</li>
+              <li className="text-movus-black">{program.title}</li>
             </ol>
           </nav>
 
@@ -103,12 +116,12 @@ export default async function ProgramPage({ params }: Props) {
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-3 py-1 rounded-full mb-4">
                 {program.tag}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
                 {program.title}
               </h1>
               <div className="space-y-4 mb-8">
                 {program.heroBody.map((p, i) => (
-                  <p key={i} className="text-lg text-medium-gray leading-relaxed">
+                  <p key={i} className="text-lg text-dark-gray leading-relaxed">
                     {p}
                   </p>
                 ))}
@@ -231,37 +244,30 @@ export default async function ProgramPage({ params }: Props) {
         </section>
       )}
 
-      {/* FAQ */}
-      <section className="bg-movus-orange py-20 md:py-28">
-        <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
-          <p className="text-movus-white/70 mb-4 text-sm">(Συχνές ερωτήσεις)</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
-            FAQ
-          </h2>
-          <div className="space-y-3">
-            {program.faqs.map((faq, i) => (
-              <details
-                key={i}
-                className="group bg-movus-white rounded-xl overflow-hidden open:shadow-lg transition-shadow"
-              >
-                <summary className="cursor-pointer list-none p-5 flex items-start justify-between gap-4">
-                  <span className="font-semibold text-movus-black leading-snug">
-                    {faq.question}
-                  </span>
-                  <span className="text-movus-orange flex-shrink-0 transition-transform group-open:rotate-180">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </summary>
-                <div className="px-5 pb-5 text-dark-gray leading-relaxed">{faq.answer}</div>
-              </details>
-            ))}
+      {/* Global CTA band — promoted above Related + FAQ so convinced buyers convert first */}
+      <section className="bg-movus-black py-20 md:py-28">
+        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
+          <div className="bg-movus-orange rounded-3xl px-8 md:px-16 py-14 md:py-20 text-center">
+            <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
+              {siteCopy.tagline}
+            </p>
+            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
+              {siteCopy.ctaBand.hook}
+            </h2>
+            <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">
+              {siteCopy.ctaBand.body}
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block bg-movus-black hover:bg-movus-navy text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
+            >
+              {siteCopy.ctaBand.cta}
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Related programs */}
+      {/* Related programs — cross-sell to undecided buyers */}
       <section className="bg-movus-black py-20 md:py-28">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
@@ -300,25 +306,32 @@ export default async function ProgramPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Global CTA band */}
-      <section className="bg-movus-black pb-20 md:pb-28">
-        <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <div className="bg-movus-orange rounded-3xl px-8 md:px-16 py-14 md:py-20 text-center">
-            <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
-              {siteCopy.tagline}
-            </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
-              {siteCopy.ctaBand.hook}
-            </h2>
-            <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">
-              {siteCopy.ctaBand.body}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-movus-black hover:bg-movus-navy text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
-            >
-              {siteCopy.ctaBand.cta}
-            </Link>
+      {/* FAQ — last, for hesitant readers who need objections answered before converting */}
+      <section className="bg-movus-orange py-20 md:py-28">
+        <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
+          <p className="text-movus-white/70 mb-4 text-sm">(Συχνές ερωτήσεις)</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
+            FAQ
+          </h2>
+          <div className="space-y-3">
+            {program.faqs.map((faq, i) => (
+              <details
+                key={i}
+                className="group bg-movus-white rounded-xl overflow-hidden open:shadow-lg transition-shadow"
+              >
+                <summary className="cursor-pointer list-none p-5 flex items-start justify-between gap-4">
+                  <span className="font-semibold text-movus-black leading-snug">
+                    {faq.question}
+                  </span>
+                  <span className="text-movus-orange flex-shrink-0 transition-transform group-open:rotate-180">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-5 pb-5 text-dark-gray leading-relaxed">{faq.answer}</div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

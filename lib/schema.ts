@@ -3,12 +3,12 @@
 export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "HealthClub"],
     "@id": "https://movus.gr/#business",
     name: "MOVUS EMS Fitness Studio",
     alternateName: "MOVUS",
     description:
-      "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
+      "EMS γυμναστήριο στην Πάτρα. 20 λεπτά EMS κάνουν δουλειά για 4 ώρες προπόνησης.",
     url: "https://movus.gr",
     telephone: "+302611814010",
     email: "info@movus.gr",
@@ -54,6 +54,32 @@ export function generateLocalBusinessSchema() {
       name: "Πάτρα",
     },
     sameAs: ["https://www.instagram.com/movusfitness/"],
+  };
+}
+
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://movus.gr/#organization",
+    name: "MOVUS",
+    legalName: "MOVUS, Future of Fitness",
+    url: "https://movus.gr",
+    logo: "https://movus.gr/og-image.jpg",
+    sameAs: ["https://www.instagram.com/movusfitness/"],
+  };
+}
+
+export function generateWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://movus.gr/#website",
+    name: "MOVUS",
+    alternateName: "MOVUS EMS Fitness Studio",
+    url: "https://movus.gr",
+    inLanguage: "el-GR",
+    publisher: { "@id": "https://movus.gr/#organization" },
   };
 }
 

@@ -9,6 +9,7 @@ import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { MotionBoot } from "@/components/layout/MotionBoot";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
 
 const jura = Jura({
   variable: "--font-manrope-var",
@@ -24,23 +25,26 @@ const delaGothic = Dela_Gothic_One({
   weight: ["400"],
 });
 
+const HOMEPAGE_TITLE = "EMS Γυμναστήριο Πάτρα | MOVUS Fitness Studio";
+const HOMEPAGE_DESCRIPTION =
+  "EMS γυμναστήριο στην Πάτρα, Ιερού Λόχου 1. EMS, personal training, ομαδικά. 20 λεπτά EMS = 4 ώρες προπόνησης.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://movus.gr"),
   title: {
-    default: "MOVUS, EMS Fitness Studio | Πάτρα",
+    default: HOMEPAGE_TITLE,
     template: "%s | MOVUS",
   },
-  description:
-    "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης. Κλείσε δοκιμαστικό σήμερα.",
+  description: HOMEPAGE_DESCRIPTION,
   keywords: [
     "EMS",
     "EMS γυμναστήριο",
     "EMS Πάτρα",
-    "ηλεκτρομυοδιέγερση",
-    "i-Motion",
-    "MOVUS",
     "γυμναστήριο Πάτρα",
-    "fitness Πάτρα",
+    "γυμναστήρια Πάτρα",
+    "personal trainer Πάτρα",
+    "ομαδικά Πάτρα",
+    "MOVUS",
   ],
   authors: [{ name: "K₂O", url: "https://k2o.io" }],
   openGraph: {
@@ -48,29 +52,28 @@ export const metadata: Metadata = {
     locale: "el_GR",
     url: "https://movus.gr",
     siteName: "MOVUS",
-    title: "MOVUS, EMS Fitness Studio | Πάτρα",
-    description:
-      "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
+    title: HOMEPAGE_TITLE,
+    description: HOMEPAGE_DESCRIPTION,
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "MOVUS EMS Fitness Studio · Πάτρα",
+        alt: "MOVUS EMS Fitness Studio, Πάτρα",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MOVUS, EMS Fitness Studio | Πάτρα",
-    description:
-      "Το premium EMS γυμναστήριο της Πάτρας. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης.",
+    title: HOMEPAGE_TITLE,
+    description: HOMEPAGE_DESCRIPTION,
     images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://movus.gr",
     languages: {
-      el: "https://movus.gr",
+      "el-GR": "https://movus.gr",
+      "x-default": "https://movus.gr",
     },
   },
   robots: {
@@ -111,6 +114,18 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen font-[family-name:var(--font-manrope-var)]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebSiteSchema()),
+          }}
+        />
 
         {/* CSS-only mobile menu toggle. Burger is a <label htmlFor>, menu visibility
             keyed off this checkbox via html:has(#movus-menu-toggle:checked) in globals.css.

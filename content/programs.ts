@@ -15,6 +15,8 @@ export interface SubProgram {
 export interface Program {
   slug: string;
   title: string;
+  metaTitle?: string;
+  metaDescription?: string;
   tag: string;
   tags?: string[];
   shortDescription: string;
@@ -34,6 +36,9 @@ export const programs: Program[] = [
   {
     slug: "team",
     title: "MOVUS TEAM",
+    metaTitle: "Ομαδικά Μαθήματα Γυμναστικής Πάτρα | MOVUS TEAM",
+    metaDescription:
+      "Ομαδικά στο MOVUS Πάτρα. MOVE για ένταση και καύση. FLOW για κινητικότητα. Διαλέγεις τη μία ή τις εναλλάσσεις.",
     tag: "GROUP",
     tags: ["Έως 8 άτομα", "MOVE + FLOW", "Group energy"],
     shortDescription:
@@ -114,6 +119,9 @@ export const programs: Program[] = [
   {
     slug: "squad",
     title: "MOVUS SQUAD",
+    metaTitle: "Squad Πάτρα. Μικρή ομάδα, μέγιστη προσοχή | MOVUS",
+    metaDescription:
+      "Μικρή ομάδα, μέγιστη προσοχή στο MOVUS Πάτρα. Ο coach βλέπει κάθε επανάληψη. Personal training σε ομαδικό setup.",
     tag: "MICRO-GROUP",
     tags: ["Έως 4 άτομα", "Coach-led", "Personal feel"],
     shortDescription:
@@ -174,6 +182,9 @@ export const programs: Program[] = [
   {
     slug: "personal",
     title: "MOVUS PERSONAL",
+    metaTitle: "Personal Trainer Πάτρα | MOVUS Fitness Studio",
+    metaDescription:
+      "Personal training στο MOVUS Πάτρα. Εξατομικευμένο πλάνο, στοχευμένη καθοδήγηση, αποτέλεσμα από την πρώτη συνεδρία.",
     tag: "PERSONAL",
     tags: ["2 άτομα", "Personal", "Real-time coaching"],
     shortDescription:
@@ -233,6 +244,9 @@ export const programs: Program[] = [
   {
     slug: "private",
     title: "MOVUS PRIVATE",
+    metaTitle: "Private Training Πάτρα. Αποκλειστικός Coach | MOVUS",
+    metaDescription:
+      "Αποκλειστική προπόνηση 1-σε-1 στο MOVUS Πάτρα. Όλο το πλάνο, η προσοχή και η ενέργεια του coach είναι μόνο για εσένα.",
     tag: "1-ON-1",
     tags: ["1-on-1", "Premium", "Maximum focus"],
     shortDescription:
@@ -292,6 +306,9 @@ export const programs: Program[] = [
   {
     slug: "ems",
     title: "MOVUS EMS",
+    metaTitle: "EMS Πάτρα | MOVUS EMS Fitness Studio",
+    metaDescription:
+      "EMS γυμναστήριο στην Πάτρα. 20 λεπτά EMS = 4 ώρες παραδοσιακής προπόνησης. Δύναμη, σύσφιξη, καύση σε ένα session.",
     tag: "EMS TECH",
     tags: ["300+ μύες", "20 λεπτά", "= 4 ώρες κλασικής"],
     shortDescription:
@@ -378,6 +395,9 @@ export const programs: Program[] = [
   {
     slug: "ems-cardio",
     title: "MOVUS EMS CARDIO",
+    metaTitle: "EMS Cardio Πάτρα. Αερόβιο με Ηλεκτροδιέγερση | MOVUS",
+    metaDescription:
+      "Αερόβιο με EMS στην Πάτρα. Μεγαλύτερη καύση λίπους, βαθύτερη ενεργοποίηση μυών, αποτέλεσμα στο μισό χρόνο.",
     tag: "EMS CARDIO",
     tags: ["EMS", "Cardio", "Διάδρομος"],
     shortDescription:
@@ -438,6 +458,9 @@ export const programs: Program[] = [
   {
     slug: "shape-space",
     title: "MOVUS SHAPE SPACE",
+    metaTitle: "Shape Space Πάτρα. Vacuum, Infrared, EMS | MOVUS",
+    metaDescription:
+      "Πέντε τεχνολογίες σώματος σε έναν χώρο στην Πάτρα. Θερμότητα, αρνητική πίεση, EMS, κολλαγόνο, αρωματοθεραπεία.",
     tag: "VACUUM + INFRARED",
     tags: ["5 τεχνολογίες", "Vacuum + Heat", "EMS + Κολλαγόνο"],
     shortDescription:
@@ -505,6 +528,9 @@ export const programs: Program[] = [
   {
     slug: "transformation",
     title: "MOVUS TRANSFORMATION",
+    metaTitle: "Transformation Πάτρα. Personal + Shape Space | MOVUS",
+    metaDescription:
+      "Personal training και Shape Space σε ένα ολοκληρωμένο πλάνο στην Πάτρα. Χτίζεις δύναμη και αναδιαμορφώνεις το σώμα.",
     tag: "ΠΑΚΕΤΟ",
     tags: ["1 μήνας", "Personal + Shape Space", "Δύο προσεγγίσεις"],
     shortDescription:
@@ -575,6 +601,9 @@ export const programs: Program[] = [
   {
     slug: "hybrid",
     title: "MOVUS HYBRID",
+    metaTitle: "Hybrid Πάτρα. Personal Training + EMS Cardio | MOVUS",
+    metaDescription:
+      "Δύο κόσμοι σε ένα πλάνο στο MOVUS Πάτρα. Personal training για δύναμη, EMS Cardio για αντοχή και καύση.",
     tag: "ΠΑΚΕΤΟ",
     tags: ["Personal + EMS Cardio", "Δύναμη + Αντοχή", "Δύο κόσμοι"],
     shortDescription:

@@ -1,4 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: { absolute: "404. Η σελίδα δεν βρέθηκε | MOVUS" },
+  description:
+    "Η σελίδα δεν βρέθηκε. Πήγαινε πίσω στην αρχική του MOVUS, EMS γυμναστήριο στην Πάτρα.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (
