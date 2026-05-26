@@ -27,7 +27,7 @@ const delaGothic = Dela_Gothic_One({
 
 const HOMEPAGE_TITLE = "EMS Γυμναστήριο Πάτρα | MOVUS Fitness Studio";
 const HOMEPAGE_DESCRIPTION =
-  "EMS γυμναστήριο στην Πάτρα, Ιερού Λόχου 1. EMS, personal training, ομαδικά. 20 λεπτά EMS = 4 ώρες προπόνησης.";
+  "EMS γυμναστήριο στην Πάτρα, Ιερού Λόχου 1. Συνεδρία EMS 30 λεπτών, personal training, ομαδικά. 300+ μύες σε κάθε προπόνηση.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://movus.gr"),
