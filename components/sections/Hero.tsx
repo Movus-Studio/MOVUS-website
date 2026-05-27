@@ -74,15 +74,15 @@ export function Hero() {
         <picture>
           <source
             media="(orientation: portrait)"
-            srcSet="/images/movus-hero-v2-mobile.webp"
+            srcSet="/images/movus-hero-v3-mobile.webp"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/movus-hero-v2.webp"
+            src="/images/movus-hero-v3.webp"
             alt="Αθλήτρια του MOVUS μετά την προπόνηση"
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover object-center landscape:md:object-[22%_center]"
+            className="absolute inset-0 w-full h-full object-cover object-center landscape:md:object-[80%_center]"
           />
         </picture>
       </div>

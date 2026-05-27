@@ -113,7 +113,7 @@ export const programs: Program[] = [
           "Μικρότερη ομάδα (έως 8), πιστοποιημένος coach που σε γνωρίζει και προσαρμόζει την προπόνηση πάνω σου, και πλάνο που εξελίσσεται μαζί σου. Όχι μια τυχαία τάξη με 25 άτομα στην ίδια άσκηση.",
       },
     ],
-    image: "/images/movus-group-training.webp",
+    image: "/images/movus-team-trio-sideplanks.webp",
     imageAlt: "MOVUS TEAM ομαδική προπόνηση",
   },
   {
@@ -176,8 +176,8 @@ export const programs: Program[] = [
           "Online μέσα από το site, με τη φόρμα επικοινωνίας ή τηλεφωνικά. Τα slots είναι μετρημένα, οπότε προτείνουμε booking τουλάχιστον 24 ώρες πριν.",
       },
     ],
-    image: "/images/movus-squad.webp",
-    imageAlt: "MOVUS SQUAD micro-group προπόνηση",
+    image: "/images/movus-kettlebell-group-training.webp",
+    imageAlt: "MOVUS SQUAD micro-group προπόνηση με kettlebells",
   },
   {
     slug: "personal",
@@ -238,7 +238,7 @@ export const programs: Program[] = [
           "Σε όσους θέλουν προπόνηση με coach να τους βλέπει σε κάθε επανάληψη, χωρίς όμως να μπουν σε αποκλειστικό 1-on-1. Ιδανικό για όσους ξεκινούν, όσους επιστρέφουν μετά από διάλειμμα ή τραυματισμό, και όσους θέλουν στοχευμένη μεταμόρφωση.",
       },
     ],
-    image: "/images/movus-ems.webp",
+    image: "/images/movus-personal-training-coach.webp",
     imageAlt: "MOVUS PERSONAL προπόνηση 2 ατόμων",
   },
   {
@@ -300,8 +300,8 @@ export const programs: Program[] = [
           "Ναι, και αυτό είναι ένα από τα δυνατά του σημεία. Επειδή είναι 1-on-1, η ώρα προσαρμόζεται στο πρόγραμμά σου: πρωί πριν τη δουλειά, μεσημέρι ή απόγευμα, εντός των ωρών λειτουργίας μας.",
       },
     ],
-    image: "/images/movus-ems-mat-training.webp",
-    imageAlt: "MOVUS PRIVATE 1-on-1 προπόνηση",
+    image: "/images/movus-strength-lunge-silhouette.webp",
+    imageAlt: "MOVUS PRIVATE 1-on-1 προπόνηση δύναμης",
   },
   {
     slug: "ems",
@@ -452,7 +452,7 @@ export const programs: Program[] = [
           "Φοράς τη στολή EMS που σου παρέχουμε και αθλητικά παπούτσια κατάλληλα για τρέξιμο. Πρόσθεσε και μια αλλαξιά γιατί η εφίδρωση είναι σημαντική.",
       },
     ],
-    image: "/images/movus-ems-run.webp",
+    image: "/images/movus-ems-cardio-athlete.webp",
     imageAlt: "EMS CARDIO διάδρομος με EMS τεχνολογία",
   },
   {
@@ -595,7 +595,7 @@ export const programs: Program[] = [
           "Ξεκινάς όποτε σε βολεύει. Δεν λειτουργεί σε κύκλους. Μόλις είσαι έτοιμος/η, ορίζουμε την πρώτη συνεδρία αξιολόγησης και ξεκινάμε. Σου προτείνουμε να μην το αναβάλεις, γιατί το πρώτο βήμα είναι αυτό που κάνει τη διαφορά.",
       },
     ],
-    image: "/images/movus-transformation.webp",
+    image: "/images/movus-transformation-sideplank.webp",
     imageAlt: "MOVUS TRANSFORMATION πακέτο προπόνησης",
   },
   {
