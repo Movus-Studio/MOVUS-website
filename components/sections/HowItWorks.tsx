@@ -15,28 +15,28 @@ const steps = [
     title: "Αξιολόγηση",
     description:
       "InBody μέτρηση, ιστορικό, στόχοι. Καταλαβαίνουμε από πού ξεκινάς και πού θέλεις να φτάσεις.",
-    image: "/images/movus-studio-interior.webp",
+    image: "/images/movus-assessment-side-profile.webp",
   },
   {
     number: "02",
     title: "Πλάνο",
     description:
       "Ο coach σου χτίζει πρόγραμμα γύρω από τον στόχο σου, τον χρόνο σου, το σώμα σου. Τίποτα γενικό, τίποτα τυχαίο.",
-    image: "/images/movus-imotion-ems-suit.webp",
+    image: "/images/movus-coach-program-planning.webp",
   },
   {
     number: "03",
     title: "Προπόνηση",
     description:
       "Ξεκινάς. Ο coach σε βλέπει σε κάθε επανάληψη και προσαρμόζει σε πραγματικό χρόνο. Από την πρώτη μέρα ξέρεις τι κάνεις και γιατί.",
-    image: "/images/movus-ems-core-workout.webp",
+    image: "/images/movus-training-pushup-coach.webp",
   },
   {
     number: "04",
     title: "Πρόοδος",
     description:
       "Επαναξιολόγηση κάθε λίγες εβδομάδες. Νέα μέτρηση, νέοι στόχοι, νέα ένταση. Η πρόοδος είναι μετρήσιμη και ορατή.",
-    image: "/images/movus-ems-controller.webp",
+    image: "/images/movus-fitness-progress-result.webp",
   },
 ];
 

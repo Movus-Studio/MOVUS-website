@@ -102,7 +102,7 @@ export function Experience() {
         <div className="flex-1">
           <div className="exp-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
-              src="/images/movus-kettlebell-training.webp"
+              src="/images/movus-strength-silhouette-bar-lift.webp"
               alt="Αθλήτρια κάνει kettlebell swings στο MOVUS"
               fill
               className="object-cover object-[70%_center]"

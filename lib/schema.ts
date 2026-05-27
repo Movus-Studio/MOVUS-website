@@ -8,7 +8,7 @@ export function generateLocalBusinessSchema() {
     name: "MOVUS EMS Fitness Studio",
     alternateName: "MOVUS",
     description:
-      "EMS γυμναστήριο στην Πάτρα. 20 λεπτά EMS κάνουν δουλειά για 4 ώρες προπόνησης.",
+      "EMS γυμναστήριο στην Πάτρα. Συνεδρία EMS 30 λεπτών με ενεργοποίηση 300+ μυών, personal training και ομαδικά προγράμματα.",
     url: "https://movus.gr",
     telephone: "+302611814010",
     email: "info@movus.gr",
