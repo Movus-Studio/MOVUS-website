@@ -211,10 +211,10 @@ function ProgramCard({
 
   return (
     <article
-      className={`flex flex-col lg:flex-row overflow-hidden rounded-3xl ${bgClass} shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)] relative h-full lg:h-[560px]`}
+      className={`flex flex-col lg:flex-row overflow-hidden rounded-3xl ${bgClass} shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)] relative lg:h-[560px]`}
     >
       {/* Text */}
-      <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-14 flex flex-col justify-center min-h-[460px] lg:min-h-0 lg:h-full">
+      <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-14 flex flex-col justify-between lg:justify-center min-h-[540px] lg:min-h-0 lg:h-full gap-6 lg:gap-0">
         <h3
           className="mb-6 text-movus-white uppercase leading-[0.95] tracking-tight break-words"
           style={{
