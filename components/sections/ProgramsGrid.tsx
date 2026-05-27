@@ -238,10 +238,12 @@ function ProgramCard({
             <span className={`font-bold ${labelColor}`}>Level :</span>
             <span className="text-movus-white">Όλα τα επίπεδα</span>
           </div>
-          <div className="flex items-center gap-3 text-base md:text-lg">
-            <span className={`font-bold ${labelColor}`}>Duration :</span>
-            <span className="text-movus-white">20 Λεπτά</span>
-          </div>
+          {program.duration && (
+            <div className="flex items-center gap-3 text-base md:text-lg">
+              <span className={`font-bold ${labelColor}`}>Duration :</span>
+              <span className="text-movus-white">{program.duration}</span>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-wrap gap-2.5 mt-auto">
