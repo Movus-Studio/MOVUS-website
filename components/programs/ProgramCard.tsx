@@ -10,12 +10,13 @@ export function ProgramCard({ program }: { program: Program }) {
       href={`/programs/${program.slug}`}
       className="group h-full flex flex-col bg-movus-black border border-movus-black/10 rounded-xl overflow-hidden hover:border-movus-orange/40 shadow-[0_20px_45px_-25px_rgba(0,0,0,0.35)] transition-all duration-300"
     >
-      <div className="aspect-[16/10] bg-movus-navy overflow-hidden relative">
+      <div className="aspect-[5/4] md:aspect-[16/10] bg-movus-navy overflow-hidden relative">
         <Image
           src={program.image}
           alt={program.imageAlt}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
+          style={program.imagePosition ? { objectPosition: program.imagePosition } : undefined}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
@@ -24,7 +25,7 @@ export function ProgramCard({ program }: { program: Program }) {
           {program.tag}
         </span>
         <h3
-          className="text-2xl text-movus-white mb-3 group-hover:text-movus-orange transition-colors uppercase tracking-[-0.01em] leading-[0.95]"
+          className="text-xl md:text-2xl text-movus-white mb-3 group-hover:text-movus-orange transition-colors uppercase tracking-[-0.02em] leading-[0.95] break-words hyphens-auto"
           style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
         >
           {program.title}

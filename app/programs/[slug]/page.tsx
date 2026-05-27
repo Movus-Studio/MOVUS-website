@@ -116,7 +116,7 @@ export default async function ProgramPage({ params }: Props) {
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-3 py-1 rounded-full mb-4">
                 {program.tag}
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
+              <h1 className="text-[2.25rem] md:text-5xl lg:text-6xl font-black tracking-[-0.03em] text-movus-black mb-6 leading-[0.95] break-words hyphens-auto">
                 {program.title}
               </h1>
               <div className="space-y-4 mb-8">

@@ -117,6 +117,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-team-trio-sideplanks.webp",
     imageAlt: "MOVUS TEAM ομαδική προπόνηση",
+    imagePosition: "center 30%",
   },
   {
     slug: "squad",
@@ -181,6 +182,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-kettlebell-group-training.webp",
     imageAlt: "MOVUS SQUAD micro-group προπόνηση με kettlebells",
+    imagePosition: "center 38%",
   },
   {
     slug: "personal",
@@ -244,6 +246,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-personal-training-coach.webp",
     imageAlt: "MOVUS PERSONAL προπόνηση 2 ατόμων",
+    imagePosition: "center 25%",
   },
   {
     slug: "private",
@@ -307,6 +310,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-strength-lunge-silhouette.webp",
     imageAlt: "MOVUS PRIVATE 1-on-1 προπόνηση δύναμης",
+    imagePosition: "center 25%",
   },
   {
     slug: "ems",
@@ -461,6 +465,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-ems-cardio-athlete.webp",
     imageAlt: "EMS CARDIO διάδρομος με EMS τεχνολογία",
+    imagePosition: "center 30%",
   },
   {
     slug: "shape-space",
@@ -605,6 +610,7 @@ export const programs: Program[] = [
     ],
     image: "/images/movus-transformation-sideplank.webp",
     imageAlt: "MOVUS TRANSFORMATION πακέτο προπόνησης",
+    imagePosition: "center 25%",
   },
   {
     slug: "hybrid",
