@@ -16,7 +16,7 @@ export default function NotFound() {
     <section className="min-h-[70vh] flex items-center justify-center bg-movus-black">
       <div className="text-center px-5">
         <p className="text-8xl font-black text-movus-orange mb-4">404</p>
-        <h1 className="text-2xl md:text-3xl font-bold text-movus-white mb-4">
+        <h1 className="text-block font-bold text-movus-white mb-4">
           Η σελίδα δεν βρέθηκε
         </h1>
         <p className="text-medium-gray mb-8 max-w-md mx-auto">

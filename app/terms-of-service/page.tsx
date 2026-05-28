@@ -48,7 +48,7 @@ export default function TermsOfServicePage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Νομικά
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
             Όροι <span className="text-movus-orange">Χρήσης</span> &amp; Προϋποθέσεις.
           </h1>
         </div>
@@ -58,7 +58,7 @@ export default function TermsOfServicePage() {
       <section className="bg-cream py-20 md:py-28">
         <div className="mx-auto max-w-[820px] px-5 md:px-8 lg:px-12 text-dark-gray leading-[1.8] text-lg space-y-10">
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               1. Εισαγωγή
             </h2>
             <p className="mb-4">
@@ -78,7 +78,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               2. Παρεχόμενες Υπηρεσίες
             </h2>
             <p>
@@ -87,7 +87,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               3. Χρήση της Ιστοσελίδας
             </h2>
             <ol className="list-decimal pl-6 space-y-3">
@@ -104,7 +104,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               4. Κρατήσεις και Πληρωμές
             </h2>
             <ol className="list-decimal pl-6 space-y-3">
@@ -121,7 +121,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               5. Περιορισμός Ευθύνης
             </h2>
             <ol className="list-decimal pl-6 space-y-3">
@@ -135,7 +135,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               6. Πνευματική Ιδιοκτησία
             </h2>
             <p>
@@ -144,7 +144,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               7. Προστασία Προσωπικών Δεδομένων
             </h2>
             <p>
@@ -157,7 +157,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               8. Τροποποιήσεις Όρων
             </h2>
             <p>
@@ -166,7 +166,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               9. Εφαρμοστέο Δίκαιο και Δικαιοδοσία
             </h2>
             <p>
@@ -175,7 +175,7 @@ export default function TermsOfServicePage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               10. Επικοινωνία
             </h2>
             <p>

@@ -98,7 +98,7 @@ export default function PersonalTrainingPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Personal Training Πάτρα
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
             Personal Trainer.
             <br />
             <span className="text-movus-orange">Στην Πάτρα.</span>
@@ -119,7 +119,7 @@ export default function PersonalTrainingPage() {
               <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
                 Τι περιλαμβάνει η συνεργασία
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
+              <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
                 Πλάνο πάνω σου. Όχι πάνω στον μέσο όρο.
               </h2>
               <p className="text-dark-gray leading-relaxed text-lg">
@@ -150,7 +150,7 @@ export default function PersonalTrainingPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Δύο formats
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-12 leading-[1.05]">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-12 leading-[1.05]">
             Διάλεξε πώς θες να δουλέψεις.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -161,7 +161,7 @@ export default function PersonalTrainingPage() {
                 className="group block bg-cream border border-light-gray rounded-2xl p-8 md:p-10 hover:border-movus-orange/40 hover:shadow-lg transition-all duration-300"
               >
                 <h3
-                  className="text-3xl md:text-4xl tracking-[-0.01em] text-movus-navy mb-2 uppercase"
+                  className="text-section-sm tracking-[-0.01em] text-movus-navy mb-2 uppercase"
                   style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
                 >
                   {format.name}
@@ -190,7 +190,7 @@ export default function PersonalTrainingPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Σε ποιον ταιριάζει
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-white mb-8 leading-[1.05]">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-8 leading-[1.05]">
             Personal training για πραγματικούς ανθρώπους.
           </h2>
           <div className="space-y-5 text-lg text-medium-gray leading-relaxed">
@@ -220,7 +220,7 @@ export default function PersonalTrainingPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Ξεκίνα
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
             Μία γνωριμία. Ένα πλάνο. Η πρώτη σου προπόνηση.
           </h2>
           <p className="text-lg text-dark-gray leading-relaxed mb-8 max-w-2xl mx-auto">

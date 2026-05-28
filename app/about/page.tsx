@@ -61,7 +61,7 @@ export default function AboutPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Γιατί MOVUS
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
             <span className="text-movus-orange">Πρωτοποριακό EMS fitness studio</span> στην Πάτρα.
           </h1>
         </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-8 leading-[1.05]">
+              <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-8 leading-[1.05]">
                 Δεν είναι ένα απλό γυμναστήριο.
               </h2>
               <div className="space-y-6 text-dark-gray leading-[1.8] text-lg">
@@ -125,7 +125,7 @@ export default function AboutPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-white/80 mb-4">
             Future of Fitness
           </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-4xl mx-auto">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-4xl mx-auto">
             Δεν έχει σημασία από πού ξεκινάς, αλλά{" "}
             <span className="text-movus-black">πού θες να φτάσεις.</span>
           </h2>
@@ -158,7 +158,7 @@ export default function AboutPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Τα προγράμματα
           </span>
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-12">
+          <h2 className="text-section-sm font-black tracking-[-0.01em] text-movus-white mb-12">
             Εννέα προγράμματα. Ένα σύστημα.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Νομικά
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
             Πολιτική <span className="text-movus-orange">Απορρήτου</span>.
           </h1>
           <p className="text-sm text-medium-gray uppercase tracking-[0.1em]">
@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
           </p>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               1. Υπεύθυνος Επεξεργασίας
             </h2>
             <p className="mb-3">MOVUS – Future of Fitness</p>
@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               2. Ποιες πληροφορίες συλλέγουμε
             </h2>
             <p className="mb-4">Συλλέγουμε προσωπικά δεδομένα όταν οι χρήστες:</p>
@@ -103,7 +103,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               3. Πώς συλλέγουμε τα δεδομένα
             </h2>
             <p>
@@ -112,7 +112,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               4. Νομική Βάση Επεξεργασίας
             </h2>
             <p className="mb-4">Η επεξεργασία στηρίζεται σε μία ή περισσότερες από τις παρακάτω νομικές βάσεις:</p>
@@ -125,7 +125,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               5. Πώς χρησιμοποιούμε τα δεδομένα σας
             </h2>
             <p className="mb-4">Τα δεδομένα χρησιμοποιούνται για τους εξής σκοπούς:</p>
@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               6. Χρόνος διατήρησης
             </h2>
             <p>
@@ -151,7 +151,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               7. Δικαιώματα Χρηστών
             </h2>
             <p className="mb-4">Σύμφωνα με το GDPR, έχετε τα ακόλουθα δικαιώματα:</p>
@@ -185,7 +185,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               8. Ασφάλεια Δεδομένων
             </h2>
             <p>
@@ -194,7 +194,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               9. Cookies
             </h2>
             <p className="mb-4">
@@ -228,7 +228,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               10. Πολιτικές άλλων ιστοτόπων
             </h2>
             <p>
@@ -237,7 +237,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               11. Αλλαγές στην Πολιτική Απορρήτου
             </h2>
             <p>
@@ -246,7 +246,7 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-movus-navy mb-4 tracking-[-0.01em]">
+            <h2 className="text-block font-black text-movus-navy mb-4 tracking-[-0.01em]">
               12. Επικοινωνία
             </h2>
             <p>

@@ -57,7 +57,7 @@ export default function ContactPage() {
             </ol>
           </nav>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
             Μίλα μαζί μας.
             <br />
             <span className="text-movus-orange">Ξεκινάμε.</span>
@@ -75,7 +75,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Form */}
             <div>
-              <h2 className="text-2xl font-bold text-movus-navy mb-6">
+              <h2 className="text-block font-bold text-movus-navy mb-6">
                 Στείλε μας μήνυμα
               </h2>
               <ContactForm />
@@ -84,7 +84,7 @@ export default function ContactPage() {
             {/* Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-bold text-movus-navy mb-6">
+                <h2 className="text-block font-bold text-movus-navy mb-6">
                   Στοιχεία επικοινωνίας
                 </h2>
                 <div className="space-y-4">
@@ -196,7 +196,7 @@ export default function ContactPage() {
             <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
               {siteCopy.tagline}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
+            <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
               {siteCopy.ctaBand.hook}
             </h2>
             <p className="text-lg text-movus-white/90 max-w-2xl mx-auto">

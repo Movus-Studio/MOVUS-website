@@ -109,7 +109,7 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="text-xs text-medium-gray">{post.readTime}</span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[1.05]">
+            <h1 className="text-section font-black tracking-[-0.02em] text-movus-white mb-6 leading-[1.05]">
               {post.title}
             </h1>
             <p className="text-lg text-medium-gray leading-relaxed mb-6">
@@ -155,7 +155,7 @@ export default async function BlogPostPage({ params }: Props) {
                   return (
                     <h2
                       key={index}
-                      className="text-2xl md:text-3xl font-black text-movus-navy mt-12 mb-4 tracking-[-0.01em]"
+                      className="text-block font-black text-movus-navy mt-12 mb-4 tracking-[-0.01em]"
                     >
                       {paragraph.replace("## ", "")}
                     </h2>
@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: Props) {
         {related.length > 0 && (
           <section className="bg-movus-black py-20 md:py-24">
             <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-              <h2 className="text-2xl md:text-3xl font-black tracking-[-0.01em] text-movus-white mb-10">
+              <h2 className="text-block font-black tracking-[-0.01em] text-movus-white mb-10">
                 Συνεχίστε να διαβάζετε
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

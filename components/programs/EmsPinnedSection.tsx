@@ -61,7 +61,7 @@ export function EmsPinnedSection({ programs }: { programs: Program[] }) {
       className="pt-10 md:pt-14 first:pt-0 scroll-mt-24 md:scroll-mt-28"
     >
       <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 mb-6 md:mb-8">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-movus-orange">EMS</h2>
+        <h2 className="text-section text-movus-orange">EMS</h2>
       </div>
 
       {/* Mobile — same horizontal carousel as the other categories */}

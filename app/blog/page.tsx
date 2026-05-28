@@ -63,7 +63,7 @@ export default function BlogPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             MOVUS Journal
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
+          <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
             Tips για Fitness, EMS,
             <br />
             <span className="text-movus-orange">Ομαδικά και Διατροφή</span>
@@ -104,7 +104,7 @@ export default function BlogPage() {
                   </span>
                   <span className="text-xs text-medium-gray">{featured.readTime}</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-[-0.01em] text-movus-navy mb-4 group-hover:text-movus-orange transition-colors leading-[1.1]">
+                <h2 className="text-section-sm font-black tracking-[-0.01em] text-movus-navy mb-4 group-hover:text-movus-orange transition-colors leading-[1.1]">
                   {featured.title}
                 </h2>
                 <p className="text-dark-gray leading-relaxed mb-6">
@@ -190,7 +190,7 @@ export default function BlogPage() {
             <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
               {siteCopy.tagline}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
+            <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
               {siteCopy.ctaBand.hook}
             </h2>
             <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">

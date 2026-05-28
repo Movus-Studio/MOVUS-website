@@ -34,6 +34,19 @@
   --color-4: 45 95% 65%; /* gold */
   --font-manrope: var(--font-manrope-var);
   --font-display: var(--font-display-var);
+
+  /* Fluid heading scale for in-page (route) headings — generates the
+     text-hero / text-section / text-section-sm / text-block utilities.
+     clamp(min, vw, max): max preserves the current desktop size, min is a
+     phone-safe floor sized so wide Dela Gothic uppercase Greek words don't
+     overflow. Replaces fixed `text-Nxl md:.. lg:..` jumps so headings scale
+     continuously with the viewport instead of snapping at breakpoints.
+     (Full-bleed homepage display headings keep using .heading-display /
+     .heading-section, whose larger scale lives in :root below.) */
+  --text-hero: clamp(1.75rem, 5.5vw, 4.5rem);
+  --text-section: clamp(1.625rem, 5vw, 3rem);
+  --text-section-sm: clamp(1.5rem, 4vw, 2.25rem);
+  --text-block: clamp(1.375rem, 3.5vw, 1.875rem);
 }
 
 html, body { overflow-x: clip; width: 100%; }

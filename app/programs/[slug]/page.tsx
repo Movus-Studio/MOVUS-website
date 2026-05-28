@@ -116,7 +116,7 @@ export default async function ProgramPage({ params }: Props) {
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.1em] text-movus-orange-text bg-movus-orange/10 px-3 py-1 rounded-full mb-4">
                 {program.tag}
               </span>
-              <h1 className="text-[2.25rem] md:text-5xl lg:text-6xl font-black tracking-[-0.03em] text-movus-black mb-6 leading-[0.95] break-words hyphens-auto">
+              <h1 className="text-hero font-black tracking-[-0.03em] text-movus-black mb-6 leading-[0.95] break-words hyphens-auto">
                 {program.title}
               </h1>
               <div className="space-y-4 mb-8">
@@ -153,7 +153,7 @@ export default async function ProgramPage({ params }: Props) {
       {/* Benefits */}
       <section className="bg-movus-black py-20 md:py-28 border-t border-white/5">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-10">
+          <h2 className="text-section-sm font-black tracking-[-0.01em] text-movus-white mb-10">
             {program.benefitsTitle}
           </h2>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
@@ -191,7 +191,7 @@ export default async function ProgramPage({ params }: Props) {
             <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
               Τα Προγράμματα
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-navy mb-16">
+            <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-16">
               5 προπονήσεις, μία κοινότητα
             </h2>
 
@@ -208,7 +208,7 @@ export default async function ProgramPage({ params }: Props) {
                       {sub.category}
                     </span>
                     <h3
-                      className="text-3xl md:text-4xl tracking-[-0.01em] text-movus-navy mb-2 uppercase"
+                      className="text-section-sm tracking-[-0.01em] text-movus-navy mb-2 uppercase"
                       style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
                     >
                       {sub.name}
@@ -251,7 +251,7 @@ export default async function ProgramPage({ params }: Props) {
             <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
               {siteCopy.tagline}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
+            <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
               {siteCopy.ctaBand.hook}
             </h2>
             <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">
@@ -273,7 +273,7 @@ export default async function ProgramPage({ params }: Props) {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Ανακαλύψτε άλλα Προγράμματα
           </span>
-          <h2 className="text-3xl md:text-4xl font-black tracking-[-0.01em] text-movus-white mb-12">
+          <h2 className="text-section-sm font-black tracking-[-0.01em] text-movus-white mb-12">
             Περισσότερες επιλογές
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -310,7 +310,7 @@ export default async function ProgramPage({ params }: Props) {
       <section className="bg-movus-orange py-20 md:py-28">
         <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
           <p className="text-movus-white/70 mb-4 text-sm">(Συχνές ερωτήσεις)</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
             FAQ
           </h2>
           <div className="space-y-3">

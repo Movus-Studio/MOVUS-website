@@ -27,7 +27,7 @@ function CategorySection({ id, title, programs }: { id: string; title: string; p
   return (
     <div id={id} className="pt-10 md:pt-14 first:pt-0 scroll-mt-24 md:scroll-mt-28">
       <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 mb-6 md:mb-8">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl text-movus-orange">
+        <h2 className="text-section text-movus-orange">
           {title}
         </h2>
       </div>
@@ -87,7 +87,7 @@ export default function ProgramsPage() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
             Τα προγράμματα
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
+          <h1 className="text-hero tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
             Εννέα προγράμματα.
             <br />
             <span className="text-movus-orange">Ένα σύστημα.</span>
@@ -111,7 +111,7 @@ export default function ProgramsPage() {
       <section className="bg-movus-orange py-20 md:py-28">
         <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
           <p className="text-movus-white/70 mb-4 text-sm">(Συχνές ερωτήσεις)</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
+          <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-12 leading-[0.95]">
             FAQ
           </h2>
           <div className="space-y-3">
@@ -144,7 +144,7 @@ export default function ProgramsPage() {
             <p className="text-movus-white/80 text-sm mb-3 tracking-wider">
               {siteCopy.tagline}
             </p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
+            <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-4 leading-[1.05]">
               {siteCopy.ctaBand.hook}
             </h2>
             <p className="text-lg text-movus-white/90 mb-8 max-w-2xl mx-auto">
