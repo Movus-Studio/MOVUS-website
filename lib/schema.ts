@@ -2,7 +2,7 @@
 // Business contact details are read from the CMS-managed global Settings
 // (content/settings/settings.json via siteContact) so an owner edit to the
 // phone/email/address/Instagram flows straight into the structured data.
-import { siteContact } from "@/content/site";
+import { siteContact, openingHoursSpecification } from "@/content/site";
 
 export function generateLocalBusinessSchema() {
   return {
@@ -30,26 +30,7 @@ export function generateLocalBusinessSchema() {
       latitude: 38.2466,
       longitude: 21.7346,
     },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "14:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "16:00",
-        closes: "21:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "09:00",
-        closes: "17:00",
-      },
-    ],
+    openingHoursSpecification,
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card",

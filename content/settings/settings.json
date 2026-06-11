@@ -15,9 +15,24 @@
     "country": "Ελλάδα"
   },
   "hours": {
-    "weekdaysDisplay": "Δευτέρα – Παρασκευή: 09:00 – 14:00 | 16:00 – 21:00",
-    "saturdayDisplay": "Σάββατο: 09:00 – 17:00",
-    "sundayDisplay": "Κυριακή: Κλειστά"
+    "weekdays": {
+      "label": "Δευτέρα – Παρασκευή",
+      "closed": false,
+      "sessions": [
+        { "open": "09:00", "close": "14:00" },
+        { "open": "16:00", "close": "21:00" }
+      ]
+    },
+    "saturday": {
+      "label": "Σάββατο",
+      "closed": false,
+      "sessions": [{ "open": "09:00", "close": "17:00" }]
+    },
+    "sunday": {
+      "label": "Κυριακή",
+      "closed": true,
+      "sessions": []
+    }
   },
   "social": {
     "instagram": "https://www.instagram.com/movusfitness/",

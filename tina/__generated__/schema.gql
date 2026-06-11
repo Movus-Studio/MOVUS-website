@@ -520,10 +520,43 @@ type SettingsAddress {
   country: String
 }
 
+type SettingsHoursWeekdaysSessions {
+  open: String
+  close: String
+}
+
+type SettingsHoursWeekdays {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursWeekdaysSessions]
+}
+
+type SettingsHoursSaturdaySessions {
+  open: String
+  close: String
+}
+
+type SettingsHoursSaturday {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursSaturdaySessions]
+}
+
+type SettingsHoursSundaySessions {
+  open: String
+  close: String
+}
+
+type SettingsHoursSunday {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursSundaySessions]
+}
+
 type SettingsHours {
-  weekdaysDisplay: String
-  saturdayDisplay: String
-  sundayDisplay: String
+  weekdays: SettingsHoursWeekdays
+  saturday: SettingsHoursSaturday
+  sunday: SettingsHoursSunday
 }
 
 type SettingsSocial {
@@ -558,10 +591,48 @@ input SettingsAddressFilter {
   country: StringFilter
 }
 
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input SettingsHoursWeekdaysSessionsFilter {
+  open: StringFilter
+  close: StringFilter
+}
+
+input SettingsHoursWeekdaysFilter {
+  label: StringFilter
+  closed: BooleanFilter
+  sessions: SettingsHoursWeekdaysSessionsFilter
+}
+
+input SettingsHoursSaturdaySessionsFilter {
+  open: StringFilter
+  close: StringFilter
+}
+
+input SettingsHoursSaturdayFilter {
+  label: StringFilter
+  closed: BooleanFilter
+  sessions: SettingsHoursSaturdaySessionsFilter
+}
+
+input SettingsHoursSundaySessionsFilter {
+  open: StringFilter
+  close: StringFilter
+}
+
+input SettingsHoursSundayFilter {
+  label: StringFilter
+  closed: BooleanFilter
+  sessions: SettingsHoursSundaySessionsFilter
+}
+
 input SettingsHoursFilter {
-  weekdaysDisplay: StringFilter
-  saturdayDisplay: StringFilter
-  sundayDisplay: StringFilter
+  weekdays: SettingsHoursWeekdaysFilter
+  saturday: SettingsHoursSaturdayFilter
+  sunday: SettingsHoursSundayFilter
 }
 
 input SettingsSocialFilter {
@@ -1228,10 +1299,43 @@ input SettingsAddressMutation {
   country: String
 }
 
+input SettingsHoursWeekdaysSessionsMutation {
+  open: String
+  close: String
+}
+
+input SettingsHoursWeekdaysMutation {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursWeekdaysSessionsMutation]
+}
+
+input SettingsHoursSaturdaySessionsMutation {
+  open: String
+  close: String
+}
+
+input SettingsHoursSaturdayMutation {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursSaturdaySessionsMutation]
+}
+
+input SettingsHoursSundaySessionsMutation {
+  open: String
+  close: String
+}
+
+input SettingsHoursSundayMutation {
+  label: String
+  closed: Boolean
+  sessions: [SettingsHoursSundaySessionsMutation]
+}
+
 input SettingsHoursMutation {
-  weekdaysDisplay: String
-  saturdayDisplay: String
-  sundayDisplay: String
+  weekdays: SettingsHoursWeekdaysMutation
+  saturday: SettingsHoursSaturdayMutation
+  sunday: SettingsHoursSundayMutation
 }
 
 input SettingsSocialMutation {

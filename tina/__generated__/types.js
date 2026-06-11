@@ -185,9 +185,36 @@ export const SettingsPartsFragmentDoc = gql`
   }
   hours {
     __typename
-    weekdaysDisplay
-    saturdayDisplay
-    sundayDisplay
+    weekdays {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
+    saturday {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
+    sunday {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
   }
   social {
     __typename

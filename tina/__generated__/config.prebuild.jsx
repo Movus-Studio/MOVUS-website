@@ -372,10 +372,68 @@ var config_default = defineConfig({
             type: "object",
             name: "hours",
             label: "\u03A9\u03C1\u03AC\u03C1\u03B9\u03BF",
+            description: "\u039F\u03B9 \u03CE\u03C1\u03B5\u03C2 \u03B5\u03BC\u03C6\u03B1\u03BD\u03AF\u03B6\u03BF\u03BD\u03C4\u03B1\u03B9 \u03C3\u03C4\u03BF site \u039A\u0391\u0399 \u03B5\u03BD\u03B7\u03BC\u03B5\u03C1\u03CE\u03BD\u03BF\u03C5\u03BD \u03B1\u03C5\u03C4\u03CC\u03BC\u03B1\u03C4\u03B1 \u03C4\u03B1 \u03B4\u03B5\u03B4\u03BF\u03BC\u03AD\u03BD\u03B1 \u03C4\u03B7\u03C2 Google (structured data).",
             fields: [
-              { type: "string", name: "weekdaysDisplay", label: "\u0394\u03B5\u03C5\u03C4\u03AD\u03C1\u03B1 \u2013 \u03A0\u03B1\u03C1\u03B1\u03C3\u03BA\u03B5\u03C5\u03AE" },
-              { type: "string", name: "saturdayDisplay", label: "\u03A3\u03AC\u03B2\u03B2\u03B1\u03C4\u03BF" },
-              { type: "string", name: "sundayDisplay", label: "\u039A\u03C5\u03C1\u03B9\u03B1\u03BA\u03AE" }
+              {
+                type: "object",
+                name: "weekdays",
+                label: "\u039A\u03B1\u03B8\u03B7\u03BC\u03B5\u03C1\u03B9\u03BD\u03AD\u03C2",
+                fields: [
+                  { type: "string", name: "label", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1 \u03B7\u03BC\u03B5\u03C1\u03CE\u03BD (\u03C0.\u03C7. \u0394\u03B5\u03C5\u03C4\u03AD\u03C1\u03B1 \u2013 \u03A0\u03B1\u03C1\u03B1\u03C3\u03BA\u03B5\u03C5\u03AE)" },
+                  { type: "boolean", name: "closed", label: "\u039A\u03BB\u03B5\u03B9\u03C3\u03C4\u03AC" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "\u0392\u03AC\u03C1\u03B4\u03B9\u03B5\u03C2",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} \u2013 ${i.close}` : "\u0392\u03AC\u03C1\u03B4\u03B9\u03B1" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "\u0386\u03BD\u03BF\u03B9\u03B3\u03BC\u03B1 (\u03C0.\u03C7. 09:00)" },
+                      { type: "string", name: "close", label: "\u039A\u03BB\u03B5\u03AF\u03C3\u03B9\u03BC\u03BF (\u03C0.\u03C7. 14:00)" }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: "object",
+                name: "saturday",
+                label: "\u03A3\u03AC\u03B2\u03B2\u03B1\u03C4\u03BF",
+                fields: [
+                  { type: "string", name: "label", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1" },
+                  { type: "boolean", name: "closed", label: "\u039A\u03BB\u03B5\u03B9\u03C3\u03C4\u03AC" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "\u0392\u03AC\u03C1\u03B4\u03B9\u03B5\u03C2",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} \u2013 ${i.close}` : "\u0392\u03AC\u03C1\u03B4\u03B9\u03B1" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "\u0386\u03BD\u03BF\u03B9\u03B3\u03BC\u03B1" },
+                      { type: "string", name: "close", label: "\u039A\u03BB\u03B5\u03AF\u03C3\u03B9\u03BC\u03BF" }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: "object",
+                name: "sunday",
+                label: "\u039A\u03C5\u03C1\u03B9\u03B1\u03BA\u03AE",
+                fields: [
+                  { type: "string", name: "label", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1" },
+                  { type: "boolean", name: "closed", label: "\u039A\u03BB\u03B5\u03B9\u03C3\u03C4\u03AC" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "\u0392\u03AC\u03C1\u03B4\u03B9\u03B5\u03C2",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} \u2013 ${i.close}` : "\u0392\u03AC\u03C1\u03B4\u03B9\u03B1" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "\u0386\u03BD\u03BF\u03B9\u03B3\u03BC\u03B1" },
+                      { type: "string", name: "close", label: "\u039A\u03BB\u03B5\u03AF\u03C3\u03B9\u03BC\u03BF" }
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {

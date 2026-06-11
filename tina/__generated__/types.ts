@@ -699,11 +699,50 @@ export type SettingsAddress = {
   country?: Maybe<Scalars['String']['output']>;
 };
 
+export type SettingsHoursWeekdaysSessions = {
+  __typename?: 'SettingsHoursWeekdaysSessions';
+  open?: Maybe<Scalars['String']['output']>;
+  close?: Maybe<Scalars['String']['output']>;
+};
+
+export type SettingsHoursWeekdays = {
+  __typename?: 'SettingsHoursWeekdays';
+  label?: Maybe<Scalars['String']['output']>;
+  closed?: Maybe<Scalars['Boolean']['output']>;
+  sessions?: Maybe<Array<Maybe<SettingsHoursWeekdaysSessions>>>;
+};
+
+export type SettingsHoursSaturdaySessions = {
+  __typename?: 'SettingsHoursSaturdaySessions';
+  open?: Maybe<Scalars['String']['output']>;
+  close?: Maybe<Scalars['String']['output']>;
+};
+
+export type SettingsHoursSaturday = {
+  __typename?: 'SettingsHoursSaturday';
+  label?: Maybe<Scalars['String']['output']>;
+  closed?: Maybe<Scalars['Boolean']['output']>;
+  sessions?: Maybe<Array<Maybe<SettingsHoursSaturdaySessions>>>;
+};
+
+export type SettingsHoursSundaySessions = {
+  __typename?: 'SettingsHoursSundaySessions';
+  open?: Maybe<Scalars['String']['output']>;
+  close?: Maybe<Scalars['String']['output']>;
+};
+
+export type SettingsHoursSunday = {
+  __typename?: 'SettingsHoursSunday';
+  label?: Maybe<Scalars['String']['output']>;
+  closed?: Maybe<Scalars['Boolean']['output']>;
+  sessions?: Maybe<Array<Maybe<SettingsHoursSundaySessions>>>;
+};
+
 export type SettingsHours = {
   __typename?: 'SettingsHours';
-  weekdaysDisplay?: Maybe<Scalars['String']['output']>;
-  saturdayDisplay?: Maybe<Scalars['String']['output']>;
-  sundayDisplay?: Maybe<Scalars['String']['output']>;
+  weekdays?: Maybe<SettingsHoursWeekdays>;
+  saturday?: Maybe<SettingsHoursSaturday>;
+  sunday?: Maybe<SettingsHoursSunday>;
 };
 
 export type SettingsSocial = {
@@ -741,10 +780,48 @@ export type SettingsAddressFilter = {
   country?: InputMaybe<StringFilter>;
 };
 
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type SettingsHoursWeekdaysSessionsFilter = {
+  open?: InputMaybe<StringFilter>;
+  close?: InputMaybe<StringFilter>;
+};
+
+export type SettingsHoursWeekdaysFilter = {
+  label?: InputMaybe<StringFilter>;
+  closed?: InputMaybe<BooleanFilter>;
+  sessions?: InputMaybe<SettingsHoursWeekdaysSessionsFilter>;
+};
+
+export type SettingsHoursSaturdaySessionsFilter = {
+  open?: InputMaybe<StringFilter>;
+  close?: InputMaybe<StringFilter>;
+};
+
+export type SettingsHoursSaturdayFilter = {
+  label?: InputMaybe<StringFilter>;
+  closed?: InputMaybe<BooleanFilter>;
+  sessions?: InputMaybe<SettingsHoursSaturdaySessionsFilter>;
+};
+
+export type SettingsHoursSundaySessionsFilter = {
+  open?: InputMaybe<StringFilter>;
+  close?: InputMaybe<StringFilter>;
+};
+
+export type SettingsHoursSundayFilter = {
+  label?: InputMaybe<StringFilter>;
+  closed?: InputMaybe<BooleanFilter>;
+  sessions?: InputMaybe<SettingsHoursSundaySessionsFilter>;
+};
+
 export type SettingsHoursFilter = {
-  weekdaysDisplay?: InputMaybe<StringFilter>;
-  saturdayDisplay?: InputMaybe<StringFilter>;
-  sundayDisplay?: InputMaybe<StringFilter>;
+  weekdays?: InputMaybe<SettingsHoursWeekdaysFilter>;
+  saturday?: InputMaybe<SettingsHoursSaturdayFilter>;
+  sunday?: InputMaybe<SettingsHoursSundayFilter>;
 };
 
 export type SettingsSocialFilter = {
@@ -1548,10 +1625,43 @@ export type SettingsAddressMutation = {
   country?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SettingsHoursWeekdaysSessionsMutation = {
+  open?: InputMaybe<Scalars['String']['input']>;
+  close?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SettingsHoursWeekdaysMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  closed?: InputMaybe<Scalars['Boolean']['input']>;
+  sessions?: InputMaybe<Array<InputMaybe<SettingsHoursWeekdaysSessionsMutation>>>;
+};
+
+export type SettingsHoursSaturdaySessionsMutation = {
+  open?: InputMaybe<Scalars['String']['input']>;
+  close?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SettingsHoursSaturdayMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  closed?: InputMaybe<Scalars['Boolean']['input']>;
+  sessions?: InputMaybe<Array<InputMaybe<SettingsHoursSaturdaySessionsMutation>>>;
+};
+
+export type SettingsHoursSundaySessionsMutation = {
+  open?: InputMaybe<Scalars['String']['input']>;
+  close?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SettingsHoursSundayMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  closed?: InputMaybe<Scalars['Boolean']['input']>;
+  sessions?: InputMaybe<Array<InputMaybe<SettingsHoursSundaySessionsMutation>>>;
+};
+
 export type SettingsHoursMutation = {
-  weekdaysDisplay?: InputMaybe<Scalars['String']['input']>;
-  saturdayDisplay?: InputMaybe<Scalars['String']['input']>;
-  sundayDisplay?: InputMaybe<Scalars['String']['input']>;
+  weekdays?: InputMaybe<SettingsHoursWeekdaysMutation>;
+  saturday?: InputMaybe<SettingsHoursSaturdayMutation>;
+  sunday?: InputMaybe<SettingsHoursSundayMutation>;
 };
 
 export type SettingsSocialMutation = {
@@ -1761,7 +1871,7 @@ export type HomePartsFragment = { __typename: 'Home', hero?: { __typename: 'Home
 
 export type ProgramPartsFragment = { __typename: 'Program', title?: string | null, shortDescription?: string | null, duration?: string | null, tag?: string | null, tags?: Array<string | null> | null, ctaLabel?: string | null, heroBody?: Array<string | null> | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, howItWorks?: string | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, metaTitle?: string | null, metaDescription?: string | null, subPrograms?: Array<{ __typename: 'ProgramSubPrograms', name?: string | null, tagline?: string | null, category?: string | null, audience?: string | null, description?: string | null, ctaLabel?: string | null } | null> | null, faqs?: Array<{ __typename: 'ProgramFaqs', question?: string | null, answer?: string | null } | null> | null };
 
-export type SettingsPartsFragment = { __typename: 'Settings', tagline?: string | null, email?: string | null, phoneDisplay?: string | null, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdaysDisplay?: string | null, saturdayDisplay?: string | null, sundayDisplay?: string | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null };
+export type SettingsPartsFragment = { __typename: 'Settings', tagline?: string | null, email?: string | null, phoneDisplay?: string | null, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdays?: { __typename: 'SettingsHoursWeekdays', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursWeekdaysSessions', open?: string | null, close?: string | null } | null> | null } | null, saturday?: { __typename: 'SettingsHoursSaturday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSaturdaySessions', open?: string | null, close?: string | null } | null> | null } | null, sunday?: { __typename: 'SettingsHoursSunday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSundaySessions', open?: string | null, close?: string | null } | null> | null } | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null };
 
 export type AboutPartsFragment = { __typename: 'About', meta?: { __typename: 'AboutMeta', title?: string | null, description?: string | null } | null, hero?: { __typename: 'AboutHero', eyebrow?: string | null, headlineLine1Orange?: string | null, headlineLine1Plain?: string | null, breadcrumbHome?: string | null, breadcrumbCurrent?: string | null } | null, story?: { __typename: 'AboutStory', image?: string | null, imageAlt?: string | null, heading?: string | null, paragraph1Prefix?: string | null, paragraph1StrongWord?: string | null, paragraph1Suffix?: string | null, paragraph1Em1?: string | null, paragraph1Em2?: string | null, paragraph1Rest?: string | null, paragraph2?: string | null, paragraph3?: string | null, paragraph4Strong?: string | null } | null, cta?: { __typename: 'AboutCta', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2Black?: string | null, body?: string | null, quote?: string | null, quoteAuthor?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, programs?: { __typename: 'AboutPrograms', eyebrow?: string | null, heading?: string | null } | null, faq?: { __typename: 'AboutFaq', image?: string | null, imageAlt?: string | null, helperText?: string | null, items?: Array<{ __typename: 'AboutFaqItems', question?: string | null, answer?: string | null } | null> | null } | null };
 
@@ -1812,7 +1922,7 @@ export type SettingsQueryVariables = Exact<{
 }>;
 
 
-export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, tagline?: string | null, email?: string | null, phoneDisplay?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdaysDisplay?: string | null, saturdayDisplay?: string | null, sundayDisplay?: string | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null } };
+export type SettingsQuery = { __typename?: 'Query', settings: { __typename: 'Settings', id: string, tagline?: string | null, email?: string | null, phoneDisplay?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdays?: { __typename: 'SettingsHoursWeekdays', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursWeekdaysSessions', open?: string | null, close?: string | null } | null> | null } | null, saturday?: { __typename: 'SettingsHoursSaturday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSaturdaySessions', open?: string | null, close?: string | null } | null> | null } | null, sunday?: { __typename: 'SettingsHoursSunday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSundaySessions', open?: string | null, close?: string | null } | null> | null } | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null } };
 
 export type SettingsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1824,7 +1934,7 @@ export type SettingsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, tagline?: string | null, email?: string | null, phoneDisplay?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdaysDisplay?: string | null, saturdayDisplay?: string | null, sundayDisplay?: string | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null } | null } | null> | null } };
+export type SettingsConnectionQuery = { __typename?: 'Query', settingsConnection: { __typename?: 'SettingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'SettingsConnectionEdges', cursor: string, node?: { __typename: 'Settings', id: string, tagline?: string | null, email?: string | null, phoneDisplay?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, address?: { __typename: 'SettingsAddress', street?: string | null, city?: string | null, region?: string | null, postalCode?: string | null, country?: string | null } | null, hours?: { __typename: 'SettingsHours', weekdays?: { __typename: 'SettingsHoursWeekdays', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursWeekdaysSessions', open?: string | null, close?: string | null } | null> | null } | null, saturday?: { __typename: 'SettingsHoursSaturday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSaturdaySessions', open?: string | null, close?: string | null } | null> | null } | null, sunday?: { __typename: 'SettingsHoursSunday', label?: string | null, closed?: boolean | null, sessions?: Array<{ __typename: 'SettingsHoursSundaySessions', open?: string | null, close?: string | null } | null> | null } | null } | null, social?: { __typename: 'SettingsSocial', instagram?: string | null, instagramHandle?: string | null } | null, ctaBand?: { __typename: 'SettingsCtaBand', hook?: string | null, body?: string | null, cta?: string | null } | null } | null } | null> | null } };
 
 export type AboutQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2063,9 +2173,36 @@ export const SettingsPartsFragmentDoc = gql`
   }
   hours {
     __typename
-    weekdaysDisplay
-    saturdayDisplay
-    sundayDisplay
+    weekdays {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
+    saturday {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
+    sunday {
+      __typename
+      label
+      closed
+      sessions {
+        __typename
+        open
+        close
+      }
+    }
   }
   social {
     __typename

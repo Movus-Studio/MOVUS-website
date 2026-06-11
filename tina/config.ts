@@ -384,10 +384,69 @@ export default defineConfig({
             type: "object",
             name: "hours",
             label: "Ωράριο",
+            description:
+              "Οι ώρες εμφανίζονται στο site ΚΑΙ ενημερώνουν αυτόματα τα δεδομένα της Google (structured data).",
             fields: [
-              { type: "string", name: "weekdaysDisplay", label: "Δευτέρα – Παρασκευή" },
-              { type: "string", name: "saturdayDisplay", label: "Σάββατο" },
-              { type: "string", name: "sundayDisplay", label: "Κυριακή" },
+              {
+                type: "object",
+                name: "weekdays",
+                label: "Καθημερινές",
+                fields: [
+                  { type: "string", name: "label", label: "Ετικέτα ημερών (π.χ. Δευτέρα – Παρασκευή)" },
+                  { type: "boolean", name: "closed", label: "Κλειστά" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "Βάρδιες",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} – ${i.close}` : "Βάρδια" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "Άνοιγμα (π.χ. 09:00)" },
+                      { type: "string", name: "close", label: "Κλείσιμο (π.χ. 14:00)" },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "object",
+                name: "saturday",
+                label: "Σάββατο",
+                fields: [
+                  { type: "string", name: "label", label: "Ετικέτα" },
+                  { type: "boolean", name: "closed", label: "Κλειστά" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "Βάρδιες",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} – ${i.close}` : "Βάρδια" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "Άνοιγμα" },
+                      { type: "string", name: "close", label: "Κλείσιμο" },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "object",
+                name: "sunday",
+                label: "Κυριακή",
+                fields: [
+                  { type: "string", name: "label", label: "Ετικέτα" },
+                  { type: "boolean", name: "closed", label: "Κλειστά" },
+                  {
+                    type: "object",
+                    name: "sessions",
+                    label: "Βάρδιες",
+                    list: true,
+                    ui: { itemProps: (i) => ({ label: i?.open && i?.close ? `${i.open} – ${i.close}` : "Βάρδια" }) },
+                    fields: [
+                      { type: "string", name: "open", label: "Άνοιγμα" },
+                      { type: "string", name: "close", label: "Κλείσιμο" },
+                    ],
+                  },
+                ],
+              },
             ],
           },
           {
