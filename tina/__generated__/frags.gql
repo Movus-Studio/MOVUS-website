@@ -159,3 +159,200 @@ fragment ProgramParts on Program {
   metaTitle
   metaDescription
 }
+
+fragment SettingsParts on Settings {
+  __typename
+  tagline
+  email
+  phoneDisplay
+  address {
+    __typename
+    street
+    city
+    region
+    postalCode
+    country
+  }
+  hours {
+    __typename
+    weekdaysDisplay
+    saturdayDisplay
+    sundayDisplay
+  }
+  social {
+    __typename
+    instagram
+    instagramHandle
+  }
+  ctaBand {
+    __typename
+    hook
+    body
+    cta
+  }
+}
+
+fragment AboutParts on About {
+  __typename
+  meta {
+    __typename
+    title
+    description
+  }
+  hero {
+    __typename
+    eyebrow
+    headlineLine1Orange
+    headlineLine1Plain
+    breadcrumbHome
+    breadcrumbCurrent
+  }
+  story {
+    __typename
+    image
+    imageAlt
+    heading
+    paragraph1Prefix
+    paragraph1StrongWord
+    paragraph1Suffix
+    paragraph1Em1
+    paragraph1Em2
+    paragraph1Rest
+    paragraph2
+    paragraph3
+    paragraph4Strong
+  }
+  cta {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2Black
+    body
+    quote
+    quoteAuthor
+    ctaLabel
+    ctaHref
+  }
+  programs {
+    __typename
+    eyebrow
+    heading
+  }
+  faq {
+    __typename
+    image
+    imageAlt
+    helperText
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+}
+
+fragment ContactParts on Contact {
+  __typename
+  hero {
+    __typename
+    breadcrumbHome
+    breadcrumbCurrent
+    headlineLine1
+    headlineLine2
+    subline
+  }
+  formSection {
+    __typename
+    heading
+    labelName
+    placeholderName
+    labelEmail
+    placeholderEmail
+    labelPhone
+    placeholderPhone
+    labelMessage
+    placeholderMessage
+    submitLabel
+    submittingLabel
+    successHeading
+    successMessage
+  }
+  infoSection {
+    __typename
+    heading
+    labelAddress
+    labelPhone
+    labelEmail
+    labelHours
+    labelInstagram
+    mapHeading
+  }
+  faq {
+    __typename
+    image
+    imageAlt
+    helperText
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+}
+
+fragment PersonalTrainingParts on PersonalTraining {
+  __typename
+  meta {
+    __typename
+    title
+    description
+    canonical
+  }
+  breadcrumb {
+    __typename
+    parent
+    current
+  }
+  hero {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    body
+  }
+  whatYouGet {
+    __typename
+    eyebrow
+    headlineLine1
+    body
+    items
+  }
+  formats {
+    __typename
+    eyebrow
+    headline
+    ctaLabel
+    items {
+      __typename
+      name
+      tagline
+      body
+      href
+    }
+  }
+  whoItsFor {
+    __typename
+    eyebrow
+    headline
+    paragraphs
+  }
+  cta {
+    __typename
+    eyebrow
+    headline
+    body
+    contactLabel
+    contactHref
+    addressLine
+  }
+}

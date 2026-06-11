@@ -3,6 +3,9 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { siteContact } from "@/content/site";
+import pageContent from "@/content/contact/contact.json";
+
+const form = pageContent.formSection;
 
 interface ContactFormData {
   name: string;
@@ -65,10 +68,10 @@ export function ContactForm() {
           />
         </svg>
         <h3 className="text-xl font-bold text-movus-navy mb-2">
-          Ευχαριστούμε!
+          {form.successHeading}
         </h3>
         <p className="text-dark-gray">
-          Λάβαμε το μήνυμά σου. Θα επικοινωνήσουμε μαζί σου σύντομα.
+          {form.successMessage}
         </p>
       </div>
     );
@@ -103,14 +106,14 @@ export function ContactForm() {
           htmlFor="name"
           className="block text-sm font-medium text-movus-navy mb-1.5"
         >
-          Ονοματεπώνυμο *
+          {form.labelName}
         </label>
         <input
           id="name"
           type="text"
           {...register("name", { required: "Το όνομα είναι υποχρεωτικό" })}
           className="w-full px-4 py-3 rounded-lg border border-light-gray bg-movus-white text-movus-black placeholder:text-medium-gray focus:outline-none focus:ring-2 focus:ring-movus-orange/50 focus:border-movus-orange transition-colors"
-          placeholder="Το όνομά σου"
+          placeholder={form.placeholderName}
         />
         {errors.name && (
           <p className="text-error text-sm mt-1">{errors.name.message}</p>
@@ -122,7 +125,7 @@ export function ContactForm() {
           htmlFor="email"
           className="block text-sm font-medium text-movus-navy mb-1.5"
         >
-          Email *
+          {form.labelEmail}
         </label>
         <input
           id="email"
@@ -135,7 +138,7 @@ export function ContactForm() {
             },
           })}
           className="w-full px-4 py-3 rounded-lg border border-light-gray bg-movus-white text-movus-black placeholder:text-medium-gray focus:outline-none focus:ring-2 focus:ring-movus-orange/50 focus:border-movus-orange transition-colors"
-          placeholder="email@example.com"
+          placeholder={form.placeholderEmail}
         />
         {errors.email && (
           <p className="text-error text-sm mt-1">{errors.email.message}</p>
@@ -147,14 +150,14 @@ export function ContactForm() {
           htmlFor="phone"
           className="block text-sm font-medium text-movus-navy mb-1.5"
         >
-          Τηλέφωνο
+          {form.labelPhone}
         </label>
         <input
           id="phone"
           type="tel"
           {...register("phone")}
           className="w-full px-4 py-3 rounded-lg border border-light-gray bg-movus-white text-movus-black placeholder:text-medium-gray focus:outline-none focus:ring-2 focus:ring-movus-orange/50 focus:border-movus-orange transition-colors"
-          placeholder="69x xxx xxxx"
+          placeholder={form.placeholderPhone}
         />
       </div>
 
@@ -163,7 +166,7 @@ export function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-movus-navy mb-1.5"
         >
-          Μήνυμα *
+          {form.labelMessage}
         </label>
         <textarea
           id="message"
@@ -172,7 +175,7 @@ export function ContactForm() {
             required: "Το μήνυμα είναι υποχρεωτικό",
           })}
           className="w-full px-4 py-3 rounded-lg border border-light-gray bg-movus-white text-movus-black placeholder:text-medium-gray focus:outline-none focus:ring-2 focus:ring-movus-orange/50 focus:border-movus-orange transition-colors resize-none"
-          placeholder="Πες μας πώς μπορούμε να βοηθήσουμε..."
+          placeholder={form.placeholderMessage}
         />
         {errors.message && (
           <p className="text-error text-sm mt-1">{errors.message.message}</p>
@@ -196,7 +199,7 @@ export function ContactForm() {
         disabled={isSubmitting}
         className="w-full bg-movus-orange hover:bg-movus-orange-dark disabled:opacity-60 disabled:cursor-not-allowed text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-8 py-4 rounded-lg transition-colors duration-200"
       >
-        {isSubmitting ? "Αποστολή..." : "Αποστολή Μηνύματος"}
+        {isSubmitting ? form.submittingLabel : form.submitLabel}
       </button>
     </form>
   );

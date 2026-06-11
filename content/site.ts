@@ -1,33 +1,43 @@
-// Global recurring site copy (verbatim from movus.gr source)
+// Global recurring site copy + contact details.
+//
+// The values now live in content/settings/settings.json (TinaCMS-managed). This
+// loader re-assembles the exact `siteCopy` / `siteContact` shapes the rest of the
+// app already imports, and DERIVES the two computed fields (address.full,
+// phoneHref) so the owner only edits the simple parts in the CMS.
+import settings from "./settings/settings.json";
 
 export const siteCopy = {
-  tagline: "This is your MOVUS moment.",
+  tagline: settings.tagline,
   ctaBand: {
-    hook: "Ώρα να ξεκινήσεις;",
-    body: "Μίλα μαζί μας. Βρίσκουμε το πρόγραμμα που σου ταιριάζει και ξεκινάμε.",
-    cta: "ΕΠΙΚΟΙΝΩΝΗΣΕ ΜΑΖΙ ΜΑΣ",
+    hook: settings.ctaBand.hook,
+    body: settings.ctaBand.body,
+    cta: settings.ctaBand.cta,
   },
-} as const;
+};
+
+const a = settings.address;
 
 export const siteContact = {
-  email: "info@movus.gr",
-  phoneDisplay: "+30 2611 81 4010",
-  phoneHref: "+302611814010",
+  email: settings.email,
+  phoneDisplay: settings.phoneDisplay,
+  // Derived: strip spaces for the tel: href, e.g. "+30 2611 81 4010" -> "+302611814010"
+  phoneHref: settings.phoneDisplay.replace(/\s/g, ""),
   address: {
-    street: "Ιερού Λόχου 1",
-    city: "Πάτρα",
-    region: "Αχαΐα",
-    postalCode: "26331",
-    country: "Ελλάδα",
-    full: "Ιερού Λόχου 1, Πάτρα, Αχαΐα, 26331, Ελλάδα",
+    street: a.street,
+    city: a.city,
+    region: a.region,
+    postalCode: a.postalCode,
+    country: a.country,
+    // Derived single-line address.
+    full: `${a.street}, ${a.city}, ${a.region}, ${a.postalCode}, ${a.country}`,
   },
   hours: {
-    weekdaysDisplay: "Δευτέρα – Παρασκευή: 09:00 – 14:00 | 16:00 – 21:00",
-    saturdayDisplay: "Σάββατο: 09:00 – 17:00",
-    sundayDisplay: "Κυριακή: Κλειστά",
+    weekdaysDisplay: settings.hours.weekdaysDisplay,
+    saturdayDisplay: settings.hours.saturdayDisplay,
+    sundayDisplay: settings.hours.sundayDisplay,
   },
   social: {
-    instagram: "https://www.instagram.com/movusfitness/",
-    instagramHandle: "@movusfitness",
+    instagram: settings.social.instagram,
+    instagramHandle: settings.social.instagramHandle,
   },
-} as const;
+};

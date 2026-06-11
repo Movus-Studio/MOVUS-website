@@ -169,6 +169,207 @@ export const ProgramPartsFragmentDoc = gql`
   metaDescription
 }
     `;
+export const SettingsPartsFragmentDoc = gql`
+    fragment SettingsParts on Settings {
+  __typename
+  tagline
+  email
+  phoneDisplay
+  address {
+    __typename
+    street
+    city
+    region
+    postalCode
+    country
+  }
+  hours {
+    __typename
+    weekdaysDisplay
+    saturdayDisplay
+    sundayDisplay
+  }
+  social {
+    __typename
+    instagram
+    instagramHandle
+  }
+  ctaBand {
+    __typename
+    hook
+    body
+    cta
+  }
+}
+    `;
+export const AboutPartsFragmentDoc = gql`
+    fragment AboutParts on About {
+  __typename
+  meta {
+    __typename
+    title
+    description
+  }
+  hero {
+    __typename
+    eyebrow
+    headlineLine1Orange
+    headlineLine1Plain
+    breadcrumbHome
+    breadcrumbCurrent
+  }
+  story {
+    __typename
+    image
+    imageAlt
+    heading
+    paragraph1Prefix
+    paragraph1StrongWord
+    paragraph1Suffix
+    paragraph1Em1
+    paragraph1Em2
+    paragraph1Rest
+    paragraph2
+    paragraph3
+    paragraph4Strong
+  }
+  cta {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2Black
+    body
+    quote
+    quoteAuthor
+    ctaLabel
+    ctaHref
+  }
+  programs {
+    __typename
+    eyebrow
+    heading
+  }
+  faq {
+    __typename
+    image
+    imageAlt
+    helperText
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+}
+    `;
+export const ContactPartsFragmentDoc = gql`
+    fragment ContactParts on Contact {
+  __typename
+  hero {
+    __typename
+    breadcrumbHome
+    breadcrumbCurrent
+    headlineLine1
+    headlineLine2
+    subline
+  }
+  formSection {
+    __typename
+    heading
+    labelName
+    placeholderName
+    labelEmail
+    placeholderEmail
+    labelPhone
+    placeholderPhone
+    labelMessage
+    placeholderMessage
+    submitLabel
+    submittingLabel
+    successHeading
+    successMessage
+  }
+  infoSection {
+    __typename
+    heading
+    labelAddress
+    labelPhone
+    labelEmail
+    labelHours
+    labelInstagram
+    mapHeading
+  }
+  faq {
+    __typename
+    image
+    imageAlt
+    helperText
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+}
+    `;
+export const PersonalTrainingPartsFragmentDoc = gql`
+    fragment PersonalTrainingParts on PersonalTraining {
+  __typename
+  meta {
+    __typename
+    title
+    description
+    canonical
+  }
+  breadcrumb {
+    __typename
+    parent
+    current
+  }
+  hero {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    body
+  }
+  whatYouGet {
+    __typename
+    eyebrow
+    headlineLine1
+    body
+    items
+  }
+  formats {
+    __typename
+    eyebrow
+    headline
+    ctaLabel
+    items {
+      __typename
+      name
+      tagline
+      body
+      href
+    }
+  }
+  whoItsFor {
+    __typename
+    eyebrow
+    headline
+    paragraphs
+  }
+  cta {
+    __typename
+    eyebrow
+    headline
+    body
+    contactLabel
+    contactHref
+    addressLine
+  }
+}
+    `;
 export const HomeDocument = gql`
     query home($relativePath: String!) {
   home(relativePath: $relativePath) {
@@ -283,6 +484,234 @@ export const ProgramConnectionDocument = gql`
   }
 }
     ${ProgramPartsFragmentDoc}`;
+export const SettingsDocument = gql`
+    query settings($relativePath: String!) {
+  settings(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...SettingsParts
+  }
+}
+    ${SettingsPartsFragmentDoc}`;
+export const SettingsConnectionDocument = gql`
+    query settingsConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: SettingsFilter) {
+  settingsConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...SettingsParts
+      }
+    }
+  }
+}
+    ${SettingsPartsFragmentDoc}`;
+export const AboutDocument = gql`
+    query about($relativePath: String!) {
+  about(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...AboutParts
+  }
+}
+    ${AboutPartsFragmentDoc}`;
+export const AboutConnectionDocument = gql`
+    query aboutConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AboutFilter) {
+  aboutConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...AboutParts
+      }
+    }
+  }
+}
+    ${AboutPartsFragmentDoc}`;
+export const ContactDocument = gql`
+    query contact($relativePath: String!) {
+  contact(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ContactParts
+  }
+}
+    ${ContactPartsFragmentDoc}`;
+export const ContactConnectionDocument = gql`
+    query contactConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ContactFilter) {
+  contactConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ContactParts
+      }
+    }
+  }
+}
+    ${ContactPartsFragmentDoc}`;
+export const PersonalTrainingDocument = gql`
+    query personalTraining($relativePath: String!) {
+  personalTraining(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PersonalTrainingParts
+  }
+}
+    ${PersonalTrainingPartsFragmentDoc}`;
+export const PersonalTrainingConnectionDocument = gql`
+    query personalTrainingConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PersonalTrainingFilter) {
+  personalTrainingConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PersonalTrainingParts
+      }
+    }
+  }
+}
+    ${PersonalTrainingPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     home(variables, options) {
@@ -296,6 +725,30 @@ export function getSdk(requester) {
     },
     programConnection(variables, options) {
       return requester(ProgramConnectionDocument, variables, options);
+    },
+    settings(variables, options) {
+      return requester(SettingsDocument, variables, options);
+    },
+    settingsConnection(variables, options) {
+      return requester(SettingsConnectionDocument, variables, options);
+    },
+    about(variables, options) {
+      return requester(AboutDocument, variables, options);
+    },
+    aboutConnection(variables, options) {
+      return requester(AboutConnectionDocument, variables, options);
+    },
+    contact(variables, options) {
+      return requester(ContactDocument, variables, options);
+    },
+    contactConnection(variables, options) {
+      return requester(ContactConnectionDocument, variables, options);
+    },
+    personalTraining(variables, options) {
+      return requester(PersonalTrainingDocument, variables, options);
+    },
+    personalTrainingConnection(variables, options) {
+      return requester(PersonalTrainingConnectionDocument, variables, options);
     }
   };
 }

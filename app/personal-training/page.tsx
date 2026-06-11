@@ -1,50 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { siteContact, siteCopy } from "@/content/site";
+import pageContent from "@/content/personalTraining/personalTraining.json";
 
-const PT_TITLE = "Personal Trainer Πάτρα | MOVUS Fitness Studio";
-const PT_DESCRIPTION =
-  "Personal trainer στην Πάτρα. Εξατομικευμένα πλάνα, ιδιαίτερα μαθήματα, τιμές personal training MOVUS. Ιερού Λόχου 1.";
+const { meta, breadcrumb, hero, whatYouGet, formats, whoItsFor, cta } = pageContent;
 
 export const metadata: Metadata = {
-  title: { absolute: PT_TITLE },
-  description: PT_DESCRIPTION,
+  title: { absolute: meta.title },
+  description: meta.description,
   alternates: {
-    canonical: "https://movus.gr/personal-training",
+    canonical: meta.canonical,
   },
   openGraph: {
-    title: PT_TITLE,
-    description: PT_DESCRIPTION,
+    title: meta.title,
+    description: meta.description,
   },
 };
-
-const FORMATS = [
-  {
-    name: "MOVUS PERSONAL",
-    tagline: "2 άτομα, ένας coach.",
-    body:
-      "Δουλεύεις με τον coach στο πλευρό σου και έναν partner στον δικό σου στόχο. Σχεδόν πλήρης προσοχή, χτίσιμο σχέσης και κινήτρου, εξατομικευμένο πλάνο για κάθε άτομο ξεχωριστά.",
-    href: "/programs/personal",
-  },
-  {
-    name: "MOVUS PRIVATE",
-    tagline: "1-on-1. Αποκλειστικά για εσένα.",
-    body:
-      "Όλο το πλάνο, η προπόνηση και η προσοχή είναι μόνο για σένα. Για όσους θέλουν μέγιστη εξατομίκευση, διακριτικότητα ή έχουν συγκεκριμένο deadline.",
-    href: "/programs/private",
-  },
-];
-
-const WHAT_YOU_GET = [
-  "Αρχική αξιολόγηση: στόχος, επίπεδο, ιστορικό, διαθέσιμος χρόνος.",
-  "Εξατομικευμένο πλάνο που εξελίσσεται κάθε 2 με 4 εβδομάδες.",
-  "Ιδιαίτερα μαθήματα 1-on-1 ή σε δυάδα, με πιστοποιημένο coach.",
-  "Στοχευμένη καθοδήγηση σε κάθε επανάληψη, με διόρθωση τεχνικής.",
-  "Πρακτικές συμβουλές διατροφής, χρόνων γευμάτων και αποκατάστασης.",
-  "Μετρήσεις και επαναξιολογήσεις για να βλέπεις τη διαφορά.",
-];
 
 export default function PersonalTrainingPage() {
   return (
@@ -56,8 +28,8 @@ export default function PersonalTrainingPage() {
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Personal Training Πάτρα",
-            description: PT_DESCRIPTION,
-            url: "https://movus.gr/personal-training",
+            description: meta.description,
+            url: meta.canonical,
             provider: { "@id": "https://movus.gr/#business" },
             areaServed: { "@type": "City", name: "Πάτρα" },
             serviceType: "Personal Training",
@@ -70,10 +42,10 @@ export default function PersonalTrainingPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateBreadcrumbSchema([
-              { name: "Αρχική", url: "https://movus.gr" },
+              { name: breadcrumb.parent, url: "https://movus.gr" },
               {
-                name: "Personal Training",
-                url: "https://movus.gr/personal-training",
+                name: breadcrumb.current,
+                url: meta.canonical,
               },
             ])
           ),
@@ -87,26 +59,24 @@ export default function PersonalTrainingPage() {
             <ol className="flex items-center gap-2 text-sm text-dark-gray/70">
               <li>
                 <Link href="/" className="hover:text-movus-orange-text transition-colors">
-                  Αρχική
+                  {breadcrumb.parent}
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-movus-black">Personal Training</li>
+              <li className="text-movus-black">{breadcrumb.current}</li>
             </ol>
           </nav>
 
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Personal Training Πάτρα
+            {hero.eyebrow}
           </span>
           <h1 className="text-hero font-black tracking-[-0.02em] text-movus-black mb-6 leading-[0.95]">
-            Personal Trainer.
+            {hero.headlineLine1}
             <br />
-            <span className="text-movus-orange">Στην Πάτρα.</span>
+            <span className="text-movus-orange">{hero.headlineLine2}</span>
           </h1>
           <p className="text-xl text-dark-gray max-w-2xl leading-relaxed">
-            Εξατομικευμένη προπόνηση που χτίζει πλάνο πάνω σου. Όχι γενικό
-            πρόγραμμα. Όχι τυχαίες ασκήσεις. Ο coach σε βλέπει σε κάθε επανάληψη,
-            προσαρμόζει σε πραγματικό χρόνο και κρατά το επίπεδο εκεί που πρέπει.
+            {hero.body}
           </p>
         </div>
       </section>
@@ -117,20 +87,17 @@ export default function PersonalTrainingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
             <div>
               <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-                Τι περιλαμβάνει η συνεργασία
+                {whatYouGet.eyebrow}
               </span>
               <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
-                Πλάνο πάνω σου. Όχι πάνω στον μέσο όρο.
+                {whatYouGet.headlineLine1}
               </h2>
               <p className="text-dark-gray leading-relaxed text-lg">
-                Κάθε personal training session ξεκινά με έναν στόχο, έναν χρόνο
-                και ένα σώμα: το δικό σου. Από εκεί και κάτω, ο coach γράφει το
-                πλάνο και το προσαρμόζει συνεχώς. Δεν μπαίνεις σε ένα έτοιμο
-                πρόγραμμα. Σου χτίζεται ένα.
+                {whatYouGet.body}
               </p>
             </div>
             <ul className="space-y-3">
-              {WHAT_YOU_GET.map((item, i) => (
+              {whatYouGet.items.map((item, i) => (
                 <li
                   key={i}
                   className="flex items-start gap-3 text-lg text-movus-navy bg-movus-white border border-light-gray rounded-xl px-5 py-4"
@@ -148,13 +115,13 @@ export default function PersonalTrainingPage() {
       <section className="bg-movus-white py-20 md:py-28">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Δύο formats
+            {formats.eyebrow}
           </span>
           <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-12 leading-[1.05]">
-            Διάλεξε πώς θες να δουλέψεις.
+            {formats.headline}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {FORMATS.map((format) => (
+            {formats.items.map((format) => (
               <Link
                 key={format.name}
                 href={format.href}
@@ -173,7 +140,7 @@ export default function PersonalTrainingPage() {
                   {format.body}
                 </p>
                 <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.05em] text-movus-navy group-hover:text-movus-orange transition-colors">
-                  Δες περισσότερα
+                  {formats.ctaLabel}
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
@@ -188,28 +155,15 @@ export default function PersonalTrainingPage() {
       <section className="bg-movus-black py-20 md:py-28">
         <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Σε ποιον ταιριάζει
+            {whoItsFor.eyebrow}
           </span>
           <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-8 leading-[1.05]">
-            Personal training για πραγματικούς ανθρώπους.
+            {whoItsFor.headline}
           </h2>
           <div className="space-y-5 text-lg text-medium-gray leading-relaxed">
-            <p>
-              Σε όσους ξεκινούν από την αρχή και θέλουν κάποιον δίπλα τους να
-              τους δείξει σωστή τεχνική από την πρώτη μέρα.
-            </p>
-            <p>
-              Σε όσους γυμνάζονται καιρό, έχουν φτάσει σε plateau και θέλουν
-              πλάνο που τους ξεκολλάει.
-            </p>
-            <p>
-              Σε επαγγελματίες με πιεσμένο πρόγραμμα που χρειάζονται 2 με 3
-              στοχευμένες προπονήσεις την εβδομάδα, όχι 5 χλιαρές.
-            </p>
-            <p>
-              Σε όσους επιστρέφουν μετά από τραυματισμό, εγκυμοσύνη ή διάλειμμα
-              και χρειάζονται προσεκτική επανένταξη.
-            </p>
+            {whoItsFor.paragraphs.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </section>
@@ -218,18 +172,17 @@ export default function PersonalTrainingPage() {
       <section className="bg-cream py-20 md:py-28">
         <div className="mx-auto max-w-[900px] px-5 md:px-8 lg:px-12 text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Ξεκίνα
+            {cta.eyebrow}
           </span>
           <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-6 leading-[1.05]">
-            Μία γνωριμία. Ένα πλάνο. Η πρώτη σου προπόνηση.
+            {cta.headline}
           </h2>
           <p className="text-lg text-dark-gray leading-relaxed mb-8 max-w-2xl mx-auto">
-            Στείλε μήνυμα ή κάλεσε. Συζητάμε στόχο, ώρες και format. Από εκεί
-            και κάτω, ξεκινάς.
+            {cta.body}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href={cta.contactHref}
               className="inline-block bg-movus-orange hover:bg-movus-orange-dark text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
             >
               {siteCopy.ctaBand.cta}
@@ -242,7 +195,7 @@ export default function PersonalTrainingPage() {
             </a>
           </div>
           <p className="text-sm text-medium-gray mt-6">
-            MOVUS, Ιερού Λόχου 1, 26331 Πάτρα.
+            {cta.addressLine}
           </p>
         </div>
       </section>

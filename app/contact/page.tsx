@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteContact, siteCopy } from "@/content/site";
-import { contactFAQ } from "@/content/faq";
 import { FAQ } from "@/components/sections/FAQ";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
 import { ContactForm } from "./ContactForm";
 import { ContactMap } from "./ContactMap";
+import pageContent from "@/content/contact/contact.json";
 
 const CONTACT_TITLE = "Επικοινωνία. Ιερού Λόχου 1, Πάτρα";
 const CONTACT_DESCRIPTION =
@@ -39,7 +39,7 @@ export default function ContactPage() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(contactFAQ)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(pageContent.faq.items)) }}
       />
 
       {/* Hero */}
@@ -49,22 +49,21 @@ export default function ContactPage() {
             <ol className="flex items-center gap-2 text-sm text-medium-gray">
               <li>
                 <Link href="/" className="hover:text-movus-white transition-colors">
-                  Αρχική
+                  {pageContent.hero.breadcrumbHome}
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-movus-white">Επικοινωνία</li>
+              <li className="text-movus-white">{pageContent.hero.breadcrumbCurrent}</li>
             </ol>
           </nav>
 
           <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            Μίλα μαζί μας.
+            {pageContent.hero.headlineLine1}
             <br />
-            <span className="text-movus-orange">Ξεκινάμε.</span>
+            <span className="text-movus-orange">{pageContent.hero.headlineLine2}</span>
           </h1>
           <p className="text-xl text-medium-gray max-w-2xl leading-relaxed">
-            Στείλε τα στοιχεία σου και επικοινωνούμε μαζί σου σύντομα. Βρίσκουμε
-            το πρόγραμμα που σου ταιριάζει και ξεκινάμε.
+            {pageContent.hero.subline}
           </p>
         </div>
       </section>
@@ -76,7 +75,7 @@ export default function ContactPage() {
             {/* Form */}
             <div>
               <h2 className="text-block font-bold text-movus-navy mb-6">
-                Στείλε μας μήνυμα
+                {pageContent.formSection.heading}
               </h2>
               <ContactForm />
             </div>
@@ -85,7 +84,7 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-block font-bold text-movus-navy mb-6">
-                  Στοιχεία επικοινωνίας
+                  {pageContent.infoSection.heading}
                 </h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
@@ -96,7 +95,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-movus-navy">Διεύθυνση</p>
+                      <p className="font-semibold text-movus-navy">{pageContent.infoSection.labelAddress}</p>
                       <p className="text-dark-gray">{siteContact.address.full}</p>
                     </div>
                   </div>
@@ -108,7 +107,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-movus-navy">Τηλέφωνο</p>
+                      <p className="font-semibold text-movus-navy">{pageContent.infoSection.labelPhone}</p>
                       <a
                         href={`tel:${siteContact.phoneHref}`}
                         className="text-dark-gray hover:text-movus-orange-text transition-colors"
@@ -125,7 +124,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-movus-navy">Email</p>
+                      <p className="font-semibold text-movus-navy">{pageContent.infoSection.labelEmail}</p>
                       <a
                         href={`mailto:${siteContact.email}`}
                         className="text-dark-gray hover:text-movus-orange-text transition-colors"
@@ -142,7 +141,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-movus-navy">Ωράριο</p>
+                      <p className="font-semibold text-movus-navy">{pageContent.infoSection.labelHours}</p>
                       <p className="text-dark-gray">{siteContact.hours.weekdaysDisplay}</p>
                       <p className="text-dark-gray">{siteContact.hours.saturdayDisplay}</p>
                       <p className="text-dark-gray">{siteContact.hours.sundayDisplay}</p>
@@ -156,7 +155,7 @@ export default function ContactPage() {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-movus-navy">Instagram</p>
+                      <p className="font-semibold text-movus-navy">{pageContent.infoSection.labelInstagram}</p>
                       <a
                         href={siteContact.social.instagram}
                         target="_blank"
@@ -172,7 +171,7 @@ export default function ContactPage() {
 
               {/* Map */}
               <div>
-                <h3 className="text-xl font-bold text-movus-navy mb-4">Τοποθεσία</h3>
+                <h3 className="text-xl font-bold text-movus-navy mb-4">{pageContent.infoSection.mapHeading}</h3>
                 <ContactMap />
               </div>
             </div>
@@ -182,11 +181,11 @@ export default function ContactPage() {
 
       {/* FAQ */}
       <FAQ
-        items={contactFAQ}
-        image="/images/movus-community-handdraw-v2.webp"
-        imageAlt="MOVUS κοινότητα, welcome illustration"
+        items={pageContent.faq.items}
+        image={pageContent.faq.image}
+        imageAlt={pageContent.faq.imageAlt}
         imageVariant="illustration"
-        helperText="Πριν την πρώτη σου επίσκεψη: ώρες, πρόσβαση, τρόποι επικοινωνίας και τι να περιμένεις στο ραντεβού γνωριμίας."
+        helperText={pageContent.faq.helperText}
       />
 
       {/* CTA band */}

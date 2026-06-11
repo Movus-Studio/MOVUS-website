@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { programs } from "@/content/programs";
-import { aboutFAQ } from "@/content/faq";
 import { FAQ } from "@/components/sections/FAQ";
 import { Experience } from "@/components/sections/Experience";
 import { MovusTech } from "@/components/sections/MovusTech";
 import { generateBreadcrumbSchema, generateFAQSchema } from "@/lib/schema";
+import pageContent from "@/content/about/about.json";
 
-const ABOUT_TITLE = "Ποιοι είμαστε. EMS Fitness Studio Πάτρα";
-const ABOUT_DESCRIPTION =
-  "Πιστοποιημένοι προπονητές EMS και personal training στην Πάτρα. Δες τη φιλοσοφία, την ομάδα και τον χώρο του MOVUS.";
+const ABOUT_TITLE = pageContent.meta.title;
+const ABOUT_DESCRIPTION = pageContent.meta.description;
 
 export const metadata: Metadata = {
   title: ABOUT_TITLE,
@@ -40,7 +39,7 @@ export default function AboutPage() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(aboutFAQ)) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFAQSchema(pageContent.faq.items)) }}
       />
 
       {/* Hero */}
@@ -50,19 +49,19 @@ export default function AboutPage() {
             <ol className="flex items-center gap-2 text-sm text-medium-gray">
               <li>
                 <Link href="/" className="hover:text-movus-white transition-colors">
-                  Αρχική
+                  {pageContent.hero.breadcrumbHome}
                 </Link>
               </li>
               <li>/</li>
-              <li className="text-movus-white">Σχετικά</li>
+              <li className="text-movus-white">{pageContent.hero.breadcrumbCurrent}</li>
             </ol>
           </nav>
 
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Γιατί MOVUS
+            {pageContent.hero.eyebrow}
           </span>
           <h1 className="text-hero font-black tracking-[-0.02em] text-movus-white mb-6 leading-[0.95]">
-            <span className="text-movus-orange">Πρωτοποριακό EMS fitness studio</span> στην Πάτρα.
+            <span className="text-movus-orange">{pageContent.hero.headlineLine1Orange}</span>{pageContent.hero.headlineLine1Plain}
           </h1>
         </div>
       </section>
@@ -74,8 +73,8 @@ export default function AboutPage() {
             <div className="lg:sticky lg:top-28">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden relative">
                 <Image
-                  src="/images/movus-about-interior.webp"
-                  alt="Εσωτερικό του MOVUS studio στην Πάτρα"
+                  src={pageContent.story.image}
+                  alt={pageContent.story.imageAlt}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -84,28 +83,22 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="text-section font-black tracking-[-0.01em] text-movus-navy mb-8 leading-[1.05]">
-                Δεν είναι ένα απλό γυμναστήριο.
+                {pageContent.story.heading}
               </h2>
               <div className="space-y-6 text-dark-gray leading-[1.8] text-lg">
               <p>
-                Το όνομα <strong className="text-movus-navy">MOVUS</strong> προέρχεται
-                από τη λατινική λέξη <em>&ldquo;movere&rdquo;</em>: <em>να κινώ</em>.
-                Για εμάς όμως είναι κάτι περισσότερο από κίνηση. Είναι πρόοδος,
-                ενέργεια και μεταμόρφωση.
+                {pageContent.story.paragraph1Prefix} <strong className="text-movus-navy">{pageContent.story.paragraph1StrongWord}</strong> {pageContent.story.paragraph1Suffix}{" "}
+                <em>&ldquo;{pageContent.story.paragraph1Em1}&rdquo;</em>: <em>{pageContent.story.paragraph1Em2}</em>.{" "}
+                {pageContent.story.paragraph1Rest}
               </p>
               <p>
-                Πιστεύουμε ότι η προπόνηση δεν χρειάζεται να είναι ώρες χαμένου
-                χρόνου. Πρέπει να είναι έξυπνη, στοχευμένη, αποτελεσματική. Για
-                αυτό φτιάξαμε το MOVUS.
+                {pageContent.story.paragraph2}
               </p>
               <p>
-                Συνδυάζουμε EMS i-Motion, Pilates και functional training με το
-                MOVUS Shape Space, πέντε τεχνολογίες σε μία συνεδρία. Κάθε
-                πρόγραμμα γραμμένο γύρω από τον στόχο σου, τον χρόνο σου, το σώμα
-                σου.
+                {pageContent.story.paragraph3}
               </p>
               <p className="text-movus-navy font-semibold">
-                Λιγότερος χρόνος, περισσότερη δουλειά.
+                {pageContent.story.paragraph4Strong}
               </p>
               </div>
             </div>
@@ -123,31 +116,28 @@ export default function AboutPage() {
       <section className="bg-movus-orange py-20 md:py-28 lg:py-36 relative overflow-hidden">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 relative text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-white/80 mb-4">
-            Future of Fitness
+            {pageContent.cta.eyebrow}
           </span>
           <h2 className="text-section font-black tracking-[-0.01em] text-movus-white mb-10 leading-[1] max-w-4xl mx-auto">
-            Δεν έχει σημασία από πού ξεκινάς, αλλά{" "}
-            <span className="text-movus-black">πού θες να φτάσεις.</span>
+            {pageContent.cta.headlineLine1}{" "}
+            <span className="text-movus-black">{pageContent.cta.headlineLine2Black}</span>
           </h2>
           <p className="text-xl text-movus-white/90 leading-relaxed max-w-3xl mx-auto mb-12">
-            Αρχάριος ή επαγγελματίας αθλητής, ο coach σου χτίζει το πλάνο πάνω
-            σου. Σε κάθε επανάληψη, σε κάθε κίνηση, σε κάθε λεπτομέρεια. Από
-            την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
+            {pageContent.cta.body}
           </p>
           <blockquote className="max-w-3xl mx-auto mb-12">
             <p className="text-2xl md:text-3xl font-semibold text-movus-white leading-snug italic">
-              &ldquo;This isn&apos;t just a workout. This is the future of fitness.
-              Welcome to MOVUS.&rdquo;
+              &ldquo;{pageContent.cta.quote}&rdquo;
             </p>
             <cite className="block mt-4 text-sm text-movus-white/70 not-italic font-medium uppercase tracking-wider">
-              MOVUS Team
+              {pageContent.cta.quoteAuthor}
             </cite>
           </blockquote>
           <Link
-            href="/contact"
+            href={pageContent.cta.ctaHref}
             className="inline-block bg-movus-black hover:bg-movus-navy text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-10 py-5 rounded-lg transition-colors"
           >
-            Κλείσε την πρώτη σου συνεδρία
+            {pageContent.cta.ctaLabel}
           </Link>
         </div>
       </section>
@@ -156,10 +146,10 @@ export default function AboutPage() {
       <section className="bg-movus-black py-20 md:py-28 border-t border-white/5">
         <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.1em] text-movus-orange-text mb-4">
-            Τα προγράμματα
+            {pageContent.programs.eyebrow}
           </span>
           <h2 className="text-section-sm font-black tracking-[-0.01em] text-movus-white mb-12">
-            Εννέα προγράμματα. Ένα σύστημα.
+            {pageContent.programs.heading}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {programs.map((program) => (
@@ -193,11 +183,11 @@ export default function AboutPage() {
 
       {/* FAQ */}
       <FAQ
-        items={aboutFAQ}
-        image="/images/movus-community-handdraw-v2.webp"
-        imageAlt="MOVUS κοινότητα, welcome illustration"
+        items={pageContent.faq.items}
+        image={pageContent.faq.image}
+        imageAlt={pageContent.faq.imageAlt}
         imageVariant="illustration"
-        helperText="Όλα όσα θέλεις να ξέρεις για το MOVUS, τη φιλοσοφία μας και την ομάδα που θα σε καθοδηγήσει."
+        helperText={pageContent.faq.helperText}
       />
 
     </>

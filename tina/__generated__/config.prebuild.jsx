@@ -341,6 +341,335 @@ var config_default = defineConfig({
           { type: "string", name: "metaTitle", label: "SEO \u2014 \u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 (\u03BC\u03B7\u03BD \u03C4\u03BF \u03B1\u03BB\u03BB\u03AC\u03B6\u03B5\u03B9\u03C2 \u03C7\u03C9\u03C1\u03AF\u03C2 \u03BB\u03CC\u03B3\u03BF)" },
           { type: "string", name: "metaDescription", label: "SEO \u2014 \u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE (\u03BC\u03B7\u03BD \u03C4\u03BF \u03B1\u03BB\u03BB\u03AC\u03B6\u03B5\u03B9\u03C2 \u03C7\u03C9\u03C1\u03AF\u03C2 \u03BB\u03CC\u03B3\u03BF)", ui: { component: "textarea" } }
         ]
+      },
+      // ========================================================== SETTINGS
+      // Global contact details + recurring copy, used across footer, contact,
+      // programs, blog and SEO. Singleton (one settings.json).
+      {
+        name: "settings",
+        label: "\u03A1\u03C5\u03B8\u03BC\u03AF\u03C3\u03B5\u03B9\u03C2 (\u0395\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1 & \u0393\u03B5\u03BD\u03B9\u03BA\u03AC)",
+        path: "content/settings",
+        format: "json",
+        match: { include: "settings" },
+        ui: { allowedActions: { create: false, delete: false } },
+        fields: [
+          { type: "string", name: "tagline", label: "Tagline" },
+          { type: "string", name: "email", label: "Email" },
+          { type: "string", name: "phoneDisplay", label: "\u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF (\u03CC\u03C0\u03C9\u03C2 \u03B5\u03BC\u03C6\u03B1\u03BD\u03AF\u03B6\u03B5\u03C4\u03B1\u03B9)" },
+          {
+            type: "object",
+            name: "address",
+            label: "\u0394\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7",
+            fields: [
+              { type: "string", name: "street", label: "\u039F\u03B4\u03CC\u03C2" },
+              { type: "string", name: "city", label: "\u03A0\u03CC\u03BB\u03B7" },
+              { type: "string", name: "region", label: "\u03A0\u03B5\u03C1\u03B9\u03BF\u03C7\u03AE / \u039D\u03BF\u03BC\u03CC\u03C2" },
+              { type: "string", name: "postalCode", label: "\u03A4.\u039A." },
+              { type: "string", name: "country", label: "\u03A7\u03CE\u03C1\u03B1" }
+            ]
+          },
+          {
+            type: "object",
+            name: "hours",
+            label: "\u03A9\u03C1\u03AC\u03C1\u03B9\u03BF",
+            fields: [
+              { type: "string", name: "weekdaysDisplay", label: "\u0394\u03B5\u03C5\u03C4\u03AD\u03C1\u03B1 \u2013 \u03A0\u03B1\u03C1\u03B1\u03C3\u03BA\u03B5\u03C5\u03AE" },
+              { type: "string", name: "saturdayDisplay", label: "\u03A3\u03AC\u03B2\u03B2\u03B1\u03C4\u03BF" },
+              { type: "string", name: "sundayDisplay", label: "\u039A\u03C5\u03C1\u03B9\u03B1\u03BA\u03AE" }
+            ]
+          },
+          {
+            type: "object",
+            name: "social",
+            label: "Social",
+            fields: [
+              { type: "string", name: "instagram", label: "Instagram URL" },
+              { type: "string", name: "instagramHandle", label: "Instagram handle (\u03C0.\u03C7. @movusfitness)" }
+            ]
+          },
+          {
+            type: "object",
+            name: "ctaBand",
+            label: "CTA Band (\u03B5\u03C0\u03B1\u03BD\u03B1\u03BB\u03B1\u03BC\u03B2\u03B1\u03BD\u03CC\u03BC\u03B5\u03BD\u03BF)",
+            fields: [
+              { type: "string", name: "hook", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              { type: "string", name: "cta", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" }
+            ]
+          }
+        ]
+      },
+      // ========================================================= ABOUT PAGE
+      {
+        name: "about",
+        label: "\u03A3\u03B5\u03BB\u03AF\u03B4\u03B1: \u03A3\u03C7\u03B5\u03C4\u03B9\u03BA\u03AC (About)",
+        path: "content/about",
+        format: "json",
+        match: { include: "about" },
+        ui: { allowedActions: { create: false, delete: false } },
+        fields: [
+          {
+            type: "object",
+            name: "meta",
+            label: "SEO",
+            fields: [
+              { type: "string", name: "title", label: "SEO \u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "description", label: "SEO \u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headlineLine1Orange", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u03C0\u03BF\u03C1\u03C4\u03BF\u03BA\u03B1\u03BB\u03AF \u03BC\u03AD\u03C1\u03BF\u03C2" },
+              { type: "string", name: "headlineLine1Plain", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u03C5\u03C0\u03CC\u03BB\u03BF\u03B9\u03C0\u03BF" },
+              { type: "string", name: "breadcrumbHome", label: "Breadcrumb \u2014 \u0391\u03C1\u03C7\u03B9\u03BA\u03AE" },
+              { type: "string", name: "breadcrumbCurrent", label: "Breadcrumb \u2014 \u03C4\u03C1\u03AD\u03C7\u03BF\u03C5\u03C3\u03B1" }
+            ]
+          },
+          {
+            type: "object",
+            name: "story",
+            label: "\u0399\u03C3\u03C4\u03BF\u03C1\u03AF\u03B1",
+            fields: [
+              { type: "image", name: "image", label: "\u0395\u03B9\u03BA\u03CC\u03BD\u03B1" },
+              { type: "string", name: "imageAlt", label: "\u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE \u03B5\u03B9\u03BA\u03CC\u03BD\u03B1\u03C2 (alt)" },
+              { type: "string", name: "heading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "paragraph1Prefix", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03B1\u03C1\u03C7\u03AE" },
+              { type: "string", name: "paragraph1StrongWord", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03AD\u03BD\u03C4\u03BF\u03BD\u03B7 \u03BB\u03AD\u03BE\u03B7" },
+              { type: "string", name: "paragraph1Suffix", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03C3\u03C5\u03BD\u03AD\u03C7\u03B5\u03B9\u03B1" },
+              { type: "string", name: "paragraph1Em1", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03C0\u03BB\u03AC\u03B3\u03B9\u03B1 1" },
+              { type: "string", name: "paragraph1Em2", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03C0\u03BB\u03AC\u03B3\u03B9\u03B1 2" },
+              { type: "string", name: "paragraph1Rest", label: "\u03A0\u03B1\u03C1. 1 \u2014 \u03C5\u03C0\u03CC\u03BB\u03BF\u03B9\u03C0\u03BF", ui: { component: "textarea" } },
+              { type: "string", name: "paragraph2", label: "\u03A0\u03B1\u03C1\u03AC\u03B3\u03C1\u03B1\u03C6\u03BF\u03C2 2", ui: { component: "textarea" } },
+              { type: "string", name: "paragraph3", label: "\u03A0\u03B1\u03C1\u03AC\u03B3\u03C1\u03B1\u03C6\u03BF\u03C2 3", ui: { component: "textarea" } },
+              { type: "string", name: "paragraph4Strong", label: "\u03A0\u03B1\u03C1\u03AC\u03B3\u03C1\u03B1\u03C6\u03BF\u03C2 4 (\u03AD\u03BD\u03C4\u03BF\u03BD\u03B7)" }
+            ]
+          },
+          {
+            type: "object",
+            name: "cta",
+            label: "CTA",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headlineLine1", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 1" },
+              { type: "string", name: "headlineLine2Black", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 2 (\u03BC\u03B1\u03CD\u03C1\u03BF)" },
+              { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              { type: "string", name: "quote", label: "Quote", ui: { component: "textarea" } },
+              { type: "string", name: "quoteAuthor", label: "Quote \u2014 \u03C3\u03C5\u03B3\u03B3\u03C1\u03B1\u03C6\u03AD\u03B1\u03C2" },
+              { type: "string", name: "ctaLabel", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" },
+              { type: "string", name: "ctaHref", label: "\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03BC\u03BF\u03C2 \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" }
+            ]
+          },
+          {
+            type: "object",
+            name: "programs",
+            label: "\u03A0\u03C1\u03BF\u03B3\u03C1\u03AC\u03BC\u03BC\u03B1\u03C4\u03B1 (\u03B5\u03C4\u03B9\u03BA\u03AD\u03C4\u03B5\u03C2)",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "heading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" }
+            ]
+          },
+          {
+            type: "object",
+            name: "faq",
+            label: "\u03A3\u03C5\u03C7\u03BD\u03AD\u03C2 \u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2",
+            fields: [
+              { type: "image", name: "image", label: "\u0395\u03B9\u03BA\u03CC\u03BD\u03B1" },
+              { type: "string", name: "imageAlt", label: "\u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE \u03B5\u03B9\u03BA\u03CC\u03BD\u03B1\u03C2 (alt)" },
+              { type: "string", name: "helperText", label: "\u0392\u03BF\u03B7\u03B8\u03B7\u03C4\u03B9\u03BA\u03CC \u03BA\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              {
+                type: "object",
+                name: "items",
+                label: "\u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2",
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.question || "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" }) },
+                fields: [
+                  { type: "string", name: "question", label: "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" },
+                  { type: "string", name: "answer", label: "\u0391\u03C0\u03AC\u03BD\u03C4\u03B7\u03C3\u03B7", ui: { component: "textarea" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      // ======================================================= CONTACT PAGE
+      {
+        name: "contact",
+        label: "\u03A3\u03B5\u03BB\u03AF\u03B4\u03B1: \u0395\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1 (Contact)",
+        path: "content/contact",
+        format: "json",
+        match: { include: "contact" },
+        ui: { allowedActions: { create: false, delete: false } },
+        fields: [
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero",
+            fields: [
+              { type: "string", name: "breadcrumbHome", label: "Breadcrumb \u2014 \u0391\u03C1\u03C7\u03B9\u03BA\u03AE" },
+              { type: "string", name: "breadcrumbCurrent", label: "Breadcrumb \u2014 \u03C4\u03C1\u03AD\u03C7\u03BF\u03C5\u03C3\u03B1" },
+              { type: "string", name: "headlineLine1", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 1" },
+              { type: "string", name: "headlineLine2", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 2 (\u03C0\u03BF\u03C1\u03C4\u03BF\u03BA\u03B1\u03BB\u03AF)" },
+              { type: "string", name: "subline", label: "\u03A5\u03C0\u03CC\u03C4\u03B9\u03C4\u03BB\u03BF\u03C2", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "formSection",
+            label: "\u03A6\u03CC\u03C1\u03BC\u03B1 \u2014 \u03BA\u03B5\u03AF\u03BC\u03B5\u03BD\u03B1",
+            fields: [
+              { type: "string", name: "heading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "labelName", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u038C\u03BD\u03BF\u03BC\u03B1" },
+              { type: "string", name: "placeholderName", label: "Placeholder: \u038C\u03BD\u03BF\u03BC\u03B1" },
+              { type: "string", name: "labelEmail", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: Email" },
+              { type: "string", name: "placeholderEmail", label: "Placeholder: Email" },
+              { type: "string", name: "labelPhone", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF" },
+              { type: "string", name: "placeholderPhone", label: "Placeholder: \u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF" },
+              { type: "string", name: "labelMessage", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u039C\u03AE\u03BD\u03C5\u03BC\u03B1" },
+              { type: "string", name: "placeholderMessage", label: "Placeholder: \u039C\u03AE\u03BD\u03C5\u03BC\u03B1" },
+              { type: "string", name: "submitLabel", label: "\u039A\u03BF\u03C5\u03BC\u03C0\u03AF \u03B1\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE\u03C2" },
+              { type: "string", name: "submittingLabel", label: "\u039A\u03BF\u03C5\u03BC\u03C0\u03AF \u03BA\u03B1\u03C4\u03AC \u03C4\u03B7\u03BD \u03B1\u03C0\u03BF\u03C3\u03C4\u03BF\u03BB\u03AE" },
+              { type: "string", name: "successHeading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u03B5\u03C0\u03B9\u03C4\u03C5\u03C7\u03AF\u03B1\u03C2" },
+              { type: "string", name: "successMessage", label: "\u039C\u03AE\u03BD\u03C5\u03BC\u03B1 \u03B5\u03C0\u03B9\u03C4\u03C5\u03C7\u03AF\u03B1\u03C2", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "infoSection",
+            label: "\u03A3\u03C4\u03BF\u03B9\u03C7\u03B5\u03AF\u03B1 \u03B5\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1\u03C2 \u2014 \u03B5\u03C4\u03B9\u03BA\u03AD\u03C4\u03B5\u03C2",
+            fields: [
+              { type: "string", name: "heading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "labelAddress", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u0394\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7" },
+              { type: "string", name: "labelPhone", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u03A4\u03B7\u03BB\u03AD\u03C6\u03C9\u03BD\u03BF" },
+              { type: "string", name: "labelEmail", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: Email" },
+              { type: "string", name: "labelHours", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: \u03A9\u03C1\u03AC\u03C1\u03B9\u03BF" },
+              { type: "string", name: "labelInstagram", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B1: Instagram" },
+              { type: "string", name: "mapHeading", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u03C7\u03AC\u03C1\u03C4\u03B7" }
+            ]
+          },
+          {
+            type: "object",
+            name: "faq",
+            label: "\u03A3\u03C5\u03C7\u03BD\u03AD\u03C2 \u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2",
+            fields: [
+              { type: "image", name: "image", label: "\u0395\u03B9\u03BA\u03CC\u03BD\u03B1" },
+              { type: "string", name: "imageAlt", label: "\u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE \u03B5\u03B9\u03BA\u03CC\u03BD\u03B1\u03C2 (alt)" },
+              { type: "string", name: "helperText", label: "\u0392\u03BF\u03B7\u03B8\u03B7\u03C4\u03B9\u03BA\u03CC \u03BA\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              {
+                type: "object",
+                name: "items",
+                label: "\u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2",
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.question || "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" }) },
+                fields: [
+                  { type: "string", name: "question", label: "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" },
+                  { type: "string", name: "answer", label: "\u0391\u03C0\u03AC\u03BD\u03C4\u03B7\u03C3\u03B7", ui: { component: "textarea" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      // =============================================== PERSONAL TRAINING PAGE
+      {
+        name: "personalTraining",
+        label: "\u03A3\u03B5\u03BB\u03AF\u03B4\u03B1: Personal Training",
+        path: "content/personalTraining",
+        format: "json",
+        match: { include: "personalTraining" },
+        ui: { allowedActions: { create: false, delete: false } },
+        fields: [
+          {
+            type: "object",
+            name: "meta",
+            label: "SEO",
+            fields: [
+              { type: "string", name: "title", label: "SEO \u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "description", label: "SEO \u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE", ui: { component: "textarea" } },
+              { type: "string", name: "canonical", label: "Canonical URL" }
+            ]
+          },
+          {
+            type: "object",
+            name: "breadcrumb",
+            label: "Breadcrumb",
+            fields: [
+              { type: "string", name: "parent", label: "\u0393\u03BF\u03BD\u03B9\u03BA\u03AE" },
+              { type: "string", name: "current", label: "\u03A4\u03C1\u03AD\u03C7\u03BF\u03C5\u03C3\u03B1" }
+            ]
+          },
+          {
+            type: "object",
+            name: "hero",
+            label: "Hero",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headlineLine1", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 1" },
+              { type: "string", name: "headlineLine2", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u2014 \u0393\u03C1\u03B1\u03BC\u03BC\u03AE 2 (\u03C0\u03BF\u03C1\u03C4\u03BF\u03BA\u03B1\u03BB\u03AF)" },
+              { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "whatYouGet",
+            label: "\u03A4\u03B9 \u03C0\u03B5\u03C1\u03B9\u03BB\u03B1\u03BC\u03B2\u03AC\u03BD\u03B5\u03B9",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headlineLine1", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              { type: "string", name: "items", label: "\u039B\u03AF\u03C3\u03C4\u03B1", list: true, ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "formats",
+            label: "Formats",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headline", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "ctaLabel", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" },
+              {
+                type: "object",
+                name: "items",
+                label: "\u0395\u03C0\u03B9\u03BB\u03BF\u03B3\u03AD\u03C2",
+                list: true,
+                ui: { itemProps: (item) => ({ label: item?.name || "Format" }) },
+                fields: [
+                  { type: "string", name: "name", label: "\u038C\u03BD\u03BF\u03BC\u03B1" },
+                  { type: "string", name: "tagline", label: "Tagline" },
+                  { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+                  { type: "string", name: "href", label: "\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03BC\u03BF\u03C2" }
+                ]
+              }
+            ]
+          },
+          {
+            type: "object",
+            name: "whoItsFor",
+            label: "\u03A3\u03B5 \u03C0\u03BF\u03B9\u03BF\u03BD \u03C4\u03B1\u03B9\u03C1\u03B9\u03AC\u03B6\u03B5\u03B9",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headline", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "paragraphs", label: "\u03A0\u03B1\u03C1\u03AC\u03B3\u03C1\u03B1\u03C6\u03BF\u03B9", list: true, ui: { component: "textarea" } }
+            ]
+          },
+          {
+            type: "object",
+            name: "cta",
+            label: "CTA",
+            fields: [
+              { type: "string", name: "eyebrow", label: "\u039C\u03B9\u03BA\u03C1\u03CC\u03C2 \u03C4\u03AF\u03C4\u03BB\u03BF\u03C2 (eyebrow)" },
+              { type: "string", name: "headline", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+              { type: "string", name: "body", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF", ui: { component: "textarea" } },
+              { type: "string", name: "contactLabel", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03C3\u03C5\u03BD\u03B4\u03AD\u03C3\u03BC\u03BF\u03C5 \u03B5\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1\u03C2" },
+              { type: "string", name: "contactHref", label: "\u03A3\u03CD\u03BD\u03B4\u03B5\u03C3\u03BC\u03BF\u03C2 \u03B5\u03C0\u03B9\u03BA\u03BF\u03B9\u03BD\u03C9\u03BD\u03AF\u03B1\u03C2" },
+              { type: "string", name: "addressLine", label: "\u0393\u03C1\u03B1\u03BC\u03BC\u03AE \u03B4\u03B9\u03B5\u03CD\u03B8\u03C5\u03BD\u03C3\u03B7\u03C2" }
+            ]
+          }
+        ]
       }
     ]
   }

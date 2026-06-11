@@ -58,11 +58,23 @@ type Query {
   homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
   program(relativePath: String): Program!
   programConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ProgramFilter): ProgramConnection!
+  settings(relativePath: String): Settings!
+  settingsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: SettingsFilter): SettingsConnection!
+  about(relativePath: String): About!
+  aboutConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AboutFilter): AboutConnection!
+  contact(relativePath: String): Contact!
+  contactConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ContactFilter): ContactConnection!
+  personalTraining(relativePath: String): PersonalTraining!
+  personalTrainingConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PersonalTrainingFilter): PersonalTrainingConnection!
 }
 
 input DocumentFilter {
   home: HomeFilter
   program: ProgramFilter
+  settings: SettingsFilter
+  about: AboutFilter
+  contact: ContactFilter
+  personalTraining: PersonalTrainingFilter
 }
 
 type DocumentConnectionEdges {
@@ -88,7 +100,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Home | Program | Folder
+union DocumentNode = Home | Program | Settings | About | Contact | PersonalTraining | Folder
 
 type HomeHero {
   headlineLine1: String
@@ -500,6 +512,496 @@ type ProgramConnection implements Connection {
   edges: [ProgramConnectionEdges]
 }
 
+type SettingsAddress {
+  street: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+}
+
+type SettingsHours {
+  weekdaysDisplay: String
+  saturdayDisplay: String
+  sundayDisplay: String
+}
+
+type SettingsSocial {
+  instagram: String
+  instagramHandle: String
+}
+
+type SettingsCtaBand {
+  hook: String
+  body: String
+  cta: String
+}
+
+type Settings implements Node & Document {
+  tagline: String
+  email: String
+  phoneDisplay: String
+  address: SettingsAddress
+  hours: SettingsHours
+  social: SettingsSocial
+  ctaBand: SettingsCtaBand
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input SettingsAddressFilter {
+  street: StringFilter
+  city: StringFilter
+  region: StringFilter
+  postalCode: StringFilter
+  country: StringFilter
+}
+
+input SettingsHoursFilter {
+  weekdaysDisplay: StringFilter
+  saturdayDisplay: StringFilter
+  sundayDisplay: StringFilter
+}
+
+input SettingsSocialFilter {
+  instagram: StringFilter
+  instagramHandle: StringFilter
+}
+
+input SettingsCtaBandFilter {
+  hook: StringFilter
+  body: StringFilter
+  cta: StringFilter
+}
+
+input SettingsFilter {
+  tagline: StringFilter
+  email: StringFilter
+  phoneDisplay: StringFilter
+  address: SettingsAddressFilter
+  hours: SettingsHoursFilter
+  social: SettingsSocialFilter
+  ctaBand: SettingsCtaBandFilter
+}
+
+type SettingsConnectionEdges {
+  cursor: String!
+  node: Settings
+}
+
+type SettingsConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [SettingsConnectionEdges]
+}
+
+type AboutMeta {
+  title: String
+  description: String
+}
+
+type AboutHero {
+  eyebrow: String
+  headlineLine1Orange: String
+  headlineLine1Plain: String
+  breadcrumbHome: String
+  breadcrumbCurrent: String
+}
+
+type AboutStory {
+  image: String
+  imageAlt: String
+  heading: String
+  paragraph1Prefix: String
+  paragraph1StrongWord: String
+  paragraph1Suffix: String
+  paragraph1Em1: String
+  paragraph1Em2: String
+  paragraph1Rest: String
+  paragraph2: String
+  paragraph3: String
+  paragraph4Strong: String
+}
+
+type AboutCta {
+  eyebrow: String
+  headlineLine1: String
+  headlineLine2Black: String
+  body: String
+  quote: String
+  quoteAuthor: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+type AboutPrograms {
+  eyebrow: String
+  heading: String
+}
+
+type AboutFaqItems {
+  question: String
+  answer: String
+}
+
+type AboutFaq {
+  image: String
+  imageAlt: String
+  helperText: String
+  items: [AboutFaqItems]
+}
+
+type About implements Node & Document {
+  meta: AboutMeta
+  hero: AboutHero
+  story: AboutStory
+  cta: AboutCta
+  programs: AboutPrograms
+  faq: AboutFaq
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input AboutMetaFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input AboutHeroFilter {
+  eyebrow: StringFilter
+  headlineLine1Orange: StringFilter
+  headlineLine1Plain: StringFilter
+  breadcrumbHome: StringFilter
+  breadcrumbCurrent: StringFilter
+}
+
+input AboutStoryFilter {
+  image: ImageFilter
+  imageAlt: StringFilter
+  heading: StringFilter
+  paragraph1Prefix: StringFilter
+  paragraph1StrongWord: StringFilter
+  paragraph1Suffix: StringFilter
+  paragraph1Em1: StringFilter
+  paragraph1Em2: StringFilter
+  paragraph1Rest: StringFilter
+  paragraph2: StringFilter
+  paragraph3: StringFilter
+  paragraph4Strong: StringFilter
+}
+
+input AboutCtaFilter {
+  eyebrow: StringFilter
+  headlineLine1: StringFilter
+  headlineLine2Black: StringFilter
+  body: StringFilter
+  quote: StringFilter
+  quoteAuthor: StringFilter
+  ctaLabel: StringFilter
+  ctaHref: StringFilter
+}
+
+input AboutProgramsFilter {
+  eyebrow: StringFilter
+  heading: StringFilter
+}
+
+input AboutFaqItemsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input AboutFaqFilter {
+  image: ImageFilter
+  imageAlt: StringFilter
+  helperText: StringFilter
+  items: AboutFaqItemsFilter
+}
+
+input AboutFilter {
+  meta: AboutMetaFilter
+  hero: AboutHeroFilter
+  story: AboutStoryFilter
+  cta: AboutCtaFilter
+  programs: AboutProgramsFilter
+  faq: AboutFaqFilter
+}
+
+type AboutConnectionEdges {
+  cursor: String!
+  node: About
+}
+
+type AboutConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [AboutConnectionEdges]
+}
+
+type ContactHero {
+  breadcrumbHome: String
+  breadcrumbCurrent: String
+  headlineLine1: String
+  headlineLine2: String
+  subline: String
+}
+
+type ContactFormSection {
+  heading: String
+  labelName: String
+  placeholderName: String
+  labelEmail: String
+  placeholderEmail: String
+  labelPhone: String
+  placeholderPhone: String
+  labelMessage: String
+  placeholderMessage: String
+  submitLabel: String
+  submittingLabel: String
+  successHeading: String
+  successMessage: String
+}
+
+type ContactInfoSection {
+  heading: String
+  labelAddress: String
+  labelPhone: String
+  labelEmail: String
+  labelHours: String
+  labelInstagram: String
+  mapHeading: String
+}
+
+type ContactFaqItems {
+  question: String
+  answer: String
+}
+
+type ContactFaq {
+  image: String
+  imageAlt: String
+  helperText: String
+  items: [ContactFaqItems]
+}
+
+type Contact implements Node & Document {
+  hero: ContactHero
+  formSection: ContactFormSection
+  infoSection: ContactInfoSection
+  faq: ContactFaq
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input ContactHeroFilter {
+  breadcrumbHome: StringFilter
+  breadcrumbCurrent: StringFilter
+  headlineLine1: StringFilter
+  headlineLine2: StringFilter
+  subline: StringFilter
+}
+
+input ContactFormSectionFilter {
+  heading: StringFilter
+  labelName: StringFilter
+  placeholderName: StringFilter
+  labelEmail: StringFilter
+  placeholderEmail: StringFilter
+  labelPhone: StringFilter
+  placeholderPhone: StringFilter
+  labelMessage: StringFilter
+  placeholderMessage: StringFilter
+  submitLabel: StringFilter
+  submittingLabel: StringFilter
+  successHeading: StringFilter
+  successMessage: StringFilter
+}
+
+input ContactInfoSectionFilter {
+  heading: StringFilter
+  labelAddress: StringFilter
+  labelPhone: StringFilter
+  labelEmail: StringFilter
+  labelHours: StringFilter
+  labelInstagram: StringFilter
+  mapHeading: StringFilter
+}
+
+input ContactFaqItemsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input ContactFaqFilter {
+  image: ImageFilter
+  imageAlt: StringFilter
+  helperText: StringFilter
+  items: ContactFaqItemsFilter
+}
+
+input ContactFilter {
+  hero: ContactHeroFilter
+  formSection: ContactFormSectionFilter
+  infoSection: ContactInfoSectionFilter
+  faq: ContactFaqFilter
+}
+
+type ContactConnectionEdges {
+  cursor: String!
+  node: Contact
+}
+
+type ContactConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ContactConnectionEdges]
+}
+
+type PersonalTrainingMeta {
+  title: String
+  description: String
+  canonical: String
+}
+
+type PersonalTrainingBreadcrumb {
+  parent: String
+  current: String
+}
+
+type PersonalTrainingHero {
+  eyebrow: String
+  headlineLine1: String
+  headlineLine2: String
+  body: String
+}
+
+type PersonalTrainingWhatYouGet {
+  eyebrow: String
+  headlineLine1: String
+  body: String
+  items: [String]
+}
+
+type PersonalTrainingFormatsItems {
+  name: String
+  tagline: String
+  body: String
+  href: String
+}
+
+type PersonalTrainingFormats {
+  eyebrow: String
+  headline: String
+  ctaLabel: String
+  items: [PersonalTrainingFormatsItems]
+}
+
+type PersonalTrainingWhoItsFor {
+  eyebrow: String
+  headline: String
+  paragraphs: [String]
+}
+
+type PersonalTrainingCta {
+  eyebrow: String
+  headline: String
+  body: String
+  contactLabel: String
+  contactHref: String
+  addressLine: String
+}
+
+type PersonalTraining implements Node & Document {
+  meta: PersonalTrainingMeta
+  breadcrumb: PersonalTrainingBreadcrumb
+  hero: PersonalTrainingHero
+  whatYouGet: PersonalTrainingWhatYouGet
+  formats: PersonalTrainingFormats
+  whoItsFor: PersonalTrainingWhoItsFor
+  cta: PersonalTrainingCta
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PersonalTrainingMetaFilter {
+  title: StringFilter
+  description: StringFilter
+  canonical: StringFilter
+}
+
+input PersonalTrainingBreadcrumbFilter {
+  parent: StringFilter
+  current: StringFilter
+}
+
+input PersonalTrainingHeroFilter {
+  eyebrow: StringFilter
+  headlineLine1: StringFilter
+  headlineLine2: StringFilter
+  body: StringFilter
+}
+
+input PersonalTrainingWhatYouGetFilter {
+  eyebrow: StringFilter
+  headlineLine1: StringFilter
+  body: StringFilter
+  items: StringFilter
+}
+
+input PersonalTrainingFormatsItemsFilter {
+  name: StringFilter
+  tagline: StringFilter
+  body: StringFilter
+  href: StringFilter
+}
+
+input PersonalTrainingFormatsFilter {
+  eyebrow: StringFilter
+  headline: StringFilter
+  ctaLabel: StringFilter
+  items: PersonalTrainingFormatsItemsFilter
+}
+
+input PersonalTrainingWhoItsForFilter {
+  eyebrow: StringFilter
+  headline: StringFilter
+  paragraphs: StringFilter
+}
+
+input PersonalTrainingCtaFilter {
+  eyebrow: StringFilter
+  headline: StringFilter
+  body: StringFilter
+  contactLabel: StringFilter
+  contactHref: StringFilter
+  addressLine: StringFilter
+}
+
+input PersonalTrainingFilter {
+  meta: PersonalTrainingMetaFilter
+  breadcrumb: PersonalTrainingBreadcrumbFilter
+  hero: PersonalTrainingHeroFilter
+  whatYouGet: PersonalTrainingWhatYouGetFilter
+  formats: PersonalTrainingFormatsFilter
+  whoItsFor: PersonalTrainingWhoItsForFilter
+  cta: PersonalTrainingCtaFilter
+}
+
+type PersonalTrainingConnectionEdges {
+  cursor: String!
+  node: PersonalTraining
+}
+
+type PersonalTrainingConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PersonalTrainingConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -510,17 +1012,33 @@ type Mutation {
   createHome(relativePath: String!, params: HomeMutation!): Home!
   updateProgram(relativePath: String!, params: ProgramMutation!): Program!
   createProgram(relativePath: String!, params: ProgramMutation!): Program!
+  updateSettings(relativePath: String!, params: SettingsMutation!): Settings!
+  createSettings(relativePath: String!, params: SettingsMutation!): Settings!
+  updateAbout(relativePath: String!, params: AboutMutation!): About!
+  createAbout(relativePath: String!, params: AboutMutation!): About!
+  updateContact(relativePath: String!, params: ContactMutation!): Contact!
+  createContact(relativePath: String!, params: ContactMutation!): Contact!
+  updatePersonalTraining(relativePath: String!, params: PersonalTrainingMutation!): PersonalTraining!
+  createPersonalTraining(relativePath: String!, params: PersonalTrainingMutation!): PersonalTraining!
 }
 
 input DocumentUpdateMutation {
   home: HomeMutation
   program: ProgramMutation
+  settings: SettingsMutation
+  about: AboutMutation
+  contact: ContactMutation
+  personalTraining: PersonalTrainingMutation
   relativePath: String
 }
 
 input DocumentMutation {
   home: HomeMutation
   program: ProgramMutation
+  settings: SettingsMutation
+  about: AboutMutation
+  contact: ContactMutation
+  personalTraining: PersonalTrainingMutation
 }
 
 input HomeHeroMutation {
@@ -700,6 +1218,223 @@ input ProgramMutation {
   imagePosition: String
   metaTitle: String
   metaDescription: String
+}
+
+input SettingsAddressMutation {
+  street: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+}
+
+input SettingsHoursMutation {
+  weekdaysDisplay: String
+  saturdayDisplay: String
+  sundayDisplay: String
+}
+
+input SettingsSocialMutation {
+  instagram: String
+  instagramHandle: String
+}
+
+input SettingsCtaBandMutation {
+  hook: String
+  body: String
+  cta: String
+}
+
+input SettingsMutation {
+  tagline: String
+  email: String
+  phoneDisplay: String
+  address: SettingsAddressMutation
+  hours: SettingsHoursMutation
+  social: SettingsSocialMutation
+  ctaBand: SettingsCtaBandMutation
+}
+
+input AboutMetaMutation {
+  title: String
+  description: String
+}
+
+input AboutHeroMutation {
+  eyebrow: String
+  headlineLine1Orange: String
+  headlineLine1Plain: String
+  breadcrumbHome: String
+  breadcrumbCurrent: String
+}
+
+input AboutStoryMutation {
+  image: String
+  imageAlt: String
+  heading: String
+  paragraph1Prefix: String
+  paragraph1StrongWord: String
+  paragraph1Suffix: String
+  paragraph1Em1: String
+  paragraph1Em2: String
+  paragraph1Rest: String
+  paragraph2: String
+  paragraph3: String
+  paragraph4Strong: String
+}
+
+input AboutCtaMutation {
+  eyebrow: String
+  headlineLine1: String
+  headlineLine2Black: String
+  body: String
+  quote: String
+  quoteAuthor: String
+  ctaLabel: String
+  ctaHref: String
+}
+
+input AboutProgramsMutation {
+  eyebrow: String
+  heading: String
+}
+
+input AboutFaqItemsMutation {
+  question: String
+  answer: String
+}
+
+input AboutFaqMutation {
+  image: String
+  imageAlt: String
+  helperText: String
+  items: [AboutFaqItemsMutation]
+}
+
+input AboutMutation {
+  meta: AboutMetaMutation
+  hero: AboutHeroMutation
+  story: AboutStoryMutation
+  cta: AboutCtaMutation
+  programs: AboutProgramsMutation
+  faq: AboutFaqMutation
+}
+
+input ContactHeroMutation {
+  breadcrumbHome: String
+  breadcrumbCurrent: String
+  headlineLine1: String
+  headlineLine2: String
+  subline: String
+}
+
+input ContactFormSectionMutation {
+  heading: String
+  labelName: String
+  placeholderName: String
+  labelEmail: String
+  placeholderEmail: String
+  labelPhone: String
+  placeholderPhone: String
+  labelMessage: String
+  placeholderMessage: String
+  submitLabel: String
+  submittingLabel: String
+  successHeading: String
+  successMessage: String
+}
+
+input ContactInfoSectionMutation {
+  heading: String
+  labelAddress: String
+  labelPhone: String
+  labelEmail: String
+  labelHours: String
+  labelInstagram: String
+  mapHeading: String
+}
+
+input ContactFaqItemsMutation {
+  question: String
+  answer: String
+}
+
+input ContactFaqMutation {
+  image: String
+  imageAlt: String
+  helperText: String
+  items: [ContactFaqItemsMutation]
+}
+
+input ContactMutation {
+  hero: ContactHeroMutation
+  formSection: ContactFormSectionMutation
+  infoSection: ContactInfoSectionMutation
+  faq: ContactFaqMutation
+}
+
+input PersonalTrainingMetaMutation {
+  title: String
+  description: String
+  canonical: String
+}
+
+input PersonalTrainingBreadcrumbMutation {
+  parent: String
+  current: String
+}
+
+input PersonalTrainingHeroMutation {
+  eyebrow: String
+  headlineLine1: String
+  headlineLine2: String
+  body: String
+}
+
+input PersonalTrainingWhatYouGetMutation {
+  eyebrow: String
+  headlineLine1: String
+  body: String
+  items: [String]
+}
+
+input PersonalTrainingFormatsItemsMutation {
+  name: String
+  tagline: String
+  body: String
+  href: String
+}
+
+input PersonalTrainingFormatsMutation {
+  eyebrow: String
+  headline: String
+  ctaLabel: String
+  items: [PersonalTrainingFormatsItemsMutation]
+}
+
+input PersonalTrainingWhoItsForMutation {
+  eyebrow: String
+  headline: String
+  paragraphs: [String]
+}
+
+input PersonalTrainingCtaMutation {
+  eyebrow: String
+  headline: String
+  body: String
+  contactLabel: String
+  contactHref: String
+  addressLine: String
+}
+
+input PersonalTrainingMutation {
+  meta: PersonalTrainingMetaMutation
+  breadcrumb: PersonalTrainingBreadcrumbMutation
+  hero: PersonalTrainingHeroMutation
+  whatYouGet: PersonalTrainingWhatYouGetMutation
+  formats: PersonalTrainingFormatsMutation
+  whoItsFor: PersonalTrainingWhoItsForMutation
+  cta: PersonalTrainingCtaMutation
 }
 
 schema {
