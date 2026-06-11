@@ -7,14 +7,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { AnimatedCounter } from "@/components/shared/AnimatedCounter";
+import homeContent from "@/content/home/home.json";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const stats = [
-  { target: 300, suffix: "+", label: "Μύες σε κάθε κίνηση" },
-  { target: 20, suffix: "'", label: "Ισοδυναμούν με 4 ώρες" },
-  { target: 9, suffix: "", label: "Προγράμματα, ένα σύστημα" },
-];
+const c = homeContent.whatIsEMS;
+const stats = c.stats;
 
 export function WhatIsEMS() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -73,8 +71,8 @@ export function WhatIsEMS() {
         <div className="flex-1 flex flex-col gap-10 order-1 lg:order-none">
           <div className="ems-image relative aspect-[5/6] rounded-2xl overflow-hidden will-change-transform">
             <Image
-              src="/images/movus-red-light-studio.webp"
-              alt="Ο χώρος του MOVUS σε κόκκινο φωτισμό"
+              src={c.image}
+              alt={c.imageAlt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -87,7 +85,7 @@ export function WhatIsEMS() {
                 <div className="ems-reveal">
                   <div className="flex items-start">
                     <AnimatedCounter
-                      target={stat.target}
+                      target={stat.value}
                       className="text-4xl md:text-5xl lg:text-6xl font-black text-movus-white tracking-tight leading-none"
                     />
                     <span className="text-2xl md:text-3xl lg:text-4xl font-black text-movus-white leading-none">
@@ -108,15 +106,15 @@ export function WhatIsEMS() {
 
         <div className="flex-1 flex flex-col gap-8 order-0 lg:order-none lg:sticky lg:top-28 lg:self-start">
           <div className="overflow-hidden">
-            <p className="ems-reveal overline-light">(Ποιοι Είμαστε)</p>
+            <p className="ems-reveal overline-light">{c.eyebrow}</p>
           </div>
 
           <h2 className="heading-section leading-[0.92]">
             <span className="block overflow-hidden">
-              <span className="ems-reveal inline-block text-movus-white">WHAT IS</span>
+              <span className="ems-reveal inline-block text-movus-white">{c.headlineLine1}</span>
             </span>
             <span className="block overflow-hidden">
-              <span className="ems-reveal inline-block text-movus-orange">MOVUS</span>
+              <span className="ems-reveal inline-block text-movus-orange">{c.headlineLine2}</span>
             </span>
           </h2>
 
@@ -125,19 +123,19 @@ export function WhatIsEMS() {
               className="ems-reveal text-white/70 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Το MOVUS δεν είναι γυμναστήριο με κάρτα και μηχανήματα. Είναι ένα περιβάλλον που χτίστηκε με έναν σκοπό: να αλλάζει σώματα και τρόπο ζωής.
+              {c.paragraph1}
             </p>
             <p
               className="ems-reveal text-white/60 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Κάθε πελάτης έχει δικό του πρόγραμμα, δικό του coach, δικό του πλάνο. Τίποτα γενικό, τίποτα τυχαίο. Από την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
+              {c.paragraph2}
             </p>
             <p
               className="ems-reveal text-white/60 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Αρχάριος ή επαγγελματίας αθλητής, δεν έχει σημασία από πού ξεκινάς. Έχει σημασία πού θες να φτάσεις.
+              {c.paragraph3}
             </p>
           </div>
 
@@ -146,7 +144,7 @@ export function WhatIsEMS() {
               href="/about"
               className="inline-flex items-center gap-2 border border-white/25 hover:border-movus-orange hover:bg-movus-orange/10 text-movus-white text-sm font-semibold uppercase tracking-[0.05em] px-7 py-4 rounded-lg transition-colors"
             >
-              Γιατί MOVUS
+              {c.ctaLabel}
               <svg
                 className="w-4 h-4"
                 viewBox="0 0 24 24"

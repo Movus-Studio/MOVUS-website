@@ -1,7 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { testimonials } from "@/content/testimonials";
+import homeContent from "@/content/home/home.json";
+
+const c = homeContent.testimonials;
+const testimonials = c.items;
 
 const cardStyles = [
   { bg: "bg-[#F3F3F3]", text: "text-movus-black", quote: "text-movus-orange", sub: "text-movus-black/60" },
@@ -33,7 +36,7 @@ export function Testimonials() {
           data-motion-reveal
           className="overline"
         >
-          (Λόγια από τα μέλη)
+          {c.eyebrow}
         </motion.p>
 
         <motion.h2
@@ -47,9 +50,9 @@ export function Testimonials() {
           {/* Greek words are much wider than the original English design — stack
               each word on its own line on mobile so "ΑΠΟΤΕΛΕΣΜΑΤΑ." never
               overflows the viewport. md+ keeps the two-line composition. */}
-          <span className="block md:inline">ΑΛΗΘΙΝΑ</span>{" "}
-          <span className="block md:inline text-movus-orange">ΑΠΟΤΕΛΕΣΜΑΤΑ.</span>{" "}
-          <span className="block md:inline">ΑΛΗΘΙΝΑ ΛΟΓΙΑ.</span>
+          <span className="block md:inline">{c.headlineWord1}</span>{" "}
+          <span className="block md:inline text-movus-orange">{c.headlineWord2Accent}</span>{" "}
+          <span className="block md:inline">{c.headlineLine2}</span>
         </motion.h2>
 
         {/* Bento grid: 3 cols × 3 rows desktop, ~280px square cells, 10px gap, 2 deliberate empty cells */}

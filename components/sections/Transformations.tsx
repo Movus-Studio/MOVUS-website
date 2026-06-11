@@ -5,17 +5,12 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import homeContent from "@/content/home/home.json";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const photos = [
-  "/images/movus-ems-mat-training.webp",
-  "/images/movus-ems-floor-workout.webp",
-  "/images/movus-barbell-lunge-training.webp",
-  "/images/movus-side-plank-core.webp",
-  "/images/movus-red-light-recovery.webp",
-  "/images/movus-shape-space-cardio.webp",
-];
+const c = homeContent.transformations;
+const photos = c.photos;
 
 export function Transformations() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,15 +50,15 @@ export function Transformations() {
       <div className="spine spine-flush-bottom !gap-16 md:!gap-24 items-center text-center">
         <div className="flex flex-col items-center gap-6">
           <p className="transform-eyebrow overline">
-            (Στιγμές από το studio)
+            {c.eyebrow}
           </p>
           <h2 className="heading-section leading-[0.92] text-movus-black">
             <span className="block overflow-hidden">
-              <span className="transform-word inline-block">YOUR MOVUS</span>
+              <span className="transform-word inline-block">{c.headlineLine1}</span>
             </span>
             <span className="block overflow-hidden">
               <span className="transform-word inline-block text-movus-orange">
-                MOMENTS
+                {c.headlineLine2}
               </span>
             </span>
           </h2>

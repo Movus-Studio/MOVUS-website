@@ -6,39 +6,12 @@ import { motion, useReducedMotion } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import homeContent from "@/content/home/home.json";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const steps = [
-  {
-    number: "01",
-    title: "Αξιολόγηση",
-    description:
-      "InBody μέτρηση, ιστορικό, στόχοι. Καταλαβαίνουμε από πού ξεκινάς και πού θέλεις να φτάσεις.",
-    image: "/images/movus-assessment-side-profile.webp",
-  },
-  {
-    number: "02",
-    title: "Πλάνο",
-    description:
-      "Ο coach σου χτίζει πρόγραμμα γύρω από τον στόχο σου, τον χρόνο σου, το σώμα σου. Τίποτα γενικό, τίποτα τυχαίο.",
-    image: "/images/movus-coach-program-planning.webp",
-  },
-  {
-    number: "03",
-    title: "Προπόνηση",
-    description:
-      "Ξεκινάς. Ο coach σε βλέπει σε κάθε επανάληψη και προσαρμόζει σε πραγματικό χρόνο. Από την πρώτη μέρα ξέρεις τι κάνεις και γιατί.",
-    image: "/images/movus-training-pushup-coach.webp",
-  },
-  {
-    number: "04",
-    title: "Πρόοδος",
-    description:
-      "Επαναξιολόγηση κάθε λίγες εβδομάδες. Νέα μέτρηση, νέοι στόχοι, νέα ένταση. Η πρόοδος είναι μετρήσιμη και ορατή.",
-    image: "/images/movus-fitness-progress-result.webp",
-  },
-];
+const c = homeContent.howItWorks;
+const steps = c.steps;
 
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -99,9 +72,9 @@ export function HowItWorks() {
           data-motion-reveal
           className="heading-section text-movus-white leading-[0.92]"
         >
-          <span className="block">ΑΠΛΟ.</span>
-          <span className="block">ΔΟΜΗΜΕΝΟ.</span>
-          <span className="block text-movus-black">ΔΙΚΟ ΣΟΥ.</span>
+          <span className="block">{c.headlineLine1}</span>
+          <span className="block">{c.headlineLine2}</span>
+          <span className="block text-movus-black">{c.headlineLine3}</span>
         </motion.h2>
 
         <motion.p
@@ -113,7 +86,7 @@ export function HowItWorks() {
           className="text-movus-white/85 leading-[1.7] max-w-xl"
           style={{ fontSize: "var(--text-body-m)" }}
         >
-          Τέσσερα βήματα από την αξιολόγηση μέχρι τα αποτελέσματα. Καμία έκπληξη. Ξέρεις πάντα τι ακολουθεί και γιατί.
+          {c.intro}
         </motion.p>
       </div>
 

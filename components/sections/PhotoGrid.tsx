@@ -1,15 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import homeContent from "@/content/home/home.json";
 
-const photos = [
-  { src: "/images/movus-team-branded-apparel-v3.webp", alt: "MOVUS branded apparel, EMS γυμναστήριο Πάτρα" },
-  { src: "/images/movus-studio-moment-v2.webp", alt: "MOVUS studio moment, Πάτρα" },
-  { src: "/images/movus-flexibility-stretching-v2.webp", alt: "Stretching & flexibility, MOVUS Πάτρα" },
-  { src: "/images/movus-personal-coaching-v2.webp", alt: "Personal coaching, MOVUS Πάτρα" },
-  { src: "/images/movus-dumbbell-strength-training-v3.webp", alt: "Dumbbell strength training, MOVUS Πάτρα" },
-  { src: "/images/movus-cable-row-training-v2.webp", alt: "Cable row training, MOVUS Πάτρα" },
-];
+const ig = homeContent.instagram;
+const photos = ig.photos;
 
 export function PhotoGrid() {
   return (
@@ -23,9 +18,9 @@ export function PhotoGrid() {
               className="text-movus-white uppercase tracking-wider mx-10 text-4xl md:text-6xl lg:text-7xl"
               style={{ fontFamily: "var(--font-display), sans-serif", fontWeight: 400, fontSynthesis: "none" }}
             >
-              FOLLOW US ON INSTAGRAM
+              {ig.tickerText}
               <span className="mx-10 text-movus-white/50">*</span>
-              FOLLOW US ON INSTAGRAM
+              {ig.tickerText}
               <span className="mx-10 text-movus-white/50">*</span>
             </span>
           ))}
@@ -34,7 +29,7 @@ export function PhotoGrid() {
 
       {/* 6-col photo grid */}
       <a
-        href="https://www.instagram.com/movusfitness/"
+        href={ig.instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="block"

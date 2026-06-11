@@ -1,6 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import homeContent from "@/content/home/home.json";
+
+const c = homeContent.community;
 
 export function Community() {
   const prefersReducedMotion = useReducedMotion();
@@ -18,7 +21,7 @@ export function Community() {
           data-motion-reveal
           className="overline-light"
         >
-          (Η Κοινότητα)
+          {c.eyebrow}
         </motion.p>
 
         <motion.h2
@@ -29,9 +32,9 @@ export function Community() {
           data-motion-reveal
           className="heading-section-sm text-movus-white leading-[0.95] max-w-3xl"
         >
-          Υπάρχουν πολλά μέρη να πας να γυμναστείς.{" "}
+          {c.headlinePlain}{" "}
           <span className="text-movus-orange">
-            Λίγα που θα θυμάσαι γιατί πήγες.
+            {c.headlineAccent}
           </span>
         </motion.h2>
 
@@ -44,11 +47,11 @@ export function Community() {
           className="text-movus-white/70 max-w-xl leading-[1.6]"
           style={{ fontSize: "var(--text-body-m)" }}
         >
-          Αν ψάχνεις ένα από αυτά, είσαι στο σωστό μέρος.
+          {c.body}
         </motion.p>
 
         <motion.a
-          href="https://app.movus.gr"
+          href={c.ctaHref}
           target="_blank"
           rel="noopener noreferrer"
           initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
@@ -62,7 +65,7 @@ export function Community() {
             className="text-movus-white font-bold uppercase whitespace-nowrap text-[9px] md:text-[11px] tracking-[0.04em] transition-transform duration-300 group-hover:translate-x-[2px]"
             style={{ transform: "skewX(-8deg)" }}
           >
-            ΚΛΕΙΣΕ ΤΗΝ ΠΡΩΤΗ ΣΟΥ ΣΥΝΕΔΡΙΑ
+            {c.ctaLabel}
           </span>
         </motion.a>
       </div>

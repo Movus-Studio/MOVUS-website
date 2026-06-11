@@ -9,6 +9,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { programs } from "@/content/programs";
 import { ProgramCard as ListingCard } from "@/components/programs/ProgramCard";
+import homeContent from "@/content/home/home.json";
+
+const intro = homeContent.programs;
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -97,23 +100,23 @@ export function ProgramsGrid() {
     >
       {/* Header — Service header spine, padding 200/0 */}
       <div className="spine spine-flush-bottom !gap-10">
-        <p className="overline">(Προγράμματα)</p>
+        <p className="overline">{intro.eyebrow}</p>
         <h2 className="heading-section text-movus-black leading-[0.92]">
-          <span className="block">CHOOSE YOUR</span>
-          <span className="block text-movus-orange">PROGRAM</span>
+          <span className="block">{intro.headlineLine1}</span>
+          <span className="block text-movus-orange">{intro.headlineLine2}</span>
         </h2>
         <div
           className="max-w-2xl space-y-4 text-medium-gray leading-[1.7]"
           style={{ fontSize: "var(--text-body-m)" }}
         >
           <p className="text-movus-black font-semibold">
-            Εννέα προγράμματα. Ένα σύστημα.
+            {intro.intro1}
           </p>
           <p>
-            Διαλέγεις αυτό που σου ταιριάζει. Οι coaches το βρίσκουν μαζί σου.
+            {intro.intro2}
           </p>
           <p>
-            Από την πρώτη μέρα ξέρεις τι κάνεις και γιατί.
+            {intro.intro3}
           </p>
         </div>
       </div>

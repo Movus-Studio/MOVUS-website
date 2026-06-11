@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { siteContact } from "@/content/site";
+import homeContent from "@/content/home/home.json";
+
+const c = homeContent.contact;
 
 interface FormData {
   name: string;
@@ -59,10 +62,10 @@ export function ContactSection() {
       <section className="bg-movus-black" id="contact">
         <div className="spine text-center">
           <p className="heading-section text-movus-white mb-4">
-            <span className="text-movus-orange">Ευχαριστούμε!</span>
+            <span className="text-movus-orange">{c.successHeading}</span>
           </p>
           <p className="text-movus-white/50" style={{ fontSize: "var(--text-body-m)" }}>
-            Θα επικοινωνήσουμε μαζί σου σύντομα.
+            {c.successMessage}
           </p>
         </div>
       </section>
@@ -89,7 +92,7 @@ export function ContactSection() {
             data-motion-reveal
             className="overline-light"
           >
-            (Το Πρώτο Βήμα)
+            {c.eyebrow}
           </motion.p>
           <motion.h2
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 40 }}
@@ -99,8 +102,8 @@ export function ContactSection() {
             data-motion-reveal
             className="heading-section leading-[0.92]"
           >
-            <span className="block text-movus-white">ΞΕΡΕΙΣ ΗΔΗ</span>
-            <span className="block text-movus-orange">ΟΤΙ ΘΕΛΕΙΣ ΑΛΛΑΓΗ.</span>
+            <span className="block text-movus-white">{c.headlineLine1}</span>
+            <span className="block text-movus-orange">{c.headlineLine2}</span>
           </motion.h2>
           <motion.div
             initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
@@ -111,9 +114,9 @@ export function ContactSection() {
             className="max-w-2xl space-y-4 text-movus-white/70 leading-[1.6]"
             style={{ fontSize: "var(--text-body-m)" }}
           >
-            <p>Μίλα μαζί μας.</p>
+            <p>{c.body1}</p>
             <p>
-              Βρίσκουμε το πρόγραμμα που σου ταιριάζει και ξεκινάμε.
+              {c.body2}
             </p>
           </motion.div>
         </div>
@@ -252,7 +255,7 @@ export function ContactSection() {
               disabled={isSubmitting}
               className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? "Αποστολή..." : "Ξεκίνα Προπόνηση"}
+              {isSubmitting ? "Αποστολή..." : c.submitLabel}
             </button>
           </div>
         </motion.form>

@@ -69,3 +69,7 @@ skills/
 skills-lock.json
 content/source-site-content.md
 public/images/*.backup.webp
+
+# TinaCMS — built admin SPA, regenerated on every build.
+# Keep tina/__generated__ and tina/tina-lock.json COMMITTED (Tina Cloud indexing).
+public/admin

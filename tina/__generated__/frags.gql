@@ -1,0 +1,128 @@
+fragment HomeParts on Home {
+  __typename
+  hero {
+    __typename
+    headlineLine1
+    headlineLine2
+    headlineLine3
+    subline
+    socialProof
+    imageDesktop
+    imageMobile
+    imageAlt
+  }
+  whatIsEMS {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    paragraph1
+    paragraph2
+    paragraph3
+    ctaLabel
+    image
+    imageAlt
+    stats {
+      __typename
+      value
+      suffix
+      label
+    }
+  }
+  programs {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    intro1
+    intro2
+    intro3
+  }
+  whyMovus {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2Prefix
+    reasons {
+      __typename
+      number
+      title
+      description
+    }
+  }
+  howItWorks {
+    __typename
+    headlineLine1
+    headlineLine2
+    headlineLine3
+    intro
+    steps {
+      __typename
+      number
+      title
+      description
+      image
+    }
+  }
+  transformations {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    photos
+  }
+  community {
+    __typename
+    eyebrow
+    headlinePlain
+    headlineAccent
+    body
+    ctaLabel
+    ctaHref
+  }
+  testimonials {
+    __typename
+    eyebrow
+    headlineWord1
+    headlineWord2Accent
+    headlineLine2
+    items {
+      __typename
+      quote
+      name
+      program
+    }
+  }
+  faq {
+    __typename
+    helperText
+    image
+    imageAlt
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+  contact {
+    __typename
+    eyebrow
+    headlineLine1
+    headlineLine2
+    body1
+    body2
+    submitLabel
+    successHeading
+    successMessage
+  }
+  instagram {
+    __typename
+    tickerText
+    instagramUrl
+    photos {
+      __typename
+      src
+      alt
+    }
+  }
+}

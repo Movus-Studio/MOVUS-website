@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.68.51"],
   images: {
     qualities: [75, 90, 100],
+    // Tina Cloud serves client-uploaded media from its CDN; allow next/image
+    // to optimize images from it (without this, uploaded images 400 in prod).
+    remotePatterns: [{ protocol: "https", hostname: "assets.tina.io" }],
   },
   async redirects() {
     return [

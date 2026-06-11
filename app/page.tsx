@@ -30,11 +30,8 @@ export default function HomePage() {
       <Transformations />
       <Community />
       <Testimonials />
-      <FAQ
-        image="/images/movus-community-handdraw-v2.webp"
-        imageAlt="MOVUS κοινότητα, welcome illustration"
-        imageVariant="illustration"
-      />
+      {/* image / imageAlt / items / helperText default to content/home/home.json (Tina-managed) */}
+      <FAQ imageVariant="illustration" />
       <ContactSection />
       {/* Bonus sections, appended after Contact per source-design extra-section choice */}
       {/* Hidden pre-launch — needs design rework. Component still imported above

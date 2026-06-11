@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { faqItems, type FAQItem } from "@/content/faq";
+import { type FAQItem } from "@/content/faq";
 import { generateFAQSchema } from "@/lib/schema";
+import homeContent from "@/content/home/home.json";
 
 interface FAQProps {
   items?: FAQItem[];
@@ -16,11 +17,14 @@ interface FAQProps {
   imageVariant?: "photo" | "illustration";
 }
 
+// Defaults are the home-page FAQ content (Tina-managed in content/home/home.json).
+// Other pages (contact/about) pass their own items/image/helperText explicitly,
+// so editing the home FAQ never affects them.
 export function FAQ({
-  items = faqItems,
-  image = "/images/movus-ems-training.webp",
-  imageAlt = "EMS προπόνηση close-up",
-  helperText = "Τα πιο συχνά πριν ξεκινήσεις. Αν δεν βρεις την απάντηση εδώ, ρώτησέ μας απευθείας.",
+  items = homeContent.faq.items,
+  image = homeContent.faq.image,
+  imageAlt = homeContent.faq.imageAlt,
+  helperText = homeContent.faq.helperText,
   imageVariant = "photo",
 }: FAQProps = {}) {
   const isIllustration = imageVariant === "illustration";

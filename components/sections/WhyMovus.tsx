@@ -1,33 +1,10 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import homeContent from "@/content/home/home.json";
 
-const points = [
-  {
-    number: "01",
-    title: "Τεχνολογία σε βάθος",
-    description:
-      "EMS i-Motion με πιστοποίηση FDA. Shape Space με πέντε τεχνολογίες σε μία συνεδρία. Δουλεύεις σώμα και μύες που η κλασική προπόνηση δεν αγγίζει.",
-  },
-  {
-    number: "02",
-    title: "Coach που σε βλέπει",
-    description:
-      "Πιστοποιημένοι ΤΕΦΑΑ που σε γνωρίζουν με το όνομά σου. Σε κάθε επανάληψη, σε κάθε κίνηση, σε κάθε λεπτομέρεια.",
-  },
-  {
-    number: "03",
-    title: "Πλάνο πάνω σου",
-    description:
-      "InBody μέτρηση και πρόγραμμα χτισμένο γύρω από τον στόχο σου, τον χρόνο σου, το σώμα σου. Τίποτα γενικό, τίποτα τυχαίο.",
-  },
-  {
-    number: "04",
-    title: "Χώρος χωρίς περισπασμούς",
-    description:
-      "Μικρές ομάδες. Δύο άτομα σε Personal, ένα σε Private. Έχεις χρόνο, χώρο και προσοχή να αποδώσεις.",
-  },
-];
+const c = homeContent.whyMovus;
+const points = c.reasons;
 
 export function WhyMovus() {
   const prefersReducedMotion = useReducedMotion();
@@ -42,7 +19,7 @@ export function WhyMovus() {
           data-motion-reveal
           className="overline"
         >
-          (Γιατί Εμάς)
+          {c.eyebrow}
         </motion.p>
 
         <motion.h2
@@ -53,9 +30,9 @@ export function WhyMovus() {
           data-motion-reveal
           className="heading-section text-movus-black leading-[0.92]"
         >
-          <span className="block">ΤΕΣΣΕΡΙΣ ΛΟΓΟΙ</span>
+          <span className="block">{c.headlineLine1}</span>
           <span className="block">
-            ΓΙΑΤΙ <span className="text-movus-orange">MOVUS</span>
+            {c.headlineLine2Prefix} <span className="text-movus-orange">MOVUS</span>
           </span>
         </motion.h2>
 

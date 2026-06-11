@@ -4,13 +4,16 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import homeContent from "@/content/home/home.json";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+const hero = homeContent.hero;
+
 const HEADLINE_LINES: { words: { text: string; className: string }[] }[] = [
-  { words: [{ text: "FUTURE", className: "text-movus-white" }] },
-  { words: [{ text: "OF", className: "text-movus-white" }] },
-  { words: [{ text: "FITNESS", className: "text-movus-orange" }] },
+  { words: [{ text: hero.headlineLine1, className: "text-movus-white" }] },
+  { words: [{ text: hero.headlineLine2, className: "text-movus-white" }] },
+  { words: [{ text: hero.headlineLine3, className: "text-movus-orange" }] },
 ];
 
 export function Hero() {
@@ -74,12 +77,12 @@ export function Hero() {
         <picture>
           <source
             media="(orientation: portrait)"
-            srcSet="/images/movus-hero-v3-mobile.webp"
+            srcSet={hero.imageMobile}
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/movus-hero-v3.webp"
-            alt="Αθλήτρια του MOVUS μετά την προπόνηση"
+            src={hero.imageDesktop}
+            alt={hero.imageAlt}
             fetchPriority="high"
             decoding="async"
             className="absolute inset-0 w-full h-full object-cover object-center landscape:md:object-[80%_center]"
@@ -131,7 +134,7 @@ export function Hero() {
                 5/5
               </span>
               <span className="text-movus-white/50" style={{ fontSize: "var(--text-caption)" }}>
-                · 100+ Πελάτες
+                · {hero.socialProof}
               </span>
             </div>
           </div>
@@ -156,7 +159,7 @@ export function Hero() {
               className="hero-fade text-movus-white/85 leading-[1.6]"
               style={{ fontSize: "var(--text-body-m)" }}
             >
-              Κάποιοι ψάχνουν γυμναστήριο. Εσύ βρήκες το μέλλον της γυμναστικής.
+              {hero.subline}
             </p>
           </div>
         </div>
