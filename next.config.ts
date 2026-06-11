@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // TinaCMS admin is a static SPA at /admin/index.html; let the owner just type /admin.
+      { source: "/admin", destination: "/admin/index.html", permanent: false },
       { source: "/home", destination: "/", permanent: true },
       { source: "/home-el", destination: "/", permanent: true },
       { source: "/contact-el", destination: "/contact", permanent: true },
