@@ -277,6 +277,70 @@ var config_default = defineConfig({
             ]
           }
         ]
+      },
+      // ============================================================ PROGRAMS
+      // One document per program (team.json, squad.json, …). create/delete are
+      // OFF so the owner edits the 9 programs but can't add or remove any.
+      {
+        name: "program",
+        label: "\u03A0\u03C1\u03BF\u03B3\u03C1\u03AC\u03BC\u03BC\u03B1\u03C4\u03B1",
+        path: "content/programs",
+        format: "json",
+        match: { include: "*" },
+        ui: {
+          allowedActions: { create: false, delete: false },
+          filename: { readonly: true }
+        },
+        fields: [
+          { type: "string", name: "title", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2" },
+          { type: "string", name: "shortDescription", label: "\u03A3\u03CD\u03BD\u03C4\u03BF\u03BC\u03B7 \u03C0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE (\u03BA\u03AC\u03C1\u03C4\u03B1)", ui: { component: "textarea" } },
+          { type: "string", name: "duration", label: "\u0394\u03B9\u03AC\u03C1\u03BA\u03B5\u03B9\u03B1 (\u03C0.\u03C7. 60 \u03BB\u03B5\u03C0\u03C4\u03AC)" },
+          { type: "string", name: "tag", label: "\u039A\u03B1\u03C4\u03B7\u03B3\u03BF\u03C1\u03AF\u03B1 (badge)" },
+          { type: "string", name: "tags", label: "\u0395\u03C4\u03B9\u03BA\u03AD\u03C4\u03B5\u03C2 (\u03BA\u03AC\u03C1\u03C4\u03B1)", list: true },
+          { type: "string", name: "ctaLabel", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" },
+          {
+            type: "string",
+            name: "heroBody",
+            label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03C3\u03B5\u03BB\u03AF\u03B4\u03B1\u03C2 (\u03C0\u03B1\u03C1\u03AC\u03B3\u03C1\u03B1\u03C6\u03BF\u03B9)",
+            list: true,
+            ui: { component: "textarea" }
+          },
+          { type: "string", name: "benefitsTitle", label: "\u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 \u03C9\u03C6\u03B5\u03BB\u03B5\u03B9\u03CE\u03BD" },
+          { type: "string", name: "benefits", label: "\u03A9\u03C6\u03AD\u03BB\u03B5\u03B9\u03B5\u03C2", list: true },
+          { type: "string", name: "howItWorks", label: "\u03A0\u03CE\u03C2 \u03BB\u03B5\u03B9\u03C4\u03BF\u03C5\u03C1\u03B3\u03B5\u03AF (\u03C0\u03C1\u03BF\u03B1\u03B9\u03C1\u03B5\u03C4\u03B9\u03BA\u03CC)", ui: { component: "textarea" } },
+          {
+            type: "object",
+            name: "subPrograms",
+            label: "\u03A5\u03C0\u03BF-\u03C0\u03C1\u03BF\u03B3\u03C1\u03AC\u03BC\u03BC\u03B1\u03C4\u03B1",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.name || "\u03A5\u03C0\u03BF-\u03C0\u03C1\u03CC\u03B3\u03C1\u03B1\u03BC\u03BC\u03B1" }) },
+            fields: [
+              { type: "string", name: "name", label: "\u038C\u03BD\u03BF\u03BC\u03B1" },
+              { type: "string", name: "tagline", label: "Tagline" },
+              { type: "string", name: "category", label: "\u039A\u03B1\u03C4\u03B7\u03B3\u03BF\u03C1\u03AF\u03B1" },
+              { type: "string", name: "audience", label: "\u039A\u03BF\u03B9\u03BD\u03CC" },
+              { type: "string", name: "description", label: "\u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE", ui: { component: "textarea" } },
+              { type: "string", name: "ctaLabel", label: "\u039A\u03B5\u03AF\u03BC\u03B5\u03BD\u03BF \u03BA\u03BF\u03C5\u03BC\u03C0\u03B9\u03BF\u03CD" }
+            ]
+          },
+          {
+            type: "object",
+            name: "faqs",
+            label: "\u03A3\u03C5\u03C7\u03BD\u03AD\u03C2 \u0395\u03C1\u03C9\u03C4\u03AE\u03C3\u03B5\u03B9\u03C2 (\u03C3\u03B5\u03BB\u03AF\u03B4\u03B1 \u03C0\u03C1\u03BF\u03B3\u03C1\u03AC\u03BC\u03BC\u03B1\u03C4\u03BF\u03C2)",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.question || "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" }) },
+            fields: [
+              { type: "string", name: "question", label: "\u0395\u03C1\u03CE\u03C4\u03B7\u03C3\u03B7" },
+              { type: "string", name: "answer", label: "\u0391\u03C0\u03AC\u03BD\u03C4\u03B7\u03C3\u03B7", ui: { component: "textarea" } }
+            ]
+          },
+          { type: "image", name: "image", label: "\u0395\u03B9\u03BA\u03CC\u03BD\u03B1" },
+          { type: "string", name: "imageAlt", label: "\u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE \u03B5\u03B9\u03BA\u03CC\u03BD\u03B1\u03C2 (alt)" },
+          { type: "string", name: "imagePosition", label: "\u0398\u03AD\u03C3\u03B7 \u03B5\u03B9\u03BA\u03CC\u03BD\u03B1\u03C2 (\u03C0\u03C1\u03BF\u03C7\u03C9\u03C1\u03B7\u03BC\u03AD\u03BD\u03BF, \u03C0.\u03C7. center top)" },
+          // --- SEO: edit only if you know what you're doing ---
+          { type: "string", name: "metaTitle", label: "SEO \u2014 \u03A4\u03AF\u03C4\u03BB\u03BF\u03C2 (\u03BC\u03B7\u03BD \u03C4\u03BF \u03B1\u03BB\u03BB\u03AC\u03B6\u03B5\u03B9\u03C2 \u03C7\u03C9\u03C1\u03AF\u03C2 \u03BB\u03CC\u03B3\u03BF)" },
+          { type: "string", name: "metaDescription", label: "SEO \u2014 \u03A0\u03B5\u03C1\u03B9\u03B3\u03C1\u03B1\u03C6\u03AE (\u03BC\u03B7\u03BD \u03C4\u03BF \u03B1\u03BB\u03BB\u03AC\u03B6\u03B5\u03B9\u03C2 \u03C7\u03C9\u03C1\u03AF\u03C2 \u03BB\u03CC\u03B3\u03BF)", ui: { component: "textarea" } }
+        ]
       }
     ]
   }

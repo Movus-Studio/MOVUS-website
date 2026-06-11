@@ -84,6 +84,8 @@ export type Query = {
   document: DocumentNode;
   home: Home;
   homeConnection: HomeConnection;
+  program: Program;
+  programConnection: ProgramConnection;
 };
 
 
@@ -122,8 +124,24 @@ export type QueryHomeConnectionArgs = {
   filter?: InputMaybe<HomeFilter>;
 };
 
+
+export type QueryProgramArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryProgramConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ProgramFilter>;
+};
+
 export type DocumentFilter = {
   home?: InputMaybe<HomeFilter>;
+  program?: InputMaybe<ProgramFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -163,7 +181,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Home | Folder;
+export type DocumentNode = Home | Program | Folder;
 
 export type HomeHero = {
   __typename?: 'HomeHero';
@@ -513,6 +531,93 @@ export type HomeConnection = Connection & {
   edges?: Maybe<Array<Maybe<HomeConnectionEdges>>>;
 };
 
+export type ProgramSubPrograms = {
+  __typename?: 'ProgramSubPrograms';
+  name?: Maybe<Scalars['String']['output']>;
+  tagline?: Maybe<Scalars['String']['output']>;
+  category?: Maybe<Scalars['String']['output']>;
+  audience?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+};
+
+export type ProgramFaqs = {
+  __typename?: 'ProgramFaqs';
+  question?: Maybe<Scalars['String']['output']>;
+  answer?: Maybe<Scalars['String']['output']>;
+};
+
+export type Program = Node & Document & {
+  __typename?: 'Program';
+  title?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  tag?: Maybe<Scalars['String']['output']>;
+  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  ctaLabel?: Maybe<Scalars['String']['output']>;
+  heroBody?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  benefitsTitle?: Maybe<Scalars['String']['output']>;
+  benefits?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  howItWorks?: Maybe<Scalars['String']['output']>;
+  subPrograms?: Maybe<Array<Maybe<ProgramSubPrograms>>>;
+  faqs?: Maybe<Array<Maybe<ProgramFaqs>>>;
+  image?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imagePosition?: Maybe<Scalars['String']['output']>;
+  metaTitle?: Maybe<Scalars['String']['output']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type ProgramSubProgramsFilter = {
+  name?: InputMaybe<StringFilter>;
+  tagline?: InputMaybe<StringFilter>;
+  category?: InputMaybe<StringFilter>;
+  audience?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+};
+
+export type ProgramFaqsFilter = {
+  question?: InputMaybe<StringFilter>;
+  answer?: InputMaybe<StringFilter>;
+};
+
+export type ProgramFilter = {
+  title?: InputMaybe<StringFilter>;
+  shortDescription?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  tag?: InputMaybe<StringFilter>;
+  tags?: InputMaybe<StringFilter>;
+  ctaLabel?: InputMaybe<StringFilter>;
+  heroBody?: InputMaybe<StringFilter>;
+  benefitsTitle?: InputMaybe<StringFilter>;
+  benefits?: InputMaybe<StringFilter>;
+  howItWorks?: InputMaybe<StringFilter>;
+  subPrograms?: InputMaybe<ProgramSubProgramsFilter>;
+  faqs?: InputMaybe<ProgramFaqsFilter>;
+  image?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imagePosition?: InputMaybe<StringFilter>;
+  metaTitle?: InputMaybe<StringFilter>;
+  metaDescription?: InputMaybe<StringFilter>;
+};
+
+export type ProgramConnectionEdges = {
+  __typename?: 'ProgramConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<Program>;
+};
+
+export type ProgramConnection = Connection & {
+  __typename?: 'ProgramConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<ProgramConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -522,6 +627,8 @@ export type Mutation = {
   createFolder: DocumentNode;
   updateHome: Home;
   createHome: Home;
+  updateProgram: Program;
+  createProgram: Program;
 };
 
 
@@ -569,13 +676,27 @@ export type MutationCreateHomeArgs = {
   params: HomeMutation;
 };
 
+
+export type MutationUpdateProgramArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ProgramMutation;
+};
+
+
+export type MutationCreateProgramArgs = {
+  relativePath: Scalars['String']['input'];
+  params: ProgramMutation;
+};
+
 export type DocumentUpdateMutation = {
   home?: InputMaybe<HomeMutation>;
+  program?: InputMaybe<ProgramMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   home?: InputMaybe<HomeMutation>;
+  program?: InputMaybe<ProgramMutation>;
 };
 
 export type HomeHeroMutation = {
@@ -723,7 +844,43 @@ export type HomeMutation = {
   instagram?: InputMaybe<HomeInstagramMutation>;
 };
 
+export type ProgramSubProgramsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  tagline?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  audience?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProgramFaqsMutation = {
+  question?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ProgramMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  tag?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  ctaLabel?: InputMaybe<Scalars['String']['input']>;
+  heroBody?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  benefitsTitle?: InputMaybe<Scalars['String']['input']>;
+  benefits?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  howItWorks?: InputMaybe<Scalars['String']['input']>;
+  subPrograms?: InputMaybe<Array<InputMaybe<ProgramSubProgramsMutation>>>;
+  faqs?: InputMaybe<Array<InputMaybe<ProgramFaqsMutation>>>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imagePosition?: InputMaybe<Scalars['String']['input']>;
+  metaTitle?: InputMaybe<Scalars['String']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type HomePartsFragment = { __typename: 'Home', hero?: { __typename: 'HomeHero', headlineLine1?: string | null, headlineLine2?: string | null, headlineLine3?: string | null, subline?: string | null, socialProof?: string | null, imageDesktop?: string | null, imageMobile?: string | null, imageAlt?: string | null } | null, whatIsEMS?: { __typename: 'HomeWhatIsEMS', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, paragraph1?: string | null, paragraph2?: string | null, paragraph3?: string | null, ctaLabel?: string | null, image?: string | null, imageAlt?: string | null, stats?: Array<{ __typename: 'HomeWhatIsEMSStats', value?: number | null, suffix?: string | null, label?: string | null } | null> | null } | null, programs?: { __typename: 'HomePrograms', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, intro1?: string | null, intro2?: string | null, intro3?: string | null } | null, whyMovus?: { __typename: 'HomeWhyMovus', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2Prefix?: string | null, reasons?: Array<{ __typename: 'HomeWhyMovusReasons', number?: string | null, title?: string | null, description?: string | null } | null> | null } | null, howItWorks?: { __typename: 'HomeHowItWorks', headlineLine1?: string | null, headlineLine2?: string | null, headlineLine3?: string | null, intro?: string | null, steps?: Array<{ __typename: 'HomeHowItWorksSteps', number?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | null, transformations?: { __typename: 'HomeTransformations', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, photos?: Array<string | null> | null } | null, community?: { __typename: 'HomeCommunity', eyebrow?: string | null, headlinePlain?: string | null, headlineAccent?: string | null, body?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, testimonials?: { __typename: 'HomeTestimonials', eyebrow?: string | null, headlineWord1?: string | null, headlineWord2Accent?: string | null, headlineLine2?: string | null, items?: Array<{ __typename: 'HomeTestimonialsItems', quote?: string | null, name?: string | null, program?: string | null } | null> | null } | null, faq?: { __typename: 'HomeFaq', helperText?: string | null, image?: string | null, imageAlt?: string | null, items?: Array<{ __typename: 'HomeFaqItems', question?: string | null, answer?: string | null } | null> | null } | null, contact?: { __typename: 'HomeContact', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, body1?: string | null, body2?: string | null, submitLabel?: string | null, successHeading?: string | null, successMessage?: string | null } | null, instagram?: { __typename: 'HomeInstagram', tickerText?: string | null, instagramUrl?: string | null, photos?: Array<{ __typename: 'HomeInstagramPhotos', src?: string | null, alt?: string | null } | null> | null } | null };
+
+export type ProgramPartsFragment = { __typename: 'Program', title?: string | null, shortDescription?: string | null, duration?: string | null, tag?: string | null, tags?: Array<string | null> | null, ctaLabel?: string | null, heroBody?: Array<string | null> | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, howItWorks?: string | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, metaTitle?: string | null, metaDescription?: string | null, subPrograms?: Array<{ __typename: 'ProgramSubPrograms', name?: string | null, tagline?: string | null, category?: string | null, audience?: string | null, description?: string | null, ctaLabel?: string | null } | null> | null, faqs?: Array<{ __typename: 'ProgramFaqs', question?: string | null, answer?: string | null } | null> | null };
 
 export type HomeQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -743,6 +900,25 @@ export type HomeConnectionQueryVariables = Exact<{
 
 
 export type HomeConnectionQuery = { __typename?: 'Query', homeConnection: { __typename?: 'HomeConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomeConnectionEdges', cursor: string, node?: { __typename: 'Home', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, hero?: { __typename: 'HomeHero', headlineLine1?: string | null, headlineLine2?: string | null, headlineLine3?: string | null, subline?: string | null, socialProof?: string | null, imageDesktop?: string | null, imageMobile?: string | null, imageAlt?: string | null } | null, whatIsEMS?: { __typename: 'HomeWhatIsEMS', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, paragraph1?: string | null, paragraph2?: string | null, paragraph3?: string | null, ctaLabel?: string | null, image?: string | null, imageAlt?: string | null, stats?: Array<{ __typename: 'HomeWhatIsEMSStats', value?: number | null, suffix?: string | null, label?: string | null } | null> | null } | null, programs?: { __typename: 'HomePrograms', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, intro1?: string | null, intro2?: string | null, intro3?: string | null } | null, whyMovus?: { __typename: 'HomeWhyMovus', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2Prefix?: string | null, reasons?: Array<{ __typename: 'HomeWhyMovusReasons', number?: string | null, title?: string | null, description?: string | null } | null> | null } | null, howItWorks?: { __typename: 'HomeHowItWorks', headlineLine1?: string | null, headlineLine2?: string | null, headlineLine3?: string | null, intro?: string | null, steps?: Array<{ __typename: 'HomeHowItWorksSteps', number?: string | null, title?: string | null, description?: string | null, image?: string | null } | null> | null } | null, transformations?: { __typename: 'HomeTransformations', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, photos?: Array<string | null> | null } | null, community?: { __typename: 'HomeCommunity', eyebrow?: string | null, headlinePlain?: string | null, headlineAccent?: string | null, body?: string | null, ctaLabel?: string | null, ctaHref?: string | null } | null, testimonials?: { __typename: 'HomeTestimonials', eyebrow?: string | null, headlineWord1?: string | null, headlineWord2Accent?: string | null, headlineLine2?: string | null, items?: Array<{ __typename: 'HomeTestimonialsItems', quote?: string | null, name?: string | null, program?: string | null } | null> | null } | null, faq?: { __typename: 'HomeFaq', helperText?: string | null, image?: string | null, imageAlt?: string | null, items?: Array<{ __typename: 'HomeFaqItems', question?: string | null, answer?: string | null } | null> | null } | null, contact?: { __typename: 'HomeContact', eyebrow?: string | null, headlineLine1?: string | null, headlineLine2?: string | null, body1?: string | null, body2?: string | null, submitLabel?: string | null, successHeading?: string | null, successMessage?: string | null } | null, instagram?: { __typename: 'HomeInstagram', tickerText?: string | null, instagramUrl?: string | null, photos?: Array<{ __typename: 'HomeInstagramPhotos', src?: string | null, alt?: string | null } | null> | null } | null } | null } | null> | null } };
+
+export type ProgramQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type ProgramQuery = { __typename?: 'Query', program: { __typename: 'Program', id: string, title?: string | null, shortDescription?: string | null, duration?: string | null, tag?: string | null, tags?: Array<string | null> | null, ctaLabel?: string | null, heroBody?: Array<string | null> | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, howItWorks?: string | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, metaTitle?: string | null, metaDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, subPrograms?: Array<{ __typename: 'ProgramSubPrograms', name?: string | null, tagline?: string | null, category?: string | null, audience?: string | null, description?: string | null, ctaLabel?: string | null } | null> | null, faqs?: Array<{ __typename: 'ProgramFaqs', question?: string | null, answer?: string | null } | null> | null } };
+
+export type ProgramConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<ProgramFilter>;
+}>;
+
+
+export type ProgramConnectionQuery = { __typename?: 'Query', programConnection: { __typename?: 'ProgramConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ProgramConnectionEdges', cursor: string, node?: { __typename: 'Program', id: string, title?: string | null, shortDescription?: string | null, duration?: string | null, tag?: string | null, tags?: Array<string | null> | null, ctaLabel?: string | null, heroBody?: Array<string | null> | null, benefitsTitle?: string | null, benefits?: Array<string | null> | null, howItWorks?: string | null, image?: string | null, imageAlt?: string | null, imagePosition?: string | null, metaTitle?: string | null, metaDescription?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, subPrograms?: Array<{ __typename: 'ProgramSubPrograms', name?: string | null, tagline?: string | null, category?: string | null, audience?: string | null, description?: string | null, ctaLabel?: string | null } | null> | null, faqs?: Array<{ __typename: 'ProgramFaqs', question?: string | null, answer?: string | null } | null> | null } | null } | null> | null } };
 
 export const HomePartsFragmentDoc = gql`
     fragment HomeParts on Home {
@@ -874,6 +1050,40 @@ export const HomePartsFragmentDoc = gql`
   }
 }
     `;
+export const ProgramPartsFragmentDoc = gql`
+    fragment ProgramParts on Program {
+  __typename
+  title
+  shortDescription
+  duration
+  tag
+  tags
+  ctaLabel
+  heroBody
+  benefitsTitle
+  benefits
+  howItWorks
+  subPrograms {
+    __typename
+    name
+    tagline
+    category
+    audience
+    description
+    ctaLabel
+  }
+  faqs {
+    __typename
+    question
+    answer
+  }
+  image
+  imageAlt
+  imagePosition
+  metaTitle
+  metaDescription
+}
+    `;
 export const HomeDocument = gql`
     query home($relativePath: String!) {
   home(relativePath: $relativePath) {
@@ -931,6 +1141,63 @@ export const HomeConnectionDocument = gql`
   }
 }
     ${HomePartsFragmentDoc}`;
+export const ProgramDocument = gql`
+    query program($relativePath: String!) {
+  program(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ProgramParts
+  }
+}
+    ${ProgramPartsFragmentDoc}`;
+export const ProgramConnectionDocument = gql`
+    query programConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ProgramFilter) {
+  programConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ProgramParts
+      }
+    }
+  }
+}
+    ${ProgramPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -939,6 +1206,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     homeConnection(variables?: HomeConnectionQueryVariables, options?: C): Promise<{data: HomeConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeConnectionQueryVariables, query: string}> {
         return requester<{data: HomeConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: HomeConnectionQueryVariables, query: string}, HomeConnectionQueryVariables>(HomeConnectionDocument, variables, options);
+      },
+    program(variables: ProgramQueryVariables, options?: C): Promise<{data: ProgramQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ProgramQueryVariables, query: string}> {
+        return requester<{data: ProgramQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ProgramQueryVariables, query: string}, ProgramQueryVariables>(ProgramDocument, variables, options);
+      },
+    programConnection(variables?: ProgramConnectionQueryVariables, options?: C): Promise<{data: ProgramConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ProgramConnectionQueryVariables, query: string}> {
+        return requester<{data: ProgramConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: ProgramConnectionQueryVariables, query: string}, ProgramConnectionQueryVariables>(ProgramConnectionDocument, variables, options);
       }
     };
   }

@@ -290,6 +290,70 @@ export default defineConfig({
           },
         ],
       },
+      // ============================================================ PROGRAMS
+      // One document per program (team.json, squad.json, …). create/delete are
+      // OFF so the owner edits the 9 programs but can't add or remove any.
+      {
+        name: "program",
+        label: "Προγράμματα",
+        path: "content/programs",
+        format: "json",
+        match: { include: "*" },
+        ui: {
+          allowedActions: { create: false, delete: false },
+          filename: { readonly: true },
+        },
+        fields: [
+          { type: "string", name: "title", label: "Τίτλος" },
+          { type: "string", name: "shortDescription", label: "Σύντομη περιγραφή (κάρτα)", ui: { component: "textarea" } },
+          { type: "string", name: "duration", label: "Διάρκεια (π.χ. 60 λεπτά)" },
+          { type: "string", name: "tag", label: "Κατηγορία (badge)" },
+          { type: "string", name: "tags", label: "Ετικέτες (κάρτα)", list: true },
+          { type: "string", name: "ctaLabel", label: "Κείμενο κουμπιού" },
+          {
+            type: "string",
+            name: "heroBody",
+            label: "Κείμενο σελίδας (παράγραφοι)",
+            list: true,
+            ui: { component: "textarea" },
+          },
+          { type: "string", name: "benefitsTitle", label: "Τίτλος ωφελειών" },
+          { type: "string", name: "benefits", label: "Ωφέλειες", list: true },
+          { type: "string", name: "howItWorks", label: "Πώς λειτουργεί (προαιρετικό)", ui: { component: "textarea" } },
+          {
+            type: "object",
+            name: "subPrograms",
+            label: "Υπο-προγράμματα",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.name || "Υπο-πρόγραμμα" }) },
+            fields: [
+              { type: "string", name: "name", label: "Όνομα" },
+              { type: "string", name: "tagline", label: "Tagline" },
+              { type: "string", name: "category", label: "Κατηγορία" },
+              { type: "string", name: "audience", label: "Κοινό" },
+              { type: "string", name: "description", label: "Περιγραφή", ui: { component: "textarea" } },
+              { type: "string", name: "ctaLabel", label: "Κείμενο κουμπιού" },
+            ],
+          },
+          {
+            type: "object",
+            name: "faqs",
+            label: "Συχνές Ερωτήσεις (σελίδα προγράμματος)",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.question || "Ερώτηση" }) },
+            fields: [
+              { type: "string", name: "question", label: "Ερώτηση" },
+              { type: "string", name: "answer", label: "Απάντηση", ui: { component: "textarea" } },
+            ],
+          },
+          { type: "image", name: "image", label: "Εικόνα" },
+          { type: "string", name: "imageAlt", label: "Περιγραφή εικόνας (alt)" },
+          { type: "string", name: "imagePosition", label: "Θέση εικόνας (προχωρημένο, π.χ. center top)" },
+          // --- SEO: edit only if you know what you're doing ---
+          { type: "string", name: "metaTitle", label: "SEO — Τίτλος (μην το αλλάζεις χωρίς λόγο)" },
+          { type: "string", name: "metaDescription", label: "SEO — Περιγραφή (μην το αλλάζεις χωρίς λόγο)", ui: { component: "textarea" } },
+        ],
+      },
     ],
   },
 });

@@ -56,10 +56,13 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   home(relativePath: String): Home!
   homeConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomeFilter): HomeConnection!
+  program(relativePath: String): Program!
+  programConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ProgramFilter): ProgramConnection!
 }
 
 input DocumentFilter {
   home: HomeFilter
+  program: ProgramFilter
 }
 
 type DocumentConnectionEdges {
@@ -85,7 +88,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Home | Folder
+union DocumentNode = Home | Program | Folder
 
 type HomeHero {
   headlineLine1: String
@@ -415,6 +418,88 @@ type HomeConnection implements Connection {
   edges: [HomeConnectionEdges]
 }
 
+type ProgramSubPrograms {
+  name: String
+  tagline: String
+  category: String
+  audience: String
+  description: String
+  ctaLabel: String
+}
+
+type ProgramFaqs {
+  question: String
+  answer: String
+}
+
+type Program implements Node & Document {
+  title: String
+  shortDescription: String
+  duration: String
+  tag: String
+  tags: [String]
+  ctaLabel: String
+  heroBody: [String]
+  benefitsTitle: String
+  benefits: [String]
+  howItWorks: String
+  subPrograms: [ProgramSubPrograms]
+  faqs: [ProgramFaqs]
+  image: String
+  imageAlt: String
+  imagePosition: String
+  metaTitle: String
+  metaDescription: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input ProgramSubProgramsFilter {
+  name: StringFilter
+  tagline: StringFilter
+  category: StringFilter
+  audience: StringFilter
+  description: StringFilter
+  ctaLabel: StringFilter
+}
+
+input ProgramFaqsFilter {
+  question: StringFilter
+  answer: StringFilter
+}
+
+input ProgramFilter {
+  title: StringFilter
+  shortDescription: StringFilter
+  duration: StringFilter
+  tag: StringFilter
+  tags: StringFilter
+  ctaLabel: StringFilter
+  heroBody: StringFilter
+  benefitsTitle: StringFilter
+  benefits: StringFilter
+  howItWorks: StringFilter
+  subPrograms: ProgramSubProgramsFilter
+  faqs: ProgramFaqsFilter
+  image: ImageFilter
+  imageAlt: StringFilter
+  imagePosition: StringFilter
+  metaTitle: StringFilter
+  metaDescription: StringFilter
+}
+
+type ProgramConnectionEdges {
+  cursor: String!
+  node: Program
+}
+
+type ProgramConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [ProgramConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -423,15 +508,19 @@ type Mutation {
   createFolder(collection: String, relativePath: String!): DocumentNode!
   updateHome(relativePath: String!, params: HomeMutation!): Home!
   createHome(relativePath: String!, params: HomeMutation!): Home!
+  updateProgram(relativePath: String!, params: ProgramMutation!): Program!
+  createProgram(relativePath: String!, params: ProgramMutation!): Program!
 }
 
 input DocumentUpdateMutation {
   home: HomeMutation
+  program: ProgramMutation
   relativePath: String
 }
 
 input DocumentMutation {
   home: HomeMutation
+  program: ProgramMutation
 }
 
 input HomeHeroMutation {
@@ -577,6 +666,40 @@ input HomeMutation {
   faq: HomeFaqMutation
   contact: HomeContactMutation
   instagram: HomeInstagramMutation
+}
+
+input ProgramSubProgramsMutation {
+  name: String
+  tagline: String
+  category: String
+  audience: String
+  description: String
+  ctaLabel: String
+}
+
+input ProgramFaqsMutation {
+  question: String
+  answer: String
+}
+
+input ProgramMutation {
+  title: String
+  shortDescription: String
+  duration: String
+  tag: String
+  tags: [String]
+  ctaLabel: String
+  heroBody: [String]
+  benefitsTitle: String
+  benefits: [String]
+  howItWorks: String
+  subPrograms: [ProgramSubProgramsMutation]
+  faqs: [ProgramFaqsMutation]
+  image: String
+  imageAlt: String
+  imagePosition: String
+  metaTitle: String
+  metaDescription: String
 }
 
 schema {

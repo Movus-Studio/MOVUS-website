@@ -135,6 +135,40 @@ export const HomePartsFragmentDoc = gql`
   }
 }
     `;
+export const ProgramPartsFragmentDoc = gql`
+    fragment ProgramParts on Program {
+  __typename
+  title
+  shortDescription
+  duration
+  tag
+  tags
+  ctaLabel
+  heroBody
+  benefitsTitle
+  benefits
+  howItWorks
+  subPrograms {
+    __typename
+    name
+    tagline
+    category
+    audience
+    description
+    ctaLabel
+  }
+  faqs {
+    __typename
+    question
+    answer
+  }
+  image
+  imageAlt
+  imagePosition
+  metaTitle
+  metaDescription
+}
+    `;
 export const HomeDocument = gql`
     query home($relativePath: String!) {
   home(relativePath: $relativePath) {
@@ -192,6 +226,63 @@ export const HomeConnectionDocument = gql`
   }
 }
     ${HomePartsFragmentDoc}`;
+export const ProgramDocument = gql`
+    query program($relativePath: String!) {
+  program(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...ProgramParts
+  }
+}
+    ${ProgramPartsFragmentDoc}`;
+export const ProgramConnectionDocument = gql`
+    query programConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: ProgramFilter) {
+  programConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...ProgramParts
+      }
+    }
+  }
+}
+    ${ProgramPartsFragmentDoc}`;
 export function getSdk(requester) {
   return {
     home(variables, options) {
@@ -199,6 +290,12 @@ export function getSdk(requester) {
     },
     homeConnection(variables, options) {
       return requester(HomeConnectionDocument, variables, options);
+    },
+    program(variables, options) {
+      return requester(ProgramDocument, variables, options);
+    },
+    programConnection(variables, options) {
+      return requester(ProgramConnectionDocument, variables, options);
     }
   };
 }

@@ -126,3 +126,36 @@ fragment HomeParts on Home {
     }
   }
 }
+
+fragment ProgramParts on Program {
+  __typename
+  title
+  shortDescription
+  duration
+  tag
+  tags
+  ctaLabel
+  heroBody
+  benefitsTitle
+  benefits
+  howItWorks
+  subPrograms {
+    __typename
+    name
+    tagline
+    category
+    audience
+    description
+    ctaLabel
+  }
+  faqs {
+    __typename
+    question
+    answer
+  }
+  image
+  imageAlt
+  imagePosition
+  metaTitle
+  metaDescription
+}
