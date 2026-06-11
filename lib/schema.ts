@@ -1,4 +1,8 @@
-// JSON-LD Schema generators for SEO
+// JSON-LD Schema generators for SEO.
+// Business contact details are read from the CMS-managed global Settings
+// (content/settings/settings.json via siteContact) so an owner edit to the
+// phone/email/address/Instagram flows straight into the structured data.
+import { siteContact } from "@/content/site";
 
 export function generateLocalBusinessSchema() {
   return {
@@ -10,15 +14,15 @@ export function generateLocalBusinessSchema() {
     description:
       "EMS γυμναστήριο στην Πάτρα. Συνεδρία EMS 30 λεπτών με ενεργοποίηση 300+ μυών, personal training και ομαδικά προγράμματα.",
     url: "https://movus.gr",
-    telephone: "+302611814010",
-    email: "info@movus.gr",
+    telephone: siteContact.phoneHref,
+    email: siteContact.email,
     image: "https://movus.gr/og-image.jpg",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Ιερού Λόχου 1",
-      addressLocality: "Πάτρα",
-      addressRegion: "Αχαΐα",
-      postalCode: "26331",
+      streetAddress: siteContact.address.street,
+      addressLocality: siteContact.address.city,
+      addressRegion: siteContact.address.region,
+      postalCode: siteContact.address.postalCode,
       addressCountry: "GR",
     },
     geo: {
@@ -53,7 +57,7 @@ export function generateLocalBusinessSchema() {
       "@type": "City",
       name: "Πάτρα",
     },
-    sameAs: ["https://www.instagram.com/movusfitness/"],
+    sameAs: [siteContact.social.instagram],
   };
 }
 
@@ -66,7 +70,7 @@ export function generateOrganizationSchema() {
     legalName: "MOVUS, Future of Fitness",
     url: "https://movus.gr",
     logo: "https://movus.gr/og-image.jpg",
-    sameAs: ["https://www.instagram.com/movusfitness/"],
+    sameAs: [siteContact.social.instagram],
   };
 }
 
