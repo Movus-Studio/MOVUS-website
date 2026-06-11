@@ -34,9 +34,11 @@ export default defineConfig({
         path: "content/home",
         format: "json",
         // Singleton: one home document. The owner edits it; can't create/delete.
+        // No `router` on purpose: this is the form-based setup (components read
+        // the JSON directly, no useTina), so a page-preview route can't bind the
+        // form. Clicking the collection opens the editing form straight away.
         ui: {
           allowedActions: { create: false, delete: false },
-          router: () => "/",
         },
         fields: [
           // ---------------------------------------------------------------- HERO
