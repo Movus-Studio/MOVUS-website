@@ -12,7 +12,11 @@ import homeContent from "@/content/home/home.json";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const c = homeContent.whatIsEMS;
-const stats = c.stats;
+// Tina serializes empty `list` fields away on save, so `stats` may be absent
+// from the committed JSON. Fall back to [] so a content edit can never break
+// the typed build (the section just renders without the counters).
+type Stat = { value: number; suffix: string; label: string };
+const stats: Stat[] = (c as { stats?: Stat[] }).stats ?? [];
 
 export function WhatIsEMS() {
   const sectionRef = useRef<HTMLElement>(null);
