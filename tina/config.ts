@@ -90,17 +90,8 @@ export default defineConfig({
                 type: "object",
                 name: "stats",
                 label: "Στατιστικά (3)",
-                description:
-                  "Μόνο επεξεργασία κειμένου — δεν προστίθενται/αφαιρούνται στατιστικά (κλειδωμένα στα 3).",
                 list: true,
-                // min === max locks the list: Tina hides the add AND remove
-                // buttons, so the client can only edit the 3 existing values,
-                // not delete the block (text-only editing, enforced by the CMS).
-                ui: {
-                  min: 3,
-                  max: 3,
-                  itemProps: (item) => ({ label: item?.label || "Στατιστικό" }),
-                },
+                ui: { itemProps: (item) => ({ label: item?.label || "Στατιστικό" }) },
                 fields: [
                   { type: "number", name: "value", label: "Αριθμός" },
                   { type: "string", name: "suffix", label: "Κατάληξη (π.χ. +, ')" },
