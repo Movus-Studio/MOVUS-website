@@ -83,6 +83,7 @@ export function WhatIsEMS() {
             />
           </div>
 
+          {stats.length > 0 && (
           <div className="grid grid-cols-3 gap-4 md:gap-8">
             {stats.map((stat, i) => (
               <div key={i} className="overflow-hidden">
@@ -106,6 +107,7 @@ export function WhatIsEMS() {
               </div>
             ))}
           </div>
+          )}
         </div>
 
         <div className="flex-1 flex flex-col gap-8 order-0 lg:order-none lg:sticky lg:top-28 lg:self-start">
