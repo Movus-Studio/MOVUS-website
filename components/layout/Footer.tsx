@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Logo } from "@/components/shared/Logo";
 import { siteContact } from "@/content/site";
 
@@ -17,7 +18,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="bg-movus-white">
-      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 py-16 md:py-24">
+      <div className="mx-auto max-w-[1280px] px-5 md:px-8 lg:px-12 pt-16 md:pt-24 pb-32 md:pb-24">
         {/* Top section */}
         <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-8">
           {/* Brand + Contact */}
@@ -96,10 +97,25 @@ export function Footer() {
           </nav>
           <p className="text-sm text-movus-black/60 flex items-center gap-2">
             Created by
-            <a href="https://k2o.io" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-movus-black hover:text-movus-orange-text transition-colors font-medium">
-              <span className="w-6 h-6 rounded-full bg-movus-black text-white flex items-center justify-center text-[10px]">K₂O</span>
-              K2O
+            <a href="https://k2o.io" target="_blank" rel="noopener noreferrer" aria-label="K2O" className="inline-flex items-center hover:opacity-80 transition-opacity">
+              <Image src="/images/k2o-logo.png" alt="K2O" width={28} height={28} className="h-6 w-auto" priority={false} />
             </a>
+            with
+            <svg
+              viewBox="0 0 7 6"
+              aria-hidden="true"
+              shapeRendering="crispEdges"
+              fill="#FF5E5B"
+              className="h-3.5 w-auto"
+            >
+              <rect x="1" y="0" width="2" height="1" />
+              <rect x="4" y="0" width="2" height="1" />
+              <rect x="0" y="1" width="7" height="1" />
+              <rect x="0" y="2" width="7" height="1" />
+              <rect x="1" y="3" width="5" height="1" />
+              <rect x="2" y="4" width="3" height="1" />
+              <rect x="3" y="5" width="1" height="1" />
+            </svg>
           </p>
         </div>
       </div>
